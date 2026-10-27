@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Logo: um sol com um relógio no centro">
+  <defs>
+    <linearGradient id="fundo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#ec4899"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="30" fill="url(#fundo)"/>
+  <!-- raios de sol: o "dia" -->
+  <g stroke="#fff" stroke-width="6" stroke-linecap="round">
+    <line x1="64" y1="24" x2="64" y2="12"/>
+    <line x1="92.3" y1="35.7" x2="100.8" y2="27.2"/>
+    <line x1="104" y1="64" x2="116" y2="64"/>
+    <line x1="92.3" y1="92.3" x2="100.8" y2="100.8"/>
+    <line x1="64" y1="104" x2="64" y2="116"/>
+    <line x1="35.7" y1="92.3" x2="27.2" y2="100.8"/>
+    <line x1="24" y1="64" x2="12" y2="64"/>
+    <line x1="35.7" y1="35.7" x2="27.2" y2="27.2"/>
+  </g>
+  <!-- relógio: as horas do expediente -->
+  <circle cx="64" cy="64" r="30" fill="#fff"/>
+  <g stroke-width="5" stroke-linecap="round">
+    <line x1="64" y1="64" x2="64" y2="44" stroke="#7c3aed"/>
+    <line x1="64" y1="64" x2="79" y2="73" stroke="#ec4899"/>
+  </g>
+  <circle cx="64" cy="64" r="4" fill="#7c3aed"/>
+</svg>
