@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Um Dia na Profissão</title>
+  <meta name="description" content="Viva um dia de trabalho de verdade antes de escolher o curso e descubra sua afinidade com a profissão.">
+  <meta name="theme-color" content="#7c3aed">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="fundo" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <!-- Botão de som (fica fixo no canto da tela) -->
+  <button type="button" class="botao-som" id="botao-som" data-acao="alternar-som" aria-pressed="true" title="Ligar ou desligar o som">🔊</button>
+
+  <main class="app">
+
+    <!-- 1. Tela inicial -->
+    <section class="tela tela-inicio" id="tela-inicio">
+      <div class="hero-icones" id="inicio-icones" aria-hidden="true"></div>
+      <p class="selo">Simulador de profissões</p>
+      <h1 class="titulo-jogo titulo-tela" tabindex="-1">Um Dia na <span>Profissão</span></h1>
+      <p class="subtitulo">Viva um dia de trabalho de verdade — com as partes boas e as difíceis — antes de escolher o curso.</p>
+      <div class="acoes acoes-coluna">
+        <button type="button" class="btn btn-primario btn-grande" data-acao="cadastro">▶ Jogar</button>
+        <button type="button" class="btn btn-secundario" data-acao="continuar" id="btn-continuar" hidden></button>
+        <div class="acoes-linha">
+          <button type="button" class="btn btn-secundario btn-pequeno" data-acao="comparacao" id="btn-comparar-inicio" hidden>📊 Comparar resultados</button>
+          <button type="button" class="btn btn-secundario btn-pequeno" data-acao="conquistas">🏅 Conquistas</button>
+        </div>
+      </div>
+      <ol class="passos">
+        <li><span class="passo-icone" aria-hidden="true">🧑‍🎤</span><span>Crie seu personagem e escolha uma profissão</span></li>
+        <li><span class="passo-icone" aria-hidden="true">⏰</span><span>Encare um dia de trabalho, com urgências e imprevistos</span></li>
+        <li><span class="passo-icone" aria-hidden="true">🏆</span><span>Descubra sua afinidade e ganhe medalhas</span></li>
+      </ol>
+    </section>
+
+    <!-- 2. Personagem e escolha da profissão -->
+    <section class="tela" id="tela-cadastro" hidden>
+      <button type="button" class="btn-voltar" data-acao="inicio">← Voltar</button>
+      <h2 class="titulo-tela" tabindex="-1">Crie seu personagem</h2>
+      <form id="form-cadastro" novalidate>
+        <div class="cartao cartao-personagem">
+          <div class="avatar-grande" id="avatar-previa" aria-hidden="true"></div>
+          <div class="campo">
+            <label for="campo-nome">Seu nome</label>
+            <input type="text" id="campo-nome" maxlength="30" autocomplete="given-name" placeholder="Digite seu nome">
+          </div>
+        </div>
+
+        <p class="rotulo-secao" id="rotulo-avatares">Escolha seu avatar</p>
+        <div class="grade-avatares" id="lista-avatares" role="group" aria-labelledby="rotulo-avatares"></div>
+
+        <p class="rotulo-secao" id="rotulo-profissoes">Escolha a profissão</p>
+        <div class="grade-profissoes" id="lista-profissoes" role="group" aria-labelledby="rotulo-profissoes"></div>
+
+        <label class="interruptor">
+          <input type="checkbox" id="opcao-cronometro">
+          <span class="interruptor-trilho" aria-hidden="true"></span>
+          <span>⏱️ Cronômetro nas urgências: você terá poucos segundos para decidir</span>
+        </label>
+
+        <p class="aviso-honestidade">💡 Não existe resposta certa: escolha o que você <strong>realmente</strong> faria ou sentiria.</p>
+        <p class="erro" id="erro-cadastro" role="alert" hidden></p>
+        <button type="submit" class="btn btn-primario btn-grande btn-bloco">Começar o expediente ▶</button>
+      </form>
+    </section>
+
+    <!-- 3. O dia de trabalho -->
+    <section class="tela tela-jogo" id="tela-jogo" hidden>
+      <!-- Painel do jogador: avatar, profissão, energia e estresse -->
+      <div class="hud">
+        <div class="hud-jogador">
+          <span class="hud-avatar" id="hud-avatar" aria-hidden="true"></span>
+          <div>
+            <strong id="hud-nome"></strong>
+            <span id="hud-profissao"></span>
+          </div>
+        </div>
+        <div class="hud-botoes">
+          <button type="button" class="btn-pausa botao-som-painel" data-acao="alternar-som" title="Ligar ou desligar o som">🔊</button>
+          <button type="button" class="btn-pausa" data-acao="inicio" title="Pausar (o progresso fica salvo)" aria-label="Pausar">⏸</button>
+        </div>
+        <div class="hud-medidores">
+          <div class="medidor-hud" id="medidor-energia">
+            <span class="medidor-hud-rotulo">⚡ Energia</span>
+            <div class="medidor-hud-barra"><span></span></div>
+            <strong>100</strong>
+          </div>
+          <div class="medidor-hud" id="medidor-estresse">
+            <span class="medidor-hud-rotulo">😰 Estresse</span>
+            <div class="medidor-hud-barra"><span></span></div>
+            <strong>10</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Céu com o relógio, o título e a cena da situação -->
+      <div class="ceu" id="ceu">
+        <span class="astro" id="astro" aria-hidden="true"></span>
+        <div class="ceu-texto">
+          <p class="relogio" id="relogio"></p>
+          <h2 class="ceu-titulo titulo-tela" id="situacao-titulo" tabindex="-1"></h2>
+        </div>
+        <div class="cena" id="cena" aria-hidden="true"></div>
+      </div>
+
+      <div class="progresso-rotulo"><span id="etapa"></span><span id="periodo"></span></div>
+      <div class="progresso" id="progresso" aria-hidden="true"></div>
+
+      <article class="cartao cartao-situacao" id="cartao-situacao">
+        <p class="etiqueta-situacao" id="etiqueta-situacao" hidden></p>
+        <p class="narracao" id="situacao-descricao"></p>
+        <div class="conversa" id="conversa" aria-live="polite"></div>
+        <button type="button" class="btn-pular" id="btn-pular" data-acao="pular-conversa" hidden>Pular ⏩</button>
+
+        <!-- Cronômetro das urgências (e dos desafios que tiverem "tempo") -->
+        <div class="cronometro" id="cronometro" role="timer" hidden>
+          <span aria-hidden="true">⏱️</span>
+          <div class="cronometro-barra"><span></span></div>
+          <strong id="cronometro-texto"></strong>
+        </div>
+
+        <!-- Situação de decisão: as opções -->
+        <div class="area-decisao" id="area-decisao" hidden>
+          <p class="pergunta">O que você faz?</p>
+          <div class="opcoes" id="opcoes"></div>
+          <p class="atalho-dica">Dica: use as teclas A, B, C e D.</p>
+        </div>
+
+        <!-- Desafio: o mini problema da profissão -->
+        <div class="area-desafio" id="area-desafio" hidden>
+          <p class="pergunta" id="desafio-pergunta"></p>
+          <div id="desafio-conteudo"></div>
+        </div>
+      </article>
+
+      <section class="cartao feedback" id="feedback" hidden aria-live="polite">
+        <h3 id="feedback-titulo">O que aconteceu</h3>
+        <p id="feedback-resultado"></p>
+        <div class="efeitos-escolha" id="feedback-efeitos"></div>
+        <div class="chips" id="feedback-chips"></div>
+        <div class="vida-real">
+          <span class="vida-real-icone" aria-hidden="true">💡</span>
+          <div>
+            <strong>Na vida real</strong>
+            <p id="feedback-real"></p>
+          </div>
+        </div>
+        <div class="pergunta-gosto" id="pergunta-gosto" hidden>
+          <p>Você curtiria fazer isso todo dia?</p>
+          <div class="botoes-gosto" id="botoes-gosto"></div>
+        </div>
+        <button type="button" class="btn btn-primario btn-bloco" data-acao="proxima" id="btn-proxima"></button>
+      </section>
+    </section>
+
+    <!-- 4. Relatório de afinidade -->
+    <section class="tela tela-relatorio" id="tela-relatorio" hidden>
+      <div id="relatorio-conteudo"></div>
+      <div class="acoes">
+        <button type="button" class="btn btn-primario" data-acao="cadastro">Jogar outra profissão</button>
+        <button type="button" class="btn btn-secundario" data-acao="comparacao">📊 Comparar resultados</button>
+        <button type="button" class="btn btn-secundario" data-acao="conquistas">🏅 Conquistas</button>
+        <button type="button" class="btn btn-texto" data-acao="imprimir">Imprimir relatório</button>
+        <button type="button" class="btn btn-texto" data-acao="inicio">Início</button>
+      </div>
+    </section>
+
+    <!-- 5. Comparação de resultados -->
+    <section class="tela" id="tela-comparacao" hidden>
+      <button type="button" class="btn-voltar" data-acao="inicio">← Início</button>
+      <h2 class="titulo-tela" tabindex="-1">Comparar resultados</h2>
+      <div id="comparacao-conteudo"></div>
+    </section>
+
+    <!-- 6. Conquistas -->
+    <section class="tela" id="tela-conquistas" hidden>
+      <button type="button" class="btn-voltar" data-acao="inicio">← Início</button>
+      <h2 class="titulo-tela" tabindex="-1">Conquistas</h2>
+      <div id="conquistas-conteudo"></div>
+    </section>
+
+  </main>
+
+  <footer class="rodape">Protótipo · Projeto da turma de Desenvolvimento de Sistemas</footer>
+
+  <!-- Tela de passagem de tempo entre as situações -->
+  <div class="passagem" id="passagem" data-acao="pular-passagem" hidden>
+    <div class="passagem-conteudo">
+      <span class="passagem-astro" id="passagem-astro" aria-hidden="true"></span>
+      <strong class="passagem-relogio" id="passagem-relogio"></strong>
+      <span class="passagem-texto" id="passagem-texto"></span>
+    </div>
+  </div>
+
+  <!-- Avisos de conquista desbloqueada -->
+  <div class="avisos" id="avisos" aria-live="polite"></div>
+
+  <!-- Dados do jogo: primeiro os traços, depois uma linha para cada profissão.
+       Para adicionar uma profissão, crie o arquivo em dados/ e inclua aqui. -->
+  <script src="dados/tracos.js"></script>
+  <script src="dados/enfermagem.js"></script>
+  <script src="dados/desenvolvimento-sistemas.js"></script>
+  <script src="dados/gestao-hospitalar.js"></script>
+
+  <!-- Código do jogo (a ordem importa: cada arquivo usa funções dos anteriores) -->
+  <script src="js/afinidade.js"></script>
+  <script src="js/armazenamento.js"></script>
+  <script src="js/conquistas.js"></script>
+  <script src="js/efeitos.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
