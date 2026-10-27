@@ -34,6 +34,14 @@ dados/tracos.js                    os 5 traços de perfil e as classes
 dados/enfermagem.js                uma profissão por arquivo (este é o modelo comentado)
 dados/desenvolvimento-sistemas.js
 dados/gestao-hospitalar.js
+dados/medicina.js
+dados/veterinaria.js
+dados/psicologia.js
+dados/direito.js
+dados/engenharia-civil.js
+dados/professor.js
+dados/design-grafico.js
+dados/marketing-digital.js
 ```
 
 Os dados ficam em arquivos `.js`, e não `.json`, porque o navegador bloqueia a leitura de JSON quando a página é aberta direto do computador (`file://`). Pelo mesmo motivo os scripts são comuns (sem `import`) e a **ordem dos `<script>` no `index.html` importa**: primeiro os dados, depois `afinidade.js`, `armazenamento.js`, `conquistas.js`, `efeitos.js` e `app.js`.
@@ -50,13 +58,19 @@ Os dados ficam em arquivos `.js`, e não `.json`, porque o navegador bloqueia a 
 
 Cada opção de escolha dá pontos (1 ou 2) para um ou mais traços. Cada profissão define o **peso** de cada traço, de 1 (pouco usado) a 5 (essencial):
 
-| Traço | Enfermagem | Desenv. de Sistemas | Gestão Hospitalar |
-| --- | --- | --- | --- |
-| Lidar com pessoas | 5 | 2 | 4 |
-| Problemas técnicos/lógicos | 2 | 5 | 3 |
-| Trabalhar sob pressão | 5 | 3 | 4 |
-| Organização e rotina | 4 | 3 | 5 |
-| Criatividade | 2 | 4 | 3 |
+| Profissão | Pessoas | Lógica | Pressão | Organização | Criatividade |
+| --- | --- | --- | --- | --- | --- |
+| 🩺 Enfermagem | 5 | 2 | 5 | 4 | 2 |
+| 💻 Desenvolvimento de Sistemas | 2 | 5 | 3 | 3 | 4 |
+| 🏥 Gestão Hospitalar | 4 | 3 | 4 | 5 | 3 |
+| 🧑‍⚕️ Medicina | 4 | 5 | 5 | 3 | 2 |
+| 🐾 Medicina Veterinária | 4 | 3 | 4 | 3 | 2 |
+| 🧠 Psicologia | 5 | 3 | 4 | 3 | 3 |
+| ⚖️ Direito | 4 | 4 | 3 | 5 | 3 |
+| 🏗️ Engenharia Civil | 3 | 5 | 4 | 4 | 3 |
+| 📚 Professor(a) | 5 | 2 | 3 | 4 | 4 |
+| 🎨 Design Gráfico | 3 | 2 | 3 | 3 | 5 |
+| 📣 Marketing Digital | 4 | 3 | 4 | 3 | 5 |
 
 A **classe** do relatório vem do traço em que a pessoa foi mais forte no dia. O segundo traço mais forte (se tiver 40% ou mais) aparece como "ponto forte secundário".
 
@@ -76,7 +90,9 @@ No relatório, só os traços de peso 3 ou mais entram nas listas:
 - **Você provavelmente vai gostar**: você ficou perto do ideal ou acima (até 15 pontos abaixo).
 - **Pode ser difícil**: você ficou bem abaixo do ideal (mais de 25 pontos abaixo). Se nenhum traço ficar assim, aparece o lado difícil do traço mais importante, como alerta.
 
-Não existe resposta "certa" como numa prova: o jogo compara o seu jeito de agir com o que a rotina da profissão exige. Escolher o caminho que mais combina com cada profissão (e curtir os desafios) dá de 94% a 97%; fugir de todas as partes difíceis dá de 15% a 22%.
+Não existe resposta "certa" como numa prova: o jogo compara o seu jeito de agir com o que a rotina da profissão exige. Escolher o caminho que mais combina com cada profissão (e curtir os desafios) dá de 90% a 97%; fugir de todas as partes difíceis dá de 15% a 27%.
+
+**Ordem das opções:** a posição de cada opção na tela "gira" um pouco a cada etapa (`ordemDasOpcoes` em `js/app.js`), então a melhor opção não fica sempre na mesma letra, não importa a ordem em que você escreveu no arquivo. A regra é fixa (não é sorteio), então ao continuar um dia salvo tudo aparece no mesmo lugar.
 
 ## Energia e estresse
 
@@ -96,7 +112,7 @@ Para dar valores próprios a uma opção, use o campo `efeitos`, por exemplo `ef
 | Medalha | Como ganhar |
 | --- | --- |
 | 🎒 Primeiro expediente | Terminar o primeiro dia |
-| 🧭 Explorador(a) | Jogar todas as profissões |
+| 🧭 Explorador(a) | Jogar 3 profissões diferentes |
 | 🎯 Na mosca | Ter 90% de afinidade ou mais |
 | 🔁 Segunda chance | Jogar de novo uma profissão e melhorar a afinidade |
 | 🧊 Sangue frio | Com o cronômetro ligado, responder todas as urgências do dia a tempo |
@@ -166,7 +182,7 @@ PROFISSOES.push({
 });
 ```
 
-A profissão nova aparece sozinha na escolha, no relatório, na comparação e na medalha Explorador(a).
+A profissão nova aparece sozinha na escolha, no relatório, na comparação e na medalha Explorador(a). O jogo já vem com 11 profissões; as de Medicina até Marketing Digital podem servir de exemplo para as próximas.
 
 **Dicas para os diálogos não ficarem robotizados:**
 - Escreva como as pessoas falam no WhatsApp: frases curtas, "tô", "pra", "cê", emojis.
@@ -216,6 +232,14 @@ Os desafios que já existem:
 | 🩺 Enfermagem | 💊 Hora da medicação (cálculo de dose) | 🏷️ Confira a pulseira (encontre o erro) |
 | 💻 Desenv. de Sistemas | 🐛 Ache o bug (encontre o erro no código) | 🔐 Monte o login (ordenar) |
 | 🏥 Gestão Hospitalar | 📊 Leia os dados (gráfico) | 📅 Confira a escala (encontre o erro) |
+| 🧑‍⚕️ Medicina | 🧪 Leia o exame (gráfico) | 📝 Receita errada (alergia a penicilina) |
+| 🐾 Medicina Veterinária | ⚖️ Dose por peso (cálculo) | 📋 Confira a ficha (data da vacina) |
+| 🧠 Psicologia | 💜 Qual resposta acolhe? (escuta ativa) | 🛋️ Monte a sessão (ordenar) |
+| ⚖️ Direito | 📑 Cláusula abusiva (encontre o erro) | 📅 Qual prazo vence primeiro? (gráfico) |
+| 🏗️ Engenharia Civil | 🧮 Quantidade de piso (cálculo) | 🪜 Vistoria do andaime (encontre o erro) |
+| 📚 Professor(a) | ➗ Confira o gabarito (encontre o erro) | 🧩 Monte a aula (ordenar) |
+| 🎨 Design Gráfico | 🔤 Qual fonte escolher? | 🖨️ Confira o arquivo (CMYK × RGB) |
+| 📣 Marketing Digital | 📊 Leia a campanha (gráfico) | 📝 Revise o anúncio (conta do desconto) |
 
 **Dicas para a pontuação ficar justa:**
 - Traço de peso alto: a melhor opção de cada situação deve dar os pontos máximos nele.

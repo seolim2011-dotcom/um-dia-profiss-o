@@ -35,8 +35,8 @@ const CONQUISTAS = [
     id: "explorador",
     icone: "🧭",
     nome: "Explorador(a)",
-    descricao: "Jogue todas as profissões do jogo.",
-    verificar: c => new Set(c.partidas.map(p => p.profissaoId)).size >= PROFISSOES.length
+    descricao: "Jogue 3 profissões diferentes.",
+    verificar: c => new Set(c.partidas.map(p => p.profissaoId)).size >= Math.min(3, PROFISSOES.length)
   },
   {
     id: "na-mosca",

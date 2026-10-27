@@ -435,14 +435,24 @@ function animarConversa(situacao, aoTerminar) {
 
 /* ----- Decisão e cronômetro ----- */
 
+// Ordem em que as opções aparecem na tela. Ela "gira" um pouco a cada etapa,
+// para a melhor opção não ficar sempre na mesma letra. É uma regra fixa (não
+// sorteada), então ao continuar um dia salvo as opções aparecem no mesmo lugar.
+// Devolve os índices originais das opções, na ordem da tela.
+function ordemDasOpcoes() {
+  const quantidade = situacaoAtual().opcoes.length;
+  const giro = (estado.indice * 3 + estado.profissao.id.length) % quantidade;
+  return Array.from({ length: quantidade }, (_, posicao) => (posicao + giro) % quantidade);
+}
+
 function mostrarDecisao() {
   const situacao = situacaoAtual();
   const area = $("#area-decisao");
 
-  $("#opcoes").innerHTML = situacao.opcoes.map((opcao, i) => `
-    <button type="button" class="opcao" data-acao="escolher" data-indice="${i}" style="--ordem: ${i}">
-      <span class="opcao-letra" aria-hidden="true">${LETRAS[i]}</span>
-      <span>${esc(opcao.texto)}</span>
+  $("#opcoes").innerHTML = ordemDasOpcoes().map((original, posicao) => `
+    <button type="button" class="opcao" data-acao="escolher" data-indice="${original}" style="--ordem: ${posicao}">
+      <span class="opcao-letra" aria-hidden="true">${LETRAS[posicao]}</span>
+      <span>${esc(situacao.opcoes[original].texto)}</span>
     </button>`).join("");
   area.hidden = false;
 
@@ -1457,7 +1467,7 @@ function ligarEventos() {
 
     if (!$("#area-decisao").hidden && indice < situacaoAtual().opcoes.length) {
       evento.preventDefault();
-      escolher(indice);
+      escolher(ordemDasOpcoes()[indice]); // a tecla vale para a posição na tela
     } else if (!$("#area-desafio").hidden && estado.desafio && estado.desafio.acertou === null) {
       evento.preventDefault();
       if (situacaoAtual().formato === "ordenar") {
