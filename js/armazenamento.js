@@ -7,6 +7,7 @@
   - os resultados dos dias concluídos
   - as conquistas de cada jogador
   - as preferências (som e cronômetro)
+  - a chave da IA (opcional, só no navegador de quem a colou)
 
   O localStorage só guarda texto, então convertemos os dados com JSON.
   Tudo fica dentro de try/catch: se o navegador bloquear o armazenamento,
@@ -24,6 +25,9 @@ const CHAVES = {
 };
 
 const AVATAR_PADRAO = "🙂";
+
+// A chave da IA é guardada à parte, como texto puro (não como JSON).
+const CHAVE_IA = "umDiaNaProfissao.chaveIA";
 
 /* ---------- Funções básicas ---------- */
 
@@ -78,6 +82,42 @@ function lerPreferencias() {
 
 function salvarPreferencias(preferencias) {
   salvarNoNavegador(CHAVES.preferencias, preferencias);
+}
+
+/* ---------- Chave da IA ---------- */
+
+// Por segurança a chave NUNCA vai para o código nem para o GitHub: cada pessoa cola a sua.
+// Por padrão ela fica só na aba (sessionStorage) e some quando a aba fecha.
+// Com "lembrar neste navegador" ela vai para o localStorage.
+
+function lerChaveIA() {
+  try {
+    return sessionStorage.getItem(CHAVE_IA) || localStorage.getItem(CHAVE_IA) || "";
+  } catch (erro) {
+    return "";
+  }
+}
+
+function chaveIALembrada() {
+  try {
+    return Boolean(localStorage.getItem(CHAVE_IA));
+  } catch (erro) {
+    return false;
+  }
+}
+
+function salvarChaveIA(chave, lembrar) {
+  apagarChaveIA();
+  try {
+    (lembrar ? localStorage : sessionStorage).setItem(CHAVE_IA, chave);
+  } catch (erro) {
+    // Sem armazenamento: a IA funciona nesta página, mas não fica salva.
+  }
+}
+
+function apagarChaveIA() {
+  try { sessionStorage.removeItem(CHAVE_IA); } catch (erro) { /* ignorado */ }
+  try { localStorage.removeItem(CHAVE_IA); } catch (erro) { /* ignorado */ }
 }
 
 /* ---------- Dia em andamento ---------- */

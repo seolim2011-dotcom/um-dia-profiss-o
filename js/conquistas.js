@@ -92,6 +92,13 @@ const CONQUISTAS = [
     verificar: c => valorDoTraco(c, "pessoas") === 100
   },
   {
+    id: "com-as-proprias-palavras",
+    icone: "✍️",
+    nome: "Com as próprias palavras",
+    descricao: "Responda uma situação escrevendo com a IA ligada.",
+    verificar: c => c.calculo.momentos.some(m => m.livre)
+  },
+  {
     id: "cacador-de-bugs",
     icone: "🐞",
     nome: "Caçador(a) de bugs",

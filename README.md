@@ -20,6 +20,8 @@ Abra o arquivo `index.html` no navegador (dois cliques). Não precisa instalar n
 
 O botão 🔊 liga e desliga os sons. Se a página fechar no meio do dia, o progresso fica salvo e a tela inicial mostra o botão **Continuar**.
 
+**IA (opcional):** com a IA ligada (botão **🤖 Ativar IA** na tela inicial), você pode **escrever com as suas palavras o que faria** em cada situação, e no fim do relatório conversar com um **orientador**. Veja a seção "IA (opcional)" abaixo. Sem a IA, o jogo funciona igual, só com as opções A a D.
+
 ## Estrutura
 
 ```
@@ -29,6 +31,7 @@ js/afinidade.js                    cálculos: afinidade, energia/estresse e clas
 js/armazenamento.js                salvar e ler no localStorage
 js/conquistas.js                   lista de medalhas e regra de cada uma
 js/efeitos.js                      sons (gerados pelo navegador) e confete
+js/ia.js                           IA opcional: resposta livre e orientador (Claude Haiku 5.5)
 js/app.js                          telas, botões, conversa, cronômetro e teclado
 dados/tracos.js                    os 5 traços de perfil e as classes
 dados/enfermagem.js                uma profissão por arquivo (este é o modelo comentado)
@@ -119,6 +122,7 @@ Para dar valores próprios a uma opção, use o campo `efeitos`, por exemplo `ef
 | 😅 Por um fio | Responder uma urgência com menos de 3 segundos sobrando |
 | 🧘 Zen | Terminar o dia com estresse abaixo de 30% |
 | 🔥 Dia intenso | Terminar o dia com menos de 30% de energia |
+| ✍️ Com as próprias palavras | Responder uma situação escrevendo, com a IA ligada |
 | 🐞 Caçador(a) de bugs | Acertar um desafio de achar o erro no código |
 | 🧠 Gênio dos desafios | Acertar todos os desafios de um dia |
 | 💛 Coração de ouro | 100% em Lidar com pessoas |
@@ -128,6 +132,36 @@ Para dar valores próprios a uma opção, use o campo `efeitos`, por exemplo `ef
 | ✨ Ideia brilhante | 100% em Criatividade |
 
 Para criar uma medalha nova, adicione um item à lista `CONQUISTAS` em `js/conquistas.js`, com `id`, `icone`, `nome`, `descricao` e uma função `verificar` que devolve `true` quando a medalha foi ganha. O comentário no topo do arquivo explica o que a função recebe.
+
+## IA (opcional)
+
+A IA é opcional e usa o **Claude Haiku 5.5** (modelo `claude-haiku-5-5`), da Anthropic, chamado direto do navegador pelo SDK oficial (carregado de uma CDN, sem instalar nada). O código está em `js/ia.js`.
+
+**O que ela faz**
+- **Resposta livre ("✍️ Fazer outra coisa…")**: o jogador escreve o que faria. A IA devolve (1) pontos de 0 a 2 nos 5 traços, (2) a resposta do personagem, em estilo de chat, e (3) o que aconteceu. A resposta fica salva com os próprios pontos, então o relatório não chama a IA de novo.
+- **Orientador**: no fim do relatório, um chat (até 8 perguntas) que responde com base nos números do relatório, sem dizer "você deve ou não deve" seguir uma carreira.
+
+Não há resposta livre em urgências com cronômetro (não dá tempo de escrever) nem nos desafios (que têm resposta certa).
+
+**Como ligar**
+1. Crie uma chave de API da Anthropic só para o projeto.
+2. Na tela inicial, clique em **🤖 Ativar IA**, cole a chave e clique em **Testar e ativar**.
+3. Por padrão a chave some quando a aba fecha. A opção "Lembrar neste navegador" guarda a chave no `localStorage`.
+
+**Segurança e privacidade**
+- A chave **nunca** vai para o código nem para o GitHub: cada pessoa cola a sua. Ela fica no navegador de quem a colou. Como o SDK roda no navegador, quem abrir as ferramentas do navegador consegue ver a chave (o nome da opção, `dangerouslyAllowBrowser`, é esse aviso). Use uma chave só para o projeto, apague depois e não deixe a IA ligada em computador compartilhado.
+- O jogo **não envia nome nem avatar**: só a profissão, a situação e o texto digitado. O texto digitado vai para a Anthropic pela internet, e a tela avisa para não escrever dados pessoais.
+- Os pontos da IA são **travados no código** (`limitarPontosLivres`, em `js/afinidade.js`): cada traço fica entre 0 e o máximo das opções da situação, e a soma nunca passa da melhor opção oficial. A IA não consegue "dar nota máxima", mesmo que o jogador peça no texto.
+- O texto do jogador entra no pedido entre marcações e o prompt manda a IA tratá-lo só como a ação do personagem. Textos ofensivos, sem sentido ou que tentem dar ordens à IA são recusados e não contam.
+- Se a internet cair, a chave falhar ou a IA recusar, o jogo mostra o motivo e você volta para as opções A a D.
+
+**Custo e detalhes**
+- Estimativa com o preço de tabela do Haiku 5.5 (US$ 0,10 por milhão de tokens de entrada e US$ 0,50 de saída): cerca de 8 chamadas por partida custam menos de 1 centavo de dólar. O modelo usa `effort: "medium"` e respostas em JSON (structured outputs).
+- Não enviamos `temperature`, `top_p` nem `top_k`: o Haiku 5.5 não aceita esses parâmetros.
+- A IA responde de forma diferente a cada vez, então a mesma resposta pode receber pontos levemente diferentes. O teto de pontos reduz isso, mas não elimina.
+- Para trocar o modelo, mude `IA_MODELO` em `js/ia.js`.
+- A IA foi testada com respostas simuladas. Abra o jogo por um endereço `https://` (como o GitHub Pages) ou `http://localhost`; abrir o `index.html` com dois cliques (`file://`) não foi testado com a IA.
+- Se quiser a IA liberada para todo mundo no site, o caminho seguro é um servidor intermediário que guarda a chave e limita o uso (não incluído).
 
 ## Como adicionar uma profissão
 
@@ -258,6 +292,7 @@ Se algo estiver errado (um traço com nome digitado errado, um peso faltando, um
 | `umDiaNaProfissao.resultados` | partidas concluídas (nome, avatar, profissão, data e escolhas) |
 | `umDiaNaProfissao.conquistas` | medalhas de cada jogador, com a data em que foram ganhas |
 | `umDiaNaProfissao.preferencias` | som e cronômetro ligados ou desligados |
+| `umDiaNaProfissao.chaveIA` | chave da IA, só se a pessoa a colou (na aba, ou aqui se marcou "lembrar") |
 
 A afinidade, a energia e o estresse são recalculados a partir das escolhas sempre que um resultado é exibido. Assim, se alguém ajustar a pontuação de uma profissão, os resultados antigos acompanham a mudança.
 

@@ -36,6 +36,9 @@ const estado = {
   escolhas: [],             // opção escolhida em cada situação (-1 = tempo esgotado)
   urgencias: { total: 0, esgotadas: 0, menorFolga: null },
   desafio: null,            // desafio em andamento: { acertou: null/true/false, ordem: [...] }
+  enviandoLivre: false,     // true enquanto a IA avalia uma resposta livre
+  relatorioAtual: null,     // dados do relatório aberto (o orientador usa para conversar)
+  orientador: null,         // { historico, restantes, enviando } do chat do orientador
   preferencias: { som: true, cronometro: true },
   filtroJogador: null       // de quem são os resultados nas telas de comparação e conquistas
 };
@@ -161,7 +164,68 @@ function abrirInicio() {
   }
 
   $("#btn-comparar-inicio").hidden = lerResultados().length === 0;
+  $("#btn-ia").textContent = ia.ativa ? "🤖 IA ligada ✓" : "🤖 Ativar IA";
   mostrarTela("inicio");
+}
+
+/* ---------- IA: ativar e desativar ---------- */
+
+function abrirIA() {
+  $("#erro-ia").hidden = true;
+  $("#campo-chave").value = "";
+  $("#opcao-lembrar-chave").checked = chaveIALembrada();
+  atualizarTelaIA();
+  mostrarTela("ia");
+}
+
+// Ajusta os textos da tela conforme a IA esteja ligada ou não.
+function atualizarTelaIA() {
+  $("#ia-status").textContent = ia.ativa
+    ? "✅ A IA está ligada neste navegador."
+    : "A IA está desligada. O jogo funciona normalmente sem ela.";
+  $("#btn-ativar-ia").textContent = ia.ativa ? "Trocar a chave" : "Testar e ativar";
+  $("#btn-desativar-ia").hidden = !ia.ativa;
+}
+
+function mostrarErroIA(mensagem, campo) {
+  const erro = $("#erro-ia");
+  erro.textContent = mensagem;
+  erro.hidden = false;
+  if (campo) campo.focus();
+}
+
+async function enviarChaveIA(evento) {
+  evento.preventDefault();
+  const campo = $("#campo-chave");
+  const chave = campo.value.trim();
+  if (!chaveIAParecevalida(chave)) {
+    return mostrarErroIA("Cole a chave inteira. Ela começa com sk-ant-.", campo);
+  }
+
+  const botao = $("#btn-ativar-ia");
+  $("#erro-ia").hidden = true;
+  botao.disabled = true;
+  botao.textContent = "Testando a chave…";
+
+  try {
+    await testarChaveIA(chave); // um pedido minúsculo para ver se a chave funciona
+    salvarChaveIA(chave, $("#opcao-lembrar-chave").checked);
+    campo.value = "";
+    tocarSom("conquista");
+    atualizarTelaIA();
+    $("#ia-status").textContent = "✅ Tudo certo! A IA está ligada.";
+  } catch (erro) {
+    mostrarErroIA(erro.mensagem || "Não consegui testar a chave.");
+    atualizarTelaIA();
+  } finally {
+    botao.disabled = false;
+  }
+}
+
+function desativarIA() {
+  desligarIA();
+  apagarChaveIA();
+  abrirIA();
 }
 
 /* ---------- 2. Personagem e profissão ---------- */
@@ -459,7 +523,97 @@ function mostrarDecisao() {
   if (situacao.urgente && estado.preferencias.cronometro) iniciarCronometro(situacao.tempo || TEMPO_PADRAO, tempoEsgotou);
   else $("#cronometro").hidden = true;
 
+  prepararRespostaLivre();
   rolarAte(area);
+}
+
+/* ----- Resposta livre (com IA) ----- */
+
+// Mostra o botão "Fazer outra coisa…" quando a IA está ligada. Em urgências com cronômetro
+// ele some: escrever e esperar a IA não cabe em poucos segundos.
+function prepararRespostaLivre() {
+  const situacao = situacaoAtual();
+  const cronometroLigado = Boolean(situacao.urgente && estado.preferencias.cronometro);
+  estado.enviandoLivre = false;
+
+  $("#livre").hidden = !ia.ativa || cronometroLigado;
+  $("#btn-livre").hidden = false;
+  $("#form-livre").hidden = true;
+  $("#livre-estado").hidden = true;
+  $("#campo-livre").value = "";
+  $("#campo-livre").disabled = false;
+  atualizarContadorLivre();
+}
+
+function abrirRespostaLivre() {
+  $("#btn-livre").hidden = true;
+  $("#form-livre").hidden = false;
+  $("#campo-livre").focus();
+}
+
+function fecharRespostaLivre() {
+  if (estado.enviandoLivre) return;
+  $("#form-livre").hidden = true;
+  $("#btn-livre").hidden = false;
+  $("#livre-estado").hidden = true;
+}
+
+function atualizarContadorLivre() {
+  $("#contador-livre").textContent = `${$("#campo-livre").value.length}/${IA_MAX_CARACTERES}`;
+}
+
+// Mostra uma mensagem embaixo do campo. tipo: "pensando", "erro" ou "personagem".
+function mostrarEstadoLivre(html, tipo) {
+  const estadoLivre = $("#livre-estado");
+  estadoLivre.innerHTML = html;
+  estadoLivre.className = "livre-estado " + (tipo || "");
+  estadoLivre.hidden = false;
+}
+
+// Trava ou destrava os botões enquanto a IA pensa.
+function travarRespostaLivre(travar) {
+  estado.enviandoLivre = travar;
+  $("#campo-livre").disabled = travar;
+  $("#btn-enviar-livre").disabled = travar;
+  $("#btn-cancelar-livre").disabled = travar;
+  document.querySelectorAll("#opcoes .opcao").forEach(botao => { botao.disabled = travar; });
+}
+
+async function enviarRespostaLivre(evento) {
+  evento.preventDefault();
+  if (estado.enviandoLivre || estado.escolhas[estado.indice] !== undefined) return;
+
+  const texto = $("#campo-livre").value.trim().replace(/\s+/g, " ");
+  if (texto.length < IA_MIN_CARACTERES) {
+    return mostrarEstadoLivre(`Escreva um pouco mais (pelo menos ${IA_MIN_CARACTERES} letras).`, "erro");
+  }
+
+  // Guardamos onde estávamos: se a pessoa sair do dia enquanto a IA pensa, ignoramos a resposta.
+  const indice = estado.indice;
+  const profissao = estado.profissao;
+  travarRespostaLivre(true);
+  mostrarEstadoLivre(`<span class="pontinhos" aria-hidden="true"><i></i><i></i><i></i></span> Pensando na sua resposta…`, "pensando");
+
+  try {
+    const avaliacao = await avaliarRespostaLivre(profissao, situacaoAtual(), texto);
+    if (estado.profissao !== profissao || estado.indice !== indice || estado.escolhas[indice] !== undefined) return;
+
+    if (!avaliacao.valida) {
+      travarRespostaLivre(false);
+      mostrarEstadoLivre(`<strong>${esc(avaliacao.quem || "Personagem")}:</strong> ${esc(avaliacao.fala)}`, "personagem");
+      $("#campo-livre").focus();
+      return;
+    }
+
+    $("#livre-estado").hidden = true;
+    travarRespostaLivre(false);
+    tocarSom("escolha");
+    registrarEscolha(avaliacao.escolha);
+  } catch (erro) {
+    if (estado.profissao !== profissao || estado.indice !== indice) return;
+    travarRespostaLivre(false);
+    mostrarEstadoLivre(`${esc(erro.mensagem || "A IA não respondeu agora.")} Se preferir, escolha uma das opções.`, "erro");
+  }
 }
 
 // Mostra o cronômetro e chama aoAcabar() quando o tempo chega a zero.
@@ -600,7 +754,7 @@ function mostrarResultadoDaEscolha(escolha, animar) {
   const opcao = opcaoEscolhida(situacao, escolha);
   const efeito = efeitosDaEscolha(profissao, situacao, escolha);
 
-  $("#feedback-titulo").textContent = "O que aconteceu";
+  $("#feedback-titulo").textContent = ehRespostaLivre(escolha) ? "O que aconteceu · resposta com IA 🤖" : "O que aconteceu";
   $("#pergunta-gosto").hidden = true;
   $("#feedback-resultado").textContent = opcao.resultado;
   $("#feedback-efeitos").innerHTML =
@@ -1086,6 +1240,9 @@ function abrirRelatorio(resultado, conquistasNovas) {
   // o lado difícil do traço mais importante da profissão, como alerta.
   const tracoMaisImportante = calculo.tracos.slice().sort((a, b) => b.peso - a.peso)[0];
 
+  // O orientador (IA) conversa com base nestes dados.
+  estado.relatorioAtual = { profissao, calculo, nivel, classe, medidores, gostar, dificil };
+
   const listaDeTracos = (tracos, campo) => `
     <ul class="lista">
       ${tracos.map(traco => `<li><strong>${esc(traco.icone)} ${esc(traco.nome)}:</strong> ${esc(traco[campo])}</li>`).join("")}
@@ -1221,7 +1378,7 @@ function abrirRelatorio(resultado, conquistasNovas) {
             <div>
               <strong>${esc(momento.situacao.titulo)}</strong>
               <p class="lt-escolha">${esc(momento.opcao.texto)}</p>
-              <span class="tag tag-${momento.sintonia.id}">${momento.sintonia.texto}</span>
+              <span class="tag tag-${momento.sintonia.id}">${momento.sintonia.texto}</span>${momento.livre ? ` <span class="tag tag-livre">✍️ resposta livre</span>` : ""}
             </div>
           </li>`).join("")}
       </ol>
@@ -1238,11 +1395,97 @@ function abrirRelatorio(resultado, conquistasNovas) {
       </ul>
     </section>
 
+    ${ia.ativa ? htmlDoOrientador() : ""}
+
     <p class="aviso">Este relatório é uma ferramenta de reflexão baseada nas suas escolhas no jogo. Ele não substitui uma orientação vocacional profissional.</p>
   `;
 
   mostrarTela("relatorio");
   animarBarras($("#relatorio-conteudo"));
+  estado.orientador = ia.ativa ? { historico: [], restantes: IA_MAX_PERGUNTAS, enviando: false } : null;
+  if (estado.orientador) atualizarRestantesOrientador();
+}
+
+/* ----- Orientador (IA) ----- */
+
+const SUGESTOES_DO_ORIENTADOR = [
+  "O que mais combinou comigo nesse dia?",
+  "O que pode pesar mais para mim nessa profissão?",
+  "Que outras profissões vale eu testar?",
+  "Como converso com alguém da área?"
+];
+
+function htmlDoOrientador() {
+  return `
+    <section class="cartao cartao-orientador" id="orientador">
+      <h3>🧭 Converse com o orientador <span class="selo-ia">IA</span></h3>
+      <p class="nota">Pergunte sobre o seu relatório. Ele ajuda você a pensar, mas não decide por você e não substitui um orientador vocacional de verdade.</p>
+      <div class="chat-orientador conversa" id="chat-orientador" aria-live="polite"></div>
+      <div class="sugestoes" id="sugestoes-orientador">
+        ${SUGESTOES_DO_ORIENTADOR.map(pergunta => `<button type="button" class="sugestao" data-acao="sugestao-orientador" data-pergunta="${esc(pergunta)}">${esc(pergunta)}</button>`).join("")}
+      </div>
+      <form class="form-orientador" id="form-orientador" novalidate>
+        <label class="sr-only" for="campo-orientador">Sua pergunta</label>
+        <input type="text" id="campo-orientador" maxlength="${IA_MAX_CARACTERES_PERGUNTA}" autocomplete="off" placeholder="Digite sua pergunta…">
+        <button type="submit" class="btn btn-primario btn-mini" id="btn-orientador">Enviar</button>
+      </form>
+      <p class="atalho-dica" id="restantes-orientador"></p>
+    </section>`;
+}
+
+function atualizarRestantesOrientador() {
+  const orientador = estado.orientador;
+  const restantes = $("#restantes-orientador");
+  if (!orientador || !restantes) return;
+  restantes.textContent = orientador.restantes > 0
+    ? `🔒 Suas perguntas vão para a IA pela internet. Não escreva dados pessoais. Perguntas restantes: ${orientador.restantes}.`
+    : "Você usou todas as perguntas deste relatório. Jogue outra profissão para conversar de novo!";
+  $("#campo-orientador").disabled = orientador.restantes <= 0 || orientador.enviando;
+  $("#btn-orientador").disabled = orientador.restantes <= 0 || orientador.enviando;
+  document.querySelectorAll(".sugestao").forEach(botao => { botao.disabled = orientador.restantes <= 0 || orientador.enviando; });
+}
+
+async function perguntarAoOrientadorNaTela(textoDaPergunta) {
+  const orientador = estado.orientador;
+  const pergunta = String(textoDaPergunta || "").trim().replace(/\s+/g, " ");
+  if (!orientador || orientador.enviando || orientador.restantes <= 0 || pergunta.length < 3) return;
+
+  const relatorio = estado.relatorioAtual;
+  const chat = $("#chat-orientador");
+  const personagem = { quem: "Orientador", avatar: "🧭" };
+
+  chat.insertAdjacentHTML("beforeend", `
+    <div class="balao balao-jogador">
+      <span class="balao-avatar" aria-hidden="true">${esc(estado.avatar)}</span>
+      <div class="balao-corpo"><span class="balao-nome">Você</span><p>${esc(pergunta)}</p></div>
+    </div>`);
+  chat.insertAdjacentHTML("beforeend", htmlDigitando(personagem));
+  rolarAte(chat.lastElementChild);
+
+  $("#campo-orientador").value = "";
+  orientador.enviando = true;
+  atualizarRestantesOrientador();
+
+  let balaoFinal;
+  try {
+    const resposta = await perguntarAoOrientador(relatorio, orientador.historico, pergunta);
+    if (estado.orientador !== orientador) return; // a pessoa saiu deste relatório
+    orientador.historico.push(
+      { role: "user", content: embrulharPergunta(pergunta) },
+      { role: "assistant", content: resposta }
+    );
+    orientador.restantes -= 1;
+    tocarSom("mensagem");
+    balaoFinal = htmlDoBalao({ ...personagem, fala: resposta });
+  } catch (erro) {
+    if (estado.orientador !== orientador) return;
+    balaoFinal = `<div class="balao balao-sistema"><p>${esc(erro.mensagem || "O orientador não respondeu agora. Tente de novo.")}</p></div>`;
+  }
+
+  orientador.enviando = false;
+  chat.lastElementChild.outerHTML = balaoFinal;
+  atualizarRestantesOrientador();
+  if (orientador.restantes > 0 && !orientador.enviando) $("#campo-orientador").focus({ preventScroll: true });
 }
 
 /* ---------- 5. Comparação de resultados ---------- */
@@ -1404,7 +1647,12 @@ const ACOES = {
   },
   imprimir: () => window.print(),
   "apagar-tudo": confirmarApagarTudo,
-  "alternar-som": alternarSom
+  "alternar-som": alternarSom,
+  ia: abrirIA,
+  "desativar-ia": desativarIA,
+  "abrir-livre": abrirRespostaLivre,
+  "fechar-livre": fecharRespostaLivre,
+  "sugestao-orientador": botao => perguntarAoOrientadorNaTela(botao.dataset.pergunta)
 };
 
 // Ações que já tocam o próprio som (as outras fazem um "clique").
@@ -1438,6 +1686,24 @@ function ligarEventos() {
   });
 
   $("#form-cadastro").addEventListener("submit", enviarCadastro);
+  $("#form-ia").addEventListener("submit", enviarChaveIA);
+  $("#form-livre").addEventListener("submit", enviarRespostaLivre);
+
+  // Resposta livre: o contador acompanha a digitação e Enter envia (Shift+Enter quebra a linha).
+  $("#campo-livre").addEventListener("input", atualizarContadorLivre);
+  $("#campo-livre").addEventListener("keydown", evento => {
+    if (evento.key === "Enter" && !evento.shiftKey && !evento.isComposing) {
+      evento.preventDefault();
+      $("#form-livre").requestSubmit();
+    }
+  });
+
+  // O formulário do orientador é criado junto com o relatório, então escutamos na página inteira.
+  document.addEventListener("submit", evento => {
+    if (evento.target.id !== "form-orientador") return;
+    evento.preventDefault();
+    perguntarAoOrientadorNaTela($("#campo-orientador").value);
+  });
 
   // Atalhos de teclado.
   document.addEventListener("keydown", evento => {
@@ -1491,6 +1757,12 @@ if (!PROFISSOES.length) {
   estado.nome = jogador.nome;
   estado.avatar = AVATARES.includes(jogador.avatar) ? jogador.avatar : AVATARES[0];
   estado.preferencias = lerPreferencias();
+
+  // Se a pessoa já ativou a IA antes (e pediu para lembrar a chave, ou ainda é a mesma aba),
+  // ela volta ligada. Nenhuma chamada é feita agora: só quando a IA for usada.
+  const chaveSalva = lerChaveIA();
+  if (chaveSalva) ligarIA(chaveSalva);
+
   aplicarSom();
   ligarEventos();
   abrirInicio();

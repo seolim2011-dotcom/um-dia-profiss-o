@@ -68,8 +68,22 @@ function buscarProfissao(id) {
   return PROFISSOES.find(profissao => profissao.id === id) || null;
 }
 
+// Resposta livre: o jogador escreveu o que faria e a IA avaliou. A escolha guardada é
+// { livre: true, texto, fala, resultado, pontos, quem?, avatar? }. Ela carrega os próprios
+// pontos, então o relatório não precisa chamar a IA de novo para recalcular a afinidade.
+function ehRespostaLivre(escolha) {
+  return Boolean(escolha) && typeof escolha === "object" && escolha.livre === true;
+}
+
 // A opção que corresponde a uma escolha salva (ou a opção de "tempo esgotado").
 function opcaoEscolhida(situacao, escolha) {
+  if (ehRespostaLivre(escolha)) {
+    // Se a IA escolheu qual personagem responde, a reação leva o nome e o avatar dele.
+    const reacao = escolha.quem
+      ? { quem: escolha.quem, avatar: escolha.avatar || "💬", fala: escolha.fala }
+      : escolha.fala;
+    return { texto: escolha.texto, resultado: escolha.resultado, pontos: escolha.pontos, reacao };
+  }
   return escolha === TEMPO_ESGOTADO ? OPCAO_TEMPO_ESGOTADO : situacao.opcoes[escolha];
 }
 
@@ -110,9 +124,42 @@ function escolhasValidas(profissao, escolhas, completas) {
     if (ehDesafio(situacao)) {
       return Boolean(escolha) && typeof escolha.acertou === "boolean" && [0, 1, 2].includes(escolha.gosto);
     }
+    if (ehRespostaLivre(escolha)) return respostaLivreValida(escolha);
     if (escolha === TEMPO_ESGOTADO) return Boolean(situacao.urgente);
     return Boolean(situacao.opcoes[escolha]);
   });
+}
+
+// Confere o formato de uma resposta livre salva (texto e pontos de 0 a 2 em traços que existem).
+function respostaLivreValida(escolha) {
+  if (typeof escolha.texto !== "string" || typeof escolha.resultado !== "string" || typeof escolha.fala !== "string") return false;
+  if (escolha.quem !== undefined && typeof escolha.quem !== "string") return false;
+  if (escolha.avatar !== undefined && typeof escolha.avatar !== "string") return false;
+  if (!escolha.pontos || typeof escolha.pontos !== "object") return false;
+  return Object.keys(escolha.pontos).every(id =>
+    TRACOS.some(traco => traco.id === id) && [0, 1, 2].includes(escolha.pontos[id])
+  );
+}
+
+// Trava os pontos que a IA deu a uma resposta livre. Assim a IA nunca "dá nota máxima":
+// 1) cada traço fica entre 0 e o máximo que as opções oficiais da situação oferecem;
+// 2) o encaixe total (pontos × peso da profissão) nunca passa o da melhor opção oficial.
+//    Se passar, tiramos pontos dos traços menos importantes para a profissão.
+function limitarPontosLivres(profissao, situacao, pontosDaIA) {
+  const pontos = {};
+  TRACOS.forEach(traco => {
+    const bruto = Math.round(Number(pontosDaIA && pontosDaIA[traco.id]) || 0);
+    const valor = Math.max(0, Math.min(bruto, 2, maximoNaEtapa(situacao, traco.id)));
+    if (valor > 0) pontos[traco.id] = valor;
+  });
+
+  const melhorEncaixe = Math.max(...situacao.opcoes.map(opcao => encaixeNaProfissao(profissao, opcao)));
+  while (Object.keys(pontos).length && encaixeNaProfissao(profissao, { pontos }) > melhorEncaixe) {
+    const menosImportante = Object.keys(pontos).sort((a, b) => profissao.perfil[a].peso - profissao.perfil[b].peso)[0];
+    pontos[menosImportante] -= 1;
+    if (pontos[menosImportante] <= 0) delete pontos[menosImportante];
+  }
+  return pontos;
 }
 
 // Pontos de um traço numa etapa do dia. Desafios não dão pontos nos traços:
@@ -190,6 +237,7 @@ function calcularAfinidade(profissao, escolhas) {
       situacao,
       opcao: opcaoEscolhida(situacao, escolhas[i]),
       tempoEsgotado: escolhas[i] === TEMPO_ESGOTADO,
+      livre: ehRespostaLivre(escolhas[i]),
       sintonia: sintoniaDaEscolha(profissao, situacao, escolhas[i])
     };
   });
@@ -258,7 +306,7 @@ function efeitosDaEscolha(profissao, situacao, escolha) {
   if (ehDesafio(situacao)) return { energia: -4, estresse: escolha.acertou ? 0 : 8 };
   if (escolha === TEMPO_ESGOTADO) return { energia: -6, estresse: 20 };
 
-  const opcao = situacao.opcoes[escolha];
+  const opcao = opcaoEscolhida(situacao, escolha); // inclui a resposta livre (que não tem "efeitos")
   if (opcao.efeitos) {
     return { energia: opcao.efeitos.energia || 0, estresse: opcao.efeitos.estresse || 0 };
   }

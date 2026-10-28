@@ -33,6 +33,7 @@
         <div class="acoes-linha">
           <button type="button" class="btn btn-secundario btn-pequeno" data-acao="comparacao" id="btn-comparar-inicio" hidden>📊 Comparar resultados</button>
           <button type="button" class="btn btn-secundario btn-pequeno" data-acao="conquistas">🏅 Conquistas</button>
+          <button type="button" class="btn btn-secundario btn-pequeno" data-acao="ia" id="btn-ia">🤖 Ativar IA</button>
         </div>
       </div>
       <ol class="passos">
@@ -132,6 +133,23 @@
         <div class="area-decisao" id="area-decisao" hidden>
           <p class="pergunta">O que você faz?</p>
           <div class="opcoes" id="opcoes"></div>
+
+          <!-- Resposta livre com IA (só aparece quando a IA está ligada) -->
+          <div class="livre" id="livre" hidden>
+            <button type="button" class="btn-livre" id="btn-livre" data-acao="abrir-livre">✍️ Fazer outra coisa… <small>(com IA)</small></button>
+            <form class="form-livre" id="form-livre" hidden novalidate>
+              <label class="sr-only" for="campo-livre">Escreva o que você faria</label>
+              <textarea id="campo-livre" maxlength="240" rows="3" placeholder="Escreva com as suas palavras o que você faria… (Enter envia)"></textarea>
+              <div class="livre-rodape">
+                <span class="contador-livre" id="contador-livre">0/240</span>
+                <button type="button" class="btn btn-secundario btn-mini" id="btn-cancelar-livre" data-acao="fechar-livre">Cancelar</button>
+                <button type="submit" class="btn btn-primario btn-mini" id="btn-enviar-livre">Enviar</button>
+              </div>
+              <p class="livre-aviso">🔒 O texto vai para a IA pela internet. Não escreva dados pessoais.</p>
+            </form>
+            <p class="livre-estado" id="livre-estado" role="status" hidden></p>
+          </div>
+
           <p class="atalho-dica">Dica: use as teclas A, B, C e D.</p>
         </div>
 
@@ -188,6 +206,47 @@
       <div id="conquistas-conteudo"></div>
     </section>
 
+    <!-- 7. IA (opcional) -->
+    <section class="tela" id="tela-ia" hidden>
+      <button type="button" class="btn-voltar" data-acao="inicio">← Início</button>
+      <h2 class="titulo-tela" tabindex="-1">🤖 IA na simulação</h2>
+
+      <div class="cartao">
+        <h3>O que a IA faz</h3>
+        <ul class="lista">
+          <li><strong>Resposta livre:</strong> em cada situação você pode escrever o que faria, e a IA responde como o personagem e avalia a sua ação.</li>
+          <li><strong>Orientador:</strong> no fim do relatório, um chat para conversar sobre o seu resultado.</li>
+        </ul>
+        <p class="nota nota-rodape">O jogo funciona normalmente sem a IA. Se ela falhar, você volta para as opções A a D.</p>
+      </div>
+
+      <form class="cartao" id="form-ia" novalidate>
+        <p class="ia-status" id="ia-status" role="status"></p>
+        <div class="campo">
+          <label for="campo-chave">Chave da API da Anthropic</label>
+          <input type="password" id="campo-chave" autocomplete="off" spellcheck="false" placeholder="sk-ant-...">
+        </div>
+        <label class="interruptor">
+          <input type="checkbox" id="opcao-lembrar-chave">
+          <span class="interruptor-trilho" aria-hidden="true"></span>
+          <span>Lembrar a chave neste navegador (senão ela some quando a aba fecha)</span>
+        </label>
+        <p class="erro" id="erro-ia" role="alert" hidden></p>
+        <button type="submit" class="btn btn-primario btn-bloco" id="btn-ativar-ia">Testar e ativar</button>
+        <button type="button" class="btn btn-perigo btn-bloco" id="btn-desativar-ia" data-acao="desativar-ia" hidden>Desligar a IA e apagar a chave</button>
+      </form>
+
+      <div class="cartao aviso-ia">
+        <h3>🔒 Cuidados</h3>
+        <ul class="lista">
+          <li>A chave fica só neste navegador. Ela <strong>não</strong> vai para o GitHub nem para o código do jogo.</li>
+          <li>Use uma chave criada <strong>só para o projeto</strong>, apague depois e não deixe a IA ligada em computador compartilhado: quem abrir as ferramentas do navegador consegue ver a chave.</li>
+          <li>O que você escrever nas respostas livres e nas perguntas ao orientador é enviado para a IA da Anthropic pela internet. O jogo não envia seu nome nem seu avatar. <strong>Não escreva dados pessoais</strong> (nome completo, telefone, endereço, escola).</li>
+          <li>Cada partida usa a conta da chave: custa centavos. A IA pode errar e <strong>não substitui</strong> um orientador vocacional de verdade.</li>
+        </ul>
+      </div>
+    </section>
+
   </main>
 
   <footer class="rodape">Protótipo · Projeto da turma de Desenvolvimento de Sistemas</footer>
@@ -224,6 +283,7 @@
   <script src="js/armazenamento.js"></script>
   <script src="js/conquistas.js"></script>
   <script src="js/efeitos.js"></script>
+  <script src="js/ia.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

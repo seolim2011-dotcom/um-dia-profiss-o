@@ -50,7 +50,7 @@ body {
 }
 
 [hidden] { display: none !important; }
-button, input, select { font: inherit; color: inherit; }
+button, input, select, textarea { font: inherit; color: inherit; }
 svg { display: block; max-width: 100%; }
 h1, h2, h3, h4 { font-family: var(--fonte-titulo); font-weight: 600; line-height: 1.2; }
 [tabindex="-1"]:focus { outline: none; }
@@ -1056,6 +1056,124 @@ body[data-tela="jogo"] .botao-som { display: none; }
 .gosto-total { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; font-weight: 800; }
 .gosto-total .barra span { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
 .tag-gosto { margin-left: 6px; color: #78350f; background: #fef3c7; }
+.tag-livre { margin-left: 6px; color: #3730a3; background: #e0e7ff; }
+
+/* ---------- IA (opcional) ---------- */
+
+/* Resposta livre: "Fazer outra coisa…" */
+.livre { margin-top: 14px; }
+
+.btn-livre {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  font-family: var(--fonte-titulo);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cor-profissao);
+  background: transparent;
+  border: 2px dashed var(--cor-profissao);
+  border-radius: var(--raio-medio);
+  cursor: pointer;
+  transition: background-color .12s ease, transform .1s ease;
+}
+
+.btn-livre small { font-family: var(--fonte); font-weight: 800; opacity: .75; }
+.btn-livre:hover { background: #f5f3ff; background: color-mix(in srgb, var(--cor-profissao) 8%, #fff); }
+.btn-livre:active { transform: translateY(2px); }
+
+.form-livre { display: grid; gap: 10px; padding: 14px; background: #f8f6fe; border: 2px solid var(--borda); border-radius: var(--raio-medio); }
+
+.form-livre textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.45;
+  resize: vertical;
+  background: #fff;
+  border: 2px solid var(--borda-forte);
+  border-radius: var(--raio-pequeno);
+}
+
+.form-livre textarea:focus { outline: none; border-color: var(--cor-profissao); box-shadow: 0 0 0 4px #ede9fe; }
+.form-livre textarea:disabled { opacity: .6; }
+
+.livre-rodape { display: flex; align-items: center; justify-content: flex-end; gap: 10px; }
+.contador-livre { margin-right: auto; font-size: .8rem; font-weight: 800; color: var(--texto-suave); font-variant-numeric: tabular-nums; }
+.livre-aviso { margin: 0; font-size: .8rem; font-weight: 600; color: var(--texto-suave); }
+
+.livre-estado { margin: 10px 0 0; padding: 10px 14px; font-weight: 700; border-radius: var(--raio-pequeno); }
+.livre-estado.pensando { color: var(--texto-suave); background: #f8f6fe; }
+.livre-estado.erro { color: #9f1239; background: #ffe4e6; }
+.livre-estado.personagem { color: var(--texto); background: #fffbeb; border: 2px solid #fde68a; }
+
+/* Três pontinhos pulando, usados no "pensando…" */
+.pontinhos { display: inline-flex; gap: 4px; margin-right: 6px; vertical-align: middle; }
+.pontinhos i { width: 7px; height: 7px; background: var(--cor-profissao); border-radius: 50%; animation: digitando 1s ease-in-out infinite; }
+.pontinhos i:nth-child(2) { animation-delay: .15s; }
+.pontinhos i:nth-child(3) { animation-delay: .3s; }
+
+/* Tela "Ativar IA" */
+.ia-status { margin: 0 0 14px; font-weight: 800; }
+#form-ia .campo { margin-bottom: 16px; }
+#form-ia .btn-bloco + .btn-bloco { margin-top: 12px; }
+.aviso-ia { background: #fffbeb; border-color: #fde68a; box-shadow: 0 6px 0 #fde68a; }
+
+/* Orientador no relatório */
+.cartao-orientador { border-color: #c4b5fd; box-shadow: 0 6px 0 #c4b5fd; }
+
+.selo-ia {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 2px 10px;
+  font-family: var(--fonte);
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+  vertical-align: middle;
+  color: #fff;
+  background: var(--roxo);
+  border-radius: 999px;
+}
+
+.chat-orientador:not(:empty) { margin-bottom: 14px; }
+.chat-orientador .balao { max-width: 100%; }
+.chat-orientador .balao-corpo p { white-space: pre-line; }
+.chat-orientador .balao-jogador { max-width: 92%; }
+
+.sugestoes { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+
+.sugestao {
+  padding: 8px 14px;
+  font-size: .88rem;
+  font-weight: 800;
+  text-align: left;
+  color: var(--roxo-escuro);
+  background: #f5f3ff;
+  border: 2px solid #ddd6fe;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.sugestao:hover:not(:disabled) { border-color: var(--roxo); }
+.sugestao:disabled { opacity: .5; cursor: default; }
+
+.form-orientador { display: flex; gap: 10px; }
+
+.form-orientador input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: #fff;
+  border: 2px solid var(--borda-forte);
+  border-radius: var(--raio-pequeno);
+}
+
+.form-orientador input:focus { outline: none; border-color: var(--roxo); box-shadow: 0 0 0 4px #ede9fe; }
+.form-orientador input:disabled { opacity: .6; }
 
 .medalha-mini {
   display: inline-flex;
