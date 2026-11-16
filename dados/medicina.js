@@ -7,7 +7,7 @@ PROFISSOES.push({
   id: "medicina",
   nome: "Medicina",
   icone: "🧑‍⚕️",
-  cor: "#0369a1",
+  cor: "#c42a72",
   resumo: "Diagnosticar e tratar doenças, acompanhar pacientes e decidir rápido quando uma vida está em risco.",
 
   perfil: {

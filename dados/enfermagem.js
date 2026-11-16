@@ -62,7 +62,7 @@ PROFISSOES.push({
   id: "enfermagem",
   nome: "Enfermagem",
   icone: "🩺",
-  cor: "#0f766e",
+  cor: "#0a2472",
   resumo: "Cuidar de pacientes em hospitais, clínicas e postos de saúde — 24 horas por dia.",
 
   perfil: {

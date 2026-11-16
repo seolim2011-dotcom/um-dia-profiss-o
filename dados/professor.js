@@ -7,7 +7,7 @@ PROFISSOES.push({
   id: "professor",
   nome: "Professor(a)",
   icone: "📚",
-  cor: "#4d7c0f",
+  cor: "#0a2472",
   resumo: "Ensinar e acompanhar o desenvolvimento de crianças e adolescentes na escola.",
 
   perfil: {

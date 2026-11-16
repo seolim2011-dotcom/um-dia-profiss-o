@@ -7,7 +7,7 @@ PROFISSOES.push({
   id: "direito",
   nome: "Direito",
   icone: "⚖️",
-  cor: "#312e81",
+  cor: "#0a2472",
   resumo: "Defender pessoas e empresas, orientar sobre leis e resolver conflitos dentro e fora dos tribunais.",
 
   perfil: {

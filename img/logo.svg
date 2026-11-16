@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Logo: um sol com um relógio no centro">
   <defs>
     <linearGradient id="fundo" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#7c3aed"/>
-      <stop offset="1" stop-color="#ec4899"/>
+      <stop offset="0" stop-color="#0a2472"/>
+      <stop offset="1" stop-color="#ff6fb5"/>
     </linearGradient>
   </defs>
   <rect width="128" height="128" rx="30" fill="url(#fundo)"/>
@@ -20,8 +20,8 @@
   <!-- relógio: as horas do expediente -->
   <circle cx="64" cy="64" r="30" fill="#fff"/>
   <g stroke-width="5" stroke-linecap="round">
-    <line x1="64" y1="64" x2="64" y2="44" stroke="#7c3aed"/>
-    <line x1="64" y1="64" x2="79" y2="73" stroke="#ec4899"/>
+    <line x1="64" y1="64" x2="64" y2="44" stroke="#0a2472"/>
+    <line x1="64" y1="64" x2="79" y2="73" stroke="#ff6fb5"/>
   </g>
-  <circle cx="64" cy="64" r="4" fill="#7c3aed"/>
+  <circle cx="64" cy="64" r="4" fill="#0a2472"/>
 </svg>
