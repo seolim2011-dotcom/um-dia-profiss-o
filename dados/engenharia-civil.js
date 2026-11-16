@@ -39,9 +39,9 @@ PROFISSOES.push({
   },
 
   cursos: [
-    "Bacharelado em Engenharia Civil — 5 anos",
+    "Bacharelado em Engenharia Civil (5 anos)",
     "Registro no CREA para assinar projetos e obras",
-    "Técnico em Edificações — cerca de 2 anos, para atuar no apoio às obras"
+    "Técnico em Edificações (cerca de 2 anos, para atuar no apoio às obras)"
   ],
 
   situacoes: [

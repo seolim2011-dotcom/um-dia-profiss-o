@@ -39,7 +39,7 @@ PROFISSOES.push({
   },
 
   cursos: [
-    "Bacharelado em Direito — 5 anos",
+    "Bacharelado em Direito (5 anos)",
     "Exame da OAB para poder advogar",
     "Concursos públicos para carreiras como juiz, promotor, delegado e defensor"
   ],

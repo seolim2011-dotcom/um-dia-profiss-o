@@ -39,7 +39,7 @@ PROFISSOES.push({
   },
 
   cursos: [
-    "Graduação em Psicologia — 5 anos",
+    "Graduação em Psicologia (5 anos)",
     "Registro no Conselho Regional de Psicologia (CRP) para atuar",
     "Especializações: clínica, escolar, organizacional, saúde, neuropsicologia e outras"
   ],

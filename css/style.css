@@ -192,41 +192,46 @@ h1, h2, h3, h4 { font-family: var(--fonte-titulo); font-weight: 600; line-height
 
 /* ---------- 1. Tela inicial ---------- */
 
-.tela-inicio { padding-top: 3vh; text-align: center; }
+.tela-inicio { padding-top: 1vh; text-align: center; }
 
 .logo {
   display: block;
-  width: 104px;
-  height: 104px;
-  margin: 0 auto 18px;
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 14px;
   border-radius: 30px;
   box-shadow: 0 8px 0 #061a4f, 0 18px 30px -12px rgba(10, 36, 114, .6);
   animation: entrar .5s ease both;
 }
 
-.hero-icones { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-bottom: 22px; }
+/* Ícones das profissões: sempre numa faixa só. Eles encolhem em telas estreitas. */
+.hero-icones { display: flex; flex-wrap: nowrap; justify-content: center; gap: clamp(4px, 1.4vw, 10px); margin-bottom: 18px; padding-top: 8px; }
 
 .hero-icones span {
   display: grid;
   place-items: center;
-  width: 52px;
-  height: 52px;
-  font-size: 1.7rem;
+  flex: 0 1 44px;
+  min-width: 0;
+  aspect-ratio: 1;
+  font-size: clamp(.95rem, 3.6vw, 1.4rem);
   background: #fff;
   border: 2px solid var(--borda);
-  border-radius: 22px;
-  box-shadow: 0 5px 0 var(--borda);
+  border-radius: 14px;
+  box-shadow: 0 4px 0 var(--borda);
   animation: flutuar 3.5s ease-in-out infinite;
 }
+
+/* Um ícone sim, um não, com borda rosa, para a faixa ter as duas cores */
+.hero-icones span:nth-child(2n) { border-color: #ffc9e3; box-shadow: 0 4px 0 #ffc9e3; }
 
 .hero-icones span:nth-child(2n) { animation-delay: -1.7s; }
 .hero-icones span:nth-child(3n) { animation-delay: -.8s; }
 
 @keyframes flutuar {
-  50% { transform: translateY(-10px) rotate(-5deg); }
+  50% { transform: translateY(-6px) rotate(-5deg); }
 }
 
-.titulo-jogo { margin-bottom: 14px; font-size: clamp(2.8rem, 11vw, 4.6rem); font-weight: 700; line-height: 1; letter-spacing: -.01em; }
+.titulo-jogo { margin-bottom: 10px; font-size: clamp(2.8rem, 11vw, 4.6rem); font-weight: 700; line-height: 1; letter-spacing: -.01em; }
 
 .titulo-jogo span {
   color: transparent;
@@ -235,9 +240,13 @@ h1, h2, h3, h4 { font-family: var(--fonte-titulo); font-weight: 600; line-height
   background-clip: text;
 }
 
-.subtitulo { max-width: 540px; margin: 0 auto 30px; font-size: clamp(1.05rem, 3.6vw, 1.2rem); font-weight: 600; color: var(--texto-suave); }
+/* Na tela inicial, o botão principal ("Jogar") é rosa chiclete com texto azul */
+.tela-inicio .btn-primario { color: var(--azul-escuro); background: var(--rosa); box-shadow: 0 5px 0 var(--rosa-escuro); }
+.tela-inicio .btn-primario:active { box-shadow: 0 1px 0 var(--rosa-escuro); }
 
-.passos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 48px 0 0; padding: 0; list-style: none; }
+.subtitulo { max-width: 540px; margin: 0 auto 22px; font-size: clamp(1.05rem, 3.6vw, 1.2rem); font-weight: 600; color: var(--texto-suave); }
+
+.passos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 36px 0 0; padding: 0; list-style: none; }
 
 .passos li {
   display: flex;
@@ -249,11 +258,21 @@ h1, h2, h3, h4 { font-family: var(--fonte-titulo); font-weight: 600; line-height
   font-weight: 800;
   background: #fff;
   border: 2px solid var(--borda);
+  border-top: 6px solid var(--rosa);
   border-radius: var(--raio-medio);
   box-shadow: 0 5px 0 var(--borda);
 }
 
-.passo-icone { font-size: 2rem; }
+.passo-icone {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  font-size: 1.8rem;
+  background: #ffe3f1;
+  border-radius: 50%;
+}
 
 /* ---------- 2. Personagem ---------- */
 

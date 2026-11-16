@@ -39,8 +39,8 @@ PROFISSOES.push({
   },
 
   cursos: [
-    "Tecnólogo em Marketing — de 2 a 3 anos",
-    "Bacharelado em Publicidade e Propaganda, Marketing ou Comunicação Social — cerca de 4 anos",
+    "Tecnólogo em Marketing (de 2 a 3 anos)",
+    "Bacharelado em Publicidade e Propaganda, Marketing ou Comunicação Social (cerca de 4 anos)",
     "Cursos livres de mídias pagas, análise de dados e redes sociais ajudam muito"
   ],
 

@@ -610,7 +610,7 @@ function mostrarResultadoDaEscolha(escolha, animar) {
   $("#feedback-chips").innerHTML = tracosDaEscolha.length
     ? `<span class="chips-rotulo">Nessa escolha você mostrou:</span>` +
       tracosDaEscolha.map((traco, i) => `<span class="chip" style="animation-delay: ${i * 120}ms">${esc(traco.icone)} ${esc(traco.nome)}</span>`).join("")
-    : `<span class="chips-rotulo">Essa parte da rotina parece ser um desafio para você — e tudo bem: descobrir isso é justamente o objetivo do jogo.</span>`;
+    : `<span class="chips-rotulo">Essa parte da rotina parece ser um desafio para você, e tudo bem: descobrir isso é justamente o objetivo do jogo.</span>`;
   $("#feedback-real").textContent = situacao.naVidaReal;
 
   const botaoProxima = $("#btn-proxima");
@@ -1177,7 +1177,7 @@ function abrirRelatorio(resultado, conquistasNovas) {
     ${calculo.desafios.total ? `
       <section class="cartao cartao-desafios">
         <h3>⚡ Desafios do dia</h3>
-        <p class="nota">Você acertou ${calculo.desafios.acertos} de ${calculo.desafios.total}. Acertar não muda a afinidade — o que conta é se você curtiu fazer as tarefas de verdade da profissão.</p>
+        <p class="nota">Você acertou ${calculo.desafios.acertos} de ${calculo.desafios.total}. Acertar não muda a afinidade: o que conta é se você curtiu fazer as tarefas de verdade da profissão.</p>
         <ul class="lista-desafios">
           ${calculo.desafios.lista.map(d => `
             <li>

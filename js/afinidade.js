@@ -26,7 +26,7 @@ const NIVEIS = [
     minimo: 75,
     id: "alta",
     titulo: "Alta afinidade",
-    mensagem: "Seu jeito de encarar a rotina real — inclusive as partes difíceis — é parecido com o que a profissão exige. Vale a pena se aprofundar: converse com quem trabalha na área e pesquise os cursos."
+    mensagem: "Seu jeito de encarar a rotina real, inclusive as partes difíceis, é parecido com o que a profissão exige. Vale a pena se aprofundar: converse com quem trabalha na área e pesquise os cursos."
   },
   {
     minimo: 50,
@@ -59,7 +59,7 @@ function ehDesafio(situacao) {
 // "Opção" usada quando o tempo acaba: não dá pontos para nenhum traço.
 const OPCAO_TEMPO_ESGOTADO = {
   texto: "⏰ O tempo acabou antes de você decidir.",
-  resultado: "Enquanto você hesitava, a situação seguiu sem você — e piorou. Em urgências, decidir rápido também faz parte do trabalho.",
+  resultado: "Enquanto você hesitava, a situação seguiu sem você, e piorou. Em urgências, decidir rápido também faz parte do trabalho.",
   pontos: {}
 };
 

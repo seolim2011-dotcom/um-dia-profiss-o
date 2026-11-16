@@ -39,8 +39,8 @@ PROFISSOES.push({
   },
 
   cursos: [
-    "Graduação em Medicina — 6 anos",
-    "Residência médica — de 2 a 5 anos, conforme a especialidade",
+    "Graduação em Medicina (6 anos)",
+    "Residência médica (de 2 a 5 anos, conforme a especialidade)",
     "A entrada é muito concorrida: exige nota alta no Enem ou no vestibular"
   ],
 

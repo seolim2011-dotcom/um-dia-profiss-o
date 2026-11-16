@@ -63,7 +63,7 @@ PROFISSOES.push({
   nome: "Enfermagem",
   icone: "🩺",
   cor: "#0a2472",
-  resumo: "Cuidar de pacientes em hospitais, clínicas e postos de saúde — 24 horas por dia.",
+  resumo: "Cuidar de pacientes em hospitais, clínicas e postos de saúde, 24 horas por dia.",
 
   perfil: {
     pessoas: {
@@ -94,8 +94,8 @@ PROFISSOES.push({
   },
 
   cursos: [
-    "Técnico em Enfermagem — cerca de 2 anos",
-    "Bacharelado em Enfermagem — cerca de 5 anos",
+    "Técnico em Enfermagem (cerca de 2 anos)",
+    "Bacharelado em Enfermagem (cerca de 5 anos)",
     "Especializações: UTI, urgência e emergência, saúde da família, obstetrícia e outras"
   ],
 
@@ -189,7 +189,7 @@ PROFISSOES.push({
       pergunta: "A prescrição pede dipirona 1 g. A ampola tem 500 mg em cada mL. Quantos mL você aspira na seringa?",
       alternativas: ["0,5 mL", "1 mL", "2 mL", "5 mL"],
       correta: 2,
-      explicacao: "1 g = 1.000 mg. Se cada mL tem 500 mg, são 1.000 ÷ 500 = 2 mL. Cálculo de dose faz parte da rotina — e a equipe sempre confere duas vezes, porque um erro pode ser grave.",
+      explicacao: "1 g = 1.000 mg. Se cada mL tem 500 mg, são 1.000 ÷ 500 = 2 mL. Cálculo de dose faz parte da rotina, e a equipe sempre confere duas vezes, porque um erro pode ser grave.",
       traco: "logica"
     },
     {
@@ -202,7 +202,7 @@ PROFISSOES.push({
         { quem: "Dona Célia, quarto 3", avatar: "👵🏽", fala: "enfermeiraaa! alguém! tá doendo muito 😣" },
         { quem: "Rafael, técnico de enfermagem", avatar: "🧑🏿‍⚕️", fala: "o monitor do 5 tá apitando!! a saturação tá caindo, 88... 86... 😰" }
       ],
-      naVidaReal: "Decidir o que é mais grave e agir primeiro nisso — a chamada priorização — é uma habilidade usada o dia inteiro. A pressão é constante.",
+      naVidaReal: "Decidir o que é mais grave e agir primeiro nisso (a chamada priorização) é uma habilidade usada o dia inteiro. A pressão é constante.",
       opcoes: [
         {
           texto: "Atendo primeiro a paciente com dor: ela está chamando e parece desesperada.",
@@ -278,7 +278,7 @@ PROFISSOES.push({
         { quem: "Juliana, filha da paciente", avatar: "👩🏻", fala: "ninguém me fala nada da minha mãe! 😭" },
         { quem: "Juliana, filha da paciente", avatar: "👩🏻", fala: "se ninguém vier, eu vou gritar até alguém aparecer!" }
       ],
-      naVidaReal: "A equipe de enfermagem é quem passa mais tempo com pacientes e familiares. Acolher medo, raiva e luto faz parte do trabalho — e pode ser emocionalmente desgastante.",
+      naVidaReal: "A equipe de enfermagem é quem passa mais tempo com pacientes e familiares. Acolher medo, raiva e luto faz parte do trabalho, e pode ser emocionalmente desgastante.",
       opcoes: [
         {
           texto: "Peço para a psicóloga ou a assistente social do hospital conversar com ela.",

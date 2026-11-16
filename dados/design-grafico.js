@@ -39,8 +39,8 @@ PROFISSOES.push({
   },
 
   cursos: [
-    "Tecnólogo em Design Gráfico — de 2 a 3 anos",
-    "Bacharelado em Design — cerca de 4 anos",
+    "Tecnólogo em Design Gráfico (de 2 a 3 anos)",
+    "Bacharelado em Design (cerca de 4 anos)",
     "Cursos livres de softwares e um bom portfólio contam muito para conseguir o primeiro emprego"
   ],
 

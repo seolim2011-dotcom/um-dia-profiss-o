@@ -14,7 +14,7 @@ PROFISSOES.push({
     pessoas: {
       peso: 4,
       gostar: "Liderar equipes e resolver conflitos para o hospital funcionar melhor.",
-      dificil: "Negociar com médicos, equipes, fornecedores e pacientes irritados — às vezes no mesmo dia."
+      dificil: "Negociar com médicos, equipes, fornecedores e pacientes irritados, às vezes no mesmo dia."
     },
     logica: {
       peso: 3,
@@ -39,8 +39,8 @@ PROFISSOES.push({
   },
 
   cursos: [
-    "Tecnólogo em Gestão Hospitalar — cerca de 2 a 3 anos",
-    "Bacharelado em Administração, com especialização em gestão em saúde — cerca de 4 anos, mais a pós",
+    "Tecnólogo em Gestão Hospitalar (cerca de 2 a 3 anos)",
+    "Bacharelado em Administração, com especialização em gestão em saúde (cerca de 4 anos, mais a pós)",
     "Pós-graduação ou MBA em Gestão Hospitalar, para quem já trabalha na área da saúde"
   ],
 
@@ -103,7 +103,7 @@ PROFISSOES.push({
       unidade: "min",
       alternativas: ["Manhã", "Tarde", "Noite", "Madrugada"],
       correta: 2,
-      explicacao: "À noite a espera chega a 130 minutos — quase o triplo dos outros turnos. É ali que o plano precisa agir, por exemplo com mais um médico na triagem. Gestores tomam decisões lendo dados como esses todos os dias.",
+      explicacao: "À noite a espera chega a 130 minutos, quase o triplo dos outros turnos. É ali que o plano precisa agir, por exemplo com mais um médico na triagem. Gestores tomam decisões lendo dados como esses todos os dias.",
       traco: "logica"
     },
     {
@@ -189,14 +189,14 @@ PROFISSOES.push({
       ],
       pergunta: "Regra: ninguém pode trabalhar mais de 12 horas seguidas. Toque na linha da escala que quebra a regra:",
       linhas: [
-        "Sônia — segunda, das 7h às 19h",
-        "Rafael — segunda, das 19h às 7h",
-        "Bruna — terça, das 7h às 19h e das 19h às 7h",
-        "Carla — quarta, das 19h às 7h",
-        "Diego — quinta, folga"
+        "Sônia: segunda, das 7h às 19h",
+        "Rafael: segunda, das 19h às 7h",
+        "Bruna: terça, das 7h às 19h e das 19h às 7h",
+        "Carla: quarta, das 19h às 7h",
+        "Diego: quinta, folga"
       ],
       correta: 2,
-      explicacao: "A Bruna ficaria 24 horas seguidas: das 7h às 19h e depois das 19h às 7h. Escala mal feita cansa a equipe e aumenta o risco de erro com pacientes — por isso conferir as regras é parte do trabalho de quem faz a gestão.",
+      explicacao: "A Bruna ficaria 24 horas seguidas: das 7h às 19h e depois das 19h às 7h. Escala mal feita cansa a equipe e aumenta o risco de erro com pacientes. Por isso, conferir as regras é parte do trabalho de quem faz a gestão.",
       traco: "organizacao"
     },
     {
@@ -205,7 +205,7 @@ PROFISSOES.push({
       cena: "💰 ✂️ 📉",
       descricao: "Chega um e-mail da diretoria sobre o orçamento do próximo trimestre.",
       conversa: [
-        { quem: "Dr. Paulo, diretor do hospital", avatar: "👨🏽‍💼", fala: "📧 Assunto: URGENTE — orçamento" },
+        { quem: "Dr. Paulo, diretor do hospital", avatar: "👨🏽‍💼", fala: "📧 Assunto: Orçamento (URGENTE)" },
         { quem: "Dr. Paulo, diretor do hospital", avatar: "👨🏽‍💼", fala: "precisamos cortar 10% dos gastos no próximo trimestre." },
         { quem: "Dr. Paulo, diretor do hospital", avatar: "👨🏽‍💼", fala: "sem piorar o atendimento, claro." }
       ],
@@ -232,7 +232,7 @@ PROFISSOES.push({
         {
           texto: "Fico desconfortável: não gosto de decisões que envolvem dinheiro e cortes.",
           reacao: "desconfortável? é o seu trabalho.",
-          resultado: "Decisões financeiras são frequentes na gestão — adiar só deixa o problema maior.",
+          resultado: "Decisões financeiras são frequentes na gestão: adiar só deixa o problema maior.",
           pontos: {}
         }
       ]

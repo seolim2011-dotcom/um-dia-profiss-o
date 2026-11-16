@@ -39,7 +39,7 @@ PROFISSOES.push({
   },
 
   cursos: [
-    "Graduação em Medicina Veterinária — cerca de 5 anos",
+    "Graduação em Medicina Veterinária (cerca de 5 anos)",
     "Registro no Conselho Regional de Medicina Veterinária (CRMV) para atuar",
     "Residência ou especialização: clínica, cirurgia, animais silvestres, grandes animais, saúde pública e outras"
   ],

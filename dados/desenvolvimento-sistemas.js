@@ -39,9 +39,9 @@ PROFISSOES.push({
   },
 
   cursos: [
-    "Técnico em Desenvolvimento de Sistemas — cerca de 1,5 a 2 anos",
-    "Tecnólogo em Análise e Desenvolvimento de Sistemas — cerca de 2,5 a 3 anos",
-    "Bacharelado em Ciência da Computação, Engenharia de Software ou Sistemas de Informação — cerca de 4 anos"
+    "Técnico em Desenvolvimento de Sistemas (cerca de 1,5 a 2 anos)",
+    "Tecnólogo em Análise e Desenvolvimento de Sistemas (cerca de 2,5 a 3 anos)",
+    "Bacharelado em Ciência da Computação, Engenharia de Software ou Sistemas de Informação (cerca de 4 anos)"
   ],
 
   situacoes: [
@@ -59,7 +59,7 @@ PROFISSOES.push({
         {
           texto: "Digo que está “quase pronto” para não parecer que não sei fazer.",
           reacao: "show! então amanhã já dá pra mostrar pro cliente, né? 🙌",
-          resultado: "Na sexta, a tarefa não estava pronta. A líder perguntou por que você não avisou antes — alguém poderia ter ajudado.",
+          resultado: "Na sexta, a tarefa não estava pronta. A líder perguntou por que você não avisou antes. Alguém poderia ter ajudado.",
           pontos: {}
         },
         {
@@ -85,7 +85,7 @@ PROFISSOES.push({
         { quem: "Seu Carlos, cliente", avatar: "👨🏻‍🦳", fala: "🎤 Áudio (0:52): “bom dia, aqui é o Carlos da loja... então, o botão de finalizar compra às vezes funciona, às vezes não funciona, entendeu? às vezes vai, às vezes não vai...”" },
         { quem: "Seu Carlos, cliente", avatar: "👨🏻‍🦳", fala: "hoje já perdi 3 vendas 😤" }
       ],
-      naVidaReal: "Desenvolvedores passam muito tempo investigando erros (o famoso debugging). Às vezes um problema leva horas — ou dias — e a solução é uma única linha de código.",
+      naVidaReal: "Desenvolvedores passam muito tempo investigando erros (o famoso debugging). Às vezes um problema leva horas, ou até dias, e a solução é uma única linha de código.",
       opcoes: [
         {
           texto: "Leio os registros do sistema, testo em outros aparelhos e anoto cada hipótese até achar o padrão.",
@@ -102,7 +102,7 @@ PROFISSOES.push({
         {
           texto: "Mudo várias partes do código para ver se alguma resolve.",
           reacao: "agora funcionou! ...ah não, agora o carrinho sumiu 😱",
-          resultado: "Depois de horas tentando, o erro sumiu — mas você não sabe por quê, e dois problemas novos apareceram.",
+          resultado: "Depois de horas tentando, o erro sumiu, mas você não sabe por quê, e dois problemas novos apareceram.",
           pontos: { pressao: 1 }
         },
         {
@@ -135,7 +135,7 @@ PROFISSOES.push({
       ],
       correta: 2,
       codigo: true,
-      explicacao: "Com 3 itens, as posições da lista são 0, 1 e 2. Com <=, o laço tenta ler a posição 3, que não existe — e o sistema quebra. O certo é i < itens.length. Achar erros assim é o dia a dia de quem programa.",
+      explicacao: "Com 3 itens, as posições da lista são 0, 1 e 2. Com <=, o laço tenta ler a posição 3, que não existe, e o sistema quebra. O certo é i < itens.length. Achar erros assim é o dia a dia de quem programa.",
       traco: "logica"
     },
     {
@@ -148,7 +148,7 @@ PROFISSOES.push({
         { quem: "Lucas, desenvolvedor sênior", avatar: "🧑🏻‍💻", fala: "deixei 12 comentários... calma, não é o fim do mundo 😂" },
         { quem: "Lucas, desenvolvedor sênior", avatar: "🧑🏻‍💻", fala: "mas esse aqui é importante: “essa função faz coisa demais”. bora melhorar?" }
       ],
-      naVidaReal: "A revisão de código (code review) é rotina em quase toda empresa. Receber críticas sobre o próprio trabalho com frequência faz parte — e é uma das formas mais rápidas de evoluir.",
+      naVidaReal: "A revisão de código (code review) é rotina em quase toda empresa. Receber críticas sobre o próprio trabalho com frequência faz parte, e é uma das formas mais rápidas de evoluir.",
       opcoes: [
         {
           texto: "Faço todas as mudanças sem questionar, mesmo sem entender.",
@@ -269,7 +269,7 @@ PROFISSOES.push({
         "Compara a senha digitada com a senha salva",
         "Libera a entrada ou mostra “senha incorreta”"
       ],
-      explicacao: "Primeiro o sistema recebe os dados, depois busca o usuário, compara a senha e só então decide. Pensar em passos, na ordem certa, é o que chamamos de algoritmo — a base da programação.",
+      explicacao: "Primeiro o sistema recebe os dados, depois busca o usuário, compara a senha e só então decide. Pensar em passos, na ordem certa, é o que chamamos de algoritmo: a base da programação.",
       traco: "logica"
     },
     {

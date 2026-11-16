@@ -39,8 +39,8 @@ PROFISSOES.push({
   },
 
   cursos: [
-    "Licenciatura na disciplina que você quer ensinar (Matemática, Letras, História, Biologia...) — cerca de 4 anos",
-    "Pedagogia, para educação infantil e anos iniciais do ensino fundamental — cerca de 4 anos",
+    "Licenciatura na disciplina que você quer ensinar (Matemática, Letras, História, Biologia...) (cerca de 4 anos)",
+    "Pedagogia, para educação infantil e anos iniciais do ensino fundamental (cerca de 4 anos)",
     "Pós-graduação em educação, educação especial, gestão escolar e outras"
   ],
 
