@@ -7,7 +7,7 @@ PROFISSOES.push({
   id: "desenvolvimento-sistemas",
   nome: "Desenvolvimento de Sistemas",
   icone: "💻",
-  cor: "#c42a72",
+  cor: "#2a56c6",
   resumo: "Criar e manter sistemas, sites e aplicativos usados por empresas e pessoas.",
 
   perfil: {

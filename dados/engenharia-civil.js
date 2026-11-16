@@ -7,7 +7,7 @@ PROFISSOES.push({
   id: "engenharia-civil",
   nome: "Engenharia Civil",
   icone: "🏗️",
-  cor: "#c42a72",
+  cor: "#2a56c6",
   resumo: "Planejar e acompanhar a construção de casas, prédios, pontes e estradas, com segurança e dentro do orçamento.",
 
   perfil: {

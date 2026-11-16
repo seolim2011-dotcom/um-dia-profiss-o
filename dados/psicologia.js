@@ -7,7 +7,7 @@ PROFISSOES.push({
   id: "psicologia",
   nome: "Psicologia",
   icone: "🧠",
-  cor: "#c42a72",
+  cor: "#2a56c6",
   resumo: "Ouvir, acolher e ajudar pessoas a lidar com emoções, relações e momentos difíceis da vida.",
 
   perfil: {

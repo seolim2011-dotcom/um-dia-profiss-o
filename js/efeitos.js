@@ -72,7 +72,7 @@ function soltarConfete(quantidade) {
   const pincel = canvas.getContext("2d");
   const largura = (canvas.width = window.innerWidth);
   const altura = (canvas.height = window.innerHeight);
-  const cores = ["#0a2472", "#ff6fb5", "#c42a72", "#3d6ae0", "#ffc9e3", "#061a4f"]; // azul profundo e rosa chiclete
+  const cores = ["#0a2472", "#8fb3ff", "#2a56c6", "#c9d9ff", "#d5dae3", "#061a4f"]; // azul escuro, azul claro e cinza claro
   const duracao = 3000;
 
   const pedacos = Array.from({ length: quantidade || 150 }, () => ({

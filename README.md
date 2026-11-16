@@ -150,7 +150,7 @@ PROFISSOES.push({
   id: "direito",
   nome: "Direito",
   icone: "⚖️",
-  cor: "#0a2472",   // azul profundo (#0a2472) ou rosa (#c42a72), para seguir a paleta
+  cor: "#0a2472",   // azul escuro (#0a2472) ou azul médio (#2a56c6), para seguir a paleta
   resumo: "Uma frase sobre o que a pessoa faz.",
   perfil: {
     pessoas:      { peso: 4, gostar: "...", dificil: "..." },

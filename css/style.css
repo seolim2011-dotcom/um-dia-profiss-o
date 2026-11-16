@@ -8,8 +8,9 @@
 :root {
   --azul: #0a2472;          /* azul profundo */
   --azul-escuro: #061a4f;
-  --rosa: #ff6fb5;          /* rosa chiclete */
-  --rosa-escuro: #c42a72;   /* rosa chiclete mais escuro, para textos e detalhes finos */
+  --azul-claro: #8fb3ff;    /* azul claro (detalhes e destaques) */
+  --azul-medio: #2a56c6;    /* azul entre o claro e o escuro, para textos e detalhes finos */
+  --cinza-claro: #e3e7ee;   /* cinza claro (bordas e trilhos) */
   --verde: #16a34a;
   --ambar: #b45309;
   --vermelho: #e11d48;
@@ -51,7 +52,7 @@ button, input, select { font: inherit; color: inherit; }
 svg { display: block; max-width: 100%; }
 h1, h2, h3, h4 { font-family: var(--fonte-titulo); font-weight: 600; line-height: 1.2; }
 [tabindex="-1"]:focus { outline: none; }
-:focus-visible { outline: 3px solid var(--rosa-escuro); outline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--azul-medio); outline-offset: 3px; }
 
 /* Texto lido por leitores de tela, mas invisível na página */
 .sr-only {
@@ -219,8 +220,8 @@ h1, h2, h3, h4 { font-family: var(--fonte-titulo); font-weight: 600; line-height
   animation: flutuar 3.5s ease-in-out infinite;
 }
 
-/* Um ícone sim, um não, com borda rosa, para a faixa ter as duas cores */
-.hero-icones span:nth-child(2n) { border-color: #ffc9e3; box-shadow: 0 4px 0 #ffc9e3; }
+/* Um ícone sim, um não, com borda azul clara, para a faixa ter dois tons */
+.hero-icones span:nth-child(2n) { border-color: #c9d9ff; box-shadow: 0 4px 0 #c9d9ff; }
 
 .hero-icones span:nth-child(2n) { animation-delay: -1.7s; }
 .hero-icones span:nth-child(3n) { animation-delay: -.8s; }
@@ -233,14 +234,14 @@ h1, h2, h3, h4 { font-family: var(--fonte-titulo); font-weight: 600; line-height
 
 .titulo-jogo span {
   color: transparent;
-  background: linear-gradient(135deg, var(--azul) 10%, var(--rosa-escuro) 90%);
+  background: linear-gradient(135deg, var(--azul) 10%, var(--azul-medio) 90%);
   -webkit-background-clip: text;
   background-clip: text;
 }
 
-/* Na tela inicial, o botão principal ("Jogar") é rosa chiclete com texto azul */
-.tela-inicio .btn-primario { color: var(--azul-escuro); background: var(--rosa); box-shadow: 0 5px 0 var(--rosa-escuro); }
-.tela-inicio .btn-primario:active { box-shadow: 0 1px 0 var(--rosa-escuro); }
+/* Na tela inicial, o botão principal ("Jogar") é azul claro com texto azul escuro */
+.tela-inicio .btn-primario { color: var(--azul-escuro); background: var(--azul-claro); box-shadow: 0 5px 0 var(--azul-medio); }
+.tela-inicio .btn-primario:active { box-shadow: 0 1px 0 var(--azul-medio); }
 
 .subtitulo { max-width: 540px; margin: 0 auto 22px; font-size: clamp(1.05rem, 3.6vw, 1.2rem); font-weight: 600; color: var(--texto-suave); }
 
@@ -256,7 +257,7 @@ h1, h2, h3, h4 { font-family: var(--fonte-titulo); font-weight: 600; line-height
   font-weight: 800;
   background: #fff;
   border: 2px solid var(--borda);
-  border-top: 6px solid var(--rosa);
+  border-top: 6px solid var(--azul-claro);
   border-radius: var(--raio-medio);
   box-shadow: 0 5px 0 var(--borda);
 }
@@ -268,7 +269,7 @@ h1, h2, h3, h4 { font-family: var(--fonte-titulo); font-weight: 600; line-height
   width: 56px;
   height: 56px;
   font-size: 1.8rem;
-  background: #ffe3f1;
+  background: #e1eaff;
   border-radius: 50%;
 }
 
@@ -414,15 +415,15 @@ h1, h2, h3, h4 { font-family: var(--fonte-titulo); font-weight: 600; line-height
 
 .interruptor input:checked + .interruptor-trilho { background: var(--azul); }
 .interruptor input:checked + .interruptor-trilho::after { transform: translateX(22px); }
-.interruptor input:focus-visible + .interruptor-trilho { outline: 3px solid var(--rosa-escuro); outline-offset: 3px; }
+.interruptor input:focus-visible + .interruptor-trilho { outline: 3px solid var(--azul-medio); outline-offset: 3px; }
 
 .aviso-honestidade {
   margin: 0 0 16px;
   padding: 14px 16px;
   font-size: .95rem;
   font-weight: 600;
-  background: #fff0f7;
-  border: 2px solid #ffc9e3;
+  background: #eef3ff;
+  border: 2px solid #c9d9ff;
   border-radius: var(--raio-pequeno);
 }
 
@@ -488,8 +489,8 @@ body[data-tela="jogo"] .botao-som { display: none; }
 .medidor-hud strong { text-align: right; font-variant-numeric: tabular-nums; }
 .medidor-hud-barra { height: 12px; overflow: hidden; background: var(--trilho); border-radius: 99px; }
 .medidor-hud-barra span { display: block; height: 100%; border-radius: inherit; transition: width .7s cubic-bezier(.2, .8, .2, 1); }
-#medidor-energia .medidor-hud-barra span { background: linear-gradient(90deg, var(--azul), #3d6ae0); }
-#medidor-estresse .medidor-hud-barra span { background: linear-gradient(90deg, var(--rosa), var(--rosa-escuro)); }
+#medidor-energia .medidor-hud-barra span { background: linear-gradient(90deg, var(--azul-claro), var(--azul-medio)); }
+#medidor-estresse .medidor-hud-barra span { background: linear-gradient(90deg, #9aa6c4, var(--azul-escuro)); }
 .medidor-hud.critico strong { color: var(--vermelho); }
 .medidor-hud.critico .medidor-hud-barra { animation: piscar 1s ease-in-out infinite; }
 
@@ -547,8 +548,8 @@ body[data-tela="jogo"] .botao-som { display: none; }
 }
 
 .ceu[data-periodo="manha"] { background: linear-gradient(135deg, #3d6ae0, #0a2472); }
-.ceu[data-periodo="tarde"] { background: linear-gradient(135deg, #0a2472, #c42a72); }
-.ceu[data-periodo="entardecer"] { background: linear-gradient(135deg, #c42a72, #061a4f); }
+.ceu[data-periodo="tarde"] { background: linear-gradient(135deg, #0a2472, #2a56c6); }
+.ceu[data-periodo="entardecer"] { background: linear-gradient(135deg, #2a56c6, #061a4f); }
 .ceu[data-periodo="noite"] { background: linear-gradient(135deg, #040f33, #0a2472); }
 
 .astro, .ceu-texto, .cena { position: relative; z-index: 1; }
@@ -573,14 +574,14 @@ body[data-tela="jogo"] .botao-som { display: none; }
 .progresso span { flex: 1; height: 10px; background: #dbe3f7; border-radius: 99px; transition: background-color .3s ease; }
 .progresso .feita { background: var(--cor-profissao); }
 .progresso .atual { background: #aebde6; background: color-mix(in srgb, var(--cor-profissao) 45%, #dbe3f7); }
-.progresso .desafio { background: #ffc9e3; }
-.progresso .desafio.atual { background: #ff6fb5; }
-.progresso .desafio.feita { background: #c42a72; }
+.progresso .desafio { background: #c9d9ff; }
+.progresso .desafio.atual { background: #8fb3ff; }
+.progresso .desafio.feita { background: #2a56c6; }
 
 .cartao-situacao.animar { animation: entrar .35s ease both; }
 .cartao-situacao.urgente { border-color: #fda4af; box-shadow: 0 6px 0 #fda4af; }
 
-.cartao-situacao.desafio { border-color: #ff9fcb; box-shadow: 0 6px 0 #ff9fcb; }
+.cartao-situacao.desafio { border-color: #a9c4ff; box-shadow: 0 6px 0 #a9c4ff; }
 
 /* Etiqueta no topo do cartão: "🚨 Urgente!" ou "⚡ Desafio da profissão" */
 .etiqueta-situacao {
@@ -594,7 +595,7 @@ body[data-tela="jogo"] .botao-som { display: none; }
 }
 
 .etiqueta-situacao.urgente { color: #fff; background: var(--vermelho); animation: piscar 1s ease-in-out infinite; }
-.etiqueta-situacao.desafio { color: #fff; background: var(--rosa-escuro); }
+.etiqueta-situacao.desafio { color: #fff; background: var(--azul-medio); }
 
 .narracao {
   margin: 0 0 14px;
@@ -672,7 +673,7 @@ body[data-tela="jogo"] .botao-som { display: none; }
 }
 
 .cronometro-barra { flex: 1; height: 14px; overflow: hidden; background: #ffe4e6; border-radius: 99px; }
-.cronometro-barra span { display: block; width: 100%; height: 100%; background: linear-gradient(90deg, var(--rosa-escuro), var(--rosa)); border-radius: inherit; transition: width .1s linear; }
+.cronometro-barra span { display: block; width: 100%; height: 100%; background: linear-gradient(90deg, var(--azul-medio), var(--azul-claro)); border-radius: inherit; transition: width .1s linear; }
 .cronometro strong { min-width: 2.6ch; font-family: var(--fonte-titulo); font-size: 1.5rem; font-weight: 700; text-align: right; color: #be123c; font-variant-numeric: tabular-nums; }
 .cronometro.acabando { animation: tremer .25s linear infinite; }
 
@@ -773,13 +774,13 @@ body[data-tela="jogo"] .botao-som { display: none; }
   gap: 12px;
   margin: 16px 0 20px;
   padding: 14px 16px;
-  background: #fff0f7;
-  border: 2px solid #ffc9e3;
+  background: #eef3ff;
+  border: 2px solid #c9d9ff;
   border-radius: var(--raio-pequeno);
 }
 
 .vida-real-icone { font-size: 1.5rem; line-height: 1.2; }
-.vida-real strong { display: block; font-size: .8rem; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; color: #b0215f; }
+.vida-real strong { display: block; font-size: .8rem; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; color: #1d3f9e; }
 .vida-real p { margin: 2px 0 0; font-weight: 600; }
 
 .tela-jogo .btn-primario,
@@ -899,7 +900,7 @@ body[data-tela="jogo"] .botao-som { display: none; }
 }
 
 .ordem-montada li.certa { background: #dcfce7; border-color: #86efac; }
-.ordem-montada li.corrigida { background: #fff0f7; border-color: #ffc9e3; }
+.ordem-montada li.corrigida { background: #eef3ff; border-color: #c9d9ff; }
 
 .itens-ordenar { display: grid; gap: 10px; }
 .item-ordenar:disabled { opacity: .3; }
@@ -966,7 +967,7 @@ body[data-tela="jogo"] .botao-som { display: none; }
 
 .aviso-conquista.saindo { animation: aviso-sair .4s ease forwards; }
 .aviso-conquista-icone { font-size: 2.2rem; }
-.aviso-conquista small { display: block; font-size: .72rem; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; color: var(--rosa); }
+.aviso-conquista small { display: block; font-size: .72rem; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; color: var(--azul-claro); }
 .aviso-conquista strong { font-family: var(--fonte-titulo); font-size: 1.15rem; font-weight: 600; }
 
 @keyframes aviso-entrar { from { opacity: 0; transform: translateY(-30px) scale(.8); } }
@@ -1042,8 +1043,8 @@ body[data-tela="jogo"] .botao-som { display: none; }
 .fim-do-dia-item { padding: 14px; text-align: center; background: #f5f8ff; border-radius: var(--raio-pequeno); }
 .fim-do-dia-item span { display: block; font-weight: 800; color: var(--texto-suave); }
 .fim-do-dia-item strong { display: block; margin-bottom: 6px; font-family: var(--fonte-titulo); font-size: 2rem; font-weight: 700; }
-.barra-energia span { background: linear-gradient(90deg, var(--azul), #3d6ae0); }
-.barra-estresse span { background: linear-gradient(90deg, var(--rosa), var(--rosa-escuro)); }
+.barra-energia span { background: linear-gradient(90deg, var(--azul-claro), var(--azul-medio)); }
+.barra-estresse span { background: linear-gradient(90deg, #9aa6c4, var(--azul-escuro)); }
 .nota-final { margin: 0; font-weight: 700; }
 
 .grade-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
@@ -1056,23 +1057,23 @@ body[data-tela="jogo"] .botao-som { display: none; }
 .lista-passos li::before { content: "✔"; left: 2px; }
 
 .cartao-gostar { border-color: #bbf7d0; box-shadow: 0 6px 0 #bbf7d0; }
-.cartao-dificil { border-color: #ffc9e3; box-shadow: 0 6px 0 #ffc9e3; }
+.cartao-dificil { border-color: #c9d9ff; box-shadow: 0 6px 0 #c9d9ff; }
 .cartao-gostar .lista li::before { content: "✔"; left: 2px; color: var(--verde); }
-.cartao-dificil .lista li::before { content: "!"; left: 8px; color: var(--rosa-escuro); }
+.cartao-dificil .lista li::before { content: "!"; left: 8px; color: var(--azul-medio); }
 .cartao-dificil .nota + .lista { margin-top: 4px; }
 
 .medalhas-do-dia { display: flex; flex-wrap: wrap; gap: 10px; }
 
 /* Desafios do dia */
-.cartao-desafios { border-color: #ff9fcb; box-shadow: 0 6px 0 #ff9fcb; }
+.cartao-desafios { border-color: #a9c4ff; box-shadow: 0 6px 0 #a9c4ff; }
 .lista-desafios { display: grid; gap: 10px; margin: 0 0 16px; padding: 0; list-style: none; }
-.lista-desafios li { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #fff0f7; border-radius: 12px; }
+.lista-desafios li { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #eef3ff; border-radius: 12px; }
 .lista-desafios strong { display: block; font-family: var(--fonte-titulo); font-weight: 600; }
 .lista-desafios span { font-size: .9rem; font-weight: 700; color: var(--texto-suave); }
 .desafio-resultado { font-size: 1.5rem; }
 .gosto-total { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; font-weight: 800; }
-.gosto-total .barra span { background: linear-gradient(90deg, var(--rosa-escuro), var(--rosa)); }
-.tag-gosto { margin-left: 6px; color: #b0215f; background: #ffe3f1; }
+.gosto-total .barra span { background: linear-gradient(90deg, var(--azul-medio), var(--azul-claro)); }
+.tag-gosto { margin-left: 6px; color: #1d3f9e; background: #e1eaff; }
 
 .medalha-mini {
   display: inline-flex;
@@ -1080,8 +1081,8 @@ body[data-tela="jogo"] .botao-som { display: none; }
   gap: 8px;
   padding: 8px 14px;
   font-weight: 900;
-  background: #fff0f7;
-  border: 2px solid #ffc9e3;
+  background: #eef3ff;
+  border: 2px solid #c9d9ff;
   border-radius: 999px;
 }
 
@@ -1144,7 +1145,7 @@ body[data-tela="jogo"] .botao-som { display: none; }
 
 .progresso-conquistas { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; font-weight: 900; }
 .progresso-conquistas .barra { flex: 1; height: 16px; }
-.progresso-conquistas .barra span { background: linear-gradient(90deg, var(--azul), var(--rosa)); }
+.progresso-conquistas .barra span { background: linear-gradient(90deg, var(--azul), var(--azul-claro)); }
 
 .medalhas { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; margin: 0 0 20px; padding: 0; list-style: none; }
 
@@ -1156,9 +1157,9 @@ body[data-tela="jogo"] .botao-som { display: none; }
   padding: 18px 12px;
   text-align: center;
   background: #fff;
-  border: 2px solid #ffc9e3;
+  border: 2px solid #c9d9ff;
   border-radius: var(--raio-medio);
-  box-shadow: 0 5px 0 #ffc9e3;
+  box-shadow: 0 5px 0 #c9d9ff;
 }
 
 .medalha-icone {
@@ -1168,14 +1169,14 @@ body[data-tela="jogo"] .botao-som { display: none; }
   height: 64px;
   margin-bottom: 6px;
   font-size: 2.2rem;
-  background: radial-gradient(circle at 35% 30%, #fff0f7, #ff6fb5);
-  border: 3px solid #c42a72;
+  background: radial-gradient(circle at 35% 30%, #eef3ff, #8fb3ff);
+  border: 3px solid #2a56c6;
   border-radius: 50%;
 }
 
 .medalha strong { font-family: var(--fonte-titulo); font-size: 1.05rem; font-weight: 600; line-height: 1.2; }
 .medalha span { font-size: .85rem; font-weight: 600; color: var(--texto-suave); }
-.medalha small { margin-top: 4px; font-size: .75rem; font-weight: 800; color: #b0215f; }
+.medalha small { margin-top: 4px; font-size: .75rem; font-weight: 800; color: #1d3f9e; }
 
 .medalha.bloqueada { background: #f5f8ff; border-color: var(--borda); box-shadow: 0 5px 0 var(--borda); }
 .medalha.bloqueada .medalha-icone { background: var(--trilho); border-color: var(--borda-forte); filter: grayscale(1); opacity: .7; }
