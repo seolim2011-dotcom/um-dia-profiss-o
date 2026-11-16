@@ -15,7 +15,7 @@
   --vermelho: #e11d48;
   --texto: #0b1640;
   --texto-suave: #4a5578;
-  --fundo: #ffffff;
+  --fundo: #f1f3f7;         /* cinza claro */
   --cartao: #ffffff;
   --borda: #dbe3f7;
   --borda-forte: #c8d4f0;
@@ -44,9 +44,6 @@ body {
   line-height: 1.55;
   color: var(--texto);
   background-color: var(--fundo);
-  /* bolinhas discretas no fundo */
-  background-image: radial-gradient(#dbe3f7 1.3px, transparent 1.3px);
-  background-size: 22px 22px;
 }
 
 [hidden] { display: none !important; }
@@ -70,12 +67,13 @@ h1, h2, h3, h4 { font-family: var(--fonte-titulo); font-weight: 600; line-height
 }
 
 /* ---------- Fundo decorativo ---------- */
+/* Fundo cinza claro com manchas suaves de azul claro e azul escuro. */
 
 .fundo { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
-.fundo span { position: absolute; border-radius: 50%; filter: blur(80px); opacity: .55; }
-.fundo span:nth-child(1) { width: 420px; height: 420px; top: -160px; left: -140px; background: #c3d1f5; }
-.fundo span:nth-child(2) { width: 380px; height: 380px; top: -100px; right: -150px; background: #ffc9e3; }
-.fundo span:nth-child(3) { width: 420px; height: 420px; bottom: -220px; left: 30%; background: #ffd6ea; opacity: .4; }
+.fundo span { position: absolute; border-radius: 50%; filter: blur(80px); }
+.fundo span:nth-child(1) { width: 440px; height: 440px; top: -160px; left: -140px; background: #b9cdf5; opacity: .7; }  /* azul claro */
+.fundo span:nth-child(2) { width: 400px; height: 400px; top: -120px; right: -160px; background: #0a2472; opacity: .16; } /* azul escuro */
+.fundo span:nth-child(3) { width: 460px; height: 460px; bottom: -240px; left: 25%; background: #b9cdf5; opacity: .5; }  /* azul claro */
 
 /* ---------- Estrutura ---------- */
 
