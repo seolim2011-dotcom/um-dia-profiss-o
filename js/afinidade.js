@@ -303,7 +303,7 @@ function resumoDoDia(medidores) {
 
 // Avisa no console (F12) sobre erros comuns ao criar ou editar uma profissão.
 function conferirDados() {
-  const aviso = texto => console.warn("[Um Dia na Profissão] " + texto);
+  const aviso = texto => console.warn("[Your Career] " + texto);
   const ids = new Set();
 
   PROFISSOES.forEach(profissao => {

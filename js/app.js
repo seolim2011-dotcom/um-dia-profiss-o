@@ -1,5 +1,5 @@
 /*
-  Um Dia na Profissão — telas e eventos.
+  Your Career — telas e eventos.
 
   Este arquivo cuida do que aparece na tela e do que acontece quando a pessoa
   clica. Os cálculos ficam em js/afinidade.js, o salvamento em

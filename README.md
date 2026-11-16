@@ -1,6 +1,6 @@
-# Um Dia na Profissão
+# Your Career
 
-Protótipo de jogo web da turma de Desenvolvimento de Sistemas.
+Protótipo de jogo web da turma de Desenvolvimento de Sistemas. Você vive um dia de trabalho de uma profissão antes de escolher o curso.
 
 Segundo o Ipea, muitos jovens trocam de curso ou se formam e não seguem na área, em boa parte por escolher a profissão de forma idealizada. O jogo coloca o jovem diante da rotina real de uma profissão **antes** de escolher o curso. Pelas decisões que ele toma ao longo de um dia de trabalho, o jogo monta um relatório de afinidade.
 
