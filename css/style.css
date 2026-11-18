@@ -203,8 +203,8 @@ h1, h2, h3, h4 { font-family: var(--fonte-titulo); font-weight: 600; line-height
 
 .logo {
   display: block;
-  width: 84px;
-  height: 84px;
+  width: 100px;
+  height: 100px;
   margin: 0 auto 18px;
   border-radius: 0;
   border: 3px solid var(--linha);
