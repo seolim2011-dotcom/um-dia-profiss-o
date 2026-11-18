@@ -205,39 +205,12 @@ h1, h2, h3, h4 { font-family: var(--fonte-titulo); font-weight: 600; line-height
   display: block;
   width: 84px;
   height: 84px;
-  margin: 0 auto 14px;
+  margin: 0 auto 18px;
   border-radius: 0;
   border: 3px solid var(--linha);
   box-shadow: 6px 6px 0 var(--linha);
   image-rendering: pixelated;
   animation: entrar .5s ease both;
-}
-
-/* Ícones das profissões: sempre numa faixa só. Eles encolhem em telas estreitas. */
-.hero-icones { display: flex; flex-wrap: nowrap; justify-content: center; gap: clamp(4px, 1.4vw, 10px); margin-bottom: 18px; padding-top: 8px; }
-
-.hero-icones span {
-  display: grid;
-  place-items: center;
-  flex: 0 1 44px;
-  min-width: 0;
-  aspect-ratio: 1;
-  font-size: clamp(.95rem, 3.6vw, 1.4rem);
-  background: #fff;
-  border: 3px solid var(--linha);
-  border-radius: 0;
-  box-shadow: 4px 4px 0 var(--linha);
-  animation: flutuar 3.5s ease-in-out infinite;
-}
-
-/* Um ícone sim, um não, com fundo azul claro, para a faixa ter dois tons */
-.hero-icones span:nth-child(2n) { background: #e1eaff; }
-
-.hero-icones span:nth-child(2n) { animation-delay: -1.7s; }
-.hero-icones span:nth-child(3n) { animation-delay: -.8s; }
-
-@keyframes flutuar {
-  50% { transform: translateY(-6px); }
 }
 
 /* Título com volume: a palavra "Your" em azul escuro com sombra azul clara,
@@ -350,15 +323,19 @@ h1, h2, h3, h4 { font-family: var(--fonte-titulo); font-weight: 600; line-height
 .avatar-opcao:hover { transform: translateY(-2px); }
 .avatar-opcao[aria-pressed="true"] { background: #e8eeff; border-color: var(--azul); box-shadow: 4px 4px 0 var(--azul); }
 
-.grade-profissoes { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.grade-profissoes { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px 14px; margin-bottom: 20px; }
 
+/* Cartão compacto: ícone e nome lado a lado; resumo e informações embaixo.
+   Linhas: barra da janela, ícone + nome, resumo e informações (que ficam no pé). */
 .card-profissao {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  --pad-x: 20px;
-  padding: 20px var(--pad-x);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto auto 1fr;
+  align-items: center;
+  gap: 6px 10px;
+  --pad-x: 14px;
+  padding: 0 var(--pad-x) 12px;
   text-align: left;
   background: #fff;
   border: 3px solid var(--linha);
@@ -400,18 +377,18 @@ h1, h2, h3, h4 { font-family: var(--fonte-titulo); font-weight: 600; line-height
 .card-icone {
   display: grid;
   place-items: center;
-  width: 60px;
-  height: 60px;
-  margin-bottom: 4px;
-  font-size: 2.2rem;
+  width: 42px;
+  height: 42px;
+  font-size: 1.5rem;
+  border: 2px solid var(--linha);
   background: #f2f5fd;
   background: color-mix(in srgb, var(--cor-profissao) 12%, #fff);
   border-radius: 0;
 }
 
-.card-nome { font-family: var(--fonte-titulo); font-size: 1.2rem; font-weight: 600; }
-.card-resumo { font-size: .95rem; color: var(--texto-suave); }
-.card-info { margin-top: auto; padding-top: 6px; font-size: .82rem; font-weight: 900; color: var(--cor-profissao); }
+.card-nome { font-family: var(--fonte-titulo); font-size: 1.1rem; font-weight: 600; line-height: 1.15; }
+.card-resumo { grid-column: 1 / -1; font-size: .88rem; line-height: 1.4; color: var(--texto-suave); }
+.card-info { grid-column: 1 / -1; align-self: end; padding-top: 6px; font-size: .78rem; font-weight: 900; line-height: 1.45; color: var(--cor-profissao); border-top: 2px dashed var(--borda-forte); }
 
 /* Interruptor (checkbox com cara de botão liga/desliga) */
 .interruptor { display: flex; align-items: center; gap: 12px; margin: 0 0 16px; font-weight: 700; cursor: pointer; }
@@ -1237,7 +1214,7 @@ body[data-tela="jogo"] .botao-som { display: none; }
   .grade-profissoes { grid-template-columns: 1fr; }
   .grade-2, .ficha { grid-template-columns: 1fr; }
   .cartao { --pad-x: 18px; padding: 20px var(--pad-x); }
-  .card-profissao { --pad-x: 16px; padding: 16px var(--pad-x); }
+  .grade-profissoes { gap: 14px; }
   .ceu { padding: 18px; }
   .astro { font-size: 2.3rem; }
   .cena { font-size: 1.7rem; }
@@ -1303,7 +1280,7 @@ body[data-tela="jogo"] .botao-som { display: none; }
   border-bottom: 3px solid var(--linha);
 }
 
-.card-profissao.janela::before { margin-bottom: 8px; }
+.card-profissao.janela::before { grid-column: 1 / -1; margin-bottom: 4px; padding-top: 3px; padding-bottom: 3px; font-size: .78rem; }
 .cartao-situacao.urgente::before { background-color: var(--vermelho); }
 .cartao-situacao.desafio::before { background-color: var(--azul-medio); }
 

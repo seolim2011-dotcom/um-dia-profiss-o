@@ -149,8 +149,6 @@ function alternarSom() {
 /* ---------- 1. Tela inicial ---------- */
 
 function abrirInicio() {
-  $("#inicio-icones").innerHTML = PROFISSOES.map(p => `<span>${esc(p.icone)}</span>`).join("");
-
   // Se existe um dia pela metade, oferece continuar.
   const progresso = lerProgresso();
   const botaoContinuar = $("#btn-continuar");
