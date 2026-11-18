@@ -8,6 +8,7 @@ PROFISSOES.push({
   nome: "Direito",
   icone: "⚖️",
   cor: "#0a2472",
+  area: "sociedade",
   resumo: "Defender pessoas e empresas, orientar sobre leis e resolver conflitos dentro e fora dos tribunais.",
 
   perfil: {

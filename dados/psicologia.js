@@ -8,6 +8,7 @@ PROFISSOES.push({
   nome: "Psicologia",
   icone: "🧠",
   cor: "#2a56c6",
+  area: "saude",
   resumo: "Ouvir, acolher e ajudar pessoas a lidar com emoções, relações e momentos difíceis da vida.",
 
   perfil: {

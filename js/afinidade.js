@@ -310,6 +310,10 @@ function conferirDados() {
     if (ids.has(profissao.id)) aviso(`id repetido: "${profissao.id}".`);
     ids.add(profissao.id);
 
+    if (!AREAS.some(area => area.id === profissao.area)) {
+      aviso(`${profissao.nome}: a área "${profissao.area}" não existe. Use uma das áreas de AREAS, em dados/tracos.js.`);
+    }
+
     TRACOS.forEach(traco => {
       const perfil = profissao.perfil && profissao.perfil[traco.id];
       if (!perfil || !(perfil.peso >= 1 && perfil.peso <= 5)) {

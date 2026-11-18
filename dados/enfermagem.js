@@ -10,6 +10,8 @@
   - id           identificador único, sem espaços nem acentos
   - nome, icone  nome exibido e um emoji
   - cor          cor da profissão (escura o bastante para texto branco por cima)
+  - area         grupo da profissão no filtro: saude, tecnologia, criativas,
+                 negocios ou sociedade (a lista fica em AREAS, em dados/tracos.js)
   - resumo       uma frase sobre o que a pessoa faz
   - perfil       para cada traço de dados/tracos.js:
                    peso    de 1 (pouco usado) a 5 (essencial) nesta profissão
@@ -63,6 +65,7 @@ PROFISSOES.push({
   nome: "Enfermagem",
   icone: "🩺",
   cor: "#0a2472",
+  area: "saude",
   resumo: "Cuidar de pacientes em hospitais, clínicas e postos de saúde, 24 horas por dia.",
 
   perfil: {

@@ -36,6 +36,7 @@ const estado = {
   urgencias: { total: 0, esgotadas: 0, menorFolga: null },
   desafio: null,            // desafio em andamento: { acertou: null/true/false, ordem: [...] }
   preferencias: { som: true, cronometro: true },
+  areaFiltro: "todas",      // área escolhida no filtro de profissões (ou "todas")
   filtroJogador: null       // de quem são os resultados nas telas de comparação e conquistas
 };
 
@@ -194,7 +195,39 @@ function abrirCadastro() {
       </button>`;
   }).join("");
 
+  desenharFiltroDeAreas();
   mostrarTela("cadastro");
+}
+
+// Botões de área acima dos cartões ("Todas", "Saúde", ...), com quantas profissões há em cada uma.
+function desenharFiltroDeAreas() {
+  const opcoes = [{ id: "todas", nome: "Todas", icone: "✨" }, ...AREAS];
+  $("#filtro-areas").innerHTML = opcoes.map(area => {
+    const total = area.id === "todas" ? PROFISSOES.length : PROFISSOES.filter(p => p.area === area.id).length;
+    if (!total) return "";
+    return `
+      <button type="button" class="chip-area" data-acao="filtrar-area" data-area="${esc(area.id)}"
+              aria-pressed="${area.id === estado.areaFiltro}" aria-label="${esc(area.nome)}: ${total} profissões">
+        <span aria-hidden="true">${esc(area.icone)}</span> ${esc(area.nome)} <span class="chip-area-total" aria-hidden="true">${total}</span>
+      </button>`;
+  }).join("");
+  aplicarFiltroDeAreas();
+}
+
+// Esconde os cartões que não são da área escolhida.
+function aplicarFiltroDeAreas() {
+  document.querySelectorAll(".card-profissao").forEach(cartao => {
+    const profissao = buscarProfissao(cartao.dataset.id);
+    cartao.hidden = estado.areaFiltro !== "todas" && profissao.area !== estado.areaFiltro;
+  });
+}
+
+function filtrarArea(id) {
+  estado.areaFiltro = id;
+  document.querySelectorAll(".chip-area").forEach(chip => {
+    chip.setAttribute("aria-pressed", String(chip.dataset.area === id));
+  });
+  aplicarFiltroDeAreas();
 }
 
 function escolherAvatar(avatar) {
@@ -1400,6 +1433,7 @@ const ACOES = {
   conquistas: abrirConquistas,
   avatar: botao => escolherAvatar(botao.dataset.avatar),
   selecionar: botao => selecionarProfissao(botao.dataset.id),
+  "filtrar-area": botao => filtrarArea(botao.dataset.area),
   escolher: botao => escolher(Number(botao.dataset.indice)),
   "responder-desafio": botao => responderPorIndice(Number(botao.dataset.indice)),
   "ordenar-item": botao => escolherItemDaOrdem(Number(botao.dataset.indice)),

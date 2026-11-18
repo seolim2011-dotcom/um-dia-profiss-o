@@ -37,6 +37,16 @@ const TRACOS = [
   }
 ];
 
+// Áreas usadas no filtro da escolha de profissão. Cada profissão diz a sua
+// área no campo "area" (por exemplo area: "saude").
+const AREAS = [
+  { id: "saude", nome: "Saúde", icone: "🩺" },
+  { id: "tecnologia", nome: "Tecnologia e engenharia", icone: "💻" },
+  { id: "criativas", nome: "Criativas", icone: "🎨" },
+  { id: "negocios", nome: "Negócios", icone: "📊" },
+  { id: "sociedade", nome: "Sociedade", icone: "⚖️" }
+];
+
 // Lista de profissões do jogo. Começa vazia: cada arquivo da pasta dados/
 // adiciona a sua profissão com PROFISSOES.push({ ... }).
 const PROFISSOES = [];

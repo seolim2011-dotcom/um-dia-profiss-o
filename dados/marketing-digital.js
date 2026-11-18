@@ -8,6 +8,7 @@ PROFISSOES.push({
   nome: "Marketing Digital",
   icone: "📣",
   cor: "#0a2472",
+  area: "negocios",
   resumo: "Criar campanhas, cuidar das redes sociais e usar dados para fazer marcas chegarem às pessoas certas.",
 
   perfil: {

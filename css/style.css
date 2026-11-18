@@ -323,6 +323,40 @@ h1, h2, h3, h4 { font-family: var(--fonte-titulo); font-weight: 600; line-height
 .avatar-opcao:hover { transform: translateY(-2px); }
 .avatar-opcao[aria-pressed="true"] { background: #e8eeff; border-color: var(--azul); box-shadow: 4px 4px 0 var(--azul); }
 
+/* Filtro por área: botões em pixel acima dos cartões de profissão */
+.filtro-areas { display: flex; flex-wrap: wrap; gap: 10px 8px; margin: 0 0 18px; }
+
+.chip-area {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 6px 12px;
+  font-family: var(--fonte-titulo);
+  font-size: .92rem;
+  font-weight: 600;
+  color: var(--azul-escuro);
+  background: #fff;
+  border: 2px solid var(--linha);
+  box-shadow: 3px 3px 0 var(--linha);
+  cursor: pointer;
+  transition: transform .1s ease, box-shadow .1s ease;
+}
+
+.chip-area:hover { transform: translate(-1px, -1px); }
+.chip-area:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--linha); }
+.chip-area[aria-pressed="true"] { color: #fff; background: var(--azul); }
+
+.chip-area-total {
+  min-width: 1.7em;
+  padding: 0 4px;
+  font-size: .8rem;
+  text-align: center;
+  color: var(--azul-escuro);
+  background: #e1eaff;
+  border: 1px solid var(--linha);
+}
+
 .grade-profissoes { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px 14px; margin-bottom: 20px; }
 
 /* Cartão compacto: ícone e nome lado a lado; resumo e informações embaixo.
