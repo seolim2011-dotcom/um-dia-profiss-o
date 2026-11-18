@@ -23,7 +23,7 @@ const CHAVES = {
   preferencias: "umDiaNaProfissao.preferencias"
 };
 
-const AVATAR_PADRAO = "🙂";
+// AVATAR_PADRAO e normalizarAvatar vêm de avatares.js.
 
 // Uma versão anterior do jogo tinha IA opcional e podia guardar a chave da API aqui.
 // A IA foi retirada; por segurança, apagamos qualquer chave que tenha ficado salva.
@@ -63,7 +63,7 @@ function apagarDoNavegador(chave) {
 function lerJogador() {
   const salvo = lerDoNavegador(CHAVES.jogador, null);
   if (typeof salvo === "string") return { nome: salvo, avatar: AVATAR_PADRAO };
-  if (salvo && typeof salvo.nome === "string") return { nome: salvo.nome, avatar: salvo.avatar || AVATAR_PADRAO };
+  if (salvo && typeof salvo.nome === "string") return { nome: salvo.nome, avatar: normalizarAvatar(salvo.avatar) };
   return { nome: "", avatar: AVATAR_PADRAO };
 }
 
@@ -100,7 +100,7 @@ function lerProgresso() {
 
   return {
     nome: salvo.nome,
-    avatar: salvo.avatar || AVATAR_PADRAO,
+    avatar: normalizarAvatar(salvo.avatar),
     profissao,
     indice: salvo.indice,
     escolhas: salvo.escolhas,
@@ -133,7 +133,7 @@ function lerResultados() {
     .map(resultado => ({
       id: resultado.id,
       nome: resultado.nome,
-      avatar: resultado.avatar || AVATAR_PADRAO,
+      avatar: normalizarAvatar(resultado.avatar),
       profissaoId: resultado.profissaoId,
       data: resultado.data,
       escolhas: resultado.escolhas,

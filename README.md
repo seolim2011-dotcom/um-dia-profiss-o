@@ -6,7 +6,7 @@ Segundo o Ipea, muitos jovens trocam de curso ou se formam e não seguem na áre
 
 ## Como rodar
 
-Abra o arquivo `index.html` no navegador (dois cliques). Não precisa instalar nada, nem de servidor, nem de internet. Com internet, as fontes Fredoka e Nunito são carregadas; sem ela, o navegador usa a fonte do sistema.
+Abra o arquivo `index.html` no navegador (dois cliques). Não precisa instalar nada, nem de servidor, nem de internet. Com internet, as fontes Pixelify Sans (títulos e botões, em pixel) e Nunito (textos) são carregadas; sem ela, o navegador usa a fonte do sistema.
 
 ## Como jogar
 
@@ -26,6 +26,7 @@ O botão 🔊 liga e desliga os sons. Se a página fechar no meio do dia, o prog
 index.html                         telas do jogo
 css/style.css                      visual (estilo jogo, responsivo, com versão para impressão)
 js/afinidade.js                    cálculos: afinidade, energia/estresse e classe do perfil
+js/avatares.js                     avatares do jogador em pixel art (grades de 20 x 20)
 js/armazenamento.js                salvar e ler no localStorage
 js/conquistas.js                   lista de medalhas e regra de cada uma
 js/efeitos.js                      sons (gerados pelo navegador) e confete
@@ -44,7 +45,7 @@ dados/design-grafico.js
 dados/marketing-digital.js
 ```
 
-Os dados ficam em arquivos `.js`, e não `.json`, porque o navegador bloqueia a leitura de JSON quando a página é aberta direto do computador (`file://`). Pelo mesmo motivo os scripts são comuns (sem `import`) e a **ordem dos `<script>` no `index.html` importa**: primeiro os dados, depois `afinidade.js`, `armazenamento.js`, `conquistas.js`, `efeitos.js` e `app.js`.
+Os dados ficam em arquivos `.js`, e não `.json`, porque o navegador bloqueia a leitura de JSON quando a página é aberta direto do computador (`file://`). Pelo mesmo motivo os scripts são comuns (sem `import`) e a **ordem dos `<script>` no `index.html` importa**: primeiro os dados, depois `afinidade.js`, `avatares.js`, `armazenamento.js`, `conquistas.js`, `efeitos.js` e `app.js`.
 
 ## Traços de perfil
 
@@ -253,7 +254,7 @@ Se algo estiver errado (um traço com nome digitado errado, um peso faltando, um
 
 | Chave | Conteúdo |
 | --- | --- |
-| `umDiaNaProfissao.jogador` | último nome e avatar |
+| `umDiaNaProfissao.jogador` | último nome e avatar (o id do avatar, como `curto` ou `panda`) |
 | `umDiaNaProfissao.progresso` | dia em andamento (profissão, situação atual, escolhas, urgências) |
 | `umDiaNaProfissao.resultados` | partidas concluídas (nome, avatar, profissão, data e escolhas) |
 | `umDiaNaProfissao.conquistas` | medalhas de cada jogador, com a data em que foram ganhas |

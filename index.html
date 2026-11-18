@@ -9,7 +9,7 @@
   <link rel="icon" type="image/svg+xml" href="img/logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pixelify+Sans:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -47,7 +47,7 @@
       <button type="button" class="btn-voltar" data-acao="inicio">← Voltar</button>
       <h2 class="titulo-tela" tabindex="-1">Crie seu personagem</h2>
       <form id="form-cadastro" novalidate>
-        <div class="cartao cartao-personagem">
+        <div class="cartao cartao-personagem janela" data-janela="Personagem">
           <div class="avatar-grande" id="avatar-previa" aria-hidden="true"></div>
           <div class="campo">
             <label for="campo-nome">Seu nome</label>
@@ -115,7 +115,7 @@
       <div class="progresso-rotulo"><span id="etapa"></span><span id="periodo"></span></div>
       <div class="progresso" id="progresso" aria-hidden="true"></div>
 
-      <article class="cartao cartao-situacao" id="cartao-situacao">
+      <article class="cartao cartao-situacao janela" id="cartao-situacao">
         <p class="etiqueta-situacao" id="etiqueta-situacao" hidden></p>
         <p class="narracao" id="situacao-descricao"></p>
         <div class="conversa" id="conversa" aria-live="polite"></div>
@@ -142,7 +142,7 @@
         </div>
       </article>
 
-      <section class="cartao feedback" id="feedback" hidden aria-live="polite">
+      <section class="cartao feedback janela" id="feedback" data-janela="Resultado" hidden aria-live="polite">
         <h3 id="feedback-titulo">O que aconteceu</h3>
         <p id="feedback-resultado"></p>
         <div class="efeitos-escolha" id="feedback-efeitos"></div>
@@ -221,6 +221,7 @@
 
   <!-- Código do jogo (a ordem importa: cada arquivo usa funções dos anteriores) -->
   <script src="js/afinidade.js"></script>
+  <script src="js/avatares.js"></script>
   <script src="js/armazenamento.js"></script>
   <script src="js/conquistas.js"></script>
   <script src="js/efeitos.js"></script>

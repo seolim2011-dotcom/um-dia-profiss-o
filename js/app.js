@@ -15,7 +15,6 @@
 const LETRAS = "ABCDEF";                  // letras das opções (também usadas como atalho)
 const CIRCUNFERENCIA = 2 * Math.PI * 52;  // contorno do círculo de afinidade (raio 52)
 const TEMPO_PADRAO = 20;                  // segundos do cronômetro nas urgências
-const AVATARES = ["🧑🏽", "👩🏻", "👨🏿", "👩🏾‍🦱", "🧑🏻‍🦰", "👱🏽‍♀️", "🧔🏽", "🧑🏼‍🦱", "🦊", "🐼", "🤖", "🐸"];
 const FRASES_DE_PASSAGEM = ["O tempo voa...", "Algumas horas depois...", "Mais tarde...", "O dia continua..."];
 
 // Respostas para "Você curtiria fazer isso todo dia?", depois de cada desafio.
@@ -29,7 +28,7 @@ const reduzirMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").m
 // Tudo o que o jogo precisa lembrar enquanto a página está aberta.
 const estado = {
   nome: "",                 // nome de quem está jogando
-  avatar: AVATARES[0],      // avatar escolhido
+  avatar: AVATAR_PADRAO,    // id do avatar escolhido (os desenhos estão em avatares.js)
   selecionada: null,        // id da profissão marcada na tela de cadastro
   profissao: null,          // profissão do dia em andamento
   indice: 0,                // número da situação atual (começa em 0)
@@ -157,7 +156,7 @@ function abrirInicio() {
   const botaoContinuar = $("#btn-continuar");
   botaoContinuar.hidden = !progresso;
   if (progresso) {
-    botaoContinuar.textContent = `Continuar o dia de ${progresso.avatar} ${progresso.nome} em ${progresso.profissao.icone} ${progresso.profissao.nome}`;
+    botaoContinuar.innerHTML = `Continuar o dia de ${desenharAvatar(progresso.avatar, "avatar-mini")} ${esc(progresso.nome)} em ${esc(progresso.profissao.icone)} ${esc(progresso.profissao.nome)}`;
   }
 
   $("#btn-comparar-inicio").hidden = lerResultados().length === 0;
@@ -171,12 +170,12 @@ function abrirCadastro() {
   $("#opcao-cronometro").checked = estado.preferencias.cronometro;
   $("#erro-cadastro").hidden = true;
 
-  $("#avatar-previa").textContent = estado.avatar;
+  $("#avatar-previa").innerHTML = desenharAvatar(estado.avatar);
   $("#lista-avatares").innerHTML = AVATARES.map(avatar => `
-    <button type="button" class="avatar-opcao" data-acao="avatar" data-avatar="${avatar}"
-            aria-pressed="${avatar === estado.avatar}" aria-label="Avatar ${avatar}">${avatar}</button>`).join("");
+    <button type="button" class="avatar-opcao" data-acao="avatar" data-avatar="${avatar.id}"
+            aria-pressed="${avatar.id === estado.avatar}" aria-label="Avatar: ${esc(avatar.nome)}">${desenharAvatar(avatar.id)}</button>`).join("");
 
-  $("#lista-profissoes").innerHTML = PROFISSOES.map(profissao => {
+  $("#lista-profissoes").innerHTML = PROFISSOES.map((profissao, posicao) => {
     // Os dois traços de maior peso aparecem no cartão como "Mais exige".
     const principais = TRACOS
       .slice()
@@ -187,7 +186,8 @@ function abrirCadastro() {
     const urgentes = profissao.situacoes.filter(s => s.urgente).length;
 
     return `
-      <button type="button" class="card-profissao" data-acao="selecionar" data-id="${esc(profissao.id)}"
+      <button type="button" class="card-profissao janela" data-acao="selecionar" data-id="${esc(profissao.id)}"
+              data-janela="Profissão ${String(posicao + 1).padStart(2, "0")}"
               aria-pressed="${estado.selecionada === profissao.id}" style="--cor-profissao: ${esc(profissao.cor)}">
         <span class="card-icone" aria-hidden="true">${esc(profissao.icone)}</span>
         <span class="card-nome">${esc(profissao.nome)}</span>
@@ -205,7 +205,7 @@ function escolherAvatar(avatar) {
     botao.setAttribute("aria-pressed", String(botao.dataset.avatar === avatar));
   });
   const previa = $("#avatar-previa");
-  previa.textContent = avatar;
+  previa.innerHTML = desenharAvatar(avatar);
   previa.classList.remove("pulo");
   void previa.offsetWidth; // reinicia a animação
   previa.classList.add("pulo");
@@ -295,7 +295,7 @@ function prepararSituacao() {
   $("#tela-jogo").style.setProperty("--cor-profissao", profissao.cor);
 
   // Painel do jogador
-  $("#hud-avatar").textContent = estado.avatar;
+  $("#hud-avatar").innerHTML = desenharAvatar(estado.avatar);
   $("#hud-nome").textContent = estado.nome;
   $("#hud-profissao").textContent = `${profissao.icone} ${profissao.nome}`;
   atualizarPainel(medidoresDoDia(profissao, estado.escolhas.slice(0, estado.indice)), null);
@@ -311,7 +311,7 @@ function prepararSituacao() {
     .map(emoji => `<span>${esc(emoji)}</span>`)
     .join("");
 
-  // Barra de progresso: uma parte para cada etapa (as dos desafios ficam amarelas).
+  // Barra de progresso: uma parte para cada etapa (as dos desafios ficam em azul claro).
   $("#etapa").textContent = `Etapa ${estado.indice + 1} de ${profissao.situacoes.length}`;
   $("#periodo").textContent = periodo.nome;
   $("#progresso").innerHTML = profissao.situacoes.map((etapa, i) => {
@@ -322,6 +322,7 @@ function prepararSituacao() {
   // Cartão da situação, ainda sem conversa, sem opções e sem desafio.
   const desafio = ehDesafio(situacao);
   const cartao = $("#cartao-situacao");
+  cartao.dataset.janela = `${situacao.horario} · ${profissao.nome}`; // texto da barra da janela
   cartao.classList.toggle("urgente", Boolean(situacao.urgente));
   cartao.classList.toggle("desafio", desafio);
 
@@ -372,12 +373,38 @@ function htmlDoBalao(mensagem) {
     </div>`;
 }
 
-function htmlDigitando(mensagem) {
-  return `
-    <div class="balao digitando" aria-hidden="true">
-      <span class="balao-avatar">${esc(mensagem.avatar || "💬")}</span>
-      <div class="balao-corpo"><i></i><i></i><i></i></div>
-    </div>`;
+// Escreve a mensagem letra por letra, como a caixa de diálogo de um RPG.
+// O texto inteiro já entra escondido para o leitor de tela, que lê tudo de uma vez.
+// "id" é o número da conversa: se ela for cancelada, a escrita para.
+function escreverBalao(caixa, mensagem, id, aoTerminar) {
+  caixa.insertAdjacentHTML("beforeend", `
+    <div class="balao escrevendo">
+      <span class="balao-avatar" aria-hidden="true">${esc(mensagem.avatar || "💬")}</span>
+      <div class="balao-corpo">
+        <span class="balao-nome">${esc(mensagem.quem || "")}</span>
+        <p><span class="sr-only">${esc(mensagem.fala)}</span><span class="texto-escrito" aria-hidden="true"></span></p>
+      </div>
+    </div>`);
+  const balao = caixa.lastElementChild;
+  const alvo = balao.querySelector(".texto-escrito");
+  const letras = Array.from(mensagem.fala);           // Array.from não quebra os emojis no meio
+  const passo = Math.max(1, Math.ceil(letras.length / 70)); // mensagens longas andam mais rápido
+  let escritas = 0;
+  tocarSom("mensagem");
+
+  const escrever = () => {
+    if (id !== andamento.conversa) return;
+    escritas = Math.min(letras.length, escritas + passo);
+    alvo.textContent = letras.slice(0, escritas).join("");
+    if (escritas < letras.length) {
+      andamento.esperaConversa = setTimeout(escrever, 24);
+      return;
+    }
+    balao.classList.remove("escrevendo");
+    aoTerminar();
+  };
+  escrever();
+  return balao;
 }
 
 function cancelarConversa() {
@@ -392,7 +419,7 @@ function mostrarConversaInteira(situacao) {
   $("#conversa").innerHTML = (situacao.conversa || []).map(htmlDoBalao).join("");
 }
 
-// Mostra as mensagens uma por uma, com "digitando..." antes de cada uma.
+// Mostra as mensagens uma por uma, escritas letra por letra.
 // Quando acaba (ou quando a pessoa clica em "Pular"), chama aoTerminar().
 function animarConversa(situacao, aoTerminar) {
   cancelarConversa();
@@ -417,18 +444,10 @@ function animarConversa(situacao, aoTerminar) {
     if (id !== andamento.conversa) return;
     if (mostradas === mensagens.length) return terminar();
 
-    const mensagem = mensagens[mostradas];
-    caixa.insertAdjacentHTML("beforeend", htmlDigitando(mensagem));
-    // Mensagens mais longas demoram um pouco mais para "serem digitadas".
-    const tempoDigitando = Math.min(1600, 500 + mensagem.fala.length * 14);
-
-    andamento.esperaConversa = setTimeout(() => {
-      if (id !== andamento.conversa) return;
-      caixa.lastElementChild.outerHTML = htmlDoBalao(mensagem);
+    escreverBalao(caixa, mensagens[mostradas], id, () => {
       mostradas += 1;
-      tocarSom("mensagem");
-      andamento.esperaConversa = setTimeout(mostrarProxima, 400);
-    }, tempoDigitando);
+      andamento.esperaConversa = setTimeout(mostrarProxima, 450);
+    });
   };
   mostrarProxima();
 }
@@ -571,7 +590,7 @@ function mostrarResposta(escolha, animar) {
   caixa.insertAdjacentHTML("beforeend", escolha === TEMPO_ESGOTADO
     ? `<div class="balao balao-sistema"><p>${esc(opcao.texto)}</p></div>`
     : `<div class="balao balao-jogador">
-         <span class="balao-avatar" aria-hidden="true">${esc(estado.avatar)}</span>
+         <span class="balao-avatar" aria-hidden="true">${desenharAvatar(estado.avatar)}</span>
          <div class="balao-corpo"><span class="balao-nome">Você</span><p>${esc(opcao.texto)}</p></div>
        </div>`);
 
@@ -579,14 +598,7 @@ function mostrarResposta(escolha, animar) {
   if (reacao && animar && !reduzirMovimento) {
     cancelarConversa();
     const id = andamento.conversa;
-    caixa.insertAdjacentHTML("beforeend", htmlDigitando(reacao));
-    rolarAte(caixa.lastElementChild);
-    andamento.esperaConversa = setTimeout(() => {
-      if (id !== andamento.conversa) return;
-      caixa.lastElementChild.outerHTML = htmlDoBalao(reacao);
-      tocarSom("mensagem");
-      mostrarResultadoDaEscolha(escolha, true);
-    }, Math.min(1500, 600 + reacao.fala.length * 10));
+    rolarAte(escreverBalao(caixa, reacao, id, () => mostrarResultadoDaEscolha(escolha, true)));
     return;
   }
   if (reacao) caixa.insertAdjacentHTML("beforeend", htmlDoBalao(reacao));
@@ -1093,8 +1105,8 @@ function abrirRelatorio(resultado, conquistasNovas) {
 
   $("#tela-relatorio").style.setProperty("--cor-profissao", profissao.cor);
   $("#relatorio-conteudo").innerHTML = `
-    <section class="cartao relatorio-capa">
-      <div class="avatar-grande" aria-hidden="true">${esc(resultado.avatar)}</div>
+    <section class="cartao relatorio-capa janela" data-janela="Fim do expediente">
+      <div class="avatar-grande" aria-hidden="true">${desenharAvatar(resultado.avatar)}</div>
       <p class="selo">Relatório de afinidade</p>
       <h2 class="titulo-tela" tabindex="-1">O dia de ${esc(resultado.nome)}</h2>
       <p class="relatorio-meta">${esc(profissao.icone)} ${esc(profissao.nome)} · ${esc(formatarData(resultado.data))}</p>
@@ -1299,7 +1311,7 @@ function mostrarComparacao() {
     ${htmlDoFiltro(nomes)}
 
     <section class="cartao">
-      <h3>${esc(avatar)} Profissões que ${esc(estado.filtroJogador)} já jogou</h3>
+      <h3>${desenharAvatar(avatar, "avatar-mini")} Profissões que ${esc(estado.filtroJogador)} já jogou</h3>
       <ul class="partidas">
         ${linhas.map((resultado, posicao) => {
           const profissao = buscarProfissao(resultado.profissaoId);
@@ -1489,7 +1501,7 @@ if (!PROFISSOES.length) {
   conferirDados();
   const jogador = lerJogador();
   estado.nome = jogador.nome;
-  estado.avatar = AVATARES.includes(jogador.avatar) ? jogador.avatar : AVATARES[0];
+  estado.avatar = jogador.avatar; // lerJogador já devolve um id válido
   estado.preferencias = lerPreferencias();
   aplicarSom();
   ligarEventos();
