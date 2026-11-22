@@ -30,7 +30,8 @@ const estado = {
   nome: "",                 // nome de quem está jogando
   avatar: AVATAR_PADRAO,    // id do avatar escolhido (os desenhos estão em avatares.js)
   selecionada: null,        // id da profissão marcada na tela de cadastro
-  profissao: null,          // profissão do dia em andamento
+  profissao: null,          // profissão do dia em andamento (já montada com as versões do dia)
+  versoes: [],              // versão de cada etapa usada no dia em andamento
   indice: 0,                // número da situação atual (começa em 0)
   escolhas: [],             // opção escolhida em cada situação (-1 = tempo esgotado)
   urgencias: { total: 0, esgotadas: 0, menorFolga: null },
@@ -214,7 +215,8 @@ function abrirCadastro() {
       .slice(0, 2)
       .map(traco => `${traco.icone} ${traco.nome}`)
       .join(" · ");
-    const urgentes = profissao.situacoes.filter(s => s.urgente).length;
+    const urgentes = montarDia(profissao).situacoes.filter(s => s.urgente).length;
+    const versoes = Math.max(...profissao.situacoes.map(numeroDeVersoes));
 
     return `
       <button type="button" class="card-profissao janela" data-acao="selecionar" data-id="${esc(profissao.id)}"
@@ -223,7 +225,7 @@ function abrirCadastro() {
         <span class="card-icone" aria-hidden="true">${esc(profissao.icone)}</span>
         <span class="card-nome">${esc(profissao.nome)}</span>
         <span class="card-resumo">${esc(profissao.resumo)}</span>
-        <span class="card-info">Mais exige: ${esc(principais)}<br>${profissao.situacoes.length} situações${urgentes ? ` · 🚨 ${urgentes} urgência${urgentes > 1 ? "s" : ""}` : ""}</span>
+        <span class="card-info">Mais exige: ${esc(principais)}<br>${profissao.situacoes.length} situações${urgentes ? ` · 🚨 ${urgentes} urgência${urgentes > 1 ? "s" : ""}` : ""}${versoes > 1 ? ` · 🔁 ${versoes} versões do dia` : ""}</span>
       </button>`;
   }).join("");
 
@@ -301,7 +303,10 @@ function enviarCadastro(evento) {
 
   estado.nome = nome;
   salvarJogador({ nome: estado.nome, avatar: estado.avatar });
-  iniciarDia(profissao);
+
+  // Banco de versões: quem já jogou esta profissão recebe outras versões das etapas.
+  const tentativa = lerResultados().filter(r => r.nome === nome && r.profissaoId === profissao.id).length;
+  iniciarDia(profissao, versoesDaTentativa(profissao, tentativa));
 }
 
 /* ---------- 3. O dia de trabalho ---------- */
@@ -311,14 +316,17 @@ function guardarProgresso() {
     nome: estado.nome,
     avatar: estado.avatar,
     profissaoId: estado.profissao.id,
+    versoes: estado.versoes,
     indice: estado.indice,
     escolhas: estado.escolhas,
     urgencias: estado.urgencias
   });
 }
 
-function iniciarDia(profissao) {
+function iniciarDia(base, versoes) {
+  const profissao = montarDia(base, versoes); // o dia com as versões escolhidas
   estado.profissao = profissao;
+  estado.versoes = versoes;
   estado.indice = 0;
   estado.escolhas = [];
   estado.urgencias = { total: 0, esgotadas: 0, menorFolga: null };
@@ -341,6 +349,7 @@ function continuarDia() {
   estado.nome = progresso.nome;
   estado.avatar = progresso.avatar;
   estado.profissao = progresso.profissao;
+  estado.versoes = progresso.versoes;
   estado.indice = progresso.indice;
   estado.escolhas = progresso.escolhas;
   estado.urgencias = progresso.urgencias;
@@ -1055,6 +1064,7 @@ function finalizarDia() {
     nome: estado.nome,
     avatar: estado.avatar,
     profissaoId: profissao.id,
+    versoes: estado.versoes.slice(),
     data: new Date().toISOString(),
     escolhas: estado.escolhas.slice(),
     afinidade: calculo.afinidade
@@ -1150,7 +1160,7 @@ function htmlDoRadar(tracos) {
 
 // conquistasNovas só existe quando o relatório abre logo depois de terminar o dia.
 function abrirRelatorio(resultado, conquistasNovas) {
-  const profissao = buscarProfissao(resultado.profissaoId);
+  const profissao = montarDia(buscarProfissao(resultado.profissaoId), resultado.versoes);
   const calculo = calcularAfinidade(profissao, resultado.escolhas);
   const nivel = nivelDaAfinidade(calculo.afinidade);
   const classe = classeDoPerfil(calculo.tracos);

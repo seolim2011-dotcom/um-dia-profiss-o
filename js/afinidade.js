@@ -15,6 +15,11 @@
      ideal de 100%. Acertar ou errar o desafio NÃO muda a afinidade (a pessoa
      ainda não estudou a profissão); só mexe no estresse e nas medalhas.
 
+  Banco de versões: cada etapa do dia pode ter uma lista "versoes" com jeitos
+  diferentes de viver aquele momento. A cada nova tentativa na mesma profissão,
+  todas as etapas trocam de versão (veja versoesDaTentativa). O dia que a pessoa
+  joga é montado com montarDia, e as outras funções trabalham com esse dia pronto.
+
   As funções deste arquivo só fazem contas: não mexem na tela nem no localStorage.
 */
 
@@ -66,6 +71,44 @@ const OPCAO_TEMPO_ESGOTADO = {
 // Procura uma profissão pelo id. Devolve null se ela não existir.
 function buscarProfissao(id) {
   return PROFISSOES.find(profissao => profissao.id === id) || null;
+}
+
+/* ---------- Banco de versões ---------- */
+
+// Quantas versões uma etapa tem (1 quando ela não usa "versoes").
+function numeroDeVersoes(etapa) {
+  return Array.isArray(etapa.versoes) ? etapa.versoes.length : 1;
+}
+
+// Todas as versões de uma etapa, em forma de lista.
+function versoesDaEtapa(etapa) {
+  return Array.isArray(etapa.versoes) ? etapa.versoes : [etapa];
+}
+
+// Qual versão de cada etapa usar na tentativa número "tentativa" (começa em 0).
+// A versão muda a cada tentativa e é deslocada pela posição da etapa, para
+// as versões se misturarem ao longo do dia. É uma regra fixa, não um sorteio.
+function versoesDaTentativa(profissao, tentativa) {
+  return profissao.situacoes.map((etapa, i) => (tentativa + i) % numeroDeVersoes(etapa));
+}
+
+// Monta o dia de verdade: troca cada etapa pela versão escolhida.
+// Sem "versoes" salvas (resultados antigos), usa a primeira versão de cada etapa.
+function montarDia(profissao, versoes) {
+  return {
+    ...profissao,
+    situacoes: profissao.situacoes.map((etapa, i) => {
+      const lista = versoesDaEtapa(etapa);
+      return lista[(Array.isArray(versoes) && versoes[i]) || 0] || lista[0];
+    })
+  };
+}
+
+// Confere se as versões salvas ainda existem nos dados da profissão.
+function versoesValidas(profissao, versoes) {
+  if (versoes === undefined) return true;
+  return Array.isArray(versoes) && versoes.length === profissao.situacoes.length &&
+    versoes.every((versao, i) => Number.isInteger(versao) && versao >= 0 && versao < numeroDeVersoes(profissao.situacoes[i]));
 }
 
 // A opção que corresponde a uma escolha salva (ou a opção de "tempo esgotado").
@@ -319,12 +362,20 @@ function conferirDados() {
       if (!perfil || !(perfil.peso >= 1 && perfil.peso <= 5)) {
         aviso(`${profissao.nome}: o traço "${traco.id}" precisa de um peso de 1 a 5 em "perfil".`);
       }
-      const usado = profissao.situacoes.some(s => maximoNaEtapa(s, traco.id) > 0);
+      const usado = profissao.situacoes.some(etapa => versoesDaEtapa(etapa).some(s => maximoNaEtapa(s, traco.id) > 0));
       if (!usado) aviso(`${profissao.nome}: nenhuma opção dá pontos para "${traco.id}", então ele fica fora da afinidade.`);
     });
 
-    profissao.situacoes.forEach((situacao, i) => {
-      const onde = `${profissao.nome}, etapa ${i + 1} (${situacao.titulo})`;
+    // Todas as versões de uma etapa precisam ser do mesmo tipo (decisão ou desafio),
+    // para o dia manter o mesmo ritmo em qualquer tentativa.
+    profissao.situacoes.forEach((etapa, i) => {
+      const tipos = new Set(versoesDaEtapa(etapa).map(s => ehDesafio(s) ? "desafio" : "decisao"));
+      if (tipos.size > 1) aviso(`${profissao.nome}, etapa ${i + 1}: misture só versões do mesmo tipo (todas decisão ou todas desafio).`);
+    });
+
+    const todas = profissao.situacoes.flatMap((etapa, i) => versoesDaEtapa(etapa).map((situacao, v) => ({ situacao, i, v, total: numeroDeVersoes(etapa) })));
+    todas.forEach(({ situacao, i, v, total }) => {
+      const onde = `${profissao.nome}, etapa ${i + 1}${total > 1 ? `, versão ${v + 1}` : ""} (${situacao.titulo})`;
       (situacao.conversa || []).forEach((mensagem, j) => {
         if (!mensagem.fala) aviso(`${onde}: a mensagem ${j + 1} da conversa está sem "fala".`);
       });

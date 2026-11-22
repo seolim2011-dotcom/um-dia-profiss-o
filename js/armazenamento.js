@@ -91,8 +91,9 @@ function salvarPreferencias(preferencias) {
 // combina mais com os dados das profissões).
 function lerProgresso() {
   const salvo = lerDoNavegador(CHAVES.progresso, null);
-  const profissao = salvo && buscarProfissao(salvo.profissaoId);
-  if (!profissao || !salvo.nome) return null;
+  const base = salvo && buscarProfissao(salvo.profissaoId);
+  if (!base || !salvo.nome || !versoesValidas(base, salvo.versoes)) return null;
+  const profissao = montarDia(base, salvo.versoes); // o dia com as versões que estavam sendo jogadas
 
   const indiceValido = salvo.indice >= 0 && salvo.indice < profissao.situacoes.length;
   const escolhasOk = escolhasValidas(profissao, salvo.escolhas, false) && salvo.escolhas.length <= salvo.indice + 1;
@@ -102,13 +103,14 @@ function lerProgresso() {
     nome: salvo.nome,
     avatar: normalizarAvatar(salvo.avatar),
     profissao,
+    versoes: salvo.versoes || profissao.situacoes.map(() => 0),
     indice: salvo.indice,
     escolhas: salvo.escolhas,
     urgencias: salvo.urgencias || { total: 0, esgotadas: 0, menorFolga: null }
   };
 }
 
-// progresso = { nome, avatar, profissaoId, indice, escolhas, urgencias }
+// progresso = { nome, avatar, profissaoId, versoes, indice, escolhas, urgencias }
 function salvarProgresso(progresso) {
   salvarNoNavegador(CHAVES.progresso, progresso);
 }
@@ -127,21 +129,24 @@ function lerResultados() {
 
   return lista
     .filter(resultado => {
-      const profissao = resultado && buscarProfissao(resultado.profissaoId);
-      return profissao && escolhasValidas(profissao, resultado.escolhas, true);
+      const base = resultado && buscarProfissao(resultado.profissaoId);
+      return base && versoesValidas(base, resultado.versoes) &&
+        escolhasValidas(montarDia(base, resultado.versoes), resultado.escolhas, true);
     })
     .map(resultado => ({
       id: resultado.id,
       nome: resultado.nome,
       avatar: normalizarAvatar(resultado.avatar),
       profissaoId: resultado.profissaoId,
+      versoes: resultado.versoes,
       data: resultado.data,
       escolhas: resultado.escolhas,
-      afinidade: calcularAfinidade(buscarProfissao(resultado.profissaoId), resultado.escolhas).afinidade
+      afinidade: calcularAfinidade(montarDia(buscarProfissao(resultado.profissaoId), resultado.versoes), resultado.escolhas).afinidade
     }));
 }
 
-// resultado = { id, nome, avatar, profissaoId, data, escolhas, afinidade }
+// resultado = { id, nome, avatar, profissaoId, versoes, data, escolhas, afinidade }
+// "versoes" diz qual versão de cada etapa foi jogada (resultados antigos não têm: contam como a primeira).
 function adicionarResultado(resultado) {
   const lista = lerDoNavegador(CHAVES.resultados, []);
   salvarNoNavegador(CHAVES.resultados, (Array.isArray(lista) ? lista : []).concat(resultado));
