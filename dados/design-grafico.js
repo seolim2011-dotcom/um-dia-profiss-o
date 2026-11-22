@@ -68,7 +68,7 @@ PROFISSOES.push({
           texto: "Peço que ela mande tudo por escrito e só começo depois.",
           reacao: "ih, escrever é difícil... vou enrolar uns dias 😅",
           resultado: "O projeto ficou parado por uma semana esperando o texto da cliente.",
-          pontos: { organizacao: 1 }
+          pontos: { organizacao: 1, logica: 1 }
         },
         {
           texto: "Faço perguntas, peço referências e monto um briefing escrito junto com ela.",
@@ -171,7 +171,7 @@ PROFISSOES.push({
           texto: "Agradeço, peço exemplos do que não funciona e refaço testando outras combinações de cor.",
           reacao: "olha só! assim sim. isso ficou muito melhor 🔥",
           resultado: "A nova versão tinha mais contraste e ficou clara. O diretor aprovou de primeira.",
-          pontos: { criatividade: 2, logica: 1, pessoas: 1 }
+          pontos: { criatividade: 2, pessoas: 1 }
         },
         {
           texto: "Refaço sem perguntar nada, mudando só a cor de fundo.",
@@ -231,13 +231,13 @@ PROFISSOES.push({
           texto: "Rabisco 10 ideias rápidas, escolho as 3 melhores e apresento rascunhos.",
           reacao: "olha só, tem ideia boa aqui! 😮",
           resultado: "Mesmo sem acabamento, os rascunhos agradaram o cliente, que escolheu uma das ideias para seguir.",
-          pontos: { criatividade: 2, pressao: 2, organizacao: 1 }
+          pontos: { criatividade: 2, pressao: 1, organizacao: 1 }
         },
         {
           texto: "Peço ajuda a um colega para brincarmos de ideias em dupla.",
           reacao: "bora! vamos juntar o que cada um tem 💡",
           resultado: "Vocês montaram duas ideias interessantes em 20 minutos.",
-          pontos: { pessoas: 1, criatividade: 1, pressao: 1 }
+          pontos: { pessoas: 1, criatividade: 1, pressao: 2 }
         }
       ]
     },
@@ -317,3 +317,277 @@ PROFISSOES.push({
     }
   ]
 });
+
+/* ---------- Segunda versão do dia (banco de versões) ----------
+   Cada item abaixo é outra versão da etapa de mesma posição no dia acima.
+   Os pontos das opções repetem os da versão original, para manter o equilíbrio. */
+
+adicionarVersoes("design-grafico", [
+  {
+    horario: "09:00",
+    titulo: "A marca da ONG",
+    cena: "🌱 🎨 💬",
+    descricao: "Uma ONG ambiental quer uma identidade visual nova, mas o pedido chegou vago.",
+    conversa: [
+      { quem: "Rafaela, coordenadora da ONG", avatar: "👩🏽‍🦱", fala: "a gente quer uma marca bonita 🌱" },
+      { quem: "Rafaela, coordenadora da ONG", avatar: "👩🏽‍🦱", fala: "algo que chame atenção... sei lá, você que é designer 😅" }
+    ],
+    naVidaReal: "Uma identidade visual precisa comunicar quem a organização é e para quem ela fala. Por isso o trabalho começa entendendo o público, os valores e as referências, e não pelo desenho.",
+    opcoes: [
+      {
+        texto: "Faço três propostas no meu estilo e mando para ela escolher.",
+        reacao: "lindas... mas nenhuma parece a gente 😕",
+        resultado: "As propostas eram bonitas, mas não conversavam com o público da ONG, e foi preciso recomeçar.",
+        pontos: { criatividade: 1 }
+      },
+      {
+        texto: "Mando um formulário longo de briefing para ela preencher antes de qualquer conversa.",
+        reacao: "nossa, 40 perguntas... vou ver quando der 😩",
+        resultado: "O formulário voltou depois de duas semanas, com metade das respostas em branco.",
+        pontos: { organizacao: 1, logica: 1 }
+      },
+      {
+        texto: "Marco uma conversa, entendo o público e os valores da ONG, peço referências e escrevo o briefing junto com ela.",
+        reacao: "a gente fala com jovens da periferia sobre lixo e reciclagem! 💡",
+        resultado: "Com o briefing claro, a primeira proposta foi aprovada quase sem ajustes.",
+        pontos: { pessoas: 1, organizacao: 2, criatividade: 1 }
+      },
+      {
+        texto: "Começo a desenhar sem perguntar para quem é a marca.",
+        reacao: "ficou muito sério pra gente, né? 🤔",
+        resultado: "Depois de várias versões, você teve que fazer as perguntas que tinha pulado.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "escolha",
+    horario: "10:15",
+    titulo: "Contraste de cores",
+    cena: "🎨 👁️ 🔤",
+    conversa: [
+      { quem: "Nando, diretor de arte", avatar: "👨🏻‍🎨", fala: "o texto do cartaz precisa ser lido por todo mundo, inclusive daltônicos 👁️" },
+      { quem: "Nando, diretor de arte", avatar: "👨🏻‍🎨", fala: "qual dessas combinações você usaria?" }
+    ],
+    pergunta: "Qual combinação de cores deixa o texto mais fácil de ler?",
+    alternativas: [
+      "Texto amarelo-claro sobre fundo branco",
+      "Texto azul-marinho sobre fundo branco",
+      "Texto vermelho sobre fundo verde",
+      "Texto cinza-claro sobre fundo cinza-médio"
+    ],
+    correta: 1,
+    explicacao: "Azul-marinho sobre branco tem muito contraste. Amarelo sobre branco e cinza sobre cinza têm pouco. Vermelho com verde é a combinação mais difícil para quem tem o tipo mais comum de daltonismo, que atinge cerca de 1 em cada 12 homens.",
+    traco: "criatividade"
+  },
+  {
+    horario: "11:30",
+    titulo: "Telefone errado no panfleto",
+    urgente: true,
+    cena: "🖨️ ☎️ 😱",
+    descricao: "A gráfica imprimiu 5 mil panfletos de um evento de amanhã, e o telefone na arte está errado.",
+    conversa: [
+      { quem: "Seu Roberto, cliente", avatar: "👨🏽‍🦲", fala: "o telefone do panfleto tá errado!! 😱" },
+      { quem: "Seu Roberto, cliente", avatar: "👨🏽‍🦲", fala: "o evento é amanhã. e agora??" }
+    ],
+    naVidaReal: "Erros em material impresso custam caro. Por isso designers fazem uma revisão final (a prova) com o cliente antes de mandar para a gráfica. Quando o erro acontece, assumir e resolver rápido mantém a confiança.",
+    opcoes: [
+      {
+        texto: "Digo que a culpa é dele, que aprovou a arte.",
+        reacao: "eu aprovei confiando em você! 😡",
+        resultado: "Talvez ele também tivesse culpa, mas o cliente não voltou a trabalhar com você.",
+        pontos: {}
+      },
+      {
+        texto: "Corrijo correndo e mando reimprimir tudo, sem conferir de novo.",
+        reacao: "chegou... mas agora o horário tá errado 😩",
+        resultado: "A pressa criou um segundo erro, e a gráfica precisou imprimir pela terceira vez.",
+        pontos: { pressao: 1 }
+      },
+      {
+        texto: "Mando fazer etiquetas com o telefone certo para colar nos panfletos, sem consultar o cliente.",
+        reacao: "etiqueta? ficou meio remendado, né... 😕",
+        resultado: "O problema foi contornado, mas o cliente não gostou de não ter sido consultado.",
+        pontos: { organizacao: 1 }
+      },
+      {
+        texto: "Assumo o erro, corrijo, confiro a arte com ele e combino com a gráfica uma reimpressão expressa.",
+        reacao: "tá certinho agora. obrigado por resolver tão rápido 🙏",
+        resultado: "Os panfletos novos chegaram à noite, a tempo do evento.",
+        pontos: { pressao: 2, pessoas: 1, organizacao: 1 }
+      }
+    ]
+  },
+  {
+    horario: "13:30",
+    titulo: "Ninguém acha o botão",
+    cena: "🖱️ 🔍 😕",
+    descricao: "No teste com usuários do site que você desenhou, ninguém encontrou o botão de comprar.",
+    conversa: [
+      { quem: "Nando, diretor de arte", avatar: "👨🏻‍🎨", fala: "assisti ao teste: 6 de 8 pessoas não acharam o botão de comprar 😬" },
+      { quem: "Nando, diretor de arte", avatar: "👨🏻‍🎨", fala: "o visual tá lindo, mas não tá funcionando" }
+    ],
+    naVidaReal: "Testes com usuários mostram como as pessoas realmente usam um design. Bom design não é só bonito: ele precisa ser fácil de entender e de usar.",
+    opcoes: [
+      {
+        texto: "Fico ofendido(a): o layout está bonito, o problema são os usuários.",
+        reacao: "6 de 8 pessoas, hein... 🤨",
+        resultado: "O site foi publicado assim, e as vendas foram abaixo do esperado.",
+        pontos: {}
+      },
+      {
+        texto: "Defendo o layout dizendo que as pessoas vão se acostumar.",
+        reacao: "e se elas forem embora antes de se acostumar? 🤔",
+        resultado: "Nada mudou, e o problema apareceu de novo depois do lançamento.",
+        pontos: { criatividade: 1 }
+      },
+      {
+        texto: "Assisto às gravações, converso com a equipe e redesenho o botão em duas versões para testar.",
+        reacao: "a versão B achou todo mundo! 🙌",
+        resultado: "O botão novo continuou bonito e passou a ser encontrado em segundos.",
+        pontos: { criatividade: 2, pessoas: 1 }
+      },
+      {
+        texto: "Aumento o tamanho do botão, sem entender o que confundiu as pessoas.",
+        reacao: "melhorou um pouquinho... 😐",
+        resultado: "Algumas pessoas acharam, mas o problema era o lugar do botão, e não o tamanho.",
+        pontos: { organizacao: 1 }
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "encontre-o-erro",
+    horario: "15:00",
+    titulo: "Arte para as redes",
+    cena: "📱 📐 🔍",
+    conversa: [
+      { quem: "Nando, diretor de arte", avatar: "👨🏻‍🎨", fala: "o arquivo do post vai subir pra rede social agora 📱" },
+      { quem: "Nando, diretor de arte", avatar: "👨🏻‍🎨", fala: "confere a ficha antes? tem uma configuração errada" }
+    ],
+    pergunta: "Toque na configuração errada para uma imagem que vai para a tela:",
+    linhas: [
+      "Tamanho: 1080 × 1080 pixels",
+      "Modo de cor: CMYK",
+      "Formato do arquivo: PNG",
+      "Texto principal com no máximo 7 palavras",
+      "Logo no canto inferior direito"
+    ],
+    correta: 1,
+    explicacao: "Para telas, o modo de cor certo é o RGB, que é o das luzes do monitor e do celular. O CMYK é o modo das tintas da gráfica e pode deixar as cores apagadas na tela. Cada destino pede uma configuração diferente.",
+    traco: "logica"
+  },
+  {
+    horario: "16:30",
+    titulo: "Post em 30 minutos",
+    urgente: true,
+    cena: "⏰ 📱 🔥",
+    descricao: "Um assunto do momento explodiu nas redes, e o cliente quer um post sobre isso em 30 minutos.",
+    conversa: [
+      { quem: "Mariana, redatora", avatar: "👩🏼", fala: "o assunto tá bombando e o cliente quer pegar a onda 🌊" },
+      { quem: "Mariana, redatora", avatar: "👩🏼", fala: "a gente tem 30 minutos pra arte e o texto. bora? 😅" }
+    ],
+    naVidaReal: "Agências trabalham com prazos muito curtos quando um assunto viraliza. Ter um guia da marca (cores, fontes, tom) e trabalhar em dupla com a redação ajuda a criar rápido sem perder a qualidade.",
+    opcoes: [
+      {
+        texto: "Digo que não dá tempo e não faço.",
+        reacao: "o concorrente postou em 20 minutos 😬",
+        resultado: "O cliente perdeu a onda e reclamou com a agência.",
+        pontos: {}
+      },
+      {
+        texto: "Pego um modelo pronto da internet e só troco o texto.",
+        reacao: "esse modelo é igual ao de outra marca, olha 😳",
+        resultado: "O post saiu, mas parecido demais com o de outra empresa.",
+        pontos: { organizacao: 1 }
+      },
+      {
+        texto: "Faço três rascunhos rápidos, escolho o melhor com a redatora e finalizo seguindo o guia da marca.",
+        reacao: "ficou com a cara do cliente e saiu em 25 minutos! 🚀",
+        resultado: "O post foi um dos mais compartilhados da semana.",
+        pontos: { criatividade: 2, pressao: 1, organizacao: 1 }
+      },
+      {
+        texto: "Chamo a redatora e criamos às pressas, sem revisar.",
+        reacao: "ficou divertido! ...mas tem um erro de português 🙈",
+        resultado: "O post fez sucesso, mas com um erro que virou piada nos comentários.",
+        pontos: { pessoas: 1, criatividade: 1, pressao: 2 }
+      }
+    ]
+  },
+  {
+    horario: "17:45",
+    titulo: "A foto do Google",
+    cena: "🖼️ ©️ ⚖️",
+    descricao: "O cliente encontrou uma foto linda no Google e quer usar no anúncio da loja.",
+    conversa: [
+      { quem: "Seu Roberto, cliente", avatar: "👨🏽‍🦲", fala: "achei essa foto no Google, é perfeita! 😍" },
+      { quem: "Seu Roberto, cliente", avatar: "👨🏽‍🦲", fala: "coloca no anúncio, ninguém vai saber de onde veio 😉" }
+    ],
+    naVidaReal: "Imagens na internet têm dono. Usar sem licença pode gerar processo por direitos autorais. Designers usam bancos de imagens licenciados, fotos próprias ou ilustrações criadas para o projeto.",
+    opcoes: [
+      {
+        texto: "Uso a foto: se está na internet, é de todo mundo.",
+        reacao: "ótimo! 😁",
+        resultado: "O fotógrafo encontrou o anúncio e cobrou uma indenização da loja.",
+        pontos: {}
+      },
+      {
+        texto: "Recuso, sem oferecer outra saída.",
+        reacao: "então como eu faço meu anúncio? 😒",
+        resultado: "O risco foi evitado, mas o cliente ficou sem solução.",
+        pontos: { organizacao: 1 }
+      },
+      {
+        texto: "Explico os direitos autorais e proponho uma imagem licenciada parecida ou uma ilustração própria.",
+        reacao: "uma ilustração com a cara da loja? adorei 🤩",
+        resultado: "O anúncio ficou único e sem nenhum risco legal.",
+        pontos: { criatividade: 2, pessoas: 1 }
+      },
+      {
+        texto: "Aviso o risco e deixo o cliente decidir sozinho.",
+        reacao: "ah, usa mesmo, vai 😅",
+        resultado: "Ele insistiu, e você acabou recusando o trabalho no fim.",
+        pontos: { pessoas: 1 }
+      }
+    ]
+  },
+  {
+    horario: "18:30",
+    titulo: "Entrega da marca",
+    cena: "📦 🗂️ 🌙",
+    descricao: "Hoje você entrega ao cliente os arquivos finais da marca nova.",
+    conversa: [
+      { quem: "Nando, diretor de arte", avatar: "👨🏻‍🎨", fala: "o cliente vai usar a marca em placa, site, camiseta e cartão 📦" },
+      { quem: "Nando, diretor de arte", avatar: "👨🏻‍🎨", fala: "manda tudo certinho pra ele não ter que pedir de novo" }
+    ],
+    naVidaReal: "Uma marca é usada em muitos lugares. Por isso a entrega costuma incluir o logo em vetor (que aumenta sem perder qualidade), versões para tela e impressão e um guia que explica como usar.",
+    opcoes: [
+      {
+        texto: "Mando só o logo em JPG pequeno.",
+        reacao: "a placa da loja ficou toda serrilhada 😩",
+        resultado: "O cliente teve que pedir os arquivos de novo, várias vezes.",
+        pontos: {}
+      },
+      {
+        texto: "Mando os arquivos com nomes engraçados, para dar personalidade.",
+        reacao: "\"logo_top_demais_final.png\"? kkkk mas qual é qual? 😅",
+        resultado: "O cliente riu, mas se perdeu entre os arquivos.",
+        pontos: { criatividade: 1 }
+      },
+      {
+        texto: "Entrego o logo em vetor e em PNG, as cores para tela e impressão e um guia de uso, em pastas organizadas.",
+        reacao: "nunca recebi nada tão organizado! 😮",
+        resultado: "A marca foi aplicada certinha em todos os materiais, sem nenhuma dúvida.",
+        pontos: { organizacao: 2, logica: 1 }
+      },
+      {
+        texto: "Mando tudo misturado para o cliente organizar.",
+        reacao: "e qual eu uso na camiseta? 🤷",
+        resultado: "O cliente usou o arquivo errado na camiseta, e as cores saíram diferentes.",
+        pontos: { pessoas: 1 }
+      }
+    ]
+  }
+]);

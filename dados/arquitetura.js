@@ -314,3 +314,272 @@ PROFISSOES.push({
     }
   ]
 });
+
+/* ---------- Segunda versão do dia (banco de versões) ----------
+   Cada item abaixo é outra versão da etapa de mesma posição no dia acima.
+   Os pontos das opções repetem os da versão original, para manter o equilíbrio. */
+
+adicionarVersoes("arquitetura", [
+  {
+    horario: "09:00",
+    titulo: "A casa da vó Zilda",
+    cena: "🏠 ♿ 👵",
+    descricao: "Uma família quer adaptar a casa para a avó, que passou a usar cadeira de rodas.",
+    conversa: [
+      { quem: "Renan, neto", avatar: "🧑🏽", fala: "minha vó começou a usar cadeira de rodas e a casa não ajuda nada 😟" },
+      { quem: "Vó Zilda", avatar: "👵🏼", fala: "eu só queria conseguir tomar banho sozinha de novo, sabe?" }
+    ],
+    naVidaReal: "Projetar para acessibilidade começa por observar como a pessoa vive. Portas mais largas, banheiros com barras de apoio e caminhos sem degraus devolvem autonomia a quem tem mobilidade reduzida.",
+    opcoes: [
+      {
+        texto: "Faço exatamente a lista que o neto mandou por mensagem.",
+        reacao: "tá tudo aqui o que eu pedi! 👍",
+        resultado: "A lista resolveu parte do problema, mas esqueceu o banheiro, que era o mais importante para a avó.",
+        pontos: { pessoas: 1 }
+      },
+      {
+        texto: "Proponho uma reforma moderna, do meu gosto.",
+        reacao: "bonita... mas a vó consegue usar? 🤔",
+        resultado: "O projeto ficou elegante, mas não resolvia o dia a dia da avó.",
+        pontos: { criatividade: 1 }
+      },
+      {
+        texto: "Visito a casa, observo a rotina da avó e proponho banheiro acessível, portas largas e rampa, explicando cada escolha.",
+        reacao: "barra no box e banco pra sentar? vou tomar banho sozinha! 🥹",
+        resultado: "A reforma devolveu à avó a autonomia que ela queria.",
+        pontos: { pessoas: 2, criatividade: 2, logica: 1 }
+      },
+      {
+        texto: "Mando um orçamento padrão, sem visitar a casa.",
+        reacao: "mas você nem viu a casa... 😕",
+        resultado: "O orçamento não servia para a casa real e teve que ser refeito.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "escolha",
+    horario: "10:30",
+    titulo: "Área do apartamento",
+    cena: "📐 🏢 🧮",
+    conversa: [
+      { quem: "Rafa, estagiário", avatar: "🧑🏻‍🎓", fala: "o cliente quer saber a área total 📐" },
+      { quem: "Rafa, estagiário", avatar: "🧑🏻‍🎓", fala: "sala 4 × 5 m, quarto 3 × 3 m e banheiro 2 × 1,5 m. quanto dá?" }
+    ],
+    pergunta: "Qual é a área total dos três cômodos?",
+    alternativas: ["26 m²", "29 m²", "32 m²", "35 m²"],
+    correta: 2,
+    explicacao: "Sala: 4 × 5 = 20 m². Quarto: 3 × 3 = 9 m². Banheiro: 2 × 1,5 = 3 m². Total: 32 m². O cálculo de áreas aparece em orçamentos, aprovação na prefeitura e na compra de materiais.",
+    traco: "logica"
+  },
+  {
+    horario: "11:30",
+    titulo: "A janela proibida",
+    cena: "🪟 🏘️ ⚖️",
+    descricao: "O cliente quer uma janela grande na parede que fica quase colada no terreno do vizinho.",
+    conversa: [
+      { quem: "Seu Jair, cliente", avatar: "👨🏾", fala: "quero uma janela enorme nessa parede, pra entrar luz ☀️" },
+      { quem: "Seu Jair, cliente", avatar: "👨🏾", fala: "mas ela fica a meio metro da casa do vizinho. tem problema?" }
+    ],
+    naVidaReal: "O Código Civil proíbe abrir janelas a menos de 1,5 metro do terreno vizinho, para proteger a privacidade. Arquitetos conhecem essas regras e encontram outras formas de levar luz para dentro de casa.",
+    opcoes: [
+      {
+        texto: "Coloco a janela: o cliente quer.",
+        reacao: "ótimo! 😁",
+        resultado: "O vizinho entrou na Justiça, e a janela teve que ser fechada.",
+        pontos: { pessoas: 1 }
+      },
+      {
+        texto: "Digo que não pode e encerro o assunto.",
+        reacao: "e a minha luz? 😕",
+        resultado: "A regra foi respeitada, mas o cômodo continuou escuro.",
+        pontos: {}
+      },
+      {
+        texto: "Desenho a janela mesmo assim, só que menor.",
+        reacao: "menor pode? 🤔",
+        resultado: "Mesmo menor, a janela continuava fora da regra.",
+        pontos: { criatividade: 1 }
+      },
+      {
+        texto: "Explico a regra e proponho alternativas, como uma claraboia ou uma janela voltada para o quintal, com os custos.",
+        reacao: "luz pelo teto? nem tinha pensado nisso! 😮",
+        resultado: "A claraboia deixou o cômodo claro, sem nenhum problema com o vizinho.",
+        pontos: { logica: 2, organizacao: 1, criatividade: 1 }
+      }
+    ]
+  },
+  {
+    horario: "13:30",
+    titulo: "O piso errado",
+    urgente: true,
+    cena: "🧱 📞 ⏰",
+    descricao: "O mestre de obras manda uma foto: a equipe está assentando um piso diferente do escolhido pelo cliente.",
+    conversa: [
+      { quem: "Seu Benedito, mestre de obras", avatar: "👷🏿‍♂️", fala: "chefe, chegou esse piso aqui e a gente já assentou a cozinha" },
+      { quem: "Seu Benedito, mestre de obras", avatar: "👷🏿‍♂️", fala: "é esse mesmo? a turma vai fazer a sala agora à tarde 🧱" }
+    ],
+    naVidaReal: "Conferir na obra se o que está sendo feito bate com o projeto é parte do trabalho de quem faz arquitetura. Um erro percebido cedo custa muito menos do que um erro descoberto no fim.",
+    opcoes: [
+      {
+        texto: "Vou até a obra, paro o assentamento, confiro o pedido e combino a troca antes de colocar o resto.",
+        reacao: "beleza, a turma adianta a pintura enquanto o piso certo chega 👷",
+        resultado: "Só a cozinha precisou ser refeita, e o fornecedor assumiu o custo do erro de entrega.",
+        pontos: { pressao: 2, organizacao: 1, logica: 1 }
+      },
+      {
+        texto: "Deixo assim: é parecido, ninguém vai reparar.",
+        reacao: "beleza, bora continuar 👍",
+        resultado: "O cliente reparou na entrega, e o apartamento inteiro teve que ser refeito.",
+        pontos: {}
+      },
+      {
+        texto: "Brigo com a equipe pelo telefone.",
+        reacao: "a gente só assentou o que chegou... 😔",
+        resultado: "A obra parou, mas ninguém resolveu a troca do material.",
+        pontos: { pressao: 1 }
+      },
+      {
+        texto: "Peço mais fotos e vejo isso amanhã.",
+        reacao: "amanhã a sala já vai estar pronta, hein 😬",
+        resultado: "Quando você viu, a sala também estava com o piso errado.",
+        pontos: { organizacao: 1 }
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "encontre-o-erro",
+    horario: "15:00",
+    titulo: "Banheiro acessível",
+    cena: "🚻 ♿ 🔍",
+    conversa: [
+      { quem: "Marta, arquiteta sócia", avatar: "👩🏼‍💼", fala: "revisa o banheiro acessível da vó Zilda antes da obra? 🚻" },
+      { quem: "Marta, arquiteta sócia", avatar: "👩🏼‍💼", fala: "tem um item que não funciona pra quem usa cadeira de rodas" }
+    ],
+    pergunta: "Toque no item que não funciona para quem usa cadeira de rodas:",
+    linhas: [
+      "Porta com 90 cm de largura, abrindo para fora",
+      "Barras de apoio ao lado e atrás do vaso sanitário",
+      "Degrau de 15 cm para entrar no box do chuveiro",
+      "Piso antiderrapante",
+      "Espaço livre para a cadeira girar dentro do banheiro"
+    ],
+    correta: 2,
+    explicacao: "Um degrau impede a entrada da cadeira de rodas no box. Pela norma de acessibilidade (ABNT NBR 9050), o box precisa ter o piso no mesmo nível, com um banco para o banho e barras de apoio.",
+    traco: "logica"
+  },
+  {
+    horario: "16:00",
+    titulo: "O pátio da escola",
+    cena: "🏫 🌳 ⚽",
+    descricao: "Você vai redesenhar o pátio de uma escola pública. Alunos, professores e funcionários querem coisas diferentes.",
+    conversa: [
+      { quem: "Prof.ª Neusa, diretora", avatar: "👩🏽‍🏫", fala: "o pátio é só concreto e sol, as crianças brigam o recreio todo 😓" },
+      { quem: "Kauã, aluno", avatar: "👦🏾", fala: "a gente quer um campinho! e uma árvore pra ficar na sombra 🌳" }
+    ],
+    naVidaReal: "Projetos participativos ouvem quem vai usar o espaço. Em escolas, observar o recreio e conversar com alunos e professores revela necessidades que não aparecem numa planta.",
+    opcoes: [
+      {
+        texto: "Desenho um pátio premiado, sem conversar com a escola.",
+        reacao: "bonito, mas cadê o campinho? 🤨",
+        resultado: "O projeto ganhou elogios, mas as brigas no recreio continuaram.",
+        pontos: { criatividade: 1, logica: 1 }
+      },
+      {
+        texto: "Faço oficinas com alunos e professores, observo o recreio e proponho áreas para correr, brincar, ler e uma horta, com sombra.",
+        reacao: "campinho, árvore E horta? 😍",
+        resultado: "O pátio novo diminuiu as brigas, e os alunos cuidam da horta até hoje.",
+        pontos: { pessoas: 2, criatividade: 2, organizacao: 1, logica: 1 }
+      },
+      {
+        texto: "Faço só o que a diretora pediu.",
+        reacao: "e a gente não foi ouvido? 😕",
+        resultado: "O pátio melhorou, mas os alunos não se sentiram parte do projeto.",
+        pontos: { pessoas: 1 }
+      },
+      {
+        texto: "Repito o projeto de outra escola para ganhar tempo.",
+        reacao: "essa escola nem tem o mesmo tamanho... 🤔",
+        resultado: "O projeto não coube direito no terreno e teve que ser adaptado às pressas.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    horario: "17:00",
+    titulo: "Concurso fechando",
+    urgente: true,
+    cena: "🏆 📎 ⏳",
+    descricao: "O escritório vai enviar um projeto para um concurso que fecha às 18h. O arquivo está maior do que o site aceita.",
+    conversa: [
+      { quem: "Rafa, estagiário", avatar: "🧑🏻‍🎓", fala: "o site só aceita até 20 MB e nosso PDF tem 85 😱" },
+      { quem: "Rafa, estagiário", avatar: "🧑🏻‍🎓", fala: "e ainda falta a legenda da prancha 2!" }
+    ],
+    naVidaReal: "Concursos de arquitetura são uma forma importante de conseguir projetos, inclusive públicos. Têm regras e prazos rígidos: um arquivo fora do padrão pode desclassificar um projeto inteiro.",
+    opcoes: [
+      {
+        texto: "Divido: o Rafa reduz o tamanho do PDF e eu termino a prancha. Enviamos com folga e conferimos o recibo.",
+        reacao: "enviado às 17h40! recibo salvo ✅",
+        resultado: "O projeto entrou no concurso dentro das regras.",
+        pontos: { pressao: 2, organizacao: 2 }
+      },
+      {
+        texto: "Envio sem a prancha 2, que estava incompleta.",
+        reacao: "mas a prancha 2 era obrigatória... 😬",
+        resultado: "O projeto foi desclassificado por falta de material.",
+        pontos: { pressao: 1 }
+      },
+      {
+        texto: "Mando um e-mail pedindo mais prazo e paro tudo até responderem.",
+        reacao: "a organização não respondeu 😕",
+        resultado: "O prazo passou, e o escritório ficou fora do concurso.",
+        pontos: { organizacao: 1 }
+      },
+      {
+        texto: "Desisto: não vai dar tempo.",
+        reacao: "ainda falta uma hora! 😳",
+        resultado: "Semanas de trabalho ficaram fora do concurso.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    horario: "18:30",
+    titulo: "Mudou de ideia",
+    cena: "🔄 🏠 💬",
+    descricao: "Depois de aprovar o projeto, a cliente liga dizendo que quer mudar quase tudo.",
+    conversa: [
+      { quem: "Dona Teresa, cliente", avatar: "👩🏽", fala: "vi uns vídeos na internet e mudei de ideia 😅" },
+      { quem: "Dona Teresa, cliente", avatar: "👩🏽", fala: "quero tudo mais escuro, mais moderno... dá pra mudar?" }
+    ],
+    naVidaReal: "Clientes mudam de ideia, e o arquiteto ajuda a separar o que é desejo passageiro do que é necessidade real, mostrando o impacto de cada mudança no prazo e no custo.",
+    opcoes: [
+      {
+        texto: "Digo que agora não dá mais para mudar nada.",
+        reacao: "mas a obra nem começou... 😕",
+        resultado: "A cliente ficou insatisfeita e passou a desconfiar do escritório.",
+        pontos: {}
+      },
+      {
+        texto: "Passo a noite refazendo o projeto inteiro.",
+        reacao: "nossa, já? 😳 mas não era bem isso...",
+        resultado: "Você ficou exausto(a), e o projeto novo também não era o que ela queria.",
+        pontos: { criatividade: 1, pressao: 2 }
+      },
+      {
+        texto: "Pergunto o que a incomodou, mostro opções com imagens e explico o impacto de cada mudança no prazo e no custo.",
+        reacao: "ah, era só a cor da cozinha e da sala! o resto eu adoro 😅",
+        resultado: "Duas mudanças pequenas resolveram, sem atrasar a obra.",
+        pontos: { criatividade: 2, pessoas: 1, organizacao: 1 }
+      },
+      {
+        texto: "Mando o contrato mostrando o limite de revisões incluídas.",
+        reacao: "ah, então é assim que funciona... 😒",
+        resultado: "A regra ficou clara, mas a conversa esfriou a relação com a cliente.",
+        pontos: { logica: 1, organizacao: 2 }
+      }
+    ]
+  }
+]);

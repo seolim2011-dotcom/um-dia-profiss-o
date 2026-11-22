@@ -314,3 +314,272 @@ PROFISSOES.push({
     }
   ]
 });
+
+/* ---------- Segunda versão do dia (banco de versões) ----------
+   Cada item abaixo é outra versão da etapa de mesma posição no dia acima.
+   Os pontos das opções repetem os da versão original, para manter o equilíbrio. */
+
+adicionarVersoes("gastronomia", [
+  {
+    horario: "07:30",
+    titulo: "Chegou a mercadoria",
+    cena: "📦 🥩 🧊",
+    descricao: "O fornecedor deixou 200 quilos de mercadoria na porta da cozinha: carnes, laticínios, verduras e secos.",
+    conversa: [
+      { quem: "Chef Rodrigo", avatar: "👨🏽‍🍳", fala: "chegou a entrega da semana 📦" },
+      { quem: "Chef Rodrigo", avatar: "👨🏽‍🍳", fala: "confere e guarda tudo, que o calor tá forte hoje ☀️" }
+    ],
+    naVidaReal: "Receber mercadoria é uma tarefa de segurança alimentar: conferir temperatura, validade e peso, e guardar primeiro o que é perecível. Na organização do estoque vale a regra \"primeiro que vence, primeiro que sai\".",
+    opcoes: [
+      {
+        texto: "Confiro peso e validade, guardo primeiro carnes e laticínios e coloco na frente o que vence antes.",
+        reacao: "isso! carne fora da geladeira com esse calor é perigo 👌",
+        resultado: "Tudo foi guardado em 30 minutos, e nada estragou na semana.",
+        pontos: { organizacao: 2, pressao: 1 }
+      },
+      {
+        texto: "Já começo a testar uma receita nova com os ingredientes que chegaram.",
+        reacao: "e as carnes no sol?? 😱",
+        resultado: "A receita ficou boa, mas parte do queijo e da carne esquentou demais e precisou ir para o lixo.",
+        pontos: { criatividade: 1 }
+      },
+      {
+        texto: "Monto uma planilha de custo por grama antes de guardar qualquer coisa.",
+        reacao: "a planilha pode esperar, a carne não 😬",
+        resultado: "A planilha ficou ótima, mas as carnes passaram uma hora fora da refrigeração.",
+        pontos: { logica: 2 }
+      },
+      {
+        texto: "Deixo as caixas no chão para guardar depois.",
+        reacao: "caixa no chão da cozinha?? 😤",
+        resultado: "Os produtos esquentaram, e a cozinha ficou desorganizada para o almoço.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "escolha",
+    horario: "09:30",
+    titulo: "Preço do prato",
+    cena: "🍝 💰 🧮",
+    conversa: [
+      { quem: "Lúcia, subchefe", avatar: "👩🏿‍🍳", fala: "os ingredientes do nosso risoto custam 12 reais 💰" },
+      { quem: "Lúcia, subchefe", avatar: "👩🏿‍🍳", fala: "a gente quer que o custo seja 30% do preço. por quanto vende?" }
+    ],
+    pergunta: "Se o custo dos ingredientes (R$ 12) deve ser 30% do preço de venda, qual é o preço?",
+    alternativas: ["R$ 15,60", "R$ 36,00", "R$ 40,00", "R$ 48,00"],
+    correta: 2,
+    explicacao: "Se 30% do preço são R$ 12, o preço inteiro é 12 ÷ 0,30 = R$ 40. Os outros 70% pagam salários, aluguel, gás, impostos e o lucro. Calcular o custo de cada prato é parte do trabalho de quem cozinha profissionalmente.",
+    traco: "logica"
+  },
+  {
+    horario: "10:30",
+    titulo: "O forno quebrou",
+    cena: "🔥 🚫 🍗",
+    descricao: "O forno combinado parou de funcionar, e metade do cardápio do almoço depende dele.",
+    conversa: [
+      { quem: "Chef Rodrigo", avatar: "👨🏽‍🍳", fala: "o forno morreu 😩 e o frango assado é o prato do dia!" },
+      { quem: "Chef Rodrigo", avatar: "👨🏽‍🍳", fala: "o técnico só vem à tarde. pensa rápido!" }
+    ],
+    naVidaReal: "Equipamentos quebram, e a cozinha não pode parar. Cozinheiros experientes adaptam técnicas e cardápios com o que está funcionando, sem colocar em risco a segurança de ninguém.",
+    opcoes: [
+      {
+        texto: "Adapto o cardápio para fogão e chapa, como um frango de panela com legumes no lugar do assado.",
+        reacao: "frango de panela? ficou com gosto de comida de vó 😍",
+        resultado: "O prato adaptado esgotou antes das 13h.",
+        pontos: { criatividade: 2, pressao: 1 }
+      },
+      {
+        texto: "Tiro metade do cardápio sem avisar o salão.",
+        reacao: "os garçons tão oferecendo frango assado! 😬",
+        resultado: "Os garçons ofereceram pratos que não existiam, e vários clientes ficaram irritados.",
+        pontos: {}
+      },
+      {
+        texto: "Tento consertar o forno sozinho(a), mexendo na parte do gás.",
+        reacao: "NÃO mexe no gás!! 😱",
+        resultado: "Você não consertou nada e ainda correu um risco sério.",
+        pontos: { pressao: 1 }
+      },
+      {
+        texto: "Ligo para a assistência técnica e espero o técnico chegar.",
+        reacao: "e o almoço enquanto isso? 😕",
+        resultado: "O técnico chegou às 15h, e o almoço saiu com metade dos pratos.",
+        pontos: { organizacao: 1 }
+      }
+    ]
+  },
+  {
+    horario: "12:15",
+    titulo: "Corte no meio do pico",
+    urgente: true,
+    cena: "🔪 🩸 🧾",
+    descricao: "No meio do almoço lotado, um cozinheiro corta o dedo feio na sua bancada.",
+    conversa: [
+      { quem: "Téo, cozinheiro", avatar: "🧑🏻", fala: "ai!! me cortei 😣" },
+      { quem: "Téo, cozinheiro", avatar: "🧑🏻", fala: "tá sangrando bastante... e tem 8 comandas na minha estação" }
+    ],
+    naVidaReal: "Acidentes com facas e queimaduras são comuns em cozinhas. Além de cuidar de quem se machucou, é preciso descartar alimentos que tiveram contato com sangue e reorganizar a equipe para o serviço continuar.",
+    opcoes: [
+      {
+        texto: "Continuo montando os pratos: o salão está lotado.",
+        reacao: "e eu? 😣",
+        resultado: "O Téo ficou sem ajuda, e um prato da bancada contaminada quase saiu para o salão.",
+        pontos: {}
+      },
+      {
+        texto: "Enrolo o dedo dele num pano e mando voltar para a bancada.",
+        reacao: "tá... mas continua sangrando 😓",
+        resultado: "O corte abriu de novo, e ele precisou ir ao pronto-socorro depois.",
+        pontos: { pressao: 1 }
+      },
+      {
+        texto: "Levo ele para lavar e proteger o corte, chamo alguém para a estação dele, descarto o que foi contaminado e reorganizo os pedidos.",
+        reacao: "SIM, CHEF! eu assumo a estação do Téo 💪",
+        resultado: "O Téo foi bem cuidado, nada contaminado saiu da cozinha e o serviço atrasou só cinco minutos.",
+        pontos: { pressao: 2, organizacao: 1, pessoas: 1 }
+      },
+      {
+        texto: "Paro para calcular quantos pratos vão atrasar.",
+        reacao: "não é hora de conta!! 😵",
+        resultado: "Enquanto você calculava, ninguém cuidou do Téo nem da estação dele.",
+        pontos: { logica: 1 }
+      }
+    ]
+  },
+  {
+    horario: "14:00",
+    titulo: "Sem glúten de verdade",
+    cena: "🌾 ⚠️ 🍽️",
+    descricao: "Uma cliente com doença celíaca pergunta se pode comer o nhoque da casa.",
+    conversa: [
+      { quem: "Téo, garçom", avatar: "🧑🏻", fala: "a moça da mesa 9 tem doença celíaca 🌾" },
+      { quem: "Téo, garçom", avatar: "🧑🏻", fala: "ela disse que até farinha na tábua faz ela passar mal. dá pra fazer?" }
+    ],
+    naVidaReal: "Para quem tem doença celíaca, até traços de glúten, como farinha em uma tábua ou numa panela, podem fazer mal. Cozinhas sérias separam utensílios e superfícies e conferem os rótulos de cada ingrediente.",
+    opcoes: [
+      {
+        texto: "Faço o nhoque normal, mas com menos farinha.",
+        reacao: "menos farinha ainda é farinha... 😨",
+        resultado: "A cliente passou mal à noite e escreveu uma avaliação negativa.",
+        pontos: {}
+      },
+      {
+        texto: "Preparo uma versão sem glúten, com utensílios e superfícies limpos, confiro os rótulos e aviso o garçom.",
+        reacao: "ela disse que nunca comeu um nhoque tão bom sem medo 🥹",
+        resultado: "A cliente virou frequentadora e indicou o restaurante para outros celíacos.",
+        pontos: { organizacao: 2, pessoas: 1, criatividade: 1 }
+      },
+      {
+        texto: "Peço para o garçom dizer que a cozinha não garante nada sem glúten.",
+        reacao: "ela pediu só uma salada 😕",
+        resultado: "Não houve risco, mas a cliente saiu frustrada.",
+        pontos: { organizacao: 1 }
+      },
+      {
+        texto: "Invento uma farinha alternativa na hora, sem conferir os rótulos.",
+        reacao: "ficou gostoso! mas essa farinha tinha o quê? 🤔",
+        resultado: "Por sorte não tinha glúten, mas ninguém tinha certeza disso.",
+        pontos: { criatividade: 1 }
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "encontre-o-erro",
+    horario: "15:30",
+    titulo: "Temperaturas da cozinha",
+    cena: "🌡️ 🍲 🔍",
+    conversa: [
+      { quem: "Lúcia, subchefe", avatar: "👩🏿‍🍳", fala: "anotei as temperaturas da cozinha 🌡️" },
+      { quem: "Lúcia, subchefe", avatar: "👩🏿‍🍳", fala: "uma delas tá na zona de perigo. qual?" }
+    ],
+    pergunta: "Toque na temperatura que está errada:",
+    linhas: [
+      "Geladeira de carnes: 3 °C",
+      "Freezer: -18 °C",
+      "Molho quente no balcão de servir: 30 °C",
+      "Salada no balcão refrigerado: 5 °C",
+      "Óleo da fritadeira: 180 °C"
+    ],
+    correta: 2,
+    explicacao: "Entre cerca de 5 °C e 60 °C fica a \"zona de perigo\", em que as bactérias se multiplicam rápido. Comida quente servida no balcão precisa ficar acima de 60 °C; a 30 °C, o molho pode fazer mal a quem comer.",
+    traco: "organizacao"
+  },
+  {
+    horario: "16:30",
+    titulo: "Prato executivo barato",
+    cena: "💡 🥕 💰",
+    descricao: "O restaurante quer lançar um prato executivo de 25 reais, que dê lucro e seja gostoso.",
+    conversa: [
+      { quem: "Chef Rodrigo", avatar: "👨🏽‍🍳", fala: "a concorrência tá com executivo a 25 reais 😬" },
+      { quem: "Chef Rodrigo", avatar: "👨🏽‍🍳", fala: "quero um nosso, gostoso e que dê lucro. topa criar?" }
+    ],
+    naVidaReal: "Criar pratos com preço baixo exige técnica: ingredientes da estação, aproveitamento integral (talos, cascas e sobras bem conservadas) e uma ficha técnica com o custo exato de cada porção.",
+    opcoes: [
+      {
+        texto: "Copio o prato executivo do restaurante vizinho.",
+        reacao: "esse eu já comi ali do lado 🤨",
+        resultado: "O prato vendeu pouco, porque não tinha nada de diferente.",
+        pontos: { logica: 1 }
+      },
+      {
+        texto: "Uso ingredientes da estação e aproveitamento integral, testo três versões e calculo a ficha técnica.",
+        reacao: "arroz de talos com frango e farofa de casca? e custa 8 reais? 🤩",
+        resultado: "O executivo virou o prato mais vendido do almoço.",
+        pontos: { criatividade: 2, organizacao: 1, logica: 1 }
+      },
+      {
+        texto: "Crio um prato sofisticado, mesmo que o custo passe do preço.",
+        reacao: "lindo... mas a gente perde dinheiro em cada prato 💸",
+        resultado: "O prato era delicioso, mas não podia ser vendido por 25 reais.",
+        pontos: { criatividade: 1 }
+      },
+      {
+        texto: "Digo que não dá para fazer algo barato e gostoso.",
+        reacao: "poxa, eu contava com você 😕",
+        resultado: "Outra pessoa da equipe criou o prato.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    horario: "19:00",
+    titulo: "Cheiro de gás",
+    urgente: true,
+    cena: "💨 🔥 ⚠️",
+    descricao: "No começo do jantar, um cheiro forte de gás toma conta da cozinha.",
+    conversa: [
+      { quem: "Lúcia, subchefe", avatar: "👩🏿‍🍳", fala: "tá sentindo esse cheiro?? 😨" },
+      { quem: "Téo, cozinheiro", avatar: "🧑🏻", fala: "é gás! tá forte perto do fogão!" }
+    ],
+    naVidaReal: "Com cheiro de gás, o certo é fechar o registro, abrir portas e janelas, não acender nem apagar luzes ou aparelhos elétricos (uma faísca pode causar explosão) e tirar as pessoas do local antes de chamar os bombeiros ou a companhia de gás.",
+    opcoes: [
+      {
+        texto: "Fecho o registro do gás, abro as janelas, não mexo em nada elétrico e tiro todos da cozinha.",
+        reacao: "todo mundo fora! já liguei pros bombeiros 📞",
+        resultado: "Uma mangueira estava rachada. Sem faíscas, ninguém se machucou.",
+        pontos: { pressao: 2, logica: 1 }
+      },
+      {
+        texto: "Procuro o vazamento com um isqueiro aceso.",
+        reacao: "NÃÃÃO!! 😱",
+        resultado: "Por sorte o gás ainda estava fraco, mas você quase causou uma explosão.",
+        pontos: { pressao: 1 }
+      },
+      {
+        texto: "Continuo cozinhando: deve ser impressão.",
+        reacao: "não é impressão!! 😰",
+        resultado: "O cheiro aumentou, e a equipe teve que sair às pressas.",
+        pontos: {}
+      },
+      {
+        texto: "Aviso o pessoal e espero alguém resolver.",
+        reacao: "alguém quem?? 😬",
+        resultado: "Minutos se passaram até alguém fechar o registro do gás.",
+        pontos: { pessoas: 1 }
+      }
+    ]
+  }
+]);
