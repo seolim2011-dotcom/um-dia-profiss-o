@@ -326,3 +326,272 @@ PROFISSOES.push({
     }
   ]
 });
+
+/* ---------- Segunda versão do dia (banco de versões) ----------
+   Cada item abaixo é outra versão da etapa de mesma posição no dia acima.
+   Os pontos das opções repetem os da versão original, para manter o equilíbrio. */
+
+adicionarVersoes("contabilidade", [
+  {
+    horario: "08:30",
+    titulo: "Sair da informalidade",
+    cena: "💅 📄 🏪",
+    descricao: "Uma manicure que trabalha em casa quer abrir uma empresa para emitir nota fiscal e contribuir para a aposentadoria.",
+    conversa: [
+      { quem: "Kelly, manicure", avatar: "👩🏽‍🦱", fala: "uma cliente pediu nota fiscal e eu nem tenho CNPJ 😅" },
+      { quem: "Kelly, manicure", avatar: "👩🏽‍🦱", fala: "e eu queria me aposentar um dia, né? por onde eu começo?" }
+    ],
+    naVidaReal: "O MEI (Microempreendedor Individual) permite que pequenos trabalhadores tenham CNPJ, emitam nota fiscal e contribuam para a Previdência pagando um valor fixo por mês. O contador ajuda a ver se a atividade se encaixa e a manter tudo em dia.",
+    opcoes: [
+      {
+        texto: "Confiro se a atividade dela se encaixa no MEI, faço o cadastro e organizo com ela o pagamento mensal do imposto.",
+        reacao: "já tenho CNPJ?? e só pago isso por mês? 😍",
+        resultado: "Em uma manhã, a Kelly virou empresária, com nota fiscal e contribuição para a aposentadoria.",
+        pontos: { organizacao: 2, logica: 1 }
+      },
+      {
+        texto: "Digo que ela pode continuar informal, porque \"ninguém fiscaliza\".",
+        reacao: "ah, então tá... mas e a aposentadoria? 🤔",
+        resultado: "Ela continuou sem nota e sem contribuir para a Previdência.",
+        pontos: { criatividade: 1 }
+      },
+      {
+        texto: "Passo a manhã ouvindo a história dela, sem chegar ao cadastro.",
+        reacao: "adorei conversar! volto semana que vem pra fazer o resto 😊",
+        resultado: "Ela gostou do atendimento, mas o cadastro ficou para depois.",
+        pontos: { pessoas: 2 }
+      },
+      {
+        texto: "Digo que é complicado e marco para outro dia.",
+        reacao: "complicado? 😟",
+        resultado: "Ela ficou insegura e adiou a decisão por meses.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "escolha",
+    horario: "10:00",
+    titulo: "Teve lucro?",
+    cena: "💰 📊 🧮",
+    conversa: [
+      { quem: "Márcia, contadora-chefe", avatar: "👩🏾‍💼", fala: "a loja do Seu Rogério vendeu 50 mil no mês 💰" },
+      { quem: "Márcia, contadora-chefe", avatar: "👩🏾‍💼", fala: "gastou 32 mil com mercadoria e 12 mil com aluguel e salários. sobrou quanto?" }
+    ],
+    pergunta: "Vendas de R$ 50.000, custo das mercadorias de R$ 32.000 e despesas de R$ 12.000. Qual foi o lucro?",
+    alternativas: ["R$ 6.000", "R$ 18.000", "R$ 38.000", "R$ 94.000"],
+    correta: 0,
+    explicacao: "Lucro = vendas − custos − despesas: 50.000 − 32.000 − 12.000 = R$ 6.000. Muitos donos de negócio olham só quanto venderam e se assustam quando sobra pouco. O contador mostra para onde o dinheiro foi.",
+    traco: "logica"
+  },
+  {
+    horario: "11:00",
+    titulo: "Salário até o 5º dia útil",
+    urgente: true,
+    cena: "💵 📅 ⏰",
+    descricao: "Hoje é o último dia para pagar os salários dos funcionários de um cliente, e ele ainda não mandou as horas trabalhadas.",
+    conversa: [
+      { quem: "Seu Hélio, dono de oficina", avatar: "👨🏻‍🔧", fala: "opa, esqueci de mandar o ponto da turma 😬" },
+      { quem: "Seu Hélio, dono de oficina", avatar: "👨🏻‍🔧", fala: "o pessoal recebe hoje, né? dá pra fazer?" }
+    ],
+    naVidaReal: "Pela CLT, o salário mensal deve ser pago até o 5º dia útil do mês seguinte. Atrasar gera multa e problemas com os funcionários. O contador calcula a folha com horas extras, faltas e descontos.",
+    opcoes: [
+      {
+        texto: "Peço o ponto por foto, calculo a folha, confiro os descontos e mando os holerites hoje.",
+        reacao: "chegou! já tô fazendo os depósitos 🙌",
+        resultado: "Todos receberam em dia e com as horas extras certas.",
+        pontos: { pressao: 2, logica: 1, organizacao: 1 }
+      },
+      {
+        texto: "Deixo atrasar o pagamento e resolvo semana que vem.",
+        reacao: "a turma vai reclamar, hein 😕",
+        resultado: "Os funcionários receberam atrasado, e a oficina teve que pagar multa.",
+        pontos: {}
+      },
+      {
+        texto: "Repito a folha do mês passado, sem olhar as horas.",
+        reacao: "beleza, paguei 👍",
+        resultado: "As horas extras do mês ficaram de fora, e dois funcionários reclamaram.",
+        pontos: { pressao: 1, criatividade: 1 }
+      },
+      {
+        texto: "Mando um e-mail lembrando do prazo e espero ele responder.",
+        reacao: "(o Seu Hélio só viu o e-mail à noite 📭)",
+        resultado: "A folha saiu um dia atrasada.",
+        pontos: { organizacao: 1 }
+      }
+    ]
+  },
+  {
+    horario: "13:30",
+    titulo: "Funcionário sem registro",
+    cena: "📒 🚫 ⚖️",
+    descricao: "Um cliente quer contratar um funcionário sem carteira assinada, para economizar.",
+    conversa: [
+      { quem: "Seu Rogério, dono de loja", avatar: "👨🏽‍💼", fala: "vou contratar um vendedor, mas sem carteira, tá? 🤫" },
+      { quem: "Seu Rogério, dono de loja", avatar: "👨🏽‍💼", fala: "registrar sai muito caro. todo mundo faz assim" }
+    ],
+    naVidaReal: "Trabalhar sem registro tira do trabalhador direitos como FGTS, férias e aposentadoria, e expõe a empresa a multas e processos trabalhistas, que costumam custar muito mais do que o registro.",
+    opcoes: [
+      {
+        texto: "Ajudo a pagar o funcionário \"por fora\", sem registro.",
+        reacao: "isso! 😎",
+        resultado: "Um ano depois, o funcionário entrou na Justiça, e a loja pagou tudo com juros.",
+        pontos: { criatividade: 1 }
+      },
+      {
+        texto: "Explico os riscos, calculo o custo real de registrar e mostro formas legais de reduzir custos.",
+        reacao: "pensando assim, o processo sairia bem mais caro... vamos registrar 🤔",
+        resultado: "O vendedor foi registrado, e a loja ajustou outros custos para caber no orçamento.",
+        pontos: { logica: 2, organizacao: 1, pessoas: 1, criatividade: 1 }
+      },
+      {
+        texto: "Recuso e encerro o contrato na hora, sem explicar.",
+        reacao: "nossa, que exagero 😒",
+        resultado: "Você ficou longe do problema, mas o funcionário continuou sem registro.",
+        pontos: { organizacao: 2 }
+      },
+      {
+        texto: "Finjo que não ouvi e mudo de assunto.",
+        reacao: "então tá combinado 😉",
+        resultado: "O silêncio foi entendido como um sim.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "encontre-o-erro",
+    horario: "15:00",
+    titulo: "Confira o holerite",
+    cena: "📄 💵 🔍",
+    conversa: [
+      { quem: "Pedro, auxiliar", avatar: "🧑🏼", fala: "montei o holerite do vendedor novo 📄" },
+      { quem: "Pedro, auxiliar", avatar: "🧑🏼", fala: "confere comigo? acho que tem um desconto estranho" }
+    ],
+    pergunta: "Toque na linha errada do holerite:",
+    linhas: [
+      "Salário base: R$ 2.000,00",
+      "Vale-transporte: desconto de R$ 120,00 (6% do salário)",
+      "INSS: desconto conforme a tabela oficial",
+      "FGTS: R$ 160,00 descontados do salário do funcionário",
+      "Pagamento até o 5º dia útil"
+    ],
+    correta: 3,
+    explicacao: "O FGTS (8% do salário) é pago pela empresa, numa conta em nome do trabalhador. Ele não pode ser descontado do salário. Já o vale-transporte pode ter desconto de até 6%, e o INSS segue a tabela oficial.",
+    traco: "logica"
+  },
+  {
+    horario: "16:00",
+    titulo: "O estoque não bate",
+    cena: "📦 🐾 🔍",
+    descricao: "Na contagem do estoque de um pet shop, faltam 15 sacos de ração em relação ao que o sistema mostra.",
+    conversa: [
+      { quem: "Dona Vera, dona do pet shop", avatar: "👩🏻", fala: "contei tudo e faltam 15 sacos de ração 😟" },
+      { quem: "Dona Vera, dona do pet shop", avatar: "👩🏻", fala: "são quase 2 mil reais! será que tão roubando?" }
+    ],
+    naVidaReal: "Diferenças de estoque podem vir de erros de registro, vendas sem nota, perdas ou desvios. O contador compara entradas, saídas e contagens para achar a causa, e ajuda a criar controles que evitam o problema.",
+    opcoes: [
+      {
+        texto: "Ajusto o sistema para bater com a contagem, sem investigar.",
+        reacao: "bateu! mas e os 2 mil reais? 🤔",
+        resultado: "O número ficou certo, mas a causa nunca foi descoberta.",
+        pontos: { pressao: 1 }
+      },
+      {
+        texto: "Ignoro: deve ser erro de digitação.",
+        reacao: "e se for de novo no mês que vem? 😬",
+        resultado: "No mês seguinte faltaram mais 12 sacos.",
+        pontos: {}
+      },
+      {
+        texto: "Comparo as notas de entrada, as vendas e a contagem, acho a origem da diferença e deixo um controle mensal.",
+        reacao: "eram vendas feitas sem nota no fim de semana! 😮",
+        resultado: "A diferença foi explicada, e o pet shop passou a registrar todas as vendas.",
+        pontos: { logica: 2, organizacao: 2 }
+      },
+      {
+        texto: "Peço um relatório novo do sistema e espero.",
+        reacao: "o relatório diz a mesma coisa... 😕",
+        resultado: "O relatório repetiu o problema, sem explicar a causa.",
+        pontos: { organizacao: 1 }
+      }
+    ]
+  },
+  {
+    horario: "17:00",
+    titulo: "Último dia do Imposto de Renda",
+    urgente: true,
+    cena: "🦁 📑 ⏰",
+    descricao: "No último dia do prazo do Imposto de Renda, um professor chega às 17h com uma pasta de documentos.",
+    conversa: [
+      { quem: "Prof. Anselmo, cliente", avatar: "👨🏾‍🏫", fala: "eu sei, eu sei, deixei pra última hora 😰" },
+      { quem: "Prof. Anselmo, cliente", avatar: "👨🏾‍🏫", fala: "tá tudo nessa pasta. ainda dá tempo?" }
+    ],
+    naVidaReal: "Quem perde o prazo do Imposto de Renda paga multa. Muitos contadores têm um pico de trabalho nas últimas semanas do prazo, e organizar os documentos por tipo é o que permite entregar rápido sem erros.",
+    opcoes: [
+      {
+        texto: "Digo que não dá mais e que ele vai pagar a multa.",
+        reacao: "mas ainda faltam 7 horas... 😟",
+        resultado: "Ele procurou outro contador e entregou a tempo.",
+        pontos: {}
+      },
+      {
+        texto: "Acalmo o cliente, separo os documentos por tipo, confiro as deduções principais e entrego antes da meia-noite.",
+        reacao: "entregue! e ainda vou ter restituição? 😮",
+        resultado: "A declaração foi entregue às 21h, correta e com as deduções de saúde e educação.",
+        pontos: { pressao: 2, organizacao: 1, logica: 1, pessoas: 1 }
+      },
+      {
+        texto: "Indico outro contador e não me envolvo.",
+        reacao: "mas você é meu contador há anos... 😢",
+        resultado: "O cliente se sentiu abandonado e trocou de escritório.",
+        pontos: { pessoas: 1 }
+      },
+      {
+        texto: "Preencho tudo de cabeça, bem rápido, sem conferir os informes.",
+        reacao: "entregou! 😅",
+        resultado: "Um valor errado fez a declaração cair na malha fina meses depois.",
+        pontos: { pressao: 1, logica: 2 }
+      }
+    ]
+  },
+  {
+    horario: "18:30",
+    titulo: "O balancete não fecha",
+    cena: "⚖️ 🔢 🌙",
+    descricao: "No fechamento do mês, a soma dos débitos e dos créditos de um cliente tem R$ 1.200 de diferença.",
+    conversa: [
+      { quem: "Márcia, contadora-chefe", avatar: "👩🏾‍💼", fala: "o balancete da loja tá com 1.200 de diferença 🤨" },
+      { quem: "Márcia, contadora-chefe", avatar: "👩🏾‍💼", fala: "preciso dele fechado amanhã cedo" }
+    ],
+    naVidaReal: "Na contabilidade, todo lançamento tem dois lados (débito e crédito), e as somas precisam bater. Quando não batem, há um erro em algum lugar, e encontrá-lo é parte da rotina.",
+    opcoes: [
+      {
+        texto: "Confiro os lançamentos do mês um a um até achar o erro.",
+        reacao: "achou? 👀",
+        resultado: "Era uma nota de R$ 600 lançada duas vezes. Corrigida, o balancete fechou.",
+        pontos: { organizacao: 2, logica: 1 }
+      },
+      {
+        texto: "Crio uma conta \"diversos\" para jogar a diferença e fechar o balancete.",
+        reacao: "fechou... mas de onde veio isso? 🤨",
+        resultado: "O balancete fechou no papel, mas o erro continuou escondido.",
+        pontos: { criatividade: 1, pressao: 1 }
+      },
+      {
+        texto: "Entrego assim mesmo.",
+        reacao: "com diferença?? 😳",
+        resultado: "A chefe devolveu o trabalho, e você teve que refazer tudo no dia seguinte.",
+        pontos: {}
+      },
+      {
+        texto: "Peço para o cliente procurar o erro.",
+        reacao: "eu? eu nem sei o que é balancete 😅",
+        resultado: "O cliente não achou nada, e o fechamento atrasou.",
+        pontos: { pessoas: 1 }
+      }
+    ]
+  }
+]);

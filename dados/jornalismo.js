@@ -320,3 +320,276 @@ PROFISSOES.push({
     }
   ]
 });
+
+/* ---------- Segunda versão do dia (banco de versões) ----------
+   Cada item abaixo é outra versão da etapa de mesma posição no dia acima.
+   Os pontos das opções repetem os da versão original, para manter o equilíbrio. */
+
+adicionarVersoes("jornalismo", [
+  {
+    horario: "08:00",
+    titulo: "Pauta da educação",
+    cena: "📰 🏫 💬",
+    descricao: "Na reunião de pauta, o tema da semana é educação pública.",
+    conversa: [
+      { quem: "Sandra, editora-chefe", avatar: "👩🏽‍💼", fala: "saiu o resultado do Ideb, o índice das escolas 📊" },
+      { quem: "Sandra, editora-chefe", avatar: "👩🏽‍💼", fala: "não quero só a tabela de sempre. alguma ideia? 👀" }
+    ],
+    naVidaReal: "Dados ficam mais fortes quando viram histórias de pessoas reais. Uma boa reportagem combina números confiáveis com o olhar de quem vive aquela realidade.",
+    opcoes: [
+      {
+        texto: "Proponho publicar a tabela com a nota de todas as escolas da cidade.",
+        reacao: "útil, mas todo mundo vai fazer igual 😐",
+        resultado: "A tabela foi publicada, mas se perdeu entre as de outros veículos.",
+        pontos: { logica: 1, organizacao: 1 }
+      },
+      {
+        texto: "Proponho passar um dia numa escola que melhorou muito, contando a história de professores e alunos com os números.",
+        reacao: "\"a escola que saiu do último lugar\"? amei, vai 🔥",
+        resultado: "A reportagem foi a mais lida da semana, e outras escolas pediram para conhecer o projeto.",
+        pontos: { criatividade: 2, pessoas: 1 }
+      },
+      {
+        texto: "Fico calado(a) e pego a pauta que sobrar.",
+        reacao: "sobrou a da reunião da Câmara, então 😅",
+        resultado: "Você passou o dia numa pauta burocrática que pouca gente leu.",
+        pontos: {}
+      },
+      {
+        texto: "Sugiro um vídeo de briga numa escola, que está viralizando.",
+        reacao: "clique a gente tem... mas e a pauta da semana? 🤨",
+        resultado: "O vídeo deu cliques no dia, mas não tinha nada a ver com o plano da redação.",
+        pontos: { pressao: 1 }
+      }
+    ]
+  },
+  {
+    horario: "09:30",
+    titulo: "Boato de morte",
+    urgente: true,
+    cena: "📱 ⚠️ 🎤",
+    descricao: "Um perfil nas redes anuncia a morte de uma cantora famosa. O assunto explode.",
+    conversa: [
+      { quem: "Vini, estagiário", avatar: "🧑🏾", fala: "MORREU A CANTORA?? 😱 tá em todo lugar!" },
+      { quem: "Vini, estagiário", avatar: "🧑🏾", fala: "três sites já publicaram. a gente posta também??" }
+    ],
+    naVidaReal: "Boatos de morte de famosos são comuns e se espalham em minutos. Jornalistas só publicam depois de confirmar com fontes oficiais, como a família, a assessoria ou um hospital, mesmo que isso custe alguns minutos.",
+    opcoes: [
+      {
+        texto: "Ligo para a assessoria e a família, confirmo que é falso e publico uma nota curta desmentindo.",
+        reacao: "a assessoria confirmou: ela tá ótima, num show em Portugal! 😮‍💨",
+        resultado: "O portal foi o primeiro a desmentir, e os sites que publicaram tiveram que se retratar.",
+        pontos: { pressao: 2, logica: 1, organizacao: 1 }
+      },
+      {
+        texto: "Publico a notícia da morte para sair na frente.",
+        reacao: "a própria cantora acabou de postar um vídeo... 😬",
+        resultado: "O portal teve que apagar a notícia e pedir desculpas publicamente.",
+        pontos: { pressao: 1 }
+      },
+      {
+        texto: "Espero o dia inteiro para ver se aparece algo oficial.",
+        reacao: "todo mundo já desmentiu, menos a gente 😕",
+        resultado: "Você não errou, mas o público buscou a informação em outro lugar.",
+        pontos: { organizacao: 1 }
+      },
+      {
+        texto: "Ignoro: não é assunto para o nosso portal.",
+        reacao: "é o assunto mais buscado do país... 🤔",
+        resultado: "Os leitores ficaram sem uma informação confiável sobre o assunto do dia.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    horario: "11:00",
+    titulo: "O campeão tímido",
+    cena: "🏅 🎤 😳",
+    descricao: "Você vai entrevistar um menino de 14 anos, de uma comunidade da periferia, que ganhou uma olimpíada nacional de matemática. Ele é muito tímido.",
+    conversa: [
+      { quem: "Joel, estudante", avatar: "👦🏿", fala: "oi... 😳" },
+      { quem: "Dona Rose, mãe do Joel", avatar: "👩🏿", fala: "ele é tímido, viu? mas é um menino de ouro 🥹" }
+    ],
+    naVidaReal: "Entrevistar bem é deixar a pessoa à vontade para contar a própria história. O Código de Ética dos Jornalistas também proíbe distorcer o que as pessoas dizem: as falas publicadas precisam ser verdadeiras.",
+    opcoes: [
+      {
+        texto: "Faço as perguntas rápido, uma atrás da outra, para terminar logo.",
+        reacao: "...sim. ...não. ...não sei. 😶",
+        resultado: "Ele respondeu com monossílabos, e a matéria ficou sem vida.",
+        pontos: { pressao: 1 }
+      },
+      {
+        texto: "Converso antes de ligar o gravador, deixo ele à vontade e pergunto como ele começou a gostar de matemática.",
+        reacao: "...eu fazia as contas da venda de bolo da minha mãe desde os 7 😄",
+        resultado: "A história dele emocionou os leitores, e uma empresa ofereceu uma bolsa de estudos.",
+        pontos: { pessoas: 2, pressao: 1 }
+      },
+      {
+        texto: "Escrevo a matéria só com os dados da competição.",
+        reacao: "certinho, mas cadê o Joel nessa história? 🤔",
+        resultado: "A matéria ficou correta, mas fria, e pouca gente leu.",
+        pontos: { logica: 1 }
+      },
+      {
+        texto: "Invento uma frase de efeito para ele, que fica mais bonita na matéria.",
+        reacao: "eu nunca falei isso... 😟",
+        resultado: "A família reclamou, e o portal teve que corrigir a matéria.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "encontre-o-erro",
+    horario: "13:00",
+    titulo: "Confira os números",
+    cena: "🔢 📝 ✅",
+    conversa: [
+      { quem: "Sandra, editora-chefe", avatar: "👩🏽‍💼", fala: "o comunicado da prefeitura diz: 12 escolas reformadas, 3.400 alunos, R$ 6 milhões, entrega em março 📄" },
+      { quem: "Sandra, editora-chefe", avatar: "👩🏽‍💼", fala: "confere o texto do Vini antes de publicar 👇" }
+    ],
+    pergunta: "Toque na frase que não bate com o comunicado:",
+    linhas: [
+      "A prefeitura reformou 12 escolas municipais.",
+      "As obras beneficiaram 3.400 alunos.",
+      "O investimento foi de R$ 60 milhões.",
+      "As obras foram entregues em março.",
+      "A Secretaria de Educação foi procurada pela reportagem."
+    ],
+    correta: 2,
+    explicacao: "O comunicado fala em R$ 6 milhões, e não R$ 60 milhões. Um zero a mais muda completamente a notícia. Checar números, nomes e datas com a fonte original é parte essencial do trabalho.",
+    traco: "logica"
+  },
+  {
+    horario: "14:30",
+    titulo: "A fonte que pede segredo",
+    cena: "🤫 🏥 📄",
+    descricao: "Uma funcionária de um hospital conta que remédios vencidos estão sendo usados, mas pede para não ter o nome publicado.",
+    conversa: [
+      { quem: "Fonte anônima", avatar: "👤", fala: "tem remédio vencido sendo usado no hospital, eu vi 😟" },
+      { quem: "Fonte anônima", avatar: "👤", fala: "mas se meu nome sair, eu perco o emprego. por favor..." }
+    ],
+    naVidaReal: "A Constituição garante ao jornalista o sigilo da fonte. Mas uma denúncia anônima não basta: ela precisa ser confirmada com documentos e outras fontes, e o acusado tem direito de responder antes da publicação.",
+    opcoes: [
+      {
+        texto: "Desisto da matéria para proteger a fonte.",
+        reacao: "...então ninguém vai saber? 😔",
+        resultado: "A fonte ficou protegida, mas o problema no hospital continuou.",
+        pontos: { pessoas: 1 }
+      },
+      {
+        texto: "Protejo o nome dela, confirmo a denúncia com documentos e outra fonte e ouço o hospital antes de publicar.",
+        reacao: "o hospital admitiu e recolheu os lotes 😮",
+        resultado: "A reportagem saiu confirmada, sem expor ninguém, e a vigilância sanitária abriu uma investigação.",
+        pontos: { pressao: 2, logica: 1, pessoas: 1 }
+      },
+      {
+        texto: "Publico na hora, só com o relato dela, em tom de escândalo.",
+        reacao: "o hospital diz que é mentira e vai processar 😬",
+        resultado: "Sem provas, a matéria foi contestada, e a denúncia perdeu força.",
+        pontos: { criatividade: 1, pressao: 1 }
+      },
+      {
+        texto: "Passo o caso para a editora e esqueço o assunto.",
+        reacao: "e quem vai apurar? 😕",
+        resultado: "A denúncia ficou esquecida na caixa de e-mails da redação.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "ordenar",
+    horario: "16:00",
+    titulo: "Reportagem de TV",
+    cena: "🎥 ✂️ 📺",
+    conversa: [
+      { quem: "Caio, cinegrafista", avatar: "👨🏻", fala: "a reportagem do Joel vai pra TV também 🎥" },
+      { quem: "Caio, cinegrafista", avatar: "👨🏻", fala: "bora organizar a produção? 👇" }
+    ],
+    pergunta: "Toque nas etapas na ordem em que uma reportagem de TV costuma ser feita:",
+    itens: [
+      "Gravar as entrevistas e as imagens",
+      "Assistir ao material e escolher os melhores trechos",
+      "Escrever o texto narrado e montar a edição",
+      "Revisar e exibir a reportagem"
+    ],
+    explicacao: "Depois de gravar, a equipe assiste a tudo e escolhe os trechos mais fortes. Em seguida vem o texto narrado (o \"off\") e a edição. A revisão final evita erros antes de ir ao ar.",
+    traco: "organizacao"
+  },
+  {
+    horario: "17:00",
+    titulo: "O nome errado",
+    urgente: true,
+    cena: "⚠️ 📰 😰",
+    descricao: "Um leitor avisa: a matéria publicada de manhã sobre um assalto traz o nome errado do suspeito. O nome é de um morador inocente.",
+    conversa: [
+      { quem: "Sandra, editora-chefe", avatar: "👩🏽‍💼", fala: "o rapaz da matéria do assalto não é o suspeito 😱" },
+      { quem: "Sandra, editora-chefe", avatar: "👩🏽‍💼", fala: "ele tá sendo xingado no bairro por nossa causa!" }
+    ],
+    naVidaReal: "Errar acontece, mas esconder o erro é pior. Veículos sérios corrigem rápido e publicam uma correção visível, explicando o que estava errado. Um erro assim também pode gerar direito de resposta e indenização.",
+    opcoes: [
+      {
+        texto: "Corrijo na hora, publico uma correção visível explicando o erro, aviso a editora e procuro o rapaz.",
+        reacao: "ele agradeceu por a gente ter assumido o erro 🙏",
+        resultado: "A correção circulou tanto quanto a matéria, e o rapaz teve o nome limpo.",
+        pontos: { pressao: 2, organizacao: 1, criatividade: 1 }
+      },
+      {
+        texto: "Ligo para o rapaz para pedir desculpas, mas deixo a matéria como está.",
+        reacao: "e a matéria continua lá com meu nome? 😠",
+        resultado: "O pedido de desculpas não resolveu, porque o erro continuou publicado.",
+        pontos: { pessoas: 1 }
+      },
+      {
+        texto: "Troco o nome em silêncio, sem avisar ninguém.",
+        reacao: "o print da versão errada tá circulando... 😬",
+        resultado: "A troca silenciosa foi descoberta, e o portal foi acusado de esconder o erro.",
+        pontos: { pressao: 1 }
+      },
+      {
+        texto: "Deixo como está: ninguém vai perceber.",
+        reacao: "ele já procurou um advogado 😳",
+        resultado: "O portal foi processado e teve que publicar a correção por ordem judicial.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    horario: "18:30",
+    titulo: "Ataques nas redes",
+    cena: "📱 😡 🛡️",
+    descricao: "Depois da reportagem do hospital, você começa a receber ofensas e até ameaças nas redes.",
+    conversa: [
+      { quem: "Vini, estagiário", avatar: "🧑🏾", fala: "cara, olha o que tão mandando pra você 😨" },
+      { quem: "Vini, estagiário", avatar: "🧑🏾", fala: "tem gente dizendo que sabe onde você mora..." }
+    ],
+    naVidaReal: "Jornalistas são alvo frequente de ataques online, principalmente depois de reportagens incômodas. A orientação é registrar as ameaças, avisar o veículo e, quando há risco, procurar a polícia. A transparência sobre como a matéria foi feita também ajuda.",
+    opcoes: [
+      {
+        texto: "Ignoro tudo, até as ameaças mais graves.",
+        reacao: "não acho que dá pra ignorar isso... 😟",
+        resultado: "As ameaças aumentaram, e ninguém da redação sabia de nada.",
+        pontos: {}
+      },
+      {
+        texto: "Respondo os ataques no mesmo tom.",
+        reacao: "agora virou briga pública 🤦",
+        resultado: "As respostas viraram print e alimentaram ainda mais os ataques.",
+        pontos: { pessoas: 1 }
+      },
+      {
+        texto: "Guardo prints das ameaças, aviso a editora, e o jornal publica um texto explicando como a reportagem foi apurada.",
+        reacao: "a direção já acionou o jurídico e a polícia 👍",
+        resultado: "Você ficou protegido(a), e o texto de transparência ganhou o apoio dos leitores.",
+        pontos: { criatividade: 1, pessoas: 1, logica: 1, pressao: 1 }
+      },
+      {
+        texto: "Peço para fecharem os comentários de todo o portal.",
+        reacao: "de todo o portal? 😕",
+        resultado: "Os comentários pararam no site, mas as ameaças continuaram nas redes sociais.",
+        pontos: { organizacao: 1 }
+      }
+    ]
+  }
+]);

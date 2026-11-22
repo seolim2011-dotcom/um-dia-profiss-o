@@ -318,3 +318,277 @@ PROFISSOES.push({
     }
   ]
 });
+
+/* ---------- Segunda versão do dia (banco de versões) ----------
+   Cada item abaixo é outra versão da etapa de mesma posição no dia acima.
+   Os pontos das opções repetem os da versão original, para manter o equilíbrio. */
+
+adicionarVersoes("direito", [
+  {
+    horario: "08:30",
+    titulo: "Demitido sem receber",
+    cena: "💼 📄 😔",
+    descricao: "Um homem foi demitido depois de oito anos numa empresa e não recebeu nada do que tinha direito.",
+    conversa: [
+      { quem: "Seu Valdomiro, cliente", avatar: "👨🏿", fala: "oito anos lá dentro e me mandaram embora com uma mão na frente e outra atrás 😔" },
+      { quem: "Seu Valdomiro, cliente", avatar: "👨🏿", fala: "tenho três filhos. eu vou receber alguma coisa?" }
+    ],
+    naVidaReal: "Na advocacia trabalhista, o primeiro atendimento é para ouvir e reunir provas: carteira de trabalho, holerites, mensagens. Advogados não podem prometer resultado, mas devem explicar os caminhos e o tempo provável do processo.",
+    opcoes: [
+      {
+        texto: "Prometo que ele vai receber tudo, e em dobro.",
+        reacao: "em dobro?? graças a Deus! 🙏",
+        resultado: "O processo terminou num acordo bem menor, e o cliente se sentiu enganado.",
+        pontos: {}
+      },
+      {
+        texto: "Explico os artigos da CLT, com termos técnicos.",
+        reacao: "desculpa, não entendi nada... 😕",
+        resultado: "A explicação estava certa, mas o cliente saiu sem saber o que fazer.",
+        pontos: { logica: 1 }
+      },
+      {
+        texto: "Escuto até o fim, peço carteira, holerites e mensagens, e explico os passos e o tempo provável do processo.",
+        reacao: "agora eu entendi o caminho. tenho tudo guardado em casa 👍",
+        resultado: "Com as provas organizadas, o caso terminou num acordo justo em poucos meses.",
+        pontos: { pessoas: 2, organizacao: 1 }
+      },
+      {
+        texto: "Peço que ele volte outro dia com os documentos e encerro o atendimento.",
+        reacao: "tá... eu volto 😞",
+        resultado: "Ele demorou semanas para voltar, e uma prova importante se perdeu no caminho.",
+        pontos: { organizacao: 1 }
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "encontre-o-erro",
+    horario: "09:45",
+    titulo: "Garantia em dobro",
+    cena: "🏠 📑 🔍",
+    conversa: [
+      { quem: "Dra. Regina, sócia do escritório", avatar: "👩🏻‍💼", fala: "revisa esse contrato de aluguel pro nosso cliente inquilino? 🏠" },
+      { quem: "Dra. Regina, sócia do escritório", avatar: "👩🏻‍💼", fala: "tem uma cláusula que a Lei do Inquilinato não permite" }
+    ],
+    pergunta: "Toque na cláusula proibida pela Lei do Inquilinato:",
+    linhas: [
+      "Prazo do contrato: 30 meses",
+      "Aluguel: R$ 1.500,00 por mês",
+      "Reajuste uma vez por ano, pelo índice combinado",
+      "Garantias: fiador e, também, depósito caução de 3 aluguéis",
+      "Pintura do imóvel por conta do inquilino na saída, se ele tiver estragado"
+    ],
+    correta: 3,
+    explicacao: "A Lei do Inquilinato (Lei 8.245/1991) proíbe exigir mais de uma garantia no mesmo contrato: ou fiador, ou caução, ou seguro-fiança. Cobrar fiador e caução ao mesmo tempo é irregular.",
+    traco: "logica"
+  },
+  {
+    horario: "11:00",
+    titulo: "Preso por engano",
+    urgente: true,
+    cena: "🚔 🪪 ⏳",
+    descricao: "A mãe de um jovem liga desesperada: ele foi preso no lugar de outra pessoa com o mesmo nome.",
+    conversa: [
+      { quem: "Dona Célia, mãe do cliente", avatar: "👩🏾", fala: "prenderam meu filho! disseram que tinha um mandado no nome dele 😭" },
+      { quem: "Dona Célia, mãe do cliente", avatar: "👩🏾", fala: "mas é OUTRO Lucas Ferreira, de outra cidade! ele nunca fez nada!" }
+    ],
+    naVidaReal: "Prisões de pessoas com o mesmo nome (homônimos) acontecem. O advogado reúne documentos que provam o engano, como RG, CPF e nome dos pais, e pede a soltura com urgência ao juiz, inclusive em plantão.",
+    opcoes: [
+      {
+        texto: "Digo para esperar até segunda-feira, quando o fórum abre.",
+        reacao: "ele vai passar o fim de semana preso?? 😭",
+        resultado: "O jovem passou três dias preso por engano.",
+        pontos: {}
+      },
+      {
+        texto: "Escrevo uma petição longa, cheia de teses, que leva a tarde toda.",
+        reacao: "e enquanto isso? 😰",
+        resultado: "O pedido ficou bem fundamentado, mas saiu tarde, e ele dormiu na cela.",
+        pontos: { logica: 1, pressao: 1 }
+      },
+      {
+        texto: "Junto os documentos que provam o engano e peço a soltura ao juiz de plantão, com tudo organizado.",
+        reacao: "o juiz mandou soltar!! 🙏😭",
+        resultado: "Com as provas claras, ele foi solto no mesmo dia.",
+        pontos: { organizacao: 2, pressao: 2 }
+      },
+      {
+        texto: "Chamo um colega criminalista e fazemos o pedido juntos.",
+        reacao: "dois advogados no caso! 🙏",
+        resultado: "O pedido saiu à noite, bem feito, e ele foi solto no dia seguinte cedo.",
+        pontos: { pessoas: 1, organizacao: 1, pressao: 1 }
+      }
+    ]
+  },
+  {
+    horario: "13:30",
+    titulo: "Com quem fica a criança?",
+    cena: "👧 🏠 🤝",
+    descricao: "Reunião com um casal que está se separando e com o advogado da outra parte. O ponto difícil é a guarda da filha de 7 anos.",
+    conversa: [
+      { quem: "Dr. Henrique, advogado da outra parte", avatar: "👨🏻‍💼", fala: "minha cliente quer a guarda só pra ela 😤" },
+      { quem: "Marcos, seu cliente", avatar: "👨🏽", fala: "eu não aceito ver minha filha só a cada 15 dias!" }
+    ],
+    naVidaReal: "No Brasil, a guarda compartilhada é a regra quando os dois pais têm condições. Advogados de família buscam acordos que coloquem o interesse da criança em primeiro lugar, muitas vezes com ajuda de mediação.",
+    opcoes: [
+      {
+        texto: "Recuso qualquer conversa e levo tudo direto para o juiz.",
+        reacao: "então vai demorar anos 😤",
+        resultado: "O processo se arrastou, e a criança ficou no meio da briga.",
+        pontos: { pressao: 1 }
+      },
+      {
+        texto: "Aceito a primeira proposta da outra parte para encerrar logo.",
+        reacao: "você não me defendeu! 😡",
+        resultado: "O acordo saiu rápido, mas seu cliente se sentiu traído.",
+        pontos: { organizacao: 1 }
+      },
+      {
+        texto: "Deixo os dois discutirem sozinhos na reunião.",
+        reacao: "isso tá virando gritaria... 😰",
+        resultado: "A reunião terminou sem acordo e com mais mágoa.",
+        pontos: {}
+      },
+      {
+        texto: "Proponho guarda compartilhada com um calendário que respeita a rotina escolar da filha, bom para os dois.",
+        reacao: "...é, a escola dela fica perto de nós dois. dá pra fazer 🤝",
+        resultado: "O acordo foi assinado, e a filha passou a conviver bem com os dois.",
+        pontos: { criatividade: 2, pessoas: 1, logica: 1, organizacao: 1 }
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "escolha",
+    horario: "15:00",
+    titulo: "Onde entrar com a ação?",
+    cena: "⚖️ 🧊 🏛️",
+    conversa: [
+      { quem: "Lena, secretária", avatar: "👩🏽‍💼", fala: "uma senhora ligou: a loja não entregou a geladeira dela 🧊" },
+      { quem: "Lena, secretária", avatar: "👩🏽‍💼", fala: "são 3 mil reais e ela não tem dinheiro pra advogado. onde ela pode ir?" }
+    ],
+    pergunta: "Onde uma pessoa pode cobrar R$ 3.000 de uma loja, mesmo sem advogado?",
+    alternativas: [
+      "No Supremo Tribunal Federal",
+      "No Juizado Especial Cível",
+      "Na Justiça do Trabalho",
+      "No Tribunal do Júri"
+    ],
+    correta: 1,
+    explicacao: "O Juizado Especial Cível (o antigo \"pequenas causas\") julga casos simples de até 40 salários mínimos. Em causas de até 20 salários mínimos, a pessoa pode entrar sem advogado. Conhecer o caminho certo economiza tempo e dinheiro.",
+    traco: "logica"
+  },
+  {
+    horario: "16:15",
+    titulo: "A testemunha mudou a história",
+    urgente: true,
+    cena: "🧑‍⚖️ 🗣️ 📄",
+    descricao: "Na audiência, a principal testemunha do seu cliente conta uma versão diferente da que contou antes.",
+    conversa: [
+      { quem: "Juiz Dr. Fábio", avatar: "👨🏻‍⚖️", fala: "doutor(a), deseja fazer alguma pergunta à testemunha?" },
+      { quem: "Testemunha", avatar: "🧔🏻", fala: "...é, pensando bem, acho que eu não vi direito o acidente 😬" }
+    ],
+    naVidaReal: "Audiências têm surpresas. Advogados preparados conhecem os depoimentos anteriores e sabem mostrar contradições com calma, pedindo que fiquem registradas na ata.",
+    opcoes: [
+      {
+        texto: "Fico sem reação e digo que não tenho perguntas.",
+        reacao: "então está encerrado. 🔨",
+        resultado: "A contradição passou despercebida, e o cliente perdeu a principal prova.",
+        pontos: {}
+      },
+      {
+        texto: "Leio as perguntas que preparei antes, sem tocar na mudança.",
+        reacao: "a testemunha já respondeu isso de outro jeito... 🤨",
+        resultado: "As perguntas não ajudaram a entender a mudança de versão.",
+        pontos: { organizacao: 1 }
+      },
+      {
+        texto: "Improviso e acuso a testemunha de estar mentindo.",
+        reacao: "doutor(a), mantenha o respeito na audiência 😠",
+        resultado: "O juiz chamou sua atenção, e a acusação sem provas pesou contra você.",
+        pontos: { criatividade: 1, pressao: 1 }
+      },
+      {
+        texto: "Mantenho a calma, mostro ao juiz o depoimento anterior e peço que a contradição fique registrada.",
+        reacao: "registre-se em ata a divergência. 📝",
+        resultado: "A contradição ficou registrada e enfraqueceu a nova versão da testemunha.",
+        pontos: { pressao: 2, logica: 1, pessoas: 1, organizacao: 1 }
+      }
+    ]
+  },
+  {
+    horario: "17:30",
+    titulo: "Um processo sem chance",
+    cena: "😤 🏡 ⚖️",
+    descricao: "Um cliente quer processar o vizinho porque \"ele olha torto\" e não cumprimenta.",
+    conversa: [
+      { quem: "Seu Osvaldo, cliente", avatar: "👴🏻", fala: "quero processar meu vizinho! ele me olha torto todo dia 😤" },
+      { quem: "Seu Osvaldo, cliente", avatar: "👴🏻", fala: "pago o que for preciso!" }
+    ],
+    naVidaReal: "O advogado tem o dever ético de orientar com honestidade, inclusive quando a resposta é que não vale a pena processar. Conflitos de vizinhança muitas vezes se resolvem melhor com conversa ou mediação.",
+    opcoes: [
+      {
+        texto: "Aceito o caso e cobro os honorários.",
+        reacao: "isso! vamos acabar com ele! 😠",
+        resultado: "O processo foi negado logo no início, e o cliente perdeu dinheiro.",
+        pontos: {}
+      },
+      {
+        texto: "Recuso e encerro o atendimento, sem explicar.",
+        reacao: "vou procurar outro advogado então 😒",
+        resultado: "Outro advogado aceitou o caso, e o resultado foi o mesmo.",
+        pontos: { organizacao: 1 }
+      },
+      {
+        texto: "Peço um tempo para estudar o caso e volto com uma resposta.",
+        reacao: "tá bom, fico esperando 🤨",
+        resultado: "A resposta veio certa, mas só uma semana depois.",
+        pontos: { organizacao: 1, logica: 1 }
+      },
+      {
+        texto: "Explico com sinceridade que não há base legal, mostro o custo e o risco de perder e sugiro uma mediação.",
+        reacao: "...é, talvez eu só precise conversar com ele mesmo 😅",
+        resultado: "A mediação resolveu o mal-estar, e o cliente voltou ao escritório em outro caso.",
+        pontos: { logica: 2, pessoas: 1, criatividade: 1, organizacao: 1 }
+      }
+    ]
+  },
+  {
+    horario: "18:30",
+    titulo: "Caixa de entrada lotada",
+    cena: "📧 📅 🌙",
+    descricao: "No fim do dia, chegaram 37 e-mails, entre intimações do tribunal e mensagens de clientes.",
+    conversa: [
+      { quem: "Lena, secretária", avatar: "👩🏽‍💼", fala: "chegaram três intimações novas pelo sistema do tribunal 📧" },
+      { quem: "Lena, secretária", avatar: "👩🏽‍💼", fala: "e os clientes tão mandando mensagem também. organiza antes de ir?" }
+    ],
+    naVidaReal: "Intimações abrem prazos que não esperam. Escritórios usam agendas de prazos e sistemas de controle para não perder nenhum, porque um prazo perdido pode significar perder o caso do cliente.",
+    opcoes: [
+      {
+        texto: "Deixo tudo para amanhã: estou cansado(a).",
+        reacao: "uma das intimações tem prazo curto, hein 😬",
+        resultado: "Um prazo curto quase passou despercebido.",
+        pontos: {}
+      },
+      {
+        texto: "Respondo só as mensagens mais interessantes.",
+        reacao: "e as intimações? 🤔",
+        resultado: "Os e-mails chatos ficaram para trás, inclusive uma intimação.",
+        pontos: { criatividade: 1 }
+      },
+      {
+        texto: "Peço para o estagiário cuidar de tudo, sem conferir depois.",
+        reacao: "ele cadastrou um prazo com a data errada 😰",
+        resultado: "Por pouco um prazo não foi perdido.",
+        pontos: { pessoas: 1 }
+      },
+      {
+        texto: "Leio tudo, cadastro os prazos novos na agenda, separo por urgência e respondo o que vence primeiro.",
+        reacao: "perfeito, amanhã a gente começa pelo prazo mais curto 👏",
+        resultado: "Nenhum prazo ficou de fora, e o dia seguinte começou organizado.",
+        pontos: { organizacao: 2, logica: 1 }
+      }
+    ]
+  }
+]);

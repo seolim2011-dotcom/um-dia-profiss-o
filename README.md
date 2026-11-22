@@ -11,7 +11,7 @@ Abra o arquivo `index.html` no navegador (dois cliques). Não precisa instalar n
 ## Como jogar
 
 1. Clique em **Iniciar experiência** (ou aperte Enter), digite seu nome, escolha um **avatar** e uma das **17 profissões**. Os botões de área (Saúde, Tecnologia e engenharia, Criativas, Negócios e Sociedade) filtram a lista.
-2. Viva o dia: 8 etapas, do início ao fim do expediente — 6 situações de decisão e 2 desafios. Nas situações, os personagens conversam com você como num chat, você decide o que fazer e eles respondem à sua escolha. Responda clicando ou com as teclas **A, B, C, D** (ou 1 a 9). A tecla **Espaço** pula a conversa.
+2. Viva o dia: 8 etapas, do início ao fim do expediente: 6 situações de decisão e 2 desafios. Cada etapa tem **2 versões**: ao jogar a mesma profissão de novo, as situações mudam. Nas situações, os personagens conversam com você como num chat, você decide o que fazer e eles respondem à sua escolha. Responda clicando ou com as teclas **A, B, C, D** (ou 1 a 9). A tecla **Espaço** pula a conversa.
 3. Nas situações marcadas como **🚨 Urgente**, um **cronômetro** dá 20 segundos para decidir. Se o tempo acabar, conta como se você tivesse travado. O cronômetro pode ser desligado na tela do personagem.
 4. Os **⚡ Desafios da profissão** são mini problemas de verdade: calcular a dose de um remédio, achar o erro num código, ler um gráfico, conferir uma escala... Depois de cada um, o jogo pergunta se você **curtiria fazer aquilo todo dia** (😍 😐 😩).
 5. Cada etapa mexe nas barras de **⚡ Energia** e **😰 Estresse** e mostra o que aconteceu e um quadro **Na vida real**.
@@ -197,7 +197,26 @@ PROFISSOES.push({
 });
 ```
 
-A profissão nova aparece sozinha na escolha, no relatório, na comparação e na medalha Explorador(a). O jogo já vem com 17 profissões; qualquer uma delas pode servir de exemplo para as próximas.
+A profissão nova aparece sozinha na escolha, no relatório, na comparação e na medalha Explorador(a).
+
+## Banco de versões
+
+Cada etapa do dia pode ter mais de uma versão. A cada nova tentativa da mesma pessoa na mesma profissão, **todas as etapas trocam de versão**, e as versões se misturam ao longo do dia (`versoesDaTentativa` em `js/afinidade.js`). A regra é fixa, não é sorteio: um dia salvo pela metade continua igual. O progresso e cada resultado guardam as versões jogadas, então o relatório de uma tentativa antiga mostra exatamente o dia que a pessoa viveu.
+
+Para acrescentar versões, use `adicionarVersoes` no fim do arquivo da profissão, com uma posição para cada etapa do dia (ou `null` para deixar a etapa com uma versão só):
+
+```js
+adicionarVersoes("direito", [
+  { horario: "08:30", titulo: "Demitido sem receber", /* ...mesmo formato de uma situação... */ },
+  { tipo: "desafio", formato: "encontre-o-erro", /* ...mesmo formato de um desafio... */ },
+  null
+  // ...uma posição para cada etapa
+]);
+```
+
+Todas as versões de uma etapa precisam ser do mesmo tipo (decisão ou desafio), para o dia manter o ritmo. Para o equilíbrio da afinidade não mudar, a versão nova pode repetir os mesmos `pontos` das opções da versão original, numa situação diferente: é assim que as 17 profissões foram escritas.
+
+O jogo já vem com 17 profissões, cada uma com 2 versões de cada etapa (256 combinações de dia por profissão). Qualquer profissão pode servir de exemplo para as próximas.
 
 **Dicas para os diálogos não ficarem robotizados:**
 - Escreva como as pessoas falam no WhatsApp: frases curtas, "tô", "pra", "cê", emojis.
@@ -240,7 +259,7 @@ Um desafio é uma etapa com `tipo: "desafio"`. Existem 3 formatos:
 }
 ```
 
-Os desafios que já existem:
+Os desafios da primeira versão do dia (cada profissão tem mais dois na segunda versão, no bloco `adicionarVersoes` do fim do arquivo):
 
 | Profissão | Desafio 1 | Desafio 2 |
 | --- | --- | --- |
@@ -275,8 +294,8 @@ Se algo estiver errado (um traço com nome digitado errado, uma área que não e
 | Chave | Conteúdo |
 | --- | --- |
 | `umDiaNaProfissao.jogador` | último nome e avatar (o id do avatar, como `curto` ou `panda`) |
-| `umDiaNaProfissao.progresso` | dia em andamento (profissão, situação atual, escolhas, urgências) |
-| `umDiaNaProfissao.resultados` | partidas concluídas (nome, avatar, profissão, data e escolhas) |
+| `umDiaNaProfissao.progresso` | dia em andamento (profissão, versões das etapas, situação atual, escolhas, urgências) |
+| `umDiaNaProfissao.resultados` | partidas concluídas (nome, avatar, profissão, versões das etapas, data e escolhas) |
 | `umDiaNaProfissao.conquistas` | medalhas de cada jogador, com a data em que foram ganhas |
 | `umDiaNaProfissao.preferencias` | som e cronômetro ligados ou desligados |
 
