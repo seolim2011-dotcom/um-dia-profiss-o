@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Your Career</title>
   <meta name="description" content="Viva um dia de trabalho de verdade antes de escolher o curso e descubra sua afinidade com a profissão.">
-  <meta name="theme-color" content="#0a2472">
+  <meta name="theme-color" content="#0d1b3d">
   <link rel="icon" type="image/svg+xml" href="img/logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pixelify+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Manrope:wght@400..800&family=Nunito:wght@400;600;700;800;900&family=Pixelify+Sans:wght@400;500;600;700&family=Silkscreen&display=swap">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -20,25 +20,99 @@
 
   <main class="app">
 
-    <!-- 1. Tela inicial -->
+    <!-- 1. Tela inicial ("Your Career OS"): barra de sistema, título, crachá e a trilha do jogo -->
     <section class="tela tela-inicio" id="tela-inicio">
-      <img class="logo" src="img/logo.svg" width="104" height="104" alt="Logo do Your Career: uma maleta de trabalho com um relógio no fecho">
-      <p class="selo">Simulador de profissões</p>
-      <h1 class="titulo-jogo titulo-tela" tabindex="-1">Your <span>Career</span></h1>
-      <p class="subtitulo">Viva um dia de trabalho de verdade, com as partes boas e as difíceis, antes de escolher o curso.</p>
-      <div class="acoes acoes-coluna">
-        <button type="button" class="btn btn-primario btn-grande" data-acao="cadastro">▶ Jogar</button>
-        <button type="button" class="btn btn-secundario" data-acao="continuar" id="btn-continuar" hidden></button>
-        <div class="acoes-linha">
-          <button type="button" class="btn btn-secundario btn-pequeno" data-acao="comparacao" id="btn-comparar-inicio" hidden>📊 Comparar resultados</button>
-          <button type="button" class="btn btn-secundario btn-pequeno" data-acao="conquistas">🏅 Conquistas</button>
+      <div class="os-barra">
+        <span class="os-marca"><img class="os-logo" src="img/logo.svg" width="24" height="24" alt="">Your Career OS <span class="os-versao">v1.0</span></span>
+        <span class="os-direita">
+          <span class="os-relogio" id="os-relogio" aria-hidden="true">08:00</span>
+          <button type="button" class="os-som botao-som-painel" data-acao="alternar-som" title="Ligar ou desligar o som">🔊</button>
+        </span>
+      </div>
+
+      <div class="heroi">
+        <div class="heroi-texto">
+          <p class="rotulo-sistema"><span class="ponto-vivo" aria-hidden="true"></span><span>Simulador de carreiras · <span class="total-profissoes">17</span> profissões</span></p>
+          <h1 class="titulo-jogo titulo-tela" tabindex="-1"><span class="titulo-linha-1">Your</span><span class="titulo-linha-2">Career<span class="cursor" aria-hidden="true"></span></span></h1>
+          <p class="chamada">E se você pudesse experimentar sua profissão antes de escolhê-la?</p>
+          <p class="descricao">Entre no expediente de verdade de <span class="total-profissoes">17</span> profissões. Converse com colegas e clientes, tome decisões, resolva problemas reais e descubra o quanto cada carreira combina com você.</p>
+          <div class="heroi-acoes">
+            <button type="button" class="btn-iniciar" data-acao="cadastro">
+              <span class="btn-iniciar-texto">Iniciar experiência</span>
+              <span class="btn-iniciar-tecla" data-icone="seta"></span>
+            </button>
+            <span class="dica-enter" aria-hidden="true">ou pressione <kbd>Enter</kbd></span>
+          </div>
+          <button type="button" class="link-continuar" data-acao="continuar" id="btn-continuar" hidden></button>
+          <div class="heroi-links">
+            <button type="button" class="link-sistema" data-acao="conquistas"><span data-icone="conquista"></span>Conquistas</button>
+            <button type="button" class="link-sistema" data-acao="comparacao" id="btn-comparar-inicio" hidden><span data-icone="grafico"></span>Comparar resultados</button>
+          </div>
+        </div>
+
+        <!-- Crachá de exemplo: o personagem no primeiro dia, com a trilha da carreira -->
+        <div class="cracha-area" aria-hidden="true">
+          <div class="cracha-fundo">
+            <span class="fundo-rotulo fundo-rotulo-topo">Expediente · 08:00</span>
+            <span class="fundo-rotulo fundo-rotulo-base">Dia 01</span>
+            <span class="estrela" style="top: 16%; right: 12%;"></span>
+            <span class="estrela estrela-pequena" style="top: 46%; left: 8%;"></span>
+            <span class="estrela estrela-pequena" style="bottom: 18%; right: 26%;"></span>
+          </div>
+          <div class="cordao"></div>
+          <div class="cracha">
+            <div class="cracha-topo"><span class="cracha-furo"></span><span>Crachá · Nº 0001</span><span class="cracha-nv">Nv.1</span></div>
+            <div class="cracha-corpo">
+              <div class="cracha-foto" id="cracha-avatar"></div>
+              <div>
+                <span class="cracha-rotulo">Colaborador(a)</span>
+                <strong class="cracha-nome" id="cracha-nome">Você</strong>
+                <span class="cracha-cargo">Estagiário(a) · 1º dia</span>
+              </div>
+            </div>
+            <div class="cracha-xp"><span>XP</span><span class="xp-barra"><span></span></span><span>120/500</span></div>
+            <ul class="cracha-tracos" id="cracha-tracos"></ul>
+            <ol class="trilha-cargos">
+              <li class="atual">Estagiário</li>
+              <li>Júnior</li>
+              <li>Pleno</li>
+              <li>Sênior</li>
+            </ol>
+          </div>
+          <div class="janela-flutuante">
+            <div class="jf-barra"><span>situacao_01.exe</span><span class="jf-botoes"><i></i><i></i><i></i></span></div>
+            <div class="jf-corpo">
+              <span class="jf-hora">08:02 · Escritório</span>
+              Seu chefe mandou uma mensagem.
+              <span class="jf-alerta"><b>!</b>Decida em 20 s</span>
+            </div>
+          </div>
         </div>
       </div>
-      <ol class="passos">
-        <li><span class="passo-icone" aria-hidden="true">🧑‍🎤</span><span>Crie seu personagem e escolha uma profissão</span></li>
-        <li><span class="passo-icone" aria-hidden="true">⏰</span><span>Encare um dia de trabalho, com urgências e imprevistos</span></li>
-        <li><span class="passo-icone" aria-hidden="true">🏆</span><span>Descubra sua afinidade e ganhe medalhas</span></li>
-      </ol>
+
+      <section class="trilha" aria-labelledby="titulo-trilha">
+        <div class="trilha-cabeca">
+          <p class="rotulo-sistema">Como funciona</p>
+          <h2 id="titulo-trilha">Do primeiro crachá ao fim do expediente</h2>
+        </div>
+        <ol class="trilha-etapas">
+          <li class="etapa">
+            <div class="etapa-topo"><span class="etapa-icone" data-icone="perfil"></span><span class="etapa-num" aria-hidden="true">01</span></div>
+            <h3>Crie seu perfil</h3>
+            <p>Personalize seu personagem e descubra seu ponto de partida.</p>
+          </li>
+          <li class="etapa">
+            <div class="etapa-topo"><span class="etapa-icone" data-icone="profissao"></span><span class="etapa-num" aria-hidden="true">02</span></div>
+            <h3>Viva sua profissão</h3>
+            <p>Tome decisões, resolva problemas e enfrente imprevistos do cotidiano profissional.</p>
+          </li>
+          <li class="etapa">
+            <div class="etapa-topo"><span class="etapa-icone" data-icone="conquista"></span><span class="etapa-num" aria-hidden="true">03</span></div>
+            <h3>Desbloqueie conquistas</h3>
+            <p>Descubra habilidades, desenvolva competências e acompanhe sua evolução.</p>
+          </li>
+        </ol>
+      </section>
     </section>
 
     <!-- 2. Personagem e escolha da profissão -->
@@ -228,6 +302,7 @@
   <!-- Código do jogo (a ordem importa: cada arquivo usa funções dos anteriores) -->
   <script src="js/afinidade.js"></script>
   <script src="js/avatares.js"></script>
+  <script src="js/icones.js"></script>
   <script src="js/armazenamento.js"></script>
   <script src="js/conquistas.js"></script>
   <script src="js/efeitos.js"></script>

@@ -7,7 +7,7 @@ PROFISSOES.push({
   id: "contabilidade",
   nome: "Ciências Contábeis",
   icone: "🧾",
-  cor: "#2a56c6",
+  cor: "#2747d6",
   area: "negocios",
   resumo: "Cuidar das contas, dos impostos e da saúde financeira de empresas e pessoas.",
 

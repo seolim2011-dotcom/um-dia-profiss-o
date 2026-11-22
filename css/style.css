@@ -1,23 +1,25 @@
 /*
   Your Career — estilos
 
-  Visual de videogame retrô (pixel art): fonte pixelada nos títulos, cantos
-  retos, bordas grossas em azul escuro e sombras duras (sem desfoque), que
-  somem quando um botão é apertado. Os cartões principais parecem janelas.
+  Paleta: azul-marinho, azul-cobalto, branco gelo e detalhes em amarelo.
+
+  A tela inicial ("Your Career OS") imita um sistema operacional de carreira,
+  com tipografia moderna e pixel só nos detalhes. As outras telas usam o visual
+  de videogame retrô: fonte pixelada, cantos retos, bordas grossas e sombras duras.
 */
 
 :root {
-  --azul: #0a2472;          /* azul profundo */
-  --azul-escuro: #061a4f;
+  --azul: #0d1b3d;          /* azul profundo */
+  --azul-escuro: #08122b;
   --azul-claro: #8fb3ff;    /* azul claro (detalhes e destaques) */
-  --azul-medio: #2a56c6;    /* azul entre o claro e o escuro, para textos e detalhes finos */
+  --azul-medio: #2747d6;    /* azul entre o claro e o escuro, para textos e detalhes finos */
   --cinza-claro: #e3e7ee;   /* cinza claro (bordas e trilhos) */
   --verde: #16a34a;
   --ambar: #b45309;
   --vermelho: #e11d48;
-  --texto: #0b1640;
+  --texto: #0d1b3d;
   --texto-suave: #4a5578;
-  --fundo: #f1f3f7;         /* cinza claro */
+  --fundo: #f3f6fb;         /* cinza claro */
   --cartao: #ffffff;
   --borda: #dbe3f7;
   --borda-forte: #c8d4f0;
@@ -26,10 +28,17 @@
   --raio: 0;
   --raio-medio: 0;
   --raio-pequeno: 0;
-  --linha: #0b1640;         /* bordas e sombras duras do estilo pixel */
+  --linha: #0d1b3d;         /* bordas e sombras duras do estilo pixel */
   --sombra: 5px 5px 0 var(--linha);
   --sombra-pequena: 3px 3px 0 var(--linha);
   --cor-profissao: var(--azul);
+  --marinho: #0d1b3d;       /* identidade nova: azul-marinho */
+  --cobalto: #2747d6;       /* azul-cobalto (ações e destaques) */
+  --gelo: #f3f6fb;          /* branco gelo (fundo) */
+  --amarelo: #ffd23f;       /* amarelo: só em pequenos detalhes */
+  --fonte-display: "Bricolage Grotesque", "Manrope", system-ui, sans-serif;
+  --fonte-moderna: "Manrope", "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fonte-sistema: "Silkscreen", "Pixelify Sans", ui-monospace, monospace;
   --fonte: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --fonte-titulo: "Pixelify Sans", "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
@@ -77,7 +86,7 @@ h1, h2, h3, h4 { font-family: var(--fonte-titulo); font-weight: 600; line-height
 .fundo { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
 .fundo span { position: absolute; }
 .fundo span:nth-child(1) { width: 120px; height: 120px; top: -40px; left: -40px; background: #c9d9ff; box-shadow: 120px 40px 0 -20px #e1eaff; }
-.fundo span:nth-child(2) { width: 90px; height: 90px; top: 40px; right: -30px; background: #0a2472; opacity: .12; }
+.fundo span:nth-child(2) { width: 90px; height: 90px; top: 40px; right: -30px; background: #0d1b3d; opacity: .12; }
 .fundo span:nth-child(3) { width: 140px; height: 140px; bottom: -60px; left: 20%; background: #e1eaff; box-shadow: -100px 20px 0 -40px #c9d9ff; }
 
 /* ---------- Estrutura ---------- */
@@ -197,74 +206,413 @@ h1, h2, h3, h4 { font-family: var(--fonte-titulo); font-weight: 600; line-height
 
 .botao-som:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--linha); }
 
-/* ---------- 1. Tela inicial ---------- */
+/* ---------- 1. Tela inicial ("Your Career OS") ---------- */
+/* Barra de sistema no topo, título grande à esquerda e um crachá de personagem
+   à direita; embaixo, a trilha com as três etapas do jogo. */
 
-.tela-inicio { padding-top: 1vh; text-align: center; }
+body[data-tela="inicio"] .app { max-width: 1180px; padding-top: 0; }
+body[data-tela="inicio"] .botao-som,
+body[data-tela="inicio"] .fundo { display: none; }
 
-.logo {
-  display: block;
-  width: 100px;
-  height: 100px;
-  margin: 0 auto 18px;
-  border-radius: 0;
-  border: 3px solid var(--linha);
-  box-shadow: 6px 6px 0 var(--linha);
-  image-rendering: pixelated;
-  animation: entrar .5s ease both;
-}
+.tela-inicio { font-family: var(--fonte-moderna); color: var(--marinho); }
 
-/* Título com volume: a palavra "Your" em azul escuro com sombra azul clara,
-   e "Career" em branco com contorno e sombra escura, como letra de fliperama. */
-.titulo-jogo {
-  margin-bottom: 14px;
-  font-size: clamp(2.6rem, 11vw, 4.4rem);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: .02em;
-  text-transform: uppercase;
-  color: var(--azul);
-  text-shadow: 4px 4px 0 var(--azul-claro);
-}
-
-.titulo-jogo span {
-  display: inline-block;
-  color: #fff;
-  -webkit-text-stroke: .08em var(--linha);
-  paint-order: stroke fill;
-  text-shadow: .07em .07em 0 var(--linha);
-}
-
-/* Na tela inicial, o botão principal ("Jogar") é azul claro com texto azul escuro */
-.tela-inicio .btn-primario { color: var(--azul-escuro); background: var(--azul-claro); }
-
-.subtitulo { max-width: 540px; margin: 0 auto 22px; font-size: clamp(1.05rem, 3.6vw, 1.2rem); font-weight: 600; color: var(--texto-suave); }
-
-.passos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 36px 0 0; padding: 0; list-style: none; }
-
-.passos li {
+/* Barra de sistema */
+.os-barra {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  font-family: var(--fonte-sistema);
+  font-size: .72rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(13, 27, 61, .12);
+}
+
+.os-marca { display: inline-flex; align-items: center; gap: 10px; }
+.os-logo { width: 24px; height: 24px; image-rendering: pixelated; }
+.os-versao { padding: 1px 6px; background: var(--amarelo); }
+.os-direita { display: inline-flex; align-items: center; gap: 14px; }
+.os-relogio { font-variant-numeric: tabular-nums; }
+
+.os-som {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  font-size: 1rem;
+  background: transparent;
+  border: 1px solid rgba(13, 27, 61, .2);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.os-som:hover { background: #fff; }
+
+/* Herói: duas colunas de larguras diferentes */
+.heroi {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, .95fr);
+  align-items: center;
+  gap: clamp(24px, 5vw, 64px);
+  padding: clamp(32px, 6vh, 64px) 0 clamp(40px, 7vh, 72px);
+}
+
+.rotulo-sistema {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-family: var(--fonte-sistema);
+  font-size: .72rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--cobalto);
+}
+
+.ponto-vivo { width: 9px; height: 9px; background: var(--amarelo); box-shadow: 0 0 0 2px var(--marinho); animation: piscar-ponto 1.6s steps(1) infinite; }
+
+@keyframes piscar-ponto { 50% { opacity: .25; } }
+
+/* O título é o protagonista: "Your" pequeno em cobalto e "Career" enorme */
+.titulo-jogo {
+  margin: 18px 0 30px;
+  font-family: var(--fonte-display);
+  font-size: clamp(3.6rem, 10.4vw, 8.4rem);
+  font-weight: 800;
+  line-height: .84;
+  letter-spacing: -.045em;
+  text-transform: uppercase;
+  color: var(--marinho);
+}
+
+.titulo-linha-1 {
+  display: flex;
+  align-items: center;
+  gap: .25em;
+  margin: 0 0 .14em .06em;
+  font-size: .38em;
+  letter-spacing: .04em;
+  color: var(--cobalto);
+}
+
+.titulo-linha-1::after { content: ""; flex: 0 1 2.4em; height: .1em; background: var(--cobalto); }
+.titulo-linha-2 { display: block; white-space: nowrap; }
+
+.cursor {
+  display: inline-block;
+  width: .15em;
+  height: .68em;
+  margin-left: .06em;
+  background: var(--amarelo);
+  animation: cursor-titulo 1.1s steps(1) infinite;
+}
+
+@keyframes cursor-titulo { 50% { opacity: 0; } }
+
+.chamada {
+  max-width: 24ch;
+  margin: 0 0 14px;
+  font-family: var(--fonte-display);
+  font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -.015em;
+  text-wrap: balance;
+}
+
+.descricao { max-width: 46ch; margin: 0 0 32px; font-size: 1.05rem; line-height: 1.65; color: var(--texto-suave); }
+
+.heroi-acoes { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; }
+
+/* Botão principal: bloco cobalto com uma "tecla" amarela e uma seta em pixel */
+.btn-iniciar {
+  display: inline-flex;
+  align-items: stretch;
+  min-height: 60px;
+  padding: 0;
+  overflow: hidden;
+  font-family: var(--fonte-display);
+  font-size: 1.02rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--cobalto);
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 14px 30px -14px rgba(39, 71, 214, .8);
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+}
+
+.btn-iniciar-texto { display: flex; align-items: center; padding: 16px 26px; }
+.btn-iniciar-tecla { display: grid; place-items: center; width: 60px; color: var(--marinho); background: var(--amarelo); }
+.btn-iniciar-tecla .icone-pixel { width: 18px; height: 18px; transition: transform .15s ease; }
+.btn-iniciar:hover { background: #1f3cc0; transform: translateY(-2px); box-shadow: 0 18px 34px -14px rgba(39, 71, 214, .9); }
+.btn-iniciar:hover .btn-iniciar-tecla .icone-pixel { transform: translateX(4px); }
+.btn-iniciar:active { transform: translateY(1px); }
+.btn-iniciar:focus-visible { outline: 3px solid var(--amarelo); outline-offset: 3px; }
+
+.dica-enter { font-family: var(--fonte-sistema); font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; color: var(--texto-suave); }
+
+.dica-enter kbd {
+  margin: 0 2px;
+  padding: 3px 7px;
+  font-family: inherit;
+  color: var(--marinho);
+  background: #fff;
+  border: 1px solid rgba(13, 27, 61, .25);
+  border-bottom-width: 3px;
+  border-radius: 5px;
+}
+
+@media (hover: none) {
+  .dica-enter { display: none; }
+}
+
+/* Continuar um dia salvo */
+.link-continuar {
+  display: flex;
   align-items: center;
   gap: 8px;
-  padding: 18px 14px;
+  max-width: 100%;
+  margin-top: 22px;
+  padding: 12px 16px;
+  font-family: var(--fonte-moderna);
   font-size: .95rem;
-  font-weight: 800;
+  font-weight: 700;
+  text-align: left;
+  color: var(--marinho);
   background: #fff;
-  border: 3px solid var(--linha);
-  border-top: 3px solid var(--linha);
-  border-radius: 0;
-  box-shadow: 5px 5px 0 var(--linha);
+  border: 1px solid rgba(13, 27, 61, .15);
+  border-radius: 10px;
+  cursor: pointer;
 }
 
-.passo-icone {
+.link-continuar::before { content: ""; flex: none; width: 10px; height: 10px; background: var(--amarelo); box-shadow: 0 0 0 2px var(--marinho); }
+.link-continuar:hover { border-color: var(--cobalto); }
+
+/* Links secundários (Conquistas e Comparar), discretos */
+.heroi-links { display: flex; flex-wrap: wrap; gap: 6px 26px; margin-top: 24px; }
+
+.link-sistema {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  font-family: var(--fonte-moderna);
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--marinho);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: rgba(39, 71, 214, .35);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+.link-sistema:hover { color: var(--cobalto); text-decoration-color: var(--cobalto); }
+.link-sistema .icone-pixel { width: 22px; height: 22px; }
+
+/* Crachá de personagem, pendurado num cordão, sobre um bloco cobalto */
+.cracha-area { position: relative; display: grid; place-items: center; min-height: 560px; }
+
+.cracha-fundo {
+  position: absolute;
+  inset: 9% 0 5% 14%;
+  background-color: var(--cobalto);
+  background-image: linear-gradient(rgba(255, 255, 255, .07) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .07) 1px, transparent 1px);
+  background-size: 24px 24px;
+  clip-path: polygon(0 16px, 8px 16px, 8px 8px, 16px 8px, 16px 0, calc(100% - 16px) 0, calc(100% - 16px) 8px, calc(100% - 8px) 8px, calc(100% - 8px) 16px, 100% 16px,
+    100% calc(100% - 16px), calc(100% - 8px) calc(100% - 16px), calc(100% - 8px) calc(100% - 8px), calc(100% - 16px) calc(100% - 8px), calc(100% - 16px) 100%,
+    16px 100%, 16px calc(100% - 8px), 8px calc(100% - 8px), 8px calc(100% - 16px), 0 calc(100% - 16px));
+}
+
+.fundo-rotulo { position: absolute; font-family: var(--fonte-sistema); font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; color: #fff; }
+.fundo-rotulo-topo { bottom: 24px; left: 26px; }
+.fundo-rotulo-base { top: 26px; right: 26px; color: var(--amarelo); }
+
+.estrela {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--amarelo);
+  box-shadow: 6px 0 var(--amarelo), -6px 0 var(--amarelo), 0 6px var(--amarelo), 0 -6px var(--amarelo);
+}
+
+.estrela-pequena { width: 4px; height: 4px; background: #fff; box-shadow: 4px 0 #fff, -4px 0 #fff, 0 4px #fff, 0 -4px #fff; opacity: .8; }
+
+.cordao {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 1;
+  width: 22px;
+  height: 120px;
+  background: repeating-linear-gradient(180deg, var(--amarelo) 0 12px, #f2bd16 12px 24px);
+  transform: translateX(-50%) rotate(-3deg);
+}
+
+.cracha {
+  position: relative;
+  z-index: 2;
+  width: min(330px, 100%);
+  margin-top: 90px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 40px 60px -34px rgba(13, 27, 61, .6), 0 0 0 1px rgba(13, 27, 61, .06);
+  transform: rotate(-3deg);
+  transform-origin: 50% -80px;
+  animation: balancar-cracha 6s ease-in-out infinite;
+}
+
+@keyframes balancar-cracha {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(-1.4deg); }
+}
+
+.cracha-topo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 18px 12px;
+  font-family: var(--fonte-sistema);
+  font-size: .64rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--marinho);
+}
+
+.cracha-furo { position: absolute; top: 9px; left: 50%; width: 40px; height: 7px; background: var(--gelo); border-radius: 4px; transform: translateX(-50%); }
+.cracha-nv { padding: 1px 6px; color: var(--marinho); background: var(--amarelo); }
+
+.cracha-corpo { display: grid; grid-template-columns: 92px minmax(0, 1fr); align-items: center; gap: 16px; padding: 18px; }
+.cracha-foto { display: grid; place-items: center; width: 92px; height: 92px; background: #e4eaff; border-radius: 12px; }
+.cracha-foto .avatar-svg { width: 84%; height: 84%; }
+.cracha-rotulo { display: block; font-family: var(--fonte-sistema); font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--cobalto); }
+.cracha-nome { display: block; margin: 2px 0 4px; overflow-wrap: anywhere; font-family: var(--fonte-display); font-size: 1.55rem; font-weight: 700; line-height: 1.05; }
+.cracha-cargo { font-size: .85rem; font-weight: 700; color: var(--texto-suave); }
+
+.cracha-xp { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 0 18px; font-family: var(--fonte-sistema); font-size: .62rem; }
+.xp-barra { height: 10px; overflow: hidden; background: #e4eaff; border-radius: 3px; }
+.xp-barra span { display: block; width: 24%; height: 100%; background: var(--amarelo); box-shadow: inset 0 0 0 1px rgba(13, 27, 61, .25); animation: xp-encher 1.4s ease-out .3s both; }
+
+@keyframes xp-encher { from { width: 0; } }
+
+.cracha-tracos { display: grid; gap: 7px; margin: 16px 0 0; padding: 0 18px; list-style: none; }
+.cracha-tracos li { display: grid; grid-template-columns: 92px minmax(0, 1fr); align-items: center; gap: 10px; font-size: .78rem; font-weight: 700; }
+.cracha-barra { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 2px; }
+.cracha-barra i { height: 8px; background: #e4eaff; }
+.cracha-barra i.cheia { background: var(--cobalto); }
+
+.trilha-cargos { display: flex; margin: 18px 0 0; padding: 14px 18px 0; list-style: none; border-top: 1px dashed rgba(13, 27, 61, .18); }
+.trilha-cargos li { position: relative; flex: 1; padding-top: 16px; font-size: .68rem; font-weight: 800; text-align: center; color: #5d6785; }
+.trilha-cargos li::before { content: ""; position: absolute; top: 0; left: 50%; width: 10px; height: 10px; background: #dbe2f5; transform: translateX(-50%); }
+.trilha-cargos li.atual { color: var(--marinho); }
+.trilha-cargos li.atual::before { background: var(--amarelo); box-shadow: 0 0 0 2px var(--marinho); }
+
+/* Janela de sistema flutuando ao lado do crachá */
+.janela-flutuante {
+  position: absolute;
+  right: -14px;
+  bottom: 2%;
+  z-index: 3;
+  width: 206px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 22px 40px -22px rgba(13, 27, 61, .65), 0 0 0 1px rgba(13, 27, 61, .08);
+  transform: rotate(3deg);
+  animation: flutuar-janela 5s ease-in-out infinite;
+}
+
+@keyframes flutuar-janela { 50% { transform: rotate(3deg) translateY(-8px); } }
+
+.jf-barra { display: flex; align-items: center; justify-content: space-between; padding: 7px 10px; font-family: var(--fonte-sistema); font-size: .6rem; letter-spacing: .04em; color: #fff; background: var(--marinho); }
+.jf-botoes { display: flex; gap: 4px; }
+.jf-botoes i { width: 7px; height: 7px; background: rgba(255, 255, 255, .7); }
+.jf-botoes i:last-child { background: var(--amarelo); }
+.jf-corpo { padding: 10px 12px 12px; font-size: .8rem; font-weight: 700; line-height: 1.35; }
+.jf-hora { display: block; margin-bottom: 4px; font-family: var(--fonte-sistema); font-size: .6rem; color: var(--cobalto); }
+.jf-alerta { display: flex; align-items: center; gap: 8px; margin-top: 8px; font-weight: 600; color: var(--texto-suave); }
+.jf-alerta b { display: grid; place-items: center; width: 18px; height: 18px; font-family: var(--fonte-sistema); color: var(--marinho); background: var(--amarelo); }
+
+/* Trilha "Como funciona": três paradas em alturas diferentes, ligadas por um caminho tracejado */
+.trilha {
   display: grid;
-  flex-shrink: 0;
+  grid-template-columns: minmax(0, .75fr) minmax(0, 2.25fr);
+  gap: clamp(24px, 5vw, 64px);
+  padding: 44px 0 12px;
+  border-top: 1px solid rgba(13, 27, 61, .12);
+}
+
+.trilha-cabeca h2 {
+  max-width: 13ch;
+  margin: 12px 0 0;
+  font-family: var(--fonte-display);
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -.02em;
+  text-wrap: balance;
+}
+
+.trilha-etapas { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin: 0; padding: 0; list-style: none; }
+.trilha-etapas::before { content: ""; position: absolute; top: 5px; right: 0; left: 0; border-top: 2px dashed rgba(39, 71, 214, .35); }
+
+.etapa { position: relative; padding-top: var(--queda, 40px); }
+.etapa:nth-child(1) { --queda: 34px; }
+.etapa:nth-child(2) { --queda: 86px; }
+.etapa:nth-child(3) { --queda: 54px; }
+.etapa::before { content: ""; position: absolute; top: 0; left: 0; width: 12px; height: 12px; background: var(--cobalto); box-shadow: 0 0 0 4px var(--gelo); }
+.etapa::after { content: ""; position: absolute; top: 16px; left: 5px; height: calc(var(--queda) - 24px); border-left: 2px dashed rgba(39, 71, 214, .35); }
+.etapa:last-child::before { background: var(--amarelo); box-shadow: 0 0 0 2px var(--marinho), 0 0 0 6px var(--gelo); }
+
+.etapa-topo { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+
+.etapa-icone {
+  display: grid;
   place-items: center;
-  width: 56px;
-  height: 56px;
-  font-size: 1.8rem;
-  background: #e1eaff;
-  border-radius: 0;
+  width: 76px;
+  height: 76px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 16px 30px -22px rgba(13, 27, 61, .6), 0 0 0 1px rgba(13, 27, 61, .06);
+}
+
+.etapa-icone .icone-pixel { width: 48px; height: 48px; }
+.etapa-num { font-family: var(--fonte-sistema); font-size: .75rem; letter-spacing: .08em; color: var(--cobalto); }
+.etapa h3 { margin: 0 0 8px; font-family: var(--fonte-display); font-size: 1.12rem; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; }
+.etapa p { margin: 0; font-size: .95rem; line-height: 1.6; color: var(--texto-suave); }
+
+@media (max-width: 900px) {
+  .heroi { grid-template-columns: minmax(0, 1fr); }
+  .cracha-area { min-height: 520px; }
+  .trilha { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .os-versao { display: none; }
+  .heroi { padding: 28px 0 32px; }
+  .titulo-jogo { font-size: clamp(3.2rem, 19vw, 5rem); }
+  .btn-iniciar { width: 100%; }
+  .btn-iniciar-texto { flex: 1; justify-content: center; }
+  .cracha-area { min-height: 0; padding-bottom: 28px; }
+  .cracha-fundo { inset: 10% 0 0 6%; }
+  .cracha { margin-top: 84px; }
+  .janela-flutuante { display: none; }
+  .trilha-etapas { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-left: 30px; }
+  .trilha-etapas::before { top: 0; right: auto; bottom: 0; left: 5px; border-top: 0; border-left: 2px dashed rgba(39, 71, 214, .35); }
+  .etapa, .etapa:nth-child(n) { padding-top: 0; }
+  .etapa::before { top: 32px; left: -30px; }
+  .etapa::after { display: none; }
 }
 
 /* ---------- 2. Personagem ---------- */
@@ -569,7 +917,7 @@ body[data-tela="jogo"] .botao-som { display: none; }
   padding: 22px 24px;
   overflow: hidden;
   color: #fff;
-  background: linear-gradient(135deg, #3d6ae0, #0a2472);
+  background: linear-gradient(135deg, #3d6ae0, #0d1b3d);
   border-radius: 0;
   border: 3px solid var(--linha);
   box-shadow: var(--sombra);
@@ -587,10 +935,10 @@ body[data-tela="jogo"] .botao-som { display: none; }
   box-shadow: 40px 22px 0 rgba(255, 255, 255, .4), -70px 46px 0 rgba(255, 255, 255, .35), 90px -4px 0 rgba(255, 255, 255, .55), -30px 8px 0 -1px rgba(255, 255, 255, .5);
 }
 
-.ceu[data-periodo="manha"] { background: linear-gradient(135deg, #3d6ae0, #0a2472); }
-.ceu[data-periodo="tarde"] { background: linear-gradient(135deg, #0a2472, #2a56c6); }
-.ceu[data-periodo="entardecer"] { background: linear-gradient(135deg, #2a56c6, #061a4f); }
-.ceu[data-periodo="noite"] { background: linear-gradient(135deg, #040f33, #0a2472); }
+.ceu[data-periodo="manha"] { background: linear-gradient(135deg, #3d6ae0, #0d1b3d); }
+.ceu[data-periodo="tarde"] { background: linear-gradient(135deg, #0d1b3d, #2747d6); }
+.ceu[data-periodo="entardecer"] { background: linear-gradient(135deg, #2747d6, #08122b); }
+.ceu[data-periodo="noite"] { background: linear-gradient(135deg, #040f33, #0d1b3d); }
 
 .astro, .ceu-texto, .cena { position: relative; z-index: 1; }
 .astro { font-size: 2.8rem; line-height: 1; filter: drop-shadow(0 4px 8px rgba(0, 0, 0, .25)); }
@@ -616,7 +964,7 @@ body[data-tela="jogo"] .botao-som { display: none; }
 .progresso .atual { background: #aebde6; background: color-mix(in srgb, var(--cor-profissao) 45%, #dbe3f7); }
 .progresso .desafio { background: #c9d9ff; }
 .progresso .desafio.atual { background: #8fb3ff; }
-.progresso .desafio.feita { background: #2a56c6; }
+.progresso .desafio.feita { background: #2747d6; }
 
 .cartao-situacao.animar { animation: entrar .35s ease both; }
 .cartao-situacao.urgente { border-color: var(--vermelho); box-shadow: 6px 6px 0 var(--vermelho); }
@@ -896,7 +1244,7 @@ body[data-tela="jogo"] .botao-som { display: none; }
 
 .linha-numero { flex: none; min-width: 1.4em; font-weight: 900; text-align: right; color: var(--texto-suave); }
 
-.linhas-desafio.codigo { gap: 2px; padding: 12px 8px; overflow-x: auto; background: #0b1640; border-radius: 0; }
+.linhas-desafio.codigo { gap: 2px; padding: 12px 8px; overflow-x: auto; background: #0d1b3d; border-radius: 0; }
 
 .codigo .linha-desafio {
   width: max-content;
@@ -1009,7 +1357,7 @@ body[data-tela="jogo"] .botao-som { display: none; }
   gap: 14px;
   padding: 12px 18px;
   color: #fff;
-  background: #0b1640;
+  background: #0d1b3d;
   border-radius: 0;
   border: 3px solid #fff;
   box-shadow: 0 0 0 3px var(--linha), 8px 8px 0 3px var(--linha);
@@ -1241,8 +1589,6 @@ body[data-tela="jogo"] .botao-som { display: none; }
 /* ---------- Celular ---------- */
 
 @media (max-width: 640px) {
-  .passos { grid-template-columns: 1fr; margin-top: 36px; }
-  .passos li { flex-direction: row; text-align: left; }
   .cartao-personagem { gap: 14px; }
   .avatar-grande { width: 72px; height: 72px; font-size: 2.6rem; }
   .grade-profissoes { grid-template-columns: 1fr; }

@@ -7,7 +7,7 @@ PROFISSOES.push({
   id: "design-grafico",
   nome: "Design Gráfico",
   icone: "🎨",
-  cor: "#2a56c6",
+  cor: "#2747d6",
   area: "criativas",
   resumo: "Criar logos, peças e identidades visuais que comunicam a ideia de uma marca.",
 

@@ -7,7 +7,7 @@ PROFISSOES.push({
   id: "gastronomia",
   nome: "Gastronomia",
   icone: "👩‍🍳",
-  cor: "#0a2472",
+  cor: "#0d1b3d",
   area: "criativas",
   resumo: "Criar e preparar pratos numa cozinha profissional, com sabor, higiene e muita agilidade.",
 

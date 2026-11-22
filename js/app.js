@@ -159,7 +159,39 @@ function abrirInicio() {
   }
 
   $("#btn-comparar-inicio").hidden = lerResultados().length === 0;
+  prepararCracha();
   mostrarTela("inicio");
+}
+
+// Crachá de exemplo da tela inicial. Para quem já jogou, mostra o nome e o avatar
+// salvos; para quem chega pela primeira vez, o avatar vai trocando sozinho.
+const CRACHA_VALORES = [6, 4, 3, 5, 7]; // ponto de partida ilustrativo de cada traço, de 0 a 10
+let trocaDeAvatar = null;
+
+function prepararCracha() {
+  $("#cracha-nome").textContent = estado.nome || "Você";
+  $("#cracha-tracos").innerHTML = TRACOS.map((traco, i) => `
+    <li><span>${esc(traco.curto)}</span><span class="cracha-barra">${Array.from({ length: 10 }, (_, celula) =>
+      `<i${celula < (CRACHA_VALORES[i] ?? 5) ? ' class="cheia"' : ""}></i>`).join("")}</span></li>`).join("");
+
+  const foto = $("#cracha-avatar");
+  clearInterval(trocaDeAvatar);
+  if (estado.nome || reduzirMovimento) {
+    foto.innerHTML = desenharAvatar(estado.avatar);
+    return;
+  }
+  let atual = 0;
+  foto.innerHTML = desenharAvatar(AVATARES[atual].id);
+  trocaDeAvatar = setInterval(() => {
+    if ($("#tela-inicio").hidden) return;
+    atual = (atual + 1) % AVATARES.length;
+    foto.innerHTML = desenharAvatar(AVATARES[atual].id);
+  }, 2200);
+}
+
+// Relógio da barra de sistema da tela inicial.
+function atualizarRelogio() {
+  $("#os-relogio").textContent = new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
 }
 
 /* ---------- 2. Personagem e profissão ---------- */
@@ -1494,6 +1526,13 @@ function ligarEventos() {
       return;
     }
 
+    // Na tela inicial, Enter começa a experiência (se o foco não estiver num botão).
+    if (evento.key === "Enter" && !$("#tela-inicio").hidden && !evento.target.matches("button, a, input, select, textarea")) {
+      evento.preventDefault();
+      ACOES.cadastro();
+      return;
+    }
+
     if ($("#tela-jogo").hidden || evento.target.matches("input, select, textarea")) return;
 
     // Espaço pula a conversa.
@@ -1537,5 +1576,9 @@ if (!PROFISSOES.length) {
   estado.preferencias = lerPreferencias();
   aplicarSom();
   ligarEventos();
+  document.querySelectorAll("[data-icone]").forEach(lugar => { lugar.innerHTML = desenharIcone(lugar.dataset.icone); });
+  document.querySelectorAll(".total-profissoes").forEach(numero => { numero.textContent = PROFISSOES.length; });
+  atualizarRelogio();
+  setInterval(atualizarRelogio, 15000);
   abrirInicio();
 }

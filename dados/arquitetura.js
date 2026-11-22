@@ -7,7 +7,7 @@ PROFISSOES.push({
   id: "arquitetura",
   nome: "Arquitetura e Urbanismo",
   icone: "📐",
-  cor: "#2a56c6",
+  cor: "#2747d6",
   area: "criativas",
   resumo: "Projetar casas, prédios e espaços da cidade, unindo beleza, conforto e segurança.",
 

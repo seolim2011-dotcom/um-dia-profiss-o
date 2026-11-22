@@ -7,7 +7,7 @@ PROFISSOES.push({
   id: "veterinaria",
   nome: "Medicina Veterinária",
   icone: "🐾",
-  cor: "#0a2472",
+  cor: "#0d1b3d",
   area: "saude",
   resumo: "Cuidar da saúde dos animais em clínicas, hospitais, fazendas e na saúde pública.",
 

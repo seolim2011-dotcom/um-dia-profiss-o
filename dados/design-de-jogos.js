@@ -7,7 +7,7 @@ PROFISSOES.push({
   id: "design-de-jogos",
   nome: "Design de Jogos",
   icone: "🎮",
-  cor: "#0a2472",
+  cor: "#0d1b3d",
   area: "tecnologia",
   resumo: "Criar as regras, as fases e a diversão de um jogo, testando com jogadores até ficar bom.",
 

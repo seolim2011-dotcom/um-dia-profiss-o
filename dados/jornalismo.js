@@ -7,7 +7,7 @@ PROFISSOES.push({
   id: "jornalismo",
   nome: "Jornalismo",
   icone: "📰",
-  cor: "#0a2472",
+  cor: "#0d1b3d",
   area: "sociedade",
   resumo: "Apurar fatos, ouvir pessoas e contar histórias verdadeiras de um jeito que todo mundo entenda.",
 

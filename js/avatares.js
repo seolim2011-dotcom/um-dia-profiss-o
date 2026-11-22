@@ -14,13 +14,13 @@
 
 // Cores que todos os desenhos usam
 const CORES_PIXEL = {
-  K: "#0b1640", // contorno (azul quase preto)
-  E: "#0b1640", // olhos
-  M: "#0b1640", // boca
+  K: "#0d1b3d", // contorno (azul quase preto)
+  E: "#0d1b3d", // olhos
+  M: "#0d1b3d", // boca
   W: "#ffffff", // branco
   B: "#8fb3ff", // azul claro (detalhes)
   L: "#c9d9ff", // lente dos óculos e corpo do robô
-  N: "#0a2472"  // azul escuro
+  N: "#0d1b3d"  // azul escuro
 };
 
 /* ---------- Camadas dos rostos de pessoas ---------- */
@@ -283,14 +283,14 @@ const SAPO = {
 /* ---------- Lista de avatares ---------- */
 
 const AVATARES = [
-  { id: "curto", nome: "Cabelo curto", ...pessoa({ camadas: ["curto"], pele: "#c98e62", cabelo: "#2b1d16", reflexo: "#4a3426", camiseta: "#2a56c6" }) },
+  { id: "curto", nome: "Cabelo curto", ...pessoa({ camadas: ["curto"], pele: "#c98e62", cabelo: "#2b1d16", reflexo: "#4a3426", camiseta: "#2747d6" }) },
   { id: "comprido", nome: "Cabelo comprido", ...pessoa({ camadas: ["comprido"], pele: "#f9d5b5", cabelo: "#5a3a24", reflexo: "#7a5236", camiseta: "#8fb3ff" }) },
-  { id: "raspado", nome: "Cabelo raspadinho", ...pessoa({ camadas: ["raspado"], pele: "#6b4127", cabelo: "#1d1a24", reflexo: "#3a3340", camiseta: "#0a2472" }) },
+  { id: "raspado", nome: "Cabelo raspadinho", ...pessoa({ camadas: ["raspado"], pele: "#6b4127", cabelo: "#1d1a24", reflexo: "#3a3340", camiseta: "#0d1b3d" }) },
   { id: "cacheado", nome: "Cabelo cacheado", ...pessoa({ camadas: ["cacheado"], pele: "#9b6340", cabelo: "#2b1d16", reflexo: "#4a3426", camiseta: "#8fb3ff" }) },
-  { id: "ruivo", nome: "Rabo de cavalo ruivo", ...pessoa({ camadas: ["rabo", "curto"], pele: "#f9d5b5", cabelo: "#d4642c", reflexo: "#e88a4e", camiseta: "#2a56c6" }) },
-  { id: "coque", nome: "Coque loiro com brinco", ...pessoa({ camadas: ["coque", "brinco"], pele: "#c98e62", cabelo: "#f2c14e", reflexo: "#f8d98a", camiseta: "#0a2472" }) },
+  { id: "ruivo", nome: "Rabo de cavalo ruivo", ...pessoa({ camadas: ["rabo", "curto"], pele: "#f9d5b5", cabelo: "#d4642c", reflexo: "#e88a4e", camiseta: "#2747d6" }) },
+  { id: "coque", nome: "Coque loiro com brinco", ...pessoa({ camadas: ["coque", "brinco"], pele: "#c98e62", cabelo: "#f2c14e", reflexo: "#f8d98a", camiseta: "#0d1b3d" }) },
   { id: "barba", nome: "Barba e óculos", ...pessoa({ camadas: ["curto", "barba", "oculos"], pele: "#c98e62", cabelo: "#5a3a24", reflexo: "#7a5236", camiseta: "#8fb3ff" }) },
-  { id: "bone", nome: "Boné", ...pessoa({ camadas: ["curto", "bone"], pele: "#e8b48c", cabelo: "#2b1d16", camiseta: "#2a56c6" }) },
+  { id: "bone", nome: "Boné", ...pessoa({ camadas: ["curto", "bone"], pele: "#e8b48c", cabelo: "#2b1d16", camiseta: "#2747d6" }) },
   { id: "raposa", nome: "Raposa", ...RAPOSA },
   { id: "panda", nome: "Panda", ...PANDA },
   { id: "robo", nome: "Robô", ...ROBO },

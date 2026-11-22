@@ -7,7 +7,7 @@ PROFISSOES.push({
   id: "seguranca-informacao",
   nome: "Segurança da Informação",
   icone: "🔐",
-  cor: "#2a56c6",
+  cor: "#2747d6",
   area: "tecnologia",
   resumo: "Proteger sistemas e dados de uma empresa contra golpes, invasões e vazamentos.",
 

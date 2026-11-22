@@ -6,11 +6,11 @@ Segundo o Ipea, muitos jovens trocam de curso ou se formam e não seguem na áre
 
 ## Como rodar
 
-Abra o arquivo `index.html` no navegador (dois cliques). Não precisa instalar nada, nem de servidor, nem de internet. Com internet, as fontes Pixelify Sans (títulos e botões, em pixel) e Nunito (textos) são carregadas; sem ela, o navegador usa a fonte do sistema.
+Abra o arquivo `index.html` no navegador (dois cliques). Não precisa instalar nada, nem de servidor, nem de internet. Com internet, as fontes são carregadas do Google Fonts: Bricolage Grotesque, Manrope e Silkscreen na tela inicial, e Pixelify Sans e Nunito no resto do jogo. Sem internet, o navegador usa a fonte do sistema.
 
 ## Como jogar
 
-1. Clique em **Jogar**, digite seu nome, escolha um **avatar** e uma das **17 profissões**. Os botões de área (Saúde, Tecnologia e engenharia, Criativas, Negócios e Sociedade) filtram a lista.
+1. Clique em **Iniciar experiência** (ou aperte Enter), digite seu nome, escolha um **avatar** e uma das **17 profissões**. Os botões de área (Saúde, Tecnologia e engenharia, Criativas, Negócios e Sociedade) filtram a lista.
 2. Viva o dia: 8 etapas, do início ao fim do expediente — 6 situações de decisão e 2 desafios. Nas situações, os personagens conversam com você como num chat, você decide o que fazer e eles respondem à sua escolha. Responda clicando ou com as teclas **A, B, C, D** (ou 1 a 9). A tecla **Espaço** pula a conversa.
 3. Nas situações marcadas como **🚨 Urgente**, um **cronômetro** dá 20 segundos para decidir. Se o tempo acabar, conta como se você tivesse travado. O cronômetro pode ser desligado na tela do personagem.
 4. Os **⚡ Desafios da profissão** são mini problemas de verdade: calcular a dose de um remédio, achar o erro num código, ler um gráfico, conferir uma escala... Depois de cada um, o jogo pergunta se você **curtiria fazer aquilo todo dia** (😍 😐 😩).
@@ -27,6 +27,7 @@ index.html                         telas do jogo
 css/style.css                      visual (estilo jogo, responsivo, com versão para impressão)
 js/afinidade.js                    cálculos: afinidade, energia/estresse e classe do perfil
 js/avatares.js                     avatares do jogador em pixel art (grades de 20 x 20)
+js/icones.js                       ícones em pixel art da tela inicial
 js/armazenamento.js                salvar e ler no localStorage
 js/conquistas.js                   lista de medalhas e regra de cada uma
 js/efeitos.js                      sons (gerados pelo navegador) e confete
@@ -163,7 +164,7 @@ PROFISSOES.push({
   id: "direito",
   nome: "Direito",
   icone: "⚖️",
-  cor: "#0a2472",   // azul escuro (#0a2472) ou azul médio (#2a56c6), para seguir a paleta
+  cor: "#0d1b3d",   // azul escuro (#0d1b3d) ou azul médio (#2747d6), para seguir a paleta
   area: "sociedade", // área no filtro da escolha de profissão
   resumo: "Uma frase sobre o que a pessoa faz.",
   perfil: {

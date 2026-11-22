@@ -7,7 +7,7 @@ PROFISSOES.push({
   id: "gestao-hospitalar",
   nome: "Gestão Hospitalar",
   icone: "🏥",
-  cor: "#0a2472",
+  cor: "#0d1b3d",
   area: "saude",
   resumo: "Organizar o funcionamento de hospitais e clínicas: equipes, leitos, custos e qualidade do atendimento.",
 
