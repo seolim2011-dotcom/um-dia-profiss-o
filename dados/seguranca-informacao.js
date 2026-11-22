@@ -318,3 +318,277 @@ PROFISSOES.push({
     }
   ]
 });
+
+/* ---------- Segunda versão do dia (banco de versões) ----------
+   Cada item abaixo é outra versão da etapa de mesma posição no dia acima.
+   Os pontos das opções repetem os da versão original, para manter o equilíbrio. */
+
+adicionarVersoes("seguranca-informacao", [
+  {
+    horario: "08:30",
+    titulo: "Caí no golpe!",
+    cena: "🎣 😰 💻",
+    descricao: "Logo cedo, uma funcionária do RH liga: ela digitou a senha num site que parecia o da empresa.",
+    conversa: [
+      { quem: "Júlia, do RH", avatar: "👩🏻‍🦰", fala: "acho que fiz besteira 😰" },
+      { quem: "Júlia, do RH", avatar: "👩🏻‍🦰", fala: "cliquei num link do e-mail e coloquei minha senha. depois a página sumiu" }
+    ],
+    naVidaReal: "Quem digitou a senha num site falso deve avisar a segurança na hora, sem medo de bronca. A resposta rápida (trocar a senha, encerrar as sessões e conferir acessos) costuma impedir que o golpe vá adiante.",
+    opcoes: [
+      {
+        texto: "Não faço nada: ela só digitou a senha, não aconteceu nada ainda.",
+        reacao: "ufa, então tá tudo bem? 😅",
+        resultado: "Uma hora depois, alguém entrou na conta dela e mandou e-mails falsos para os funcionários.",
+        pontos: {}
+      },
+      {
+        texto: "Troco a senha dela, encerro as sessões abertas, confiro se houve acessos estranhos e ativo a verificação em duas etapas.",
+        reacao: "obrigada por não brigar comigo 🙏",
+        resultado: "O golpista tentou entrar dez minutos depois e foi bloqueado.",
+        pontos: { logica: 2, pressao: 1, organizacao: 1 }
+      },
+      {
+        texto: "Bloqueio o computador dela inteiro, sem explicar nada.",
+        reacao: "e agora? não consigo trabalhar 😕",
+        resultado: "A conta ficou protegida, mas o RH parou o dia todo, e ninguém entendeu o motivo.",
+        pontos: { pressao: 1 }
+      },
+      {
+        texto: "Digo para ela ficar tranquila, porque isso acontece com todo mundo.",
+        reacao: "ah, que alívio 😌",
+        resultado: "Ela se acalmou, mas a senha continuou nas mãos do golpista.",
+        pontos: { pessoas: 1 }
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "escolha",
+    horario: "10:00",
+    titulo: "Qual é o site verdadeiro?",
+    cena: "🔗 🏦 🔍",
+    conversa: [
+      { quem: "Diego, analista júnior", avatar: "👨🏻‍💻", fala: "o site do Banco Aurora é bancoaurora.com.br 🏦" },
+      { quem: "Diego, analista júnior", avatar: "👨🏻‍💻", fala: "recebemos esses quatro links. qual é o verdadeiro?" }
+    ],
+    pergunta: "O site oficial é bancoaurora.com.br. Qual destes endereços leva ao site verdadeiro?",
+    alternativas: [
+      "https://bancoaurora.com.br.login-seguro.net",
+      "https://www.bancoaurora.com.br/login",
+      "http://bancoaurora-login.xyz",
+      "https://bancoaurora.com.br.verifica.com"
+    ],
+    correta: 1,
+    explicacao: "O que define o site é o final do nome, logo antes da primeira barra. Só o segundo termina em bancoaurora.com.br. Os outros terminam em login-seguro.net, bancoaurora-login.xyz e verifica.com, mesmo com o nome do banco no começo.",
+    traco: "logica"
+  },
+  {
+    horario: "11:00",
+    titulo: "Notebook roubado",
+    urgente: true,
+    cena: "💻 🚗 🚨",
+    descricao: "A diretora comercial teve o notebook roubado do carro. Nele há planilhas com dados de clientes.",
+    conversa: [
+      { quem: "Paula, diretora comercial", avatar: "👩🏽‍💼", fala: "levaram meu notebook do carro 😭" },
+      { quem: "Paula, diretora comercial", avatar: "👩🏽‍💼", fala: "tá tudo lá, a planilha de clientes, meus e-mails..." }
+    ],
+    naVidaReal: "Empresas usam criptografia no disco e ferramentas de gestão que permitem bloquear e apagar um aparelho à distância. O plano de resposta inclui trocar senhas e avaliar se os dados exigem comunicação à ANPD.",
+    opcoes: [
+      {
+        texto: "Bloqueio o notebook, mando apagar os dados à distância, troco as senhas dela e sigo o plano de incidentes.",
+        reacao: "o comando de apagar foi enviado. e o disco era criptografado 😮‍💨",
+        resultado: "Os dados ficaram protegidos, e o registro mostrou que ninguém conseguiu acessar nada.",
+        pontos: { pressao: 2, organizacao: 2, logica: 1 }
+      },
+      {
+        texto: "Consolo a diretora e digo que vai ficar tudo bem.",
+        reacao: "obrigada... mas e os dados? 😟",
+        resultado: "Ela se acalmou, mas as senhas continuaram válidas por horas.",
+        pontos: { pessoas: 1, pressao: 1 }
+      },
+      {
+        texto: "Tento rastrear o notebook pela internet, como nos filmes.",
+        reacao: "e enquanto isso? 😬",
+        resultado: "O rastreamento não deu em nada, e o tempo mais importante se perdeu.",
+        pontos: { logica: 1, criatividade: 1 }
+      },
+      {
+        texto: "Espero a polícia encontrar o notebook.",
+        reacao: "a polícia disse que é difícil achar... 😞",
+        resultado: "O notebook nunca apareceu, e ninguém sabe se os dados foram usados.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    horario: "13:30",
+    titulo: "Desliga a proteção?",
+    cena: "🛡️ 🐢 💻",
+    descricao: "A equipe de programação pede para desligar a ferramenta de proteção dos computadores, porque ela deixa tudo lento.",
+    conversa: [
+      { quem: "Lucas, desenvolvedor", avatar: "🧑🏻‍💻", fala: "esse antivírus deixa a compilação 3 vezes mais lenta 🐢" },
+      { quem: "Lucas, desenvolvedor", avatar: "🧑🏻‍💻", fala: "desliga pra gente, vai? a equipe toda tá pedindo" }
+    ],
+    naVidaReal: "Segurança que atrapalha demais o trabalho acaba sendo contornada pelas pessoas. O desafio é encontrar soluções que protejam sem travar o dia a dia, como exceções bem delimitadas e registradas.",
+    opcoes: [
+      {
+        texto: "Desligo e esqueço de religar.",
+        reacao: "valeu!! 🚀",
+        resultado: "Semanas depois, um programa malicioso entrou justamente por um desses computadores.",
+        pontos: {}
+      },
+      {
+        texto: "Recuso, citando a norma de segurança.",
+        reacao: "então a gente vai continuar perdendo horas 😤",
+        resultado: "A regra ficou, mas alguns programadores passaram a desligar a proteção escondido.",
+        pontos: { organizacao: 1 }
+      },
+      {
+        texto: "Entendo o problema, meço o impacto e crio uma exceção só para a pasta do projeto, registrada.",
+        reacao: "ficou rápido e continua protegido? perfeito 👏",
+        resultado: "A compilação voltou ao normal, e o resto do computador continuou protegido.",
+        pontos: { pessoas: 1, logica: 1, criatividade: 1, organizacao: 1 }
+      },
+      {
+        texto: "Desligo para todo mundo ficar feliz.",
+        reacao: "você é o(a) melhor! 😁",
+        resultado: "A equipe gostou, mas a empresa ficou sem proteção em dezenas de computadores.",
+        pontos: { pessoas: 2 }
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "encontre-o-erro",
+    horario: "15:00",
+    titulo: "Revise a política de senhas",
+    cena: "🔑 📄 🔍",
+    conversa: [
+      { quem: "Renata, coordenadora de segurança", avatar: "👩🏾‍💼", fala: "o estagiário escreveu a nova política de senhas 📄" },
+      { quem: "Renata, coordenadora de segurança", avatar: "👩🏾‍💼", fala: "tem uma regra que abre uma brecha. qual?" }
+    ],
+    pergunta: "Toque na regra que deixa a empresa vulnerável:",
+    linhas: [
+      "Senhas com no mínimo 12 caracteres",
+      "Verificação em duas etapas obrigatória",
+      "Senha padrão para novos funcionários: Mudar@123, sem obrigação de trocar",
+      "Bloqueio da conta após 5 tentativas erradas",
+      "Aviso por e-mail a cada login em aparelho novo"
+    ],
+    correta: 2,
+    explicacao: "Uma senha padrão igual para todos, que ninguém é obrigado a trocar, é uma das primeiras coisas que atacantes testam. Novas contas devem receber uma senha provisória diferente e exigir a troca no primeiro acesso.",
+    traco: "organizacao"
+  },
+  {
+    horario: "16:00",
+    titulo: "Site derrubado na promoção",
+    urgente: true,
+    cena: "🌊 🛒 📉",
+    descricao: "No dia da maior promoção do ano, o site da loja sai do ar com um volume absurdo de acessos falsos.",
+    conversa: [
+      { quem: "Renata, coordenadora de segurança", avatar: "👩🏾‍💼", fala: "o site caiu!! 😱 o tráfego tá 200 vezes maior que o normal" },
+      { quem: "Renata, coordenadora de segurança", avatar: "👩🏾‍💼", fala: "parece ataque de negação de serviço. cada minuto parado é venda perdida" }
+    ],
+    naVidaReal: "Um ataque de negação de serviço (DDoS) usa milhares de aparelhos para inundar um site de acessos e derrubá-lo. Provedores oferecem proteção que filtra esse tráfego, e a equipe precisa agir rápido e com informação.",
+    opcoes: [
+      {
+        texto: "Espero o ataque passar sozinho.",
+        reacao: "e a promoção? 😩",
+        resultado: "O site ficou fora do ar por quatro horas, no pior dia possível.",
+        pontos: {}
+      },
+      {
+        texto: "Ativo a proteção contra ataques do provedor, analiso o tráfego, bloqueio as origens e mantenho a equipe informada.",
+        reacao: "voltou!! o filtro tá segurando 🙌",
+        resultado: "Em 20 minutos o site voltou ao ar, e a promoção seguiu.",
+        pontos: { logica: 2, pressao: 2, organizacao: 1 }
+      },
+      {
+        texto: "Posto nas redes que o site está em manutenção, sem investigar o que é.",
+        reacao: "e quando perguntarem até quando? 🤔",
+        resultado: "Os clientes ficaram avisados, mas o site continuou fora do ar.",
+        pontos: { pessoas: 1, pressao: 1 }
+      },
+      {
+        texto: "Tiro o site do ar de vez e coloco uma página improvisada de \"volte mais tarde\".",
+        reacao: "pelo menos não fica aquela tela de erro 😕",
+        resultado: "A página ficou bonita, mas as vendas pararam até alguém resolver o ataque.",
+        pontos: { criatividade: 1, pressao: 1 }
+      }
+    ]
+  },
+  {
+    horario: "17:00",
+    titulo: "Senhas no post-it",
+    cena: "📝 🖥️ 👀",
+    descricao: "Numa volta pelo escritório, você conta 23 senhas coladas em post-its nos monitores.",
+    conversa: [
+      { quem: "Júlia, do RH", avatar: "👩🏻‍🦰", fala: "é que são muitas senhas, ninguém consegue decorar 😅" },
+      { quem: "Júlia, do RH", avatar: "👩🏻‍🦰", fala: "tem algum jeito mais fácil?" }
+    ],
+    naVidaReal: "Pessoas anotam senhas porque têm senhas demais para lembrar. Gerenciadores de senhas guardam tudo com segurança, criam senhas fortes e exigem que a pessoa lembre de uma só.",
+    opcoes: [
+      {
+        texto: "Escrevo uma norma proibindo post-its e mando por e-mail.",
+        reacao: "e onde a gente guarda as senhas então? 🤷",
+        resultado: "Os post-its foram para dentro das gavetas.",
+        pontos: { organizacao: 2 }
+      },
+      {
+        texto: "Faço uma ronda e recolho todos os post-its.",
+        reacao: "e agora eu não lembro nenhuma senha 😩",
+        resultado: "O suporte recebeu dezenas de pedidos de troca de senha no dia seguinte.",
+        pontos: { organizacao: 1 }
+      },
+      {
+        texto: "Ofereço um gerenciador de senhas e faço uma oficina de 15 minutos mostrando como usar.",
+        reacao: "só preciso lembrar de UMA senha? amei 😍",
+        resultado: "Em um mês, quase não havia mais post-its, e as senhas ficaram mais fortes.",
+        pontos: { criatividade: 2, pessoas: 1, organizacao: 1 }
+      },
+      {
+        texto: "Deixo para lá: cada um sabe de si.",
+        reacao: "tá bom então 😅",
+        resultado: "Um visitante fotografou uma senha de administrador colada num monitor.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    horario: "18:30",
+    titulo: "O backup nunca testado",
+    cena: "💾 🔁 ❓",
+    descricao: "Revisando os processos, você descobre que os backups da empresa nunca foram testados.",
+    conversa: [
+      { quem: "Renata, coordenadora de segurança", avatar: "👩🏾‍💼", fala: "ninguém sabe se o backup funciona de verdade? 😳" },
+      { quem: "Renata, coordenadora de segurança", avatar: "👩🏾‍💼", fala: "depois do ransomware de outra empresa do grupo, isso me preocupa" }
+    ],
+    naVidaReal: "Backup que nunca foi testado pode falhar justo quando é preciso. Profissionais de segurança fazem testes regulares de restauração e guardam cópias separadas, fora do alcance de um ataque.",
+    opcoes: [
+      {
+        texto: "Faço hoje um teste de restauração, registro o resultado e agendo testes todo mês.",
+        reacao: "e o teste revelou que faltava uma pasta inteira! 😮",
+        resultado: "O problema foi corrigido antes de qualquer incidente.",
+        pontos: { organizacao: 2, logica: 1 }
+      },
+      {
+        texto: "Confio que estão funcionando: o sistema diz \"concluído\" toda noite.",
+        reacao: "\"concluído\" não quer dizer que dá pra recuperar 🤔",
+        resultado: "Meses depois, numa emergência, metade dos arquivos não pôde ser recuperada.",
+        pontos: {}
+      },
+      {
+        texto: "Anoto na lista de pendências para o mês que vem.",
+        reacao: "e se for preciso antes disso? 😬",
+        resultado: "O teste ficou para depois, e o risco continuou.",
+        pontos: { organizacao: 1 }
+      },
+      {
+        texto: "Comento no grupo da equipe, em tom de piada.",
+        reacao: "kkkk mas é sério, né? 😅",
+        resultado: "Todo mundo riu, e ninguém assumiu a tarefa.",
+        pontos: { pessoas: 1, criatividade: 1 }
+      }
+    ]
+  }
+]);

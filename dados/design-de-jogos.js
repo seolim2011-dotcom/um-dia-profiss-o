@@ -322,3 +322,271 @@ PROFISSOES.push({
     }
   ]
 });
+
+/* ---------- Segunda versão do dia (banco de versões) ----------
+   Cada item abaixo é outra versão da etapa de mesma posição no dia acima.
+   Os pontos das opções repetem os da versão original, para manter o equilíbrio. */
+
+adicionarVersoes("design-de-jogos", [
+  {
+    horario: "09:00",
+    titulo: "Fácil demais",
+    cena: "🎮 🥱 ⏱️",
+    descricao: "No teste com jogadores, todos terminam a fase nova em dois minutos e dizem que ficou sem graça.",
+    conversa: [
+      { quem: "Bia, produtora", avatar: "👩🏻‍💼", fala: "zeraram a fase 4 em dois minutos 😅" },
+      { quem: "Bia, produtora", avatar: "👩🏻‍💼", fala: "um deles falou \"isso é fase de tutorial?\" 🥱" }
+    ],
+    naVidaReal: "Um jogo divertido equilibra desafio e habilidade: fácil demais entedia, difícil demais frustra. Designers observam os testes, medem o tempo em cada trecho e acrescentam desafios que usam as mecânicas de jeitos novos.",
+    opcoes: [
+      {
+        texto: "Pergunto aos testadores o que eles gostariam que tivesse na fase.",
+        reacao: "um falou dragão, outro falou carro... 😂",
+        resultado: "As ideias foram divertidas, mas nenhuma resolvia o problema de ritmo da fase.",
+        pontos: { pessoas: 1 }
+      },
+      {
+        texto: "Revejo as gravações, meço onde eles ficam sem desafio e crio um obstáculo que usa o pulo duplo de um jeito novo.",
+        reacao: "pular de parede em parede? ficou MUITO melhor 🤩",
+        resultado: "No teste seguinte, a fase levou oito minutos e todo mundo saiu animado.",
+        pontos: { logica: 2, criatividade: 2, organizacao: 1 }
+      },
+      {
+        texto: "Concluo que os testadores eram bons demais e deixo assim.",
+        reacao: "mas foram todos os cinco... 🤔",
+        resultado: "Quando o jogo saiu, as avaliações chamaram a fase de \"chata\".",
+        pontos: {}
+      },
+      {
+        texto: "Dobro a quantidade de inimigos em todas as fases, seguindo uma tabela.",
+        reacao: "agora a fase 1 ficou impossível 😵",
+        resultado: "A fase 4 ficou melhor, mas as primeiras ficaram difíceis demais.",
+        pontos: { organizacao: 2 }
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "escolha",
+    horario: "10:30",
+    titulo: "Economia do jogo",
+    cena: "🪙 🗡️ 🧮",
+    conversa: [
+      { quem: "Kaio, programador", avatar: "🧑🏾‍💻", fala: "cada fase dá 50 moedas 🪙" },
+      { quem: "Kaio, programador", avatar: "🧑🏾‍💻", fala: "a espada lendária custa 1.000. quantas fases até comprar?" }
+    ],
+    pergunta: "Cada fase dá 50 moedas e a espada custa 1.000 moedas. Quantas fases o jogador precisa terminar para comprá-la?",
+    alternativas: ["5 fases", "10 fases", "20 fases", "50 fases"],
+    correta: 2,
+    explicacao: "1.000 ÷ 50 = 20 fases. Designers fazem essas contas para decidir quando o jogador vai conseguir cada item. Se a espada chega cedo demais, o jogo fica fácil; se demora demais, a pessoa desiste.",
+    traco: "logica"
+  },
+  {
+    horario: "11:30",
+    titulo: "Recusado pela loja",
+    urgente: true,
+    cena: "📱 ⛔ ⏰",
+    descricao: "A loja de aplicativos recusou a atualização que precisa sair amanhã, no lançamento de um evento do jogo.",
+    conversa: [
+      { quem: "Kaio, programador", avatar: "🧑🏾‍💻", fala: "a loja recusou a atualização 😱" },
+      { quem: "Kaio, programador", avatar: "🧑🏾‍💻", fala: "o evento começa amanhã às 10h e a divulgação já tá no ar!" }
+    ],
+    naVidaReal: "Lojas de aplicativos revisam cada atualização e recusam o que não segue as regras, como falta de política de privacidade. Ler o motivo com atenção e corrigir só o que foi apontado costuma resolver mais rápido.",
+    opcoes: [
+      {
+        texto: "Peço para o Kaio refazer o sistema de login inteiro ainda hoje, por garantia.",
+        reacao: "o login inteiro?? 😰",
+        resultado: "A mudança grande criou bugs novos, e a atualização foi recusada de novo.",
+        pontos: { logica: 1, pressao: 1 }
+      },
+      {
+        texto: "Publico a versão no site, fora da loja, sem avisar ninguém.",
+        reacao: "isso pode tirar o jogo da loja! 😳",
+        resultado: "Jogadores baixaram um arquivo sem a revisão da loja, e a empresa recebeu um alerta.",
+        pontos: {}
+      },
+      {
+        texto: "Leio o motivo, corrijo só o que foi apontado (a página de privacidade), reenvio e aviso a produção.",
+        reacao: "era só a política de privacidade! reenviado 🙌",
+        resultado: "A loja aprovou em poucas horas, e o evento começou na hora certa.",
+        pontos: { pressao: 1, logica: 1, criatividade: 1, organizacao: 1 }
+      },
+      {
+        texto: "Viro a noite mexendo em tudo que pode ter causado a recusa.",
+        reacao: "a gente nem sabe o que causou... 😵",
+        resultado: "Você mudou muita coisa às cegas e chegou exausto(a) ao dia do evento.",
+        pontos: { pressao: 2, logica: 1 }
+      }
+    ]
+  },
+  {
+    horario: "13:30",
+    titulo: "A cena que ninguém vê",
+    cena: "🎬 ⏩ 📜",
+    descricao: "A roteirista quer uma cena de dez minutos no começo do jogo. Os dados mostram que quase todo mundo pula.",
+    conversa: [
+      { quem: "Gabi, roteirista", avatar: "👩🏻‍🦱", fala: "a história é o coração do jogo! a cena inicial tem que ficar inteira 📜" },
+      { quem: "Kaio, programador", avatar: "🧑🏾‍💻", fala: "70% das pessoas apertam \"pular\" no primeiro minuto ⏩" },
+      { quem: "Gabi, roteirista", avatar: "👩🏻‍🦱", fala: "e aí, game designer? 👀" }
+    ],
+    naVidaReal: "Muitos jogos contam a história enquanto a pessoa joga, em vez de em cenas longas. Unir narrativa e jogabilidade é um desafio que exige conversa entre roteiro, design e dados de uso.",
+    opcoes: [
+      {
+        texto: "Fico do lado da roteirista: a cena fica como está.",
+        reacao: "obrigada! 😌",
+        resultado: "A cena ficou inteira, e a maioria dos jogadores continuou pulando.",
+        pontos: { criatividade: 1 }
+      },
+      {
+        texto: "Mostro os números e corto a cena inteira.",
+        reacao: "nem conversou comigo? 😤",
+        resultado: "Os jogadores começaram mais rápido, mas ficaram sem entender a história.",
+        pontos: { logica: 1 }
+      },
+      {
+        texto: "Deixo os dois decidirem sozinhos.",
+        reacao: "ué, alguém tem que decidir... 😕",
+        resultado: "A discussão se arrastou por duas semanas.",
+        pontos: {}
+      },
+      {
+        texto: "Proponho contar a história jogando, com falas curtas durante a primeira fase, e testar com jogadores.",
+        reacao: "a história no meio da ação? eu topo testar 🤩",
+        resultado: "No teste, quase ninguém pulou, e a história foi lembrada por mais gente.",
+        pontos: { pessoas: 1, logica: 1, criatividade: 2 }
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "ordenar",
+    horario: "15:00",
+    titulo: "O ciclo de uma fase",
+    cena: "🗺️ 🧪 🔁",
+    conversa: [
+      { quem: "Bia, produtora", avatar: "👩🏻‍💼", fala: "a Nina vai criar a primeira fase dela 🗺️" },
+      { quem: "Bia, produtora", avatar: "👩🏻‍💼", fala: "mostra a ordem que a gente usa pra fazer uma fase? 👇" }
+    ],
+    pergunta: "Toque nas etapas na ordem em que uma fase costuma ser criada:",
+    itens: [
+      "Esboçar a fase no papel",
+      "Montar a fase com blocos simples, sem arte (o \"bloqueio\")",
+      "Testar com jogadores e ajustar",
+      "Aplicar a arte e o som finais"
+    ],
+    explicacao: "Primeiro a fase é desenhada no papel e montada com formas simples, para testar se é divertida. Só depois dos ajustes vem a arte final. Mudar uma fase já decorada custa muito mais tempo.",
+    traco: "organizacao"
+  },
+  {
+    horario: "16:30",
+    titulo: "Moedas infinitas",
+    urgente: true,
+    cena: "🪙 ♾️ 📹",
+    descricao: "Jogadores descobriram um bug que dá moedas infinitas, e um vídeo ensinando o truque viralizou.",
+    conversa: [
+      { quem: "Bia, produtora", avatar: "👩🏻‍💼", fala: "o vídeo do bug das moedas já tem 2 milhões de visualizações 😱" },
+      { quem: "Bia, produtora", avatar: "👩🏻‍💼", fala: "a economia do jogo tá quebrando. o que a gente faz?" }
+    ],
+    naVidaReal: "Bugs que viralizam são comuns em jogos online. Estúdios corrigem rápido, mas pensam com cuidado em como tratar quem aproveitou o erro, para não revoltar a comunidade.",
+    opcoes: [
+      {
+        texto: "Corrijo o bug numa atualização rápida e testada e transformo o caso num evento divertido, sem punir quem usou.",
+        reacao: "\"semana da moeda dourada\"? a comunidade amou 😂",
+        resultado: "A economia voltou ao normal, e o caso virou uma brincadeira entre o estúdio e os jogadores.",
+        pontos: { pressao: 1, organizacao: 1, logica: 1, criatividade: 1 }
+      },
+      {
+        texto: "Bloqueio a conta de todos os jogadores que usaram o bug, sem aviso.",
+        reacao: "metade da comunidade foi bloqueada?? 😱",
+        resultado: "A revolta nas redes foi enorme, e muitos jogadores abandonaram o jogo.",
+        pontos: {}
+      },
+      {
+        texto: "Lanço uma correção às pressas, sem testar.",
+        reacao: "a correção apagou o progresso de alguns jogadores 😬",
+        resultado: "O bug sumiu, mas a correção criou um problema ainda maior.",
+        pontos: { pressao: 2, criatividade: 1 }
+      },
+      {
+        texto: "Deixo o bug: os jogadores estão adorando.",
+        reacao: "e a loja do jogo? ninguém mais compra nada 💸",
+        resultado: "A diversão durou uma semana, até a economia do jogo perder o sentido.",
+        pontos: { pessoas: 2 }
+      }
+    ]
+  },
+  {
+    horario: "17:30",
+    titulo: "Game jam no fim de semana",
+    cena: "⏱️ 🍕 💡",
+    descricao: "A equipe vai participar de uma game jam: 48 horas para criar um jogo do zero com o tema \"conexão\".",
+    conversa: [
+      { quem: "Bia, produtora", avatar: "👩🏻‍💼", fala: "o tema saiu: \"conexão\" 🔗" },
+      { quem: "Bia, produtora", avatar: "👩🏻‍💼", fala: "temos 48 horas. por onde a gente começa?" }
+    ],
+    naVidaReal: "Em game jams, como a Global Game Jam, equipes criam jogos completos em um fim de semana. O segredo é escolher uma ideia pequena, dividir bem as tarefas e terminar algo jogável.",
+    opcoes: [
+      {
+        texto: "Monto um cronograma detalhado das 48 horas antes de ter qualquer ideia.",
+        reacao: "lindo cronograma... mas de qual jogo? 😅",
+        resultado: "A equipe perdeu horas organizando um projeto que ainda não existia.",
+        pontos: { organizacao: 2, logica: 1 }
+      },
+      {
+        texto: "Faço uma chuva de ideias com o time, escolhemos a menor que dá para terminar e dividimos as tarefas.",
+        reacao: "dois personagens presos por uma corda? simples e genial 🤩",
+        resultado: "O jogo ficou pronto com seis horas de folga e ganhou o prêmio de melhor ideia.",
+        pontos: { criatividade: 2, pessoas: 1, organizacao: 1 }
+      },
+      {
+        texto: "Proponho um RPG enorme, com mundo aberto e várias cidades.",
+        reacao: "em 48 horas?? 😂",
+        resultado: "No fim do domingo, só havia um personagem andando num mapa vazio.",
+        pontos: { criatividade: 1 }
+      },
+      {
+        texto: "Digo que não tenho ideias e prefiro só ajudar no que mandarem.",
+        reacao: "toda ideia ajuda, viu? 🙂",
+        resultado: "Você ajudou, mas o jogo não teve nenhuma ideia sua.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    horario: "18:30",
+    titulo: "A fase do estagiário",
+    cena: "🗺️ 📝 🌙",
+    descricao: "O estagiário terminou a primeira fase dele, e ela está confusa: os jogadores se perdem.",
+    conversa: [
+      { quem: "Téo, estagiário", avatar: "🧑🏼", fala: "terminei minha fase!! 😁" },
+      { quem: "Téo, estagiário", avatar: "🧑🏼", fala: "o que você achou? pode ser sincero(a)!" }
+    ],
+    naVidaReal: "Dar retorno sobre o trabalho dos outros é parte do dia a dia. Um bom retorno aponta problemas concretos, com exemplos, e combina os próximos passos, sem desanimar nem esconder os problemas.",
+    opcoes: [
+      {
+        texto: "Escrevo os pontos de melhoria com exemplos dos testes e combino uma revisão com ele amanhã.",
+        reacao: "ah, as pessoas se perdem porque a porta não aparece! faz sentido 💡",
+        resultado: "Na revisão do dia seguinte, a fase já estava bem mais clara.",
+        pontos: { organizacao: 2, pessoas: 1 }
+      },
+      {
+        texto: "Elogio tudo para não desanimar ele.",
+        reacao: "eba!! vou mandar pra produção então 😁",
+        resultado: "A fase foi para o jogo com os mesmos problemas, e os jogadores reclamaram.",
+        pontos: { pessoas: 1 }
+      },
+      {
+        texto: "Refaço a fase dele sem falar nada.",
+        reacao: "ué, minha fase mudou toda? 😕",
+        resultado: "A fase melhorou, mas o Téo não aprendeu nada e ficou chateado.",
+        pontos: {}
+      },
+      {
+        texto: "Escrevo um documento enorme com todas as regras de design de fases.",
+        reacao: "uau, 30 páginas... 😳",
+        resultado: "O documento é útil para o futuro, mas não ajudou o Téo com a fase dele agora.",
+        pontos: { organizacao: 1, criatividade: 1 }
+      }
+    ]
+  }
+]);

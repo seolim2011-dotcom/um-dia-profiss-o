@@ -255,7 +255,7 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Mando todo mundo embora e abandono a obra por uma semana.",
+          texto: "Paro a obra inteira por uma semana até alguém resolver.",
           reacao: "uma semana?! e o prazo?? 😳",
           resultado: "A segurança foi priorizada, mas o abandono sem avaliação causou atrasos desnecessários.",
           pontos: { pressao: 1 }
@@ -264,7 +264,7 @@ PROFISSOES.push({
           texto: "Meço a rachadura, escoro a viga provisoriamente e acompanho por algumas horas.",
           reacao: "escorou! agora a gente consegue trabalhar mais tranquilo 😮‍💨",
           resultado: "O escoramento segurou a estrutura até a chegada do especialista, e ninguém se machucou.",
-          pontos: { logica: 2, criatividade: 1, pressao: 1 }
+          pontos: { logica: 1, criatividade: 1, pressao: 1 }
         },
         {
           texto: "Isolo a área, fotografo a rachadura e chamo um engenheiro estrutural para avaliar.",
@@ -313,3 +313,272 @@ PROFISSOES.push({
     }
   ]
 });
+
+/* ---------- Segunda versão do dia (banco de versões) ----------
+   Cada item abaixo é outra versão da etapa de mesma posição no dia acima.
+   Os pontos das opções repetem os da versão original, para manter o equilíbrio. */
+
+adicionarVersoes("engenharia-civil", [
+  {
+    horario: "07:00",
+    titulo: "Entrega errada",
+    cena: "🚚 🔩 📏",
+    descricao: "O caminhão chega com o aço para a laje de hoje, mas as barras são mais finas do que o projeto pede.",
+    conversa: [
+      { quem: "Seu Zé, mestre de obras", avatar: "👷🏽‍♂️", fala: "engenheiro(a), o projeto pede barra de 12,5 e veio de 10 😬" },
+      { quem: "Seu Zé, mestre de obras", avatar: "👷🏽‍♂️", fala: "a turma tá toda aqui esperando. a gente usa assim mesmo?" }
+    ],
+    naVidaReal: "O diâmetro das barras de aço é calculado no projeto estrutural. Trocar por uma mais fina sem um novo cálculo pode comprometer a segurança da estrutura. Conferir o material na entrega é rotina da obra.",
+    opcoes: [
+      {
+        texto: "Uso assim mesmo: a diferença é pequena.",
+        reacao: "beleza, bora armar então 👍",
+        resultado: "A fiscalização encontrou o problema depois, e parte da laje teve que ser refeita.",
+        pontos: {}
+      },
+      {
+        texto: "Improviso colocando mais barras finas, sem refazer o cálculo.",
+        reacao: "dá pra compensar assim? 🤔",
+        resultado: "A ideia pode até funcionar, mas sem cálculo ninguém podia garantir a segurança.",
+        pontos: { criatividade: 1, pressao: 1 }
+      },
+      {
+        texto: "Mando devolver tudo e paro a obra, sem avisar o cliente.",
+        reacao: "e a turma fica fazendo o quê? 😕",
+        resultado: "O dia foi perdido, e o cliente soube do atraso pelos outros.",
+        pontos: {}
+      },
+      {
+        texto: "Confiro o projeto, recuso a entrega, peço a troca urgente e reorganizo as tarefas do dia.",
+        reacao: "beleza, a turma adianta a alvenaria enquanto o aço não chega 👷",
+        resultado: "O aço certo chegou à tarde, e ninguém ficou parado.",
+        pontos: { organizacao: 2, logica: 1, pressao: 1 }
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "escolha",
+    horario: "08:30",
+    titulo: "Concreto da laje",
+    cena: "🧱 📐 🧮",
+    conversa: [
+      { quem: "Seu Zé, mestre de obras", avatar: "👷🏽‍♂️", fala: "a laje tem 5 m por 4 m e 10 cm de espessura 📐" },
+      { quem: "Seu Zé, mestre de obras", avatar: "👷🏽‍♂️", fala: "quantos metros cúbicos de concreto eu peço pra concreteira?" }
+    ],
+    pergunta: "Volume = comprimento × largura × espessura. Quanto concreto é preciso para uma laje de 5 m × 4 m × 0,10 m?",
+    alternativas: ["0,2 m³", "2 m³", "20 m³", "200 m³"],
+    correta: 1,
+    explicacao: "5 × 4 × 0,10 = 2 m³. Na prática, o engenheiro ainda acrescenta uma pequena margem para perdas. Pedir concreto a menos para a obra no meio; pedir a mais é dinheiro jogado fora.",
+    traco: "logica"
+  },
+  {
+    horario: "10:00",
+    titulo: "Sem cinto no telhado",
+    urgente: true,
+    cena: "🏗️ ⚠️ 🪢",
+    descricao: "Você vê um pedreiro trabalhando na beira do telhado, a seis metros de altura, sem cinto de segurança.",
+    conversa: [
+      { quem: "Carol, técnica de segurança", avatar: "👩🏽‍🔧", fala: "olha lá em cima! o Josias tá sem cinto 😱" },
+      { quem: "Josias, pedreiro", avatar: "👨🏿‍🔧", fala: "relaxa, eu faço isso há 20 anos, nunca caí 😎" }
+    ],
+    naVidaReal: "Quedas de altura estão entre as principais causas de acidentes graves na construção civil. A norma NR-35 exige cinto de segurança preso a um ponto de ancoragem para trabalhos acima de 2 metros.",
+    opcoes: [
+      {
+        texto: "Deixo para falar com ele depois.",
+        reacao: "e se ele cair antes? 😰",
+        resultado: "Por sorte nada aconteceu, mas o risco continuou o dia inteiro.",
+        pontos: {}
+      },
+      {
+        texto: "Anoto para comentar na reunião de segurança de sexta.",
+        reacao: "sexta é daqui a quatro dias... 😬",
+        resultado: "A anotação ficou registrada, mas o trabalho perigoso continuou.",
+        pontos: { organizacao: 1 }
+      },
+      {
+        texto: "Grito com ele de longe e sigo para o escritório.",
+        reacao: "tá bom, tá bom... 🙄",
+        resultado: "Ele colocou o cinto, mas tirou de novo quando você saiu.",
+        pontos: { pressao: 1 }
+      },
+      {
+        texto: "Peço que ele desça com cuidado, providencio o cinto preso à linha de vida e converso com a equipe.",
+        reacao: "...é, minha filha ia me matar se eu caísse 😅",
+        resultado: "Ele voltou ao trabalho com o cinto, e a equipe passou a conferir o equipamento uns dos outros.",
+        pontos: { pressao: 2, pessoas: 1, organizacao: 1 }
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "encontre-o-erro",
+    horario: "11:30",
+    titulo: "Vistoria da vala",
+    cena: "🕳️ 📋 🔍",
+    conversa: [
+      { quem: "Carol, técnica de segurança", avatar: "👩🏽‍🔧", fala: "antes de liberar a vala do esgoto, confere o checklist 📋" },
+      { quem: "Carol, técnica de segurança", avatar: "👩🏽‍🔧", fala: "tem um item perigoso aí" }
+    ],
+    pergunta: "Toque no item da vala de 2 metros que está errado:",
+    linhas: [
+      "Profundidade da escavação: 2 metros",
+      "Paredes da vala escoradas",
+      "Terra retirada amontoada bem na beira da vala",
+      "Escada para entrar e sair",
+      "Sinalização e cerca ao redor"
+    ],
+    correta: 2,
+    explicacao: "Terra amontoada na beira faz peso sobre a parede da vala e pode causar um desmoronamento em cima de quem está lá dentro. As normas de segurança pedem que o material fique afastado da borda.",
+    traco: "organizacao"
+  },
+  {
+    horario: "13:30",
+    titulo: "O vizinho reclama",
+    cena: "🏠 🧱 😠",
+    descricao: "O vizinho da obra aparece irritado: diz que a obra rachou a parede da casa dele.",
+    conversa: [
+      { quem: "Seu Arlindo, vizinho", avatar: "👴🏽", fala: "desde que começou essa obra minha parede rachou toda! 😠" },
+      { quem: "Seu Arlindo, vizinho", avatar: "👴🏽", fala: "quem vai pagar isso?" }
+    ],
+    naVidaReal: "Antes de começar uma obra, é comum fazer uma vistoria das casas vizinhas, com fotos e laudo. Ela ajuda a saber se um dano já existia ou se foi causado pela obra, e evita brigas e processos.",
+    opcoes: [
+      {
+        texto: "Digo que a obra não tem nada a ver com isso.",
+        reacao: "vou procurar um advogado então! 😡",
+        resultado: "O caso foi para a Justiça, e a obra ganhou fama ruim no bairro.",
+        pontos: {}
+      },
+      {
+        texto: "Peço que ele mande a reclamação por escrito e encerro a conversa.",
+        reacao: "por escrito? tô falando com você agora! 😤",
+        resultado: "A reclamação chegou por escrito, mas o vizinho ficou ainda mais irritado.",
+        pontos: { organizacao: 1 }
+      },
+      {
+        texto: "Peço para um colega atender ele.",
+        reacao: "ninguém resolve nada aqui! 😠",
+        resultado: "O colega não conhecia a obra, e a conversa não deu em nada.",
+        pontos: {}
+      },
+      {
+        texto: "Vou à casa dele, meço e fotografo as rachaduras, comparo com a vistoria feita antes da obra e combino um acompanhamento.",
+        reacao: "...as rachaduras do quarto já tavam nas fotos? mas a da sala é nova 🤔",
+        resultado: "A vistoria mostrou o que era antigo e o que era novo, e a construtora reparou só o dano causado pela obra.",
+        pontos: { logica: 2, criatividade: 1, pessoas: 1 }
+      }
+    ]
+  },
+  {
+    horario: "15:00",
+    titulo: "Dá para entregar antes?",
+    cena: "📅 🏠 ⏩",
+    descricao: "A cliente quer receber a casa um mês antes do combinado, porque o aluguel dela vai acabar.",
+    conversa: [
+      { quem: "Dona Sandra, cliente", avatar: "👩🏻", fala: "meu contrato de aluguel acaba em outubro 😰" },
+      { quem: "Dona Sandra, cliente", avatar: "👩🏻", fala: "tem como entregar a casa um mês antes?" }
+    ],
+    naVidaReal: "Algumas etapas de obra não podem ser apressadas, como o tempo de cura do concreto, que garante a resistência da estrutura. Planejar quais serviços podem acontecer ao mesmo tempo é o jeito seguro de ganhar prazo.",
+    opcoes: [
+      {
+        texto: "Prometo que dá, mesmo sem saber se é possível.",
+        reacao: "jura?? que alívio! 😍",
+        resultado: "A obra atrasou mesmo assim, e a cliente se sentiu enganada.",
+        pontos: {}
+      },
+      {
+        texto: "Encurto o tempo de cura do concreto para ganhar uns dias.",
+        reacao: "e isso é seguro? 🤔",
+        resultado: "Ganhou dias, mas a estrutura ficou com resistência menor do que o projeto exigia.",
+        pontos: { criatividade: 1 }
+      },
+      {
+        texto: "Explico com calma o que dá e o que não dá para adiantar.",
+        reacao: "entendi... pelo menos agora eu sei 😕",
+        resultado: "A cliente entendeu os limites, mas ainda não tinha uma nova data para planejar a mudança.",
+        pontos: { pessoas: 2, organizacao: 1 }
+      },
+      {
+        texto: "Refaço o cronograma, vejo quais serviços podem correr juntos e proponho uma data possível, sem pular a cura do concreto.",
+        reacao: "três semanas antes já me salva! 🙌",
+        resultado: "Com as equipes trabalhando em paralelo, a casa ficou pronta três semanas antes, com segurança.",
+        pontos: { organizacao: 2, criatividade: 1, logica: 1 }
+      }
+    ]
+  },
+  {
+    horario: "16:30",
+    titulo: "Temporal na escavação",
+    urgente: true,
+    cena: "⛈️ 🕳️ 🚧",
+    descricao: "Um temporal começa de repente. A escavação do subsolo enche de água e um pedaço da parede de terra começa a escorregar.",
+    conversa: [
+      { quem: "Seu Zé, mestre de obras", avatar: "👷🏽‍♂️", fala: "a água tá subindo na escavação!! 🌊" },
+      { quem: "Seu Zé, mestre de obras", avatar: "👷🏽‍♂️", fala: "e o barranco do lado da rua tá cedendo! tem gente lá embaixo!" }
+    ],
+    naVidaReal: "Chuva forte pode fazer paredes de terra desmoronarem. A prioridade é tirar as pessoas do local; depois, isolar a área e chamar um especialista em solos (geotecnia) para avaliar a contenção.",
+    opcoes: [
+      {
+        texto: "Mando continuar o trabalho: é só água.",
+        reacao: "com o barranco cedendo?? 😱",
+        resultado: "Um trecho desmoronou, e por pouco ninguém se feriu.",
+        pontos: {}
+      },
+      {
+        texto: "Paro tudo e mando todo mundo para casa, sem organizar nada.",
+        reacao: "e o barranco? e a rua? 😰",
+        resultado: "As pessoas saíram, mas a área ficou sem isolamento e a calçada cedeu durante a noite.",
+        pontos: { pressao: 1 }
+      },
+      {
+        texto: "Improviso uma bomba para tirar a água e mando a equipe continuar.",
+        reacao: "a bomba ajuda... mas e o barranco? 😬",
+        resultado: "A água baixou, mas a equipe continuou exposta ao risco de desmoronamento.",
+        pontos: { logica: 1, criatividade: 1, pressao: 1 }
+      },
+      {
+        texto: "Tiro todos da escavação, isolo a área e a calçada e chamo o engenheiro de solos para avaliar.",
+        reacao: "todo mundo fora! área isolada 👷",
+        resultado: "O barranco cedeu à noite, mas sem ninguém por perto. A contenção foi reforçada no dia seguinte.",
+        pontos: { pressao: 2, logica: 1, organizacao: 1 }
+      }
+    ]
+  },
+  {
+    horario: "18:00",
+    titulo: "Medição do mês",
+    cena: "📏 💰 📋",
+    descricao: "É dia de medir os serviços feitos pela empreiteira no mês, para liberar o pagamento.",
+    conversa: [
+      { quem: "Rogério, dono da empreiteira", avatar: "👨🏽‍💼", fala: "fizemos 400 m² de alvenaria esse mês 💪" },
+      { quem: "Rogério, dono da empreiteira", avatar: "👨🏽‍💼", fala: "dá pra liberar o pagamento hoje? meu pessoal precisa receber" }
+    ],
+    naVidaReal: "A medição confere o que foi realmente executado antes de pagar quem fez o serviço. Ela protege o dinheiro do cliente e evita pagar por serviço que não existe ou foi mal feito.",
+    opcoes: [
+      {
+        texto: "Pago o que ele pediu, sem medir.",
+        reacao: "valeu, chefe! 😁",
+        resultado: "Depois se descobriu que só 310 m² estavam prontos. A diferença foi difícil de recuperar.",
+        pontos: {}
+      },
+      {
+        texto: "Faço a medição correndo, \"no olho\".",
+        reacao: "tá bom, então 👍",
+        resultado: "A medição saiu rápida, mas com erros que geraram discussão no mês seguinte.",
+        pontos: { pressao: 1 }
+      },
+      {
+        texto: "Meço o que foi feito, confiro com o projeto e registro com fotos antes de liberar o pagamento.",
+        reacao: "deu 310 m²... é, a parede do fundo ainda não tá pronta mesmo 😅",
+        resultado: "O pagamento saiu certo e no mesmo dia, sem discussão.",
+        pontos: { organizacao: 2, logica: 1 }
+      },
+      {
+        texto: "Peço para a empreiteira medir e eu só assino.",
+        reacao: "pode deixar, a gente mede 😏",
+        resultado: "A medição veio a mais, e você assinou um documento pelo qual é responsável.",
+        pontos: { pessoas: 1, organizacao: 1 }
+      }
+    ]
+  }
+]);

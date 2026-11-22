@@ -314,3 +314,270 @@ PROFISSOES.push({
     }
   ]
 });
+
+/* ---------- Segunda versão do dia (banco de versões) ----------
+   Cada item abaixo é outra versão da etapa de mesma posição no dia acima.
+   Os pontos das opções repetem os da versão original, para manter o equilíbrio. */
+
+adicionarVersoes("desenvolvimento-sistemas", [
+  {
+    horario: "09:00",
+    titulo: "Quanto tempo vai levar?",
+    cena: "⏳ 📋 🤔",
+    descricao: "Na reunião diária, a líder pergunta quanto tempo você precisa para uma funcionalidade que você nunca fez.",
+    conversa: [
+      { quem: "Marina, líder da equipe", avatar: "👩🏾‍💼", fala: "a tela de cupons de desconto fica com você 🎟️" },
+      { quem: "Marina, líder da equipe", avatar: "👩🏾‍💼", fala: "quanto tempo você precisa? o cliente quer saber ainda hoje" }
+    ],
+    naVidaReal: "Estimar prazos é uma das partes mais difíceis do trabalho. Equipes costumam quebrar a tarefa em partes menores antes de prometer uma data, e iniciantes aprendem muito pedindo ajuda nessa hora.",
+    opcoes: [
+      {
+        texto: "Digo \"dois dias\" para parecer rápido(a), mesmo sem ter ideia.",
+        reacao: "ótimo, vou avisar o cliente! 👍",
+        resultado: "A tarefa levou seis dias, e a equipe teve que explicar o atraso ao cliente.",
+        pontos: {}
+      },
+      {
+        texto: "Peço uma hora para entender a tarefa e um colega para me ajudar a quebrá-la em partes antes de estimar.",
+        reacao: "boa, estimativa com base é bem melhor 😉",
+        resultado: "Com a ajuda, você chegou a quatro dias, um prazo realista que foi cumprido.",
+        pontos: { pessoas: 1, organizacao: 1 }
+      },
+      {
+        texto: "Dou um prazo apertado e prometo virar a noite se precisar.",
+        reacao: "hmm, não quero ninguém virando a noite, hein 😬",
+        resultado: "Você cumpriu o prazo, mas exausto(a), e a funcionalidade saiu com dois erros.",
+        pontos: { pressao: 1 }
+      }
+    ]
+  },
+  {
+    horario: "10:00",
+    titulo: "O site está lento",
+    cena: "🐢 💻 📈",
+    descricao: "Os clientes reclamam que a página de produtos demora mais de dez segundos para abrir.",
+    conversa: [
+      { quem: "Seu Carlos, cliente", avatar: "👨🏻‍🦳", fala: "tá demorando uma eternidade pra abrir os produtos 🐢" },
+      { quem: "Seu Carlos, cliente", avatar: "👨🏻‍🦳", fala: "os clientes desistem e vão pro concorrente!" }
+    ],
+    naVidaReal: "Lentidão é um problema comum, e a causa raramente é óbvia. Desenvolvedores medem cada parte da página para encontrar o gargalo, que muitas vezes é uma consulta ao banco de dados mal feita ou imagens pesadas demais.",
+    opcoes: [
+      {
+        texto: "Meço o tempo de cada parte da página, acho a parte que demora e anoto o antes e o depois de cada mudança.",
+        reacao: "caiu de 10 pra 1 segundo?? 😮",
+        resultado: "A causa era uma consulta que buscava todos os produtos de uma vez. Corrigida, a página ficou dez vezes mais rápida.",
+        pontos: { logica: 2, organizacao: 1 }
+      },
+      {
+        texto: "Pergunto ao cliente em que telas, aparelhos e horários a lentidão aparece mais.",
+        reacao: "é sempre de manhã, quando todo mundo entra! 🤔",
+        resultado: "A pista ajudou, mas você ainda precisou investigar o código para achar a causa.",
+        pontos: { pessoas: 1, logica: 1 }
+      },
+      {
+        texto: "Contrato um servidor mais potente, sem saber a causa.",
+        reacao: "melhorou um pouco... mas a conta ficou o dobro 💸",
+        resultado: "A lentidão diminuiu pouco, e o problema voltou quando o número de clientes cresceu.",
+        pontos: { pressao: 1 }
+      },
+      {
+        texto: "Digo que o problema deve ser a internet dos clientes.",
+        reacao: "a internet de todo mundo? 🙄",
+        resultado: "Os clientes continuaram desistindo das compras, e o Seu Carlos perdeu a confiança na equipe.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "encontre-o-erro",
+    horario: "10:45",
+    titulo: "A média errada",
+    cena: "🐛 📊 🔎",
+    conversa: [
+      { quem: "Lucas, desenvolvedor sênior", avatar: "🧑🏻‍💻", fala: "o boletim da escola tá dando média errada quando o aluno tem 4 notas 🤨" },
+      { quem: "Lucas, desenvolvedor sênior", avatar: "🧑🏻‍💻", fala: "acha a linha com o bug 👇" }
+    ],
+    pergunta: "Toque na linha com o erro:",
+    linhas: [
+      "function media(notas) {",
+      "  let soma = 0;",
+      "  for (const nota of notas) soma += nota;",
+      "  return soma / 2;",
+      "}"
+    ],
+    correta: 3,
+    codigo: true,
+    explicacao: "A função sempre divide por 2, então só acerta quando o aluno tem duas notas. O certo é dividir pela quantidade de notas: soma / notas.length. Esse tipo de erro passa despercebido quando o código só é testado com um exemplo.",
+    traco: "logica"
+  },
+  {
+    horario: "11:30",
+    titulo: "Uma biblioteca nova",
+    cena: "📚 🧩 🤔",
+    descricao: "Para gerar boletos, a equipe decidiu usar uma biblioteca que você nunca usou.",
+    conversa: [
+      { quem: "Lucas, desenvolvedor sênior", avatar: "🧑🏻‍💻", fala: "a gente vai usar essa biblioteca de pagamentos 💳" },
+      { quem: "Lucas, desenvolvedor sênior", avatar: "🧑🏻‍💻", fala: "consegue integrar até sexta? qualquer coisa me chama" }
+    ],
+    naVidaReal: "Aprender ferramentas novas o tempo todo faz parte da área. Ler a documentação, testar algo pequeno primeiro e perguntar a quem já sabe é o caminho mais seguro, principalmente quando envolve dinheiro.",
+    opcoes: [
+      {
+        texto: "Sigo um tutorial passo a passo, copiando tudo sem entender direito.",
+        reacao: "funcionou? e se der erro, você sabe o porquê? 🤔",
+        resultado: "Funcionou no exemplo, mas quebrou num caso real e você não sabia por quê.",
+        pontos: { organizacao: 1 }
+      },
+      {
+        texto: "Proponho à equipe usar outra biblioteca, que eu já conheço, explicando as vantagens.",
+        reacao: "a ideia é boa, mas a decisão já foi tomada pela empresa 😕",
+        resultado: "A discussão foi útil, mas o prazo apertou porque a troca não era possível.",
+        pontos: { criatividade: 1, pessoas: 1 }
+      },
+      {
+        texto: "Copio um código de um fórum sem ler e mando direto para o sistema.",
+        reacao: "PERA, isso foi pro ar sem revisão?? 😱",
+        resultado: "O código tinha uma falha, e alguns pagamentos foram registrados em dobro.",
+        pontos: {}
+      },
+      {
+        texto: "Leio a documentação, faço um teste pequeno e pergunto ao Lucas o que não entendi.",
+        reacao: "boa pergunta! essa parte confunde todo mundo mesmo 😄",
+        resultado: "A integração ficou pronta na quinta, testada e entendida.",
+        pontos: { logica: 1, pessoas: 1 }
+      }
+    ]
+  },
+  {
+    horario: "14:00",
+    titulo: "Um app igual ao Instagram",
+    cena: "📱 🧁 💭",
+    descricao: "A dona de uma confeitaria de bairro quer um aplicativo, mas o orçamento é pequeno.",
+    conversa: [
+      { quem: "Dona Rosana, cliente", avatar: "👩🏾‍🍳", fala: "quero um app igualzinho ao Instagram, mas pra minha confeitaria 🧁" },
+      { quem: "Dona Rosana, cliente", avatar: "👩🏾‍🍳", fala: "com fotos, curtidas, chat, entrega... e que fique pronto em um mês!" }
+    ],
+    naVidaReal: "Clientes costumam pedir soluções gigantes para problemas simples. Entender a necessidade real e propor uma primeira versão pequena, que já resolve o principal, é uma parte importante do trabalho de quem desenvolve sistemas.",
+    opcoes: [
+      {
+        texto: "Anoto tudo e decido sozinho(a), depois, o que cabe no orçamento.",
+        reacao: "tá... mas me mostra antes, tá? 😅",
+        resultado: "Você escolheu bem, mas ela não reconheceu o que tinha pedido e ficou insegura.",
+        pontos: { criatividade: 1 }
+      },
+      {
+        texto: "Pergunto o que ela mais precisa e desenho com ela uma versão simples: cardápio, pedido e entrega.",
+        reacao: "ah, é isso! o que eu quero é receber pedido sem ficar no telefone 😃",
+        resultado: "A primeira versão ficou pronta em três semanas, e os pedidos da confeitaria dobraram.",
+        pontos: { criatividade: 2, pessoas: 1 }
+      },
+      {
+        texto: "Peço que ela mande por escrito todos os requisitos.",
+        reacao: "requisitos? o que é isso? 🤔",
+        resultado: "Ela mandou uma lista confusa, e o projeto atrasou duas semanas.",
+        pontos: { organizacao: 1 }
+      },
+      {
+        texto: "Digo que o que ela quer é impossível e encerro a conversa.",
+        reacao: "nossa, então tá... 😕",
+        resultado: "Ela contratou outra pessoa, que ouviu o que ela precisava.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    horario: "15:30",
+    titulo: "Quem não enxerga a tela",
+    cena: "♿ 🔊 📱",
+    descricao: "Um usuário cego escreveu dizendo que não consegue fazer compras no aplicativo com o leitor de tela.",
+    conversa: [
+      { quem: "Marina, líder da equipe", avatar: "👩🏾‍💼", fala: "olha esse e-mail 😟" },
+      { quem: "Marina, líder da equipe", avatar: "👩🏾‍💼", fala: "\"o leitor de tela só fala 'botão, botão, botão'. não sei onde clicar\"" }
+    ],
+    naVidaReal: "Acessibilidade digital é obrigatória pela Lei Brasileira de Inclusão. Leitores de tela leem o texto dos botões e campos: quando o desenvolvedor não descreve cada um, a pessoa não consegue usar o sistema.",
+    opcoes: [
+      {
+        texto: "Testo o app com o leitor de tela ligado, rabisco soluções e coloco descrições claras em cada botão.",
+        reacao: "ele respondeu: \"agora consigo comprar sozinho!\" 🥹",
+        resultado: "O app ficou acessível, e as correções melhoraram o uso para todos os clientes.",
+        pontos: { criatividade: 2, logica: 1, pressao: 1 }
+      },
+      {
+        texto: "Coloco a reclamação na lista de tarefas para \"algum dia\".",
+        reacao: "e enquanto isso ele fica sem conseguir comprar? 😕",
+        resultado: "A tarefa ficou meses esquecida, e o usuário desistiu do aplicativo.",
+        pontos: { organizacao: 1 }
+      },
+      {
+        texto: "Escrevo \"botão\" como descrição de todos os botões, bem rápido.",
+        reacao: "mas é exatamente disso que ele reclamou 🤦",
+        resultado: "Nada mudou para quem usa leitor de tela.",
+        pontos: { pressao: 1 }
+      },
+      {
+        texto: "Digo que esse público é pequeno e não vale o esforço.",
+        reacao: "isso é contra a lei, e contra o bom senso 😳",
+        resultado: "A empresa recebeu uma reclamação formal e teve que corrigir às pressas depois.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "ordenar",
+    horario: "16:30",
+    titulo: "Do código ao ar",
+    cena: "🌿 ✅ 🚀",
+    conversa: [
+      { quem: "Lucas, desenvolvedor sênior", avatar: "🧑🏻‍💻", fala: "sua correção tá pronta? então bora seguir o fluxo certinho 🚀" },
+      { quem: "Lucas, desenvolvedor sênior", avatar: "🧑🏻‍💻", fala: "coloca as etapas na ordem 👇" }
+    ],
+    pergunta: "Toque nas etapas na ordem em que uma mudança costuma chegar ao sistema no ar:",
+    itens: [
+      "Escrever o código numa ramificação (branch) separada",
+      "Rodar os testes automáticos",
+      "Abrir um pedido de revisão (pull request) para a equipe",
+      "Publicar a mudança no sistema em produção"
+    ],
+    explicacao: "Primeiro o código é escrito separado do sistema principal, depois testado e revisado por outra pessoa. Só então vai para o ar. Esse fluxo evita que um erro de uma pessoa derrube o sistema de todo mundo.",
+    traco: "organizacao"
+  },
+  {
+    horario: "17:30",
+    titulo: "Senha no repositório",
+    urgente: true,
+    cena: "🔑 🌍 😱",
+    descricao: "Você percebe que a chave secreta do sistema de pagamentos foi enviada por engano para um repositório público no GitHub.",
+    conversa: [
+      { quem: "Ana, do suporte", avatar: "👩🏻‍💻", fala: "gente, o repositório da loja tá público?? 😳" },
+      { quem: "Lucas, desenvolvedor sênior", avatar: "🧑🏻‍💻", fala: "e a chave do pagamento tá lá no arquivo de configuração!! 😱" }
+    ],
+    naVidaReal: "Robôs varrem repositórios públicos atrás de senhas e chaves o tempo todo. Apagar o arquivo não basta, porque o histórico guarda tudo: é preciso cancelar a chave na hora e gerar outra.",
+    opcoes: [
+      {
+        texto: "Apago o arquivo do repositório e considero resolvido.",
+        reacao: "mas o histórico ainda mostra a chave... 😬",
+        resultado: "A chave continuou visível no histórico, e alguém tentou usá-la à noite.",
+        pontos: { pressao: 1, logica: 1 }
+      },
+      {
+        texto: "Ajudo a equipe, mas fico tão nervoso(a) que preferia nunca passar por isso.",
+        reacao: "respira, a gente resolve junto 💪",
+        resultado: "Você ajudou, mas a ansiedade pesou o resto do dia.",
+        pontos: { pessoas: 1 }
+      },
+      {
+        texto: "Cancelo a chave na hora, gero uma nova, aviso a equipe e registro o que aconteceu.",
+        reacao: "chave cancelada! ninguém conseguiu usar 😮‍💨",
+        resultado: "O problema foi contido em minutos, e a equipe criou uma verificação automática para impedir que isso se repita.",
+        pontos: { pressao: 2, logica: 1, organizacao: 1 }
+      },
+      {
+        texto: "Vou embora no horário: não fui eu que subi esse arquivo.",
+        reacao: "sério? 😳",
+        resultado: "A chave ficou exposta por horas, e a empresa teve que investigar compras suspeitas.",
+        pontos: {}
+      }
+    ]
+  }
+]);
