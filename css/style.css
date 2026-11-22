@@ -1446,8 +1446,8 @@ body[data-tela="jogo"] .botao-som { display: none; }
 .fim-do-dia-item { padding: 14px; text-align: center; background: #f5f8ff; border-radius: var(--raio-pequeno); }
 .fim-do-dia-item span { display: block; font-weight: 800; color: var(--texto-suave); }
 .fim-do-dia-item strong { display: block; margin-bottom: 6px; font-family: var(--fonte-titulo); font-size: 2rem; font-weight: 700; }
-.barra-energia span { background: linear-gradient(90deg, var(--azul-claro), var(--azul-medio)); }
-.barra-estresse span { background: linear-gradient(90deg, #9aa6c4, var(--azul-escuro)); }
+.fim-do-dia .barra-energia span { background: linear-gradient(90deg, var(--azul-claro), var(--azul-medio)); }
+.fim-do-dia .barra-estresse span { background: linear-gradient(90deg, #9aa6c4, var(--azul-escuro)); }
 .nota-final { margin: 0; font-weight: 700; }
 
 .grade-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
