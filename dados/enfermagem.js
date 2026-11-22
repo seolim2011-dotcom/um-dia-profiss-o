@@ -371,3 +371,274 @@ PROFISSOES.push({
     }
   ]
 });
+
+/* ---------- Segunda versão do dia (banco de versões) ----------
+   Cada item abaixo é outra versão da etapa de mesma posição no dia acima.
+   Os pontos das opções repetem os da versão original, para manter o equilíbrio. */
+
+adicionarVersoes("enfermagem", [
+  {
+    horario: "07:00",
+    titulo: "Paciente novo no leito 6",
+    cena: "🏥 🛏️ ❓",
+    descricao: "Na passagem de plantão, a enfermeira da noite conta que um paciente foi internado de madrugada, e algumas informações estão faltando.",
+    conversa: [
+      { quem: "Carla, enfermeira da noite", avatar: "👩🏽‍⚕️", fala: "o do leito 6 subiu da emergência às 4h. pneumonia" },
+      { quem: "Carla, enfermeira da noite", avatar: "👩🏽‍⚕️", fala: "ele tava confuso e não soube dizer se tem alergia a algum remédio 😬" },
+      { quem: "Carla, enfermeira da noite", avatar: "👩🏽‍⚕️", fala: "o antibiótico tá prescrito pras 8h. bom, era isso, tô indo!" }
+    ],
+    naVidaReal: "Saber as alergias antes de dar um medicamento é obrigatório. Quando o paciente não consegue informar, a equipe procura a família, o prontuário de outras internações e marca a dúvida de forma bem visível.",
+    opcoes: [
+      {
+        texto: "Peço um minuto, confiro com ela o prontuário e anoto as pendências, como ligar para a família sobre alergias.",
+        reacao: "boa, nem pensei em pedir pra família... a filha deixou o telefone aqui 📞",
+        resultado: "A filha confirmou por telefone que ele tem alergia a penicilina. O antibiótico das 8h foi trocado antes de ser dado.",
+        pontos: { organizacao: 2, pessoas: 1 }
+      },
+      {
+        texto: "Deixo ela ir embora no horário e tiro as dúvidas depois pelo celular dela.",
+        reacao: "valeu!! qualquer coisa me chama no zap 🙏",
+        resultado: "Ela estava no ônibus e demorou a responder. A informação da alergia só chegou depois de muita correria.",
+        pontos: { pessoas: 1 }
+      },
+      {
+        texto: "Vou direto ao leito 6 conversar com o paciente e avaliar como ele está.",
+        reacao: "tá, mas ainda tem os outros sete pra eu te passar! 😅",
+        resultado: "O paciente estava estável, mas você ficou sem as informações dos outros pacientes e teve que correr atrás delas.",
+        pontos: { pessoas: 1, logica: 1 }
+      },
+      {
+        texto: "Assumo o plantão sem perguntar mais nada: o que importa deve estar no sistema.",
+        reacao: "tá bom, então. bom plantão 👋",
+        resultado: "O campo de alergias estava em branco no sistema. Por pouco o antibiótico não foi dado sem a checagem.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    horario: "09:00",
+    titulo: "Curativo difícil",
+    cena: "🩹 🛏️ 👵",
+    descricao: "Dona Lurdes, 79 anos, tem uma ferida grande nas costas por ficar muito tempo deitada. O curativo dói e tem cheiro forte.",
+    conversa: [
+      { quem: "Dona Lurdes, paciente", avatar: "👵🏾", fala: "de novo esse curativo? dói tanto..." },
+      { quem: "Dona Lurdes, paciente", avatar: "👵🏾", fala: "e ainda fica esse cheiro. tenho vergonha até da minha neta vir me ver 😔" }
+    ],
+    naVidaReal: "Feridas por pressão (as escaras) são comuns em quem fica muito tempo acamado. Prevenir, fazer curativos e mudar o paciente de posição a cada poucas horas são tarefas diárias da enfermagem.",
+    opcoes: [
+      {
+        texto: "Faço o curativo rápido, seguindo o protocolo, sem puxar conversa.",
+        reacao: "...pronto? tá bom.",
+        resultado: "O curativo ficou correto, mas ela passou o procedimento todo tensa, com os olhos fechados.",
+        pontos: { organizacao: 1 }
+      },
+      {
+        texto: "Explico cada passo, coloco no celular uma música que ela gosta e faço tudo com calma.",
+        reacao: "ah, essa música era do meu casamento... 🥹 nem senti tanto",
+        resultado: "Ela relaxou e chegou a cantar baixinho. A dor pareceu menor e ela pediu a mesma música no dia seguinte.",
+        pontos: { pessoas: 2, criatividade: 1 }
+      },
+      {
+        texto: "Chamo um colega para virarmos ela juntos, com mais segurança.",
+        reacao: "dois anjos pra me ajudar, que luxo 😊",
+        resultado: "Virá-la com duas pessoas foi mais seguro e menos dolorido. Vocês só esperaram uns minutos o colega ficar livre.",
+        pontos: { pessoas: 1, organizacao: 1 }
+      },
+      {
+        texto: "Peço para outra pessoa fazer: o cheiro me deixa enjoado(a).",
+        reacao: "ninguém quer cuidar de mim, né... 😞",
+        resultado: "A colega estava cheia de pacientes e o curativo atrasou duas horas. Lidar com feridas faz parte da rotina da enfermagem.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "escolha",
+    horario: "10:15",
+    titulo: "Velocidade do soro",
+    cena: "💧 ⏱️ 🧮",
+    conversa: [
+      { quem: "Bete, enfermeira-chefe", avatar: "👩🏾‍⚕️", fala: "o soro do leito 2 é 500 mL pra correr em 4 horas 💧" },
+      { quem: "Bete, enfermeira-chefe", avatar: "👩🏾‍⚕️", fala: "o equipo é de macrogotas. quantas gotas por minuto você regula?" }
+    ],
+    pergunta: "500 mL de soro em 4 horas, com equipo de macrogotas (20 gotas = 1 mL). Quantas gotas por minuto?",
+    alternativas: ["21 gotas/min", "42 gotas/min", "83 gotas/min", "125 gotas/min"],
+    correta: 1,
+    explicacao: "Em macrogotas, a conta é volume ÷ (horas × 3): 500 ÷ (4 × 3) ≈ 42 gotas por minuto. Isso vem de 500 mL × 20 gotas ÷ 240 minutos. Soro rápido demais pode sobrecarregar o coração; devagar demais atrasa o tratamento.",
+    traco: "logica"
+  },
+  {
+    horario: "11:30",
+    titulo: "Queda e dor no peito",
+    urgente: true,
+    cena: "🚨 🛁 💓",
+    descricao: "Um técnico grita do quarto 2: um senhor caiu no banheiro. Ao mesmo tempo, o paciente do quarto 7 diz que está com dor no peito e suando frio.",
+    conversa: [
+      { quem: "Rafael, técnico de enfermagem", avatar: "🧑🏿‍⚕️", fala: "o seu Nilton caiu no banheiro do 2! ele tá acordado, reclamando do quadril" },
+      { quem: "Seu Paulo, quarto 7", avatar: "👨🏽‍🦳", fala: "ai... tá apertando aqui no peito... e eu tô suando frio 😰" }
+    ],
+    naVidaReal: "Dor no peito com suor frio pode ser um infarto, e cada minuto conta. Já um paciente que caiu e está acordado não deve ser levantado às pressas: primeiro é preciso avaliar se há fratura.",
+    opcoes: [
+      {
+        texto: "Corro para levantar o senhor que caiu: ele está no chão e com dor.",
+        reacao: { quem: "Rafael, técnico de enfermagem", avatar: "🧑🏿‍⚕️", fala: "espera, não puxa ele! e o do 7?? 😱" },
+        resultado: "Levantar o paciente sem avaliar podia piorar uma fratura, e o paciente do 7 esperou sem ninguém por perto.",
+        pontos: { pessoas: 1 }
+      },
+      {
+        texto: "Vou ao quarto 7, peço o eletrocardiograma e o médico, e oriento o técnico a não levantar o senhor antes de avaliar.",
+        reacao: { quem: "Rafael, técnico de enfermagem", avatar: "🧑🏿‍⚕️", fala: "beleza, deixo ele deitado e confortável aqui 👍" },
+        resultado: "O eletrocardiograma mostrou um infarto, tratado a tempo. O senhor da queda tinha só um hematoma e foi avaliado com calma.",
+        pontos: { pressao: 2, pessoas: 1, logica: 1 }
+      },
+      {
+        texto: "Corro para o quarto 7, mas esqueço de orientar quem está com o senhor que caiu.",
+        reacao: { quem: "Rafael, técnico de enfermagem", avatar: "🧑🏿‍⚕️", fala: "e aqui, o que eu faço?? 😰" },
+        resultado: "O paciente do 7 foi atendido a tempo, mas o do 2 ficou no chão frio, sem orientação, por quase meia hora.",
+        pontos: { pressao: 1 }
+      },
+      {
+        texto: "Fico no posto esperando o médico chegar para decidir o que fazer.",
+        reacao: "por favor... alguém... 😰",
+        resultado: "O médico estava em outro andar. Os minutos perdidos fizeram falta para o paciente com dor no peito.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    horario: "13:00",
+    titulo: "O colega precisa sair",
+    cena: "📱 🏫 🤒",
+    descricao: "A escola liga para o técnico Rafael: o filho dele está com febre e alguém precisa buscá-lo.",
+    conversa: [
+      { quem: "Rafael, técnico de enfermagem", avatar: "🧑🏿‍⚕️", fala: "a escola ligou, meu pequeno tá com 39 de febre 😟" },
+      { quem: "Rafael, técnico de enfermagem", avatar: "🧑🏿‍⚕️", fala: "a chefe deixou eu sair, mas alguém tem que ficar com meus 4 pacientes..." },
+      { quem: "Rafael, técnico de enfermagem", avatar: "🧑🏿‍⚕️", fala: "sei que é seu horário de almoço. cê consegue? 🙏" }
+    ],
+    naVidaReal: "Imprevistos pessoais acontecem com todo mundo, e na enfermagem o paciente não pode ficar sem cuidado. Uma passagem rápida e organizada evita que informações se percam quando alguém sai no meio do turno.",
+    opcoes: [
+      {
+        texto: "Assumo os pacientes dele, mas passo a tarde dizendo que ninguém me ajuda.",
+        reacao: "desculpa mesmo, viu... 😕",
+        resultado: "Os pacientes foram cuidados, mas o clima da equipe ficou pesado o resto do dia.",
+        pontos: { pressao: 1 }
+      },
+      {
+        texto: "Digo que topo, mas só depois de terminar meu intervalo de 15 minutos.",
+        reacao: "tá, eu espero... mas tô agoniado 😬",
+        resultado: "Ele saiu um pouco mais tarde e preocupado, mas você assumiu os pacientes descansado(a).",
+        pontos: { pessoas: 1 }
+      },
+      {
+        texto: "Peço que ele me passe rapidamente quem precisa de quê, assumo os pacientes e libero ele.",
+        reacao: "você salvou meu dia!! te devo uma 🙌",
+        resultado: "Com a passagem rápida, nada se perdeu. O Rafael buscou o filho e no dia seguinte trouxe um bolo para a equipe.",
+        pontos: { pessoas: 2, pressao: 1 }
+      },
+      {
+        texto: "Digo que não é problema meu e volto para o meu intervalo.",
+        reacao: "...tá. eu me viro. 😞",
+        resultado: "Os pacientes dele ficaram sem ninguém responsável por uma hora, até a chefe perceber.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    horario: "15:30",
+    titulo: "Quero ir embora!",
+    urgente: true,
+    cena: "🚪 💉 😠",
+    descricao: "Um paciente internado com infecção arranca o esparadrapo do soro e diz que vai embora agora.",
+    conversa: [
+      { quem: "Seu Valter, paciente", avatar: "👨🏻", fala: "chega! eu vou embora, ninguém me segura aqui 😠" },
+      { quem: "Seu Valter, paciente", avatar: "👨🏻", fala: "tira esse negócio do meu braço AGORA" }
+    ],
+    naVidaReal: "O paciente tem o direito de recusar o tratamento e pedir \"alta a pedido\", assinando um termo. Mas a equipe precisa explicar os riscos e entender o motivo: muitas vezes é medo ou um problema em casa que pode ser resolvido.",
+    opcoes: [
+      {
+        texto: "Chamo o médico de plantão para conversar com ele e explicar os riscos.",
+        reacao: "pode chamar, mas eu vou embora do mesmo jeito 😤",
+        resultado: "O médico explicou os riscos e ele aceitou ficar até o dia seguinte, ainda contrariado.",
+        pontos: { pessoas: 1, organizacao: 1 }
+      },
+      {
+        texto: "Sento ao lado dele, pergunto o que está acontecendo e escuto com calma.",
+        reacao: "...é que minha esposa tem Alzheimer e tá sozinha em casa desde ontem 😢",
+        resultado: "Você chamou o serviço social, que achou uma vizinha para ficar com a esposa. Ele continuou o tratamento.",
+        pontos: { pessoas: 2, pressao: 1 }
+      },
+      {
+        texto: "Explico a regra: para sair, ele precisa assinar o termo de alta a pedido. Volto para o posto.",
+        reacao: "então me dá logo esse papel! 😠",
+        resultado: "Ele assinou e foi embora no meio do tratamento. Voltou três dias depois, bem pior.",
+        pontos: { organizacao: 1 }
+      },
+      {
+        texto: "Digo que, se ele quer ir, o problema é dele.",
+        reacao: "é assim que vocês tratam as pessoas aqui? 😡",
+        resultado: "Ele saiu sem orientação nenhuma, e a família fez uma reclamação na ouvidoria do hospital.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "encontre-o-erro",
+    horario: "17:00",
+    titulo: "Sinais vitais",
+    cena: "🩺 📈 🔍",
+    conversa: [
+      { quem: "Bete, enfermeira-chefe", avatar: "👩🏾‍⚕️", fala: "o técnico mediu os sinais vitais do leito 6 🩺" },
+      { quem: "Bete, enfermeira-chefe", avatar: "👩🏾‍⚕️", fala: "tem um valor aí que precisa de atenção agora. qual?" }
+    ],
+    pergunta: "Sinais vitais de um adulto em repouso. Toque no valor que está fora do normal:",
+    linhas: [
+      "Pressão arterial: 120 × 80 mmHg",
+      "Frequência cardíaca: 78 batimentos por minuto",
+      "Temperatura: 36,8 °C",
+      "Saturação de oxigênio: 85%",
+      "Frequência respiratória: 16 por minuto"
+    ],
+    correta: 3,
+    explicacao: "Em adultos saudáveis, a saturação de oxigênio costuma ficar entre 95% e 100%. Com 85%, o corpo está recebendo pouco oxigênio: a equipe avisa o médico, posiciona o paciente e pode precisar oferecer oxigênio.",
+    traco: "logica"
+  },
+  {
+    horario: "18:30",
+    titulo: "Passagem para a noite",
+    cena: "🌙 📋 🔁",
+    descricao: "Agora é você quem passa o plantão para a equipe da noite. O dia foi pesado e você está esgotado(a).",
+    conversa: [
+      { quem: "Carla, enfermeira da noite", avatar: "👩🏽‍⚕️", fala: "boa noite! 😊 e aí, como foi o dia?" },
+      { quem: "Carla, enfermeira da noite", avatar: "👩🏽‍⚕️", fala: "me passa tudo que eu já vou começar a ronda" }
+    ],
+    naVidaReal: "Passar o plantão de forma organizada, paciente por paciente e com as pendências por escrito, é uma das principais formas de evitar erros entre um turno e outro.",
+    opcoes: [
+      {
+        texto: "Passo tudo de cabeça, bem rápido, para não perder o ônibus.",
+        reacao: "peraí, o antibiótico do 6 é que horas mesmo? 🤔",
+        resultado: "Você pegou o ônibus, mas a Carla precisou te ligar duas vezes durante a noite.",
+        pontos: { pressao: 1 }
+      },
+      {
+        texto: "Faço uma tabelinha à mão com os pacientes, mas não confiro os horários com o sistema.",
+        reacao: "adorei a tabelinha! mas o horário do 2 tá diferente do sistema... 🤨",
+        resultado: "A ideia ajudou, mas um horário errado na tabela confundiu a equipe da noite.",
+        pontos: { organizacao: 1, criatividade: 1 }
+      },
+      {
+        texto: "Deixo um bilhete escrito \"tudo tranquilo\" e vou embora.",
+        reacao: "tudo tranquilo?? e a alergia do 6?? 😳",
+        resultado: "A equipe da noite ficou sem saber das pendências importantes do dia.",
+        pontos: {}
+      },
+      {
+        texto: "Passo paciente por paciente, com as pendências por escrito, e confiro o prontuário com ela.",
+        reacao: "perfeito, assim dá gosto de assumir plantão 👏",
+        resultado: "Você saiu 15 minutos mais tarde, mas a noite começou sem nenhuma dúvida.",
+        pontos: { organizacao: 2, pressao: 1 }
+      }
+    ]
+  }
+]);

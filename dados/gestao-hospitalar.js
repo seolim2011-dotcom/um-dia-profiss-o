@@ -310,3 +310,266 @@ PROFISSOES.push({
     }
   ]
 });
+
+/* ---------- Segunda versão do dia (banco de versões) ----------
+   Cada item abaixo é outra versão da etapa de mesma posição no dia acima.
+   Os pontos das opções repetem os da versão original, para manter o equilíbrio. */
+
+adicionarVersoes("gestao-hospitalar", [
+  {
+    horario: "08:00",
+    titulo: "Consultas vazias",
+    cena: "📅 🪑 📉",
+    descricao: "O relatório do mês mostra que 30% dos pacientes agendados no ambulatório faltaram às consultas.",
+    conversa: [
+      { quem: "Dr. Paulo, diretor do hospital", avatar: "👨🏻‍💼", fala: "30% de faltas no ambulatório 😩" },
+      { quem: "Dr. Paulo, diretor do hospital", avatar: "👨🏻‍💼", fala: "e tem gente esperando três meses por uma vaga. me traz uma solução?" }
+    ],
+    naVidaReal: "Faltas em consultas são um problema comum na saúde: a vaga fica vazia enquanto outras pessoas esperam. Lembretes por mensagem, horários melhores e entender o motivo das faltas costumam reduzir o problema.",
+    opcoes: [
+      {
+        texto: "Vou à recepção conversar com os pacientes para entender por que eles faltam.",
+        reacao: "boa, mas são milhares de consultas... dá pra ver o todo? 🤔",
+        resultado: "Você ouviu histórias importantes, mas não sabia se elas representavam a maioria.",
+        pontos: { pessoas: 2 }
+      },
+      {
+        texto: "Cruzo os dados de faltas por especialidade, horário e bairro e depois converso com a recepção.",
+        reacao: "as faltas são maiores às 7h e em quem mora longe? interessante 👀",
+        resultado: "Com lembretes por mensagem e horários mais tarde para quem mora longe, as faltas caíram pela metade.",
+        pontos: { logica: 2, organizacao: 1, pessoas: 1 }
+      },
+      {
+        texto: "Proponho marcar dois pacientes por horário para compensar as faltas.",
+        reacao: "e quando os dois vierem? 😬",
+        resultado: "Em vários dias os dois vieram, e a espera dentro do ambulatório explodiu.",
+        pontos: { pressao: 1 }
+      },
+      {
+        texto: "Deixo como está: faltas sempre existiram.",
+        reacao: "então a fila de três meses vai continuar... 😕",
+        resultado: "Nada mudou, e a fila de espera aumentou no mês seguinte.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "escolha",
+    horario: "08:45",
+    titulo: "Ocupação dos leitos",
+    cena: "🛏️ 📊 🔍",
+    conversa: [
+      { quem: "Dr. Paulo, diretor do hospital", avatar: "👨🏻‍💼", fala: "olha a ocupação de leitos de hoje por setor 📊" },
+      { quem: "Dr. Paulo, diretor do hospital", avatar: "👨🏻‍💼", fala: "qual precisa da nossa atenção primeiro?" }
+    ],
+    pergunta: "Porcentagem de leitos ocupados em cada setor. Qual está mais perto do limite?",
+    grafico: [
+      { rotulo: "Clínica", valor: 78 },
+      { rotulo: "Pediatria", valor: 52 },
+      { rotulo: "UTI", valor: 98 },
+      { rotulo: "Ortopedia", valor: 71 }
+    ],
+    unidade: "%",
+    alternativas: ["Clínica", "Pediatria", "UTI", "Ortopedia"],
+    correta: 2,
+    explicacao: "Com 98% dos leitos ocupados, a UTI quase não tem folga para uma emergência. Gestores acompanham a ocupação todos os dias para planejar altas, transferências e o uso de leitos de outros setores.",
+    traco: "logica"
+  },
+  {
+    horario: "09:30",
+    titulo: "Acabou o antibiótico",
+    urgente: true,
+    cena: "💊 📦 ⚠️",
+    descricao: "A farmácia avisa que um antibiótico muito usado acabou no estoque central, e o fornecedor só entrega amanhã.",
+    conversa: [
+      { quem: "Gisele, farmacêutica", avatar: "👩🏻‍🔬", fala: "o estoque central zerou 😱 e tem 12 pacientes usando esse antibiótico" },
+      { quem: "Gisele, farmacêutica", avatar: "👩🏻‍🔬", fala: "a próxima dose é às 12h. o que a gente faz?" }
+    ],
+    naVidaReal: "Falta de medicamento é um problema real nos hospitais. A gestão de estoques, os contratos com fornecedores e os acordos entre hospitais existem para evitar que o tratamento seja interrompido.",
+    opcoes: [
+      {
+        texto: "Ligo para hospitais da região e peço um empréstimo emergencial do antibiótico.",
+        reacao: "o hospital vizinho tem 20 frascos! mandam em uma hora 🚑",
+        resultado: "O empréstimo cobriu o dia, mas ninguém conferiu se os setores ainda tinham doses guardadas.",
+        pontos: { criatividade: 1, pessoas: 1, pressao: 1 }
+      },
+      {
+        texto: "Aviso os médicos que acabou e que eles se virem.",
+        reacao: "como assim?? 😡",
+        resultado: "Cada médico tentou resolver sozinho, e alguns pacientes ficaram sem a dose do meio-dia.",
+        pontos: {}
+      },
+      {
+        texto: "Confiro o estoque de todos os setores, remanejo as doses para quem mais precisa, aviso as equipes e faço uma compra emergencial.",
+        reacao: "achei 15 doses espalhadas nos setores! dá pra hoje 🙌",
+        resultado: "Nenhum paciente ficou sem a dose, e a compra emergencial chegou à noite.",
+        pontos: { organizacao: 2, pressao: 1, pessoas: 1 }
+      }
+    ]
+  },
+  {
+    horario: "11:00",
+    titulo: "O tomógrafo quebrou",
+    cena: "🩻 🔧 ⏳",
+    descricao: "O único tomógrafo do hospital parou de funcionar. Há 18 exames marcados para hoje, alguns urgentes.",
+    conversa: [
+      { quem: "Sônia, coordenadora de enfermagem", avatar: "👩🏽‍⚕️", fala: "o tomógrafo travou de vez 😩" },
+      { quem: "Sônia, coordenadora de enfermagem", avatar: "👩🏽‍⚕️", fala: "tem um paciente com suspeita de AVC chegando da emergência!" }
+    ],
+    naVidaReal: "Equipamentos param, e a gestão precisa ter plano para isso: contratos de manutenção com prazo, acordos com hospitais parceiros e prioridade para os casos urgentes, como a suspeita de AVC, em que cada minuto conta.",
+    opcoes: [
+      {
+        texto: "Reorganizo a agenda com a equipe, mando as urgências para um hospital parceiro e registro tudo.",
+        reacao: "o paciente do AVC já tá a caminho do parceiro 🚑",
+        resultado: "Os casos urgentes foram atendidos a tempo, e os exames eletivos foram remarcados para a semana.",
+        pontos: { organizacao: 2, pessoas: 1, pressao: 1 }
+      },
+      {
+        texto: "Leio o contrato de manutenção e cobro da empresa o prazo de conserto.",
+        reacao: "eles vêm amanhã cedo. mas e o paciente de agora? 😬",
+        resultado: "A empresa cumpriu o contrato, mas o caso urgente demorou a ser encaminhado.",
+        pontos: { organizacao: 1, pressao: 1, logica: 1 }
+      },
+      {
+        texto: "Peço desculpas pessoalmente aos pacientes que esperam e ofereço um lanche.",
+        reacao: "eles gostaram... mas continuam sem exame 😕",
+        resultado: "O gesto foi simpático, mas não resolveu o problema de ninguém.",
+        pontos: { criatividade: 1, pessoas: 1 }
+      },
+      {
+        texto: "Aviso que não há previsão e mando todo mundo para casa.",
+        reacao: "inclusive o do AVC?? 😱",
+        resultado: "Um paciente grave ficou sem exame por horas, e o caso virou uma investigação interna.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "encontre-o-erro",
+    horario: "12:00",
+    titulo: "Confira a compra",
+    cena: "🧾 🧤 🔍",
+    conversa: [
+      { quem: "Dr. Paulo, diretor do hospital", avatar: "👨🏻‍💼", fala: "antes de aprovar a compra do mês, confere a planilha? 🧾" },
+      { quem: "Dr. Paulo, diretor do hospital", avatar: "👨🏻‍💼", fala: "tem uma conta errada aí" }
+    ],
+    pergunta: "Toque na linha da planilha de compras que tem uma conta errada:",
+    linhas: [
+      "Luvas: 200 caixas × R$ 30,00 = R$ 6.000,00",
+      "Seringas: 1.000 unidades × R$ 0,50 = R$ 500,00",
+      "Máscaras: 300 caixas × R$ 20,00 = R$ 9.000,00",
+      "Álcool em gel: 50 galões × R$ 40,00 = R$ 2.000,00"
+    ],
+    correta: 2,
+    explicacao: "300 × R$ 20,00 = R$ 6.000,00, e não R$ 9.000,00. Conferir valores e quantidades evita pagar a mais com dinheiro que faria falta em outro setor. Na gestão, cada conta importa.",
+    traco: "logica"
+  },
+  {
+    horario: "13:30",
+    titulo: "Comida no lixo",
+    cena: "🍽️ 🗑️ 📉",
+    descricao: "Uma auditoria mostrou que o hospital joga fora quase um terço das refeições preparadas todos os dias.",
+    conversa: [
+      { quem: "Dr. Paulo, diretor do hospital", avatar: "👨🏻‍💼", fala: "um terço da comida vai pro lixo 😳" },
+      { quem: "Dr. Paulo, diretor do hospital", avatar: "👨🏻‍💼", fala: "é dinheiro e comida jogados fora. o que você propõe?" }
+    ],
+    naVidaReal: "Desperdício de alimentos é um custo alto em hospitais. Medir o que sobra, ajustar a produção à ocupação real e doar o excedente dentro das regras sanitárias (permitido por lei desde 2020) reduz o problema.",
+    opcoes: [
+      {
+        texto: "Reduzo a quantidade de todas as refeições igualmente.",
+        reacao: "e os setores em que falta comida? 🤔",
+        resultado: "Sobrou menos comida, mas em alguns setores pacientes ficaram sem refeição.",
+        pontos: { organizacao: 1 }
+      },
+      {
+        texto: "Reúno a nutrição e a cozinha para darem ideias.",
+        reacao: "a equipe adorou ser ouvida 😊",
+        resultado: "Surgiram boas ideias, mas ninguém sabia ainda onde estava o maior desperdício.",
+        pontos: { pessoas: 1, criatividade: 1 }
+      },
+      {
+        texto: "Meço o desperdício por refeição e setor e proponho ajustes, como produzir pela ocupação do dia e doar o excedente.",
+        reacao: "a maior sobra é do jantar da ortopedia! faz sentido 👏",
+        resultado: "O desperdício caiu pela metade, e o excedente passou a ir para uma entidade do bairro.",
+        pontos: { logica: 2, organizacao: 1, criatividade: 1 }
+      },
+      {
+        texto: "Acho esse assunto chato e deixo para depois.",
+        reacao: "o desperdício não espera... 😕",
+        resultado: "O problema continuou, e o custo apareceu de novo no relatório do mês seguinte.",
+        pontos: {}
+      }
+    ]
+  },
+  {
+    horario: "15:00",
+    titulo: "Demora na pediatria",
+    cena: "👶 ⏳ 📱",
+    descricao: "Uma mãe postou nas redes que esperou cinco horas com o filho febril na pediatria. O post está circulando.",
+    conversa: [
+      { quem: "Aline, mãe de paciente", avatar: "👩🏽", fala: "cinco horas com meu filho de 2 anos ardendo em febre 😡" },
+      { quem: "Aline, mãe de paciente", avatar: "👩🏽", fala: "ninguém explicava nada. isso é um descaso!" }
+    ],
+    naVidaReal: "Muitas reclamações nascem da falta de informação sobre a espera. A classificação de risco (como a cor da pulseira) define quem é atendido primeiro, e explicar isso às famílias diminui a angústia.",
+    opcoes: [
+      {
+        texto: "Respondo com uma nota padrão de \"lamentamos o ocorrido\".",
+        reacao: "resposta de robô 🙄",
+        resultado: "A nota gerou ainda mais comentários negativos.",
+        pontos: { organizacao: 1 }
+      },
+      {
+        texto: "Respondo que a culpa é da falta de médicos e não do hospital.",
+        reacao: "e eu com isso?! 😡",
+        resultado: "A resposta pareceu uma desculpa, e o caso chegou à imprensa local.",
+        pontos: {}
+      },
+      {
+        texto: "Analiso os horários de atendimento da pediatria para achar o gargalo.",
+        reacao: "o pico é entre 18h e 22h, justo com um pediatra só 👀",
+        resultado: "A análise mostrou o problema, mas a família continuou sem resposta.",
+        pontos: { logica: 1, organizacao: 1 }
+      },
+      {
+        texto: "Ligo para a mãe, peço desculpas, ouço o que houve e crio com a recepção um painel com o tempo de espera.",
+        reacao: "...obrigada por ligar. ninguém tinha me explicado nada 😢",
+        resultado: "A mãe atualizou o post agradecendo a ligação, e o painel de espera reduziu as reclamações.",
+        pontos: { pessoas: 2, pressao: 1, criatividade: 1 }
+      }
+    ]
+  },
+  {
+    horario: "17:00",
+    titulo: "Apagão",
+    urgente: true,
+    cena: "⚡ 🔦 🏥",
+    descricao: "Uma tempestade derruba a energia do bairro inteiro. O hospital fica no escuro por alguns segundos.",
+    conversa: [
+      { quem: "Sônia, coordenadora de enfermagem", avatar: "👩🏽‍⚕️", fala: "faltou luz!! 😱" },
+      { quem: "Sônia, coordenadora de enfermagem", avatar: "👩🏽‍⚕️", fala: "o gerador ligou, mas não sei se tá segurando a UTI e o centro cirúrgico" }
+    ],
+    naVidaReal: "Hospitais precisam ter geradores e um plano de contingência testado, porque UTIs e centros cirúrgicos não podem ficar sem energia. A gestão é responsável por manter esse plano funcionando.",
+    opcoes: [
+      {
+        texto: "Corro até a casa de máquinas para tentar mexer no gerador eu mesmo(a).",
+        reacao: "você nem é da manutenção! 😳",
+        resultado: "Você não sabia operar o gerador, e ninguém coordenou o resto do hospital enquanto isso.",
+        pontos: { pressao: 1 }
+      },
+      {
+        texto: "Aciono o plano de contingência: confirmo que o gerador assumiu a UTI e o centro cirúrgico, organizo as equipes e informo pacientes e famílias.",
+        reacao: "UTI e centro cirúrgico ok! 👍 os corredores tão com luz de emergência",
+        resultado: "Nenhum paciente correu risco, e a energia voltou duas horas depois.",
+        pontos: { organizacao: 2, pressao: 1, pessoas: 1 }
+      },
+      {
+        texto: "Fico esperando a energia voltar sozinha.",
+        reacao: "e se o gerador falhar? 😰",
+        resultado: "Por sorte o gerador aguentou, mas ninguém coordenou a crise.",
+        pontos: {}
+      }
+    ]
+  }
+]);

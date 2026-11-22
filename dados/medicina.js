@@ -295,7 +295,7 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Faço o exame por fora, sem avisar ninguém, e cobro do hospital.",
+          texto: "Peço o exame com outro nome, que o plano cobre, para ser aprovado mais rápido.",
           reacao: "ah, mas e se o hospital não aceitar?",
           resultado: "O exame foi feito, mas a cobrança gerou um problema administrativo para você e para o hospital.",
           pontos: { criatividade: 1 }
@@ -316,3 +316,276 @@ PROFISSOES.push({
     }
   ]
 });
+
+/* ---------- Segunda versão do dia (banco de versões) ----------
+   Cada item abaixo é outra versão da etapa de mesma posição no dia acima.
+   Os pontos das opções repetem os da versão original, para manter o equilíbrio. */
+
+adicionarVersoes("medicina", [
+  {
+    horario: "07:30",
+    titulo: "Confusa desde a madrugada",
+    cena: "🛏️ 👵 🌙",
+    descricao: "Na visita, a enfermagem conta que uma paciente de 84 anos ficou confusa e agitada durante a noite. Ela estava lúcida ontem.",
+    conversa: [
+      { quem: "Dra. Vera, médica chefe", avatar: "👩🏻‍⚕️", fala: "a dona Benedita do leito 12 passou a noite agitada, falando coisas sem sentido" },
+      { quem: "Dra. Vera, médica chefe", avatar: "👩🏻‍⚕️", fala: "a técnica da noite disse que \"é da idade\". o que você acha?" }
+    ],
+    naVidaReal: "Confusão que aparece de repente num idoso (o delirium) não é \"coisa da idade\". Muitas vezes é sinal de infecção, desidratação ou efeito de um remédio novo, e precisa ser investigada.",
+    opcoes: [
+      {
+        texto: "Anoto \"paciente confusa\" no prontuário e sigo a lista de visitas.",
+        reacao: "só isso? 🤨",
+        resultado: "Ninguém procurou a causa, e a paciente piorou ao longo do dia.",
+        pontos: {}
+      },
+      {
+        texto: "Mantenho a prescrição da noite e peço para reavaliar amanhã.",
+        reacao: "e se for algo que precisa de tratamento hoje? 🤔",
+        resultado: "Ela passou mais um dia confusa, e a causa só apareceu no dia seguinte.",
+        pontos: { organizacao: 1 }
+      },
+      {
+        texto: "Examino, pergunto à filha como ela era antes e peço exames para procurar uma infecção ou efeito de remédio.",
+        reacao: "boa linha de raciocínio. e olha o remédio pra dormir que começaram ontem 👀",
+        resultado: "O exame de urina mostrou uma infecção. Com o tratamento e a suspensão do remédio novo, ela voltou a ficar lúcida.",
+        pontos: { logica: 2, pessoas: 1 }
+      },
+      {
+        texto: "Peço para o residente mais experiente decidir o que fazer.",
+        reacao: "ele tá na emergência. mas posso te ajudar a pensar 🙂",
+        resultado: "A decisão atrasou, mas a Dra. Vera te ajudou a montar o raciocínio.",
+        pontos: { pessoas: 1 }
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "escolha",
+    horario: "09:00",
+    titulo: "Calcule o IMC",
+    cena: "⚖️ 📏 🧮",
+    conversa: [
+      { quem: "Dra. Vera, médica chefe", avatar: "👩🏻‍⚕️", fala: "paciente do ambulatório: 90 kg e 1,80 m de altura ⚖️" },
+      { quem: "Dra. Vera, médica chefe", avatar: "👩🏻‍⚕️", fala: "calcula o IMC e me diz a classificação" }
+    ],
+    pergunta: "IMC = peso ÷ (altura × altura). Uma pessoa com 90 kg e 1,80 m está em qual faixa?",
+    alternativas: [
+      "Abaixo do peso (menos de 18,5)",
+      "Peso normal (18,5 a 24,9)",
+      "Sobrepeso (25 a 29,9)",
+      "Obesidade (30 ou mais)"
+    ],
+    correta: 2,
+    explicacao: "1,80 × 1,80 = 3,24. Então 90 ÷ 3,24 ≈ 27,8, que fica na faixa de sobrepeso. O IMC é uma triagem rápida: o médico também olha a cintura, os exames e os hábitos antes de qualquer conclusão.",
+    traco: "logica"
+  },
+  {
+    horario: "10:30",
+    titulo: "Um diagnóstico para a vida toda",
+    cena: "🩸 👦 💉",
+    descricao: "Os exames confirmaram diabetes tipo 1 num menino de 12 anos. Ele e o pai esperam na sala.",
+    conversa: [
+      { quem: "Seu Marcos, pai do paciente", avatar: "👨🏾", fala: "doutor(a), é grave? ele vai ficar bom, né?" },
+      { quem: "Davi, paciente", avatar: "👦🏾", fala: "vou ter que tomar injeção? eu odeio agulha 😟" }
+    ],
+    naVidaReal: "Dar um diagnóstico de doença crônica muda a vida de uma família. Médicos aprendem a comunicar com calma e em etapas, e a contar com a equipe de nutrição, enfermagem e psicologia no acompanhamento.",
+    opcoes: [
+      {
+        texto: "Digo direto: \"é diabetes, vai precisar de insulina para sempre\", e entrego a receita.",
+        reacao: "pra sempre?? 😢",
+        resultado: "O menino saiu chorando, e o pai voltou para casa sem entender o que fazer.",
+        pontos: {}
+      },
+      {
+        texto: "Sento com os dois, explico com calma o que muda no dia a dia, respondo as dúvidas e agendo a equipe de educação em diabetes.",
+        reacao: "então dá pra jogar bola e ter vida normal? 😮 ufa",
+        resultado: "A família saiu assustada, mas com um plano. Em poucas semanas o Davi já media a glicose sozinho.",
+        pontos: { pessoas: 2, pressao: 1, organizacao: 1, logica: 1 }
+      },
+      {
+        texto: "Entrego um folheto e encaminho para o endocrinologista.",
+        reacao: "tá... mas o que eu faço hoje à noite? 😕",
+        resultado: "O encaminhamento estava certo, mas a família ficou dias sem saber como aplicar a insulina.",
+        pontos: { organizacao: 1 }
+      },
+      {
+        texto: "Explico como o pâncreas funciona, com termos técnicos e o laudo na mão.",
+        reacao: "desculpa, não entendi quase nada... 😳",
+        resultado: "A explicação estava certa, mas o pai não conseguiu acompanhar.",
+        pontos: { logica: 1 }
+      }
+    ]
+  },
+  {
+    horario: "12:00",
+    titulo: "Reação ao antibiótico",
+    urgente: true,
+    cena: "🚨 💉 😮‍💨",
+    descricao: "Poucos minutos depois de começar um antibiótico na veia, o paciente fica com a boca inchada e com falta de ar.",
+    conversa: [
+      { quem: "Rafael, enfermeiro", avatar: "🧑🏿‍⚕️", fala: "doutor(a), vem rápido! o do leito 8 tá com o lábio inchando" },
+      { quem: "Rafael, enfermeiro", avatar: "🧑🏿‍⚕️", fala: "tá chiando pra respirar e cheio de manchas vermelhas 😰" }
+    ],
+    naVidaReal: "Isso é uma anafilaxia, uma reação alérgica grave. O tratamento de primeira escolha é adrenalina no músculo da coxa, logo no início, junto com a suspensão do remédio que causou a reação.",
+    opcoes: [
+      {
+        texto: "Fico observando para ver se os sintomas passam sozinhos.",
+        reacao: "tá piorando!! 😱",
+        resultado: "A falta de ar aumentou rápido, e a equipe teve que agir sem você.",
+        pontos: {}
+      },
+      {
+        texto: "Saio para chamar um colega mais experiente antes de fazer qualquer coisa.",
+        reacao: "não dá tempo de procurar ninguém! 😰",
+        resultado: "Minutos preciosos se perderam até o colega chegar.",
+        pontos: { pessoas: 1 }
+      },
+      {
+        texto: "Aplico a adrenalina, mas esqueço de suspender o antibiótico, que continua correndo.",
+        reacao: "melhorou um pouco... mas o soro do antibiótico ainda tá aberto! 😬",
+        resultado: "O paciente melhorou, mas voltou a piorar até alguém fechar o antibiótico.",
+        pontos: { pressao: 1, logica: 1 }
+      },
+      {
+        texto: "Suspendo o antibiótico, aplico adrenalina na coxa, peço oxigênio e chamo a equipe.",
+        reacao: "adrenalina feita, oxigênio no rosto. a respiração já tá melhorando 😮‍💨",
+        resultado: "Em minutos o inchaço diminuiu. A alergia foi registrada em destaque no prontuário.",
+        pontos: { pressao: 2, logica: 1, pessoas: 1 }
+      }
+    ]
+  },
+  {
+    horario: "13:30",
+    titulo: "Quero antibiótico!",
+    cena: "🤧 💊 🙄",
+    descricao: "No ambulatório, um paciente com gripe há dois dias exige um antibiótico.",
+    conversa: [
+      { quem: "Seu Wagner, paciente", avatar: "👨🏼", fala: "doutor(a), eu sempre tomo amoxicilina quando fico gripado e melhoro rapidinho" },
+      { quem: "Seu Wagner, paciente", avatar: "👨🏼", fala: "só passa a receita aí, que eu tenho que voltar pro trabalho 🙄" }
+    ],
+    naVidaReal: "Antibiótico não age contra vírus, como os da gripe e do resfriado. Usar sem necessidade causa efeitos colaterais e ajuda bactérias a ficarem resistentes, um problema de saúde pública no mundo todo.",
+    opcoes: [
+      {
+        texto: "Receito o antibiótico para encerrar logo a discussão.",
+        reacao: "isso! obrigado, doutor(a) 😁",
+        resultado: "Ele saiu satisfeito, mas teve diarreia por causa do remédio, e a gripe passou no mesmo tempo de sempre.",
+        pontos: {}
+      },
+      {
+        texto: "Explico, de forma técnica e corrida, que antibiótico não age em vírus.",
+        reacao: "hã? mas da última vez funcionou... 🤨",
+        resultado: "A informação estava certa, mas ele saiu sem acreditar e comprou o remédio por conta própria.",
+        pontos: { logica: 1 }
+      },
+      {
+        texto: "Anoto no prontuário que ele recusou a orientação e encerro a consulta.",
+        reacao: "então vou procurar outro médico 😒",
+        resultado: "O registro ficou correto, mas o paciente foi embora sem entender nada.",
+        pontos: { organizacao: 1 }
+      },
+      {
+        texto: "Escuto o que ele sente, explico com um exemplo do dia a dia por que antibiótico não mata vírus e combino o que fazer se piorar.",
+        reacao: "ah, é tipo usar remédio de formiga pra matar barata? 😂 entendi",
+        resultado: "Ele saiu sem antibiótico, com orientações para aliviar os sintomas e sabendo quando voltar.",
+        pontos: { pessoas: 2, criatividade: 1, logica: 1 }
+      }
+    ]
+  },
+  {
+    horario: "15:30",
+    titulo: "Quase um erro",
+    cena: "📝 😵 ☕",
+    descricao: "Na 20ª hora de plantão, a farmacêutica liga: uma prescrição sua está com a dose dez vezes maior.",
+    conversa: [
+      { quem: "Caio, médico plantonista", avatar: "👨🏽‍⚕️", fala: "a farmácia ligou: a heparina do leito 3 tá com uma dose dez vezes maior 😳" },
+      { quem: "Caio, médico plantonista", avatar: "👨🏽‍⚕️", fala: "acho que foi um zero a mais. cê tá bem? tá com uma cara de cansaço..." }
+    ],
+    naVidaReal: "Cansaço extremo aumenta o risco de erros. Hospitais têm barreiras de segurança, como a checagem da farmácia, e reconhecer o próprio limite é uma atitude de segurança, e não de fraqueza.",
+    opcoes: [
+      {
+        texto: "Agradeço, corrijo e continuo trabalhando sem parar.",
+        reacao: "beleza... mas olha o resto das prescrições também 👀",
+        resultado: "A dose foi corrigida, mas você continuou exausto(a) e quase errou de novo à noite.",
+        pontos: { pressao: 1 }
+      },
+      {
+        texto: "Fico irritado(a) e digo que sei muito bem o que estou fazendo.",
+        reacao: "ninguém tá duvidando de você, só quero ajudar 😕",
+        resultado: "O clima ficou ruim, e você deixou de revisar outras prescrições do mesmo período.",
+        pontos: {}
+      },
+      {
+        texto: "Corrijo, aviso a chefia, reviso tudo o que prescrevi nas últimas horas e faço uma pausa curta.",
+        reacao: "atitude certa. achei mais uma dose esquisita aqui, olha 👍",
+        resultado: "A revisão encontrou mais um erro pequeno. Depois de 20 minutos de pausa, você voltou mais atento(a).",
+        pontos: { organizacao: 2, pressao: 1, logica: 1 }
+      },
+      {
+        texto: "Peço para o Caio conferir as minhas próximas prescrições até o fim do plantão.",
+        reacao: "fechado, um confere o outro 🤝",
+        resultado: "A dupla conferência evitou novos erros até a troca de plantão.",
+        pontos: { pessoas: 1, organizacao: 1 }
+      }
+    ]
+  },
+  {
+    tipo: "desafio",
+    formato: "encontre-o-erro",
+    horario: "17:00",
+    titulo: "Dose perigosa",
+    cena: "💊 📝 ⚠️",
+    conversa: [
+      { quem: "Dra. Vera, médica chefe", avatar: "👩🏻‍⚕️", fala: "revisa essa receita que o interno fez pra dor e febre 💊" },
+      { quem: "Dra. Vera, médica chefe", avatar: "👩🏻‍⚕️", fala: "uma linha dela pode fazer mal ao fígado" }
+    ],
+    pergunta: "Toque na linha da receita que está errada para um adulto:",
+    linhas: [
+      "Paciente: Ana Paula, 34 anos, 60 kg",
+      "Paracetamol 750 mg",
+      "Tomar 2 comprimidos de 4 em 4 horas",
+      "Em caso de febre ou dor",
+      "Por até 3 dias"
+    ],
+    correta: 2,
+    explicacao: "Dois comprimidos de 750 mg de 4 em 4 horas dão 9 gramas por dia. A dose máxima de paracetamol para um adulto costuma ser de 4 gramas por dia, e passar disso pode causar lesão grave no fígado. Remédio comum também tem limite.",
+    traco: "logica"
+  },
+  {
+    horario: "18:30",
+    titulo: "Sem vaga na UTI",
+    cena: "🏥 🛏️ 📞",
+    descricao: "Um paciente da emergência precisa de UTI, mas não há leito livre no hospital. A família pressiona.",
+    conversa: [
+      { quem: "Dona Sônia, esposa do paciente", avatar: "👩🏾‍🦳", fala: "ele precisa de UTI e vocês não fazem nada?! 😭" },
+      { quem: "Dona Sônia, esposa do paciente", avatar: "👩🏾‍🦳", fala: "eu vou gravar e postar isso na internet!" }
+    ],
+    naVidaReal: "No SUS, vagas de UTI são pedidas a uma central de regulação, que distribui os leitos da região por gravidade. Enquanto a vaga não sai, a equipe estabiliza o paciente e mantém a família informada.",
+    opcoes: [
+      {
+        texto: "Digo que não tem vaga e que não há nada a fazer.",
+        reacao: "então ele vai morrer aqui?! 😡",
+        resultado: "A família ficou desesperada, e ninguém pediu a vaga pela regulação.",
+        pontos: {}
+      },
+      {
+        texto: "Monto uma \"UTI improvisada\" no corredor com aparelhos emprestados, sem avisar a coordenação.",
+        reacao: "pelo menos alguém tá fazendo algo... 😟",
+        resultado: "A intenção era boa, mas outros setores ficaram sem os aparelhos e a coordenação não sabia de nada.",
+        pontos: { criatividade: 1 }
+      },
+      {
+        texto: "Ligo para a central de vagas e discuto com o atendente.",
+        reacao: "e aí? conseguiu? 😰",
+        resultado: "A discussão não acelerou nada, porque o pedido não tinha os dados de que a regulação precisava.",
+        pontos: { pressao: 1 }
+      },
+      {
+        texto: "Peço a vaga à regulação com um relatório completo, estabilizo o paciente na emergência e explico à família como funciona a fila.",
+        reacao: "...tá. obrigada por explicar. eu só tô com muito medo 😢",
+        resultado: "Com o relatório bem feito, a vaga saiu em algumas horas, e a família acompanhou cada passo.",
+        pontos: { organizacao: 2, logica: 1, pessoas: 1 }
+      }
+    ]
+  }
+]);

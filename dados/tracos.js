@@ -50,3 +50,26 @@ const AREAS = [
 // Lista de profissões do jogo. Começa vazia: cada arquivo da pasta dados/
 // adiciona a sua profissão com PROFISSOES.push({ ... }).
 const PROFISSOES = [];
+
+// Banco de versões: acrescenta mais uma versão a cada etapa de uma profissão.
+// "novas" tem uma posição para cada etapa do dia, na mesma ordem; use null para
+// deixar uma etapa com uma versão só. A cada nova tentativa na profissão, o jogo
+// alterna entre as versões (veja versoesDaTentativa em js/afinidade.js).
+// Dica: para o equilíbrio da afinidade não mudar, cada versão nova pode repetir
+// os mesmos "pontos" das opções da versão original, em outra situação.
+function adicionarVersoes(id, novas) {
+  const profissao = PROFISSOES.find(p => p.id === id);
+  if (!profissao) {
+    console.warn(`[Your Career] adicionarVersoes: a profissão "${id}" não existe (confira a ordem dos <script>).`);
+    return;
+  }
+  novas.forEach((nova, i) => {
+    const etapa = profissao.situacoes[i];
+    if (!nova) return;
+    if (!etapa) {
+      console.warn(`[Your Career] adicionarVersoes("${id}"): não existe a etapa ${i + 1}.`);
+      return;
+    }
+    profissao.situacoes[i] = { versoes: [...(etapa.versoes || [etapa]), nova] };
+  });
+}
