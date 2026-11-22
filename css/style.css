@@ -529,7 +529,7 @@ body[data-tela="jogo"] .botao-som { display: none; }
 .medidor-hud-barra span { display: block; height: 100%; border-radius: inherit; transition: width .7s cubic-bezier(.2, .8, .2, 1); }
 #medidor-energia .medidor-hud-barra span { background: linear-gradient(90deg, var(--azul-claro), var(--azul-medio)); }
 #medidor-estresse .medidor-hud-barra span { background: linear-gradient(90deg, #9aa6c4, var(--azul-escuro)); }
-.medidor-hud.critico strong { color: var(--vermelho); }
+.medidor-hud.critico strong { color: #be123c; } /* vermelho mais escuro, para ler bem sobre o painel */
 .medidor-hud.critico .medidor-hud-barra { animation: piscar 1s ease-in-out infinite; }
 
 /* Número que "salta" do medidor quando ele muda (ex.: −11) */

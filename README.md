@@ -10,7 +10,7 @@ Abra o arquivo `index.html` no navegador (dois cliques). Não precisa instalar n
 
 ## Como jogar
 
-1. Clique em **Jogar**, digite seu nome, escolha um **avatar** e uma profissão.
+1. Clique em **Jogar**, digite seu nome, escolha um **avatar** e uma das **17 profissões**. Os botões de área (Saúde, Tecnologia e engenharia, Criativas, Negócios e Sociedade) filtram a lista.
 2. Viva o dia: 8 etapas, do início ao fim do expediente — 6 situações de decisão e 2 desafios. Nas situações, os personagens conversam com você como num chat, você decide o que fazer e eles respondem à sua escolha. Responda clicando ou com as teclas **A, B, C, D** (ou 1 a 9). A tecla **Espaço** pula a conversa.
 3. Nas situações marcadas como **🚨 Urgente**, um **cronômetro** dá 20 segundos para decidir. Se o tempo acabar, conta como se você tivesse travado. O cronômetro pode ser desligado na tela do personagem.
 4. Os **⚡ Desafios da profissão** são mini problemas de verdade: calcular a dose de um remédio, achar o erro num código, ler um gráfico, conferir uma escala... Depois de cada um, o jogo pergunta se você **curtiria fazer aquilo todo dia** (😍 😐 😩).
@@ -31,7 +31,7 @@ js/armazenamento.js                salvar e ler no localStorage
 js/conquistas.js                   lista de medalhas e regra de cada uma
 js/efeitos.js                      sons (gerados pelo navegador) e confete
 js/app.js                          telas, botões, conversa, cronômetro e teclado
-dados/tracos.js                    os 5 traços de perfil e as classes
+dados/tracos.js                    os 5 traços de perfil, as classes e as áreas do filtro
 dados/enfermagem.js                uma profissão por arquivo (este é o modelo comentado)
 dados/desenvolvimento-sistemas.js
 dados/gestao-hospitalar.js
@@ -43,6 +43,12 @@ dados/engenharia-civil.js
 dados/professor.js
 dados/design-grafico.js
 dados/marketing-digital.js
+dados/design-de-jogos.js
+dados/seguranca-informacao.js
+dados/gastronomia.js
+dados/arquitetura.js
+dados/jornalismo.js
+dados/contabilidade.js
 ```
 
 Os dados ficam em arquivos `.js`, e não `.json`, porque o navegador bloqueia a leitura de JSON quando a página é aberta direto do computador (`file://`). Pelo mesmo motivo os scripts são comuns (sem `import`) e a **ordem dos `<script>` no `index.html` importa**: primeiro os dados, depois `afinidade.js`, `avatares.js`, `armazenamento.js`, `conquistas.js`, `efeitos.js` e `app.js`.
@@ -72,6 +78,12 @@ Cada opção de escolha dá pontos (1 ou 2) para um ou mais traços. Cada profis
 | 📚 Professor(a) | 5 | 2 | 3 | 4 | 4 |
 | 🎨 Design Gráfico | 3 | 2 | 3 | 3 | 5 |
 | 📣 Marketing Digital | 4 | 3 | 4 | 3 | 5 |
+| 🎮 Design de Jogos | 3 | 4 | 3 | 3 | 5 |
+| 🔐 Segurança da Informação | 2 | 5 | 5 | 4 | 3 |
+| 👩‍🍳 Gastronomia | 3 | 2 | 5 | 4 | 5 |
+| 📐 Arquitetura e Urbanismo | 4 | 4 | 3 | 4 | 5 |
+| 📰 Jornalismo | 4 | 3 | 5 | 3 | 4 |
+| 🧾 Ciências Contábeis | 2 | 5 | 3 | 5 | 1 |
 
 A **classe** do relatório vem do traço em que a pessoa foi mais forte no dia. O segundo traço mais forte (se tiver 40% ou mais) aparece como "ponto forte secundário".
 
@@ -133,7 +145,7 @@ Para criar uma medalha nova, adicione um item à lista `CONQUISTAS` em `js/conqu
 ## Como adicionar uma profissão
 
 1. Copie `dados/enfermagem.js` para um arquivo novo, por exemplo `dados/direito.js`. O comentário no topo dele explica cada campo.
-2. Troque `id`, `nome`, `icone`, `cor`, `resumo` e `cursos`.
+2. Troque `id`, `nome`, `icone`, `cor`, `area`, `resumo` e `cursos`. A `area` é uma das áreas do filtro: `saude`, `tecnologia`, `criativas`, `negocios` ou `sociedade` (a lista fica em `AREAS`, em `dados/tracos.js`).
 3. Em `perfil`, defina o **peso** de cada um dos 5 traços e os textos `gostar` e `dificil`.
 4. Escreva de 5 a 6 situações, em ordem de horário, cada uma com 3 ou 4 opções. Em cada opção, `pontos` diz quais traços ela mostra, por exemplo `{ pessoas: 2, pressao: 1 }`. Uma opção que mostra dificuldade com a rotina fica com `pontos: {}`.
 5. Deixe as situações mais vivas com `cena` (emojis), `conversa` (falas dos personagens), `reacao` em cada opção (o que o personagem responde) e `urgente: true` nas situações de pressão.
@@ -152,6 +164,7 @@ PROFISSOES.push({
   nome: "Direito",
   icone: "⚖️",
   cor: "#0a2472",   // azul escuro (#0a2472) ou azul médio (#2a56c6), para seguir a paleta
+  area: "sociedade", // área no filtro da escolha de profissão
   resumo: "Uma frase sobre o que a pessoa faz.",
   perfil: {
     pessoas:      { peso: 4, gostar: "...", dificil: "..." },
@@ -183,7 +196,7 @@ PROFISSOES.push({
 });
 ```
 
-A profissão nova aparece sozinha na escolha, no relatório, na comparação e na medalha Explorador(a). O jogo já vem com 11 profissões; as de Medicina até Marketing Digital podem servir de exemplo para as próximas.
+A profissão nova aparece sozinha na escolha, no relatório, na comparação e na medalha Explorador(a). O jogo já vem com 17 profissões; qualquer uma delas pode servir de exemplo para as próximas.
 
 **Dicas para os diálogos não ficarem robotizados:**
 - Escreva como as pessoas falam no WhatsApp: frases curtas, "tô", "pra", "cê", emojis.
@@ -241,6 +254,12 @@ Os desafios que já existem:
 | 📚 Professor(a) | ➗ Confira o gabarito (encontre o erro) | 🧩 Monte a aula (ordenar) |
 | 🎨 Design Gráfico | 🔤 Qual fonte escolher? | 🖨️ Confira o arquivo (CMYK × RGB) |
 | 📣 Marketing Digital | 📊 Leia a campanha (gráfico) | 📝 Revise o anúncio (conta do desconto) |
+| 🎮 Design de Jogos | 📈 Balanceie as fases (gráfico) | 🚀 Do zero ao lançamento (ordenar) |
+| 🔐 Segurança da Informação | 🎣 Ache o golpe no e-mail (encontre o erro) | 🔑 Qual senha é mais forte? |
+| 👩‍🍳 Gastronomia | ⚖️ Receita para 40 pessoas (cálculo) | 🏷️ Confira a etiqueta (encontre o erro) |
+| 📐 Arquitetura e Urbanismo | 📏 Escala da planta (cálculo) | ♿ Rampa acessível (encontre o erro) |
+| 📰 Jornalismo | 🔎 Checagem de fatos (encontre o erro) | 🔺 Monte a notícia (ordenar) |
+| 🧾 Ciências Contábeis | 📊 Leia o caixa (gráfico) | 🧮 Erro na nota fiscal (encontre o erro) |
 
 **Dicas para a pontuação ficar justa:**
 - Traço de peso alto: a melhor opção de cada situação deve dar os pontos máximos nele.
@@ -248,7 +267,7 @@ Os desafios que já existem:
 - Todo traço precisa aparecer em pelo menos uma opção; senão, ele fica fora da conta.
 - Varie a posição da melhor opção (nem sempre a A).
 
-Se algo estiver errado (um traço com nome digitado errado, um peso faltando, uma fala vazia, um id repetido, um desafio com `correta` fora da lista), o jogo avisa no console do navegador (tecla F12, aba Console).
+Se algo estiver errado (um traço com nome digitado errado, uma área que não existe, um peso faltando, uma fala vazia, um id repetido, um desafio com `correta` fora da lista), o jogo avisa no console do navegador (tecla F12, aba Console).
 
 ## Dados salvos (localStorage)
 
