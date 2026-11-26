@@ -40,9 +40,9 @@
   --gelo: #f3f6fb;          /* branco gelo (fundo) */
   --amarelo: #ffd23f;       /* amarelo: só em pequenos detalhes */
   --fonte-display: "Bricolage Grotesque", "Manrope", system-ui, sans-serif;
-  --fonte-moderna: "Manrope", "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --fonte-sistema: "Silkscreen", "Pixelify Sans", ui-monospace, monospace;
-  --fonte: "Manrope", "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --fonte-moderna: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fonte-sistema: "Silkscreen", ui-monospace, monospace;
+  --fonte: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --fonte-titulo: "Bricolage Grotesque", "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 

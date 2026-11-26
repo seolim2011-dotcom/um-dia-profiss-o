@@ -32,7 +32,10 @@ const estado = {
   selecionada: null,        // id da profissão marcada na tela de cadastro
   profissao: null,          // profissão do dia em andamento (já montada com as versões do dia)
   versoes: [],              // versão de cada etapa usada no dia em andamento
-  indice: 0,                // número da situação atual (começa em 0)
+  tentativa: 0,             // quantas vezes esta pessoa já terminou esta profissão (muda a ordem das opções)
+  tempoRestante: null,      // { indice, segundos } quando a pessoa pausou no meio de um cronômetro
+  encerrado: false,         // true depois que o dia termina (evita salvar o resultado duas vezes)
+  indice: 0,              // número da situação atual (começa em 0)
   escolhas: [],             // opção escolhida em cada situação (-1 = tempo esgotado)
   urgencias: { total: 0, esgotadas: 0, menorFolga: null },
   desafio: null,            // desafio em andamento: { acertou: null/true/false, ordem: [...] }
@@ -92,6 +95,7 @@ function situacaoAtual() {
 // Mostra só a tela pedida, esconde as outras e leva o foco para o título.
 function mostrarTela(nome) {
   if (nome !== "jogo") {
+    lembrarTempoRestante();
     pararCronometro();
     cancelarConversa();
   }
@@ -295,18 +299,34 @@ function enviarCadastro(evento) {
   evento.preventDefault(); // impede o formulário de recarregar a página
 
   const campo = $("#campo-nome");
-  const nome = campo.value.trim().replace(/\s+/g, " ");
-  if (!nome) return mostrarErro("Digite seu nome para começar.", campo);
+  const digitado = campo.value.trim().replace(/\s+/g, " ");
+  if (!digitado) return mostrarErro("Digite seu nome para começar.", campo);
 
   const profissao = buscarProfissao(estado.selecionada);
   if (!profissao) return mostrarErro("Escolha uma profissão para viver o dia.");
 
+  // Começar um dia novo apaga o dia pausado: pergunta antes.
+  const pausado = lerProgresso();
+  if (pausado && !window.confirm(
+    `${pausado.nome} tem um dia pausado em ${pausado.profissao.nome} (etapa ${pausado.indice + 1} de ${pausado.profissao.situacoes.length}). ` +
+    "Começar um dia novo vai apagar esse progresso. Quer continuar mesmo assim?"
+  )) return;
+
+  // "ana" e "Ana" são a mesma pessoa: usa o nome do jeito que já foi salvo.
+  const nome = nomeJaSalvo(digitado);
   estado.nome = nome;
+  campo.value = nome;
   salvarJogador({ nome: estado.nome, avatar: estado.avatar });
 
   // Banco de versões: quem já jogou esta profissão recebe outras versões das etapas.
   const tentativa = lerResultados().filter(r => r.nome === nome && r.profissaoId === profissao.id).length;
-  iniciarDia(profissao, versoesDaTentativa(profissao, tentativa));
+  iniciarDia(profissao, versoesDaTentativa(profissao, tentativa), tentativa);
+}
+
+// Procura um jogador já salvo com o mesmo nome, sem diferenciar maiúsculas e acentos.
+function nomeJaSalvo(nome) {
+  const comparavel = texto => texto.normalize("NFD").replace(/[̀-ͯ]/g, "").toLocaleLowerCase("pt-BR");
+  return nomesDeJogadores().find(salvo => comparavel(salvo) === comparavel(nome)) || nome;
 }
 
 /* ---------- 3. O dia de trabalho ---------- */
@@ -317,19 +337,24 @@ function guardarProgresso() {
     avatar: estado.avatar,
     profissaoId: estado.profissao.id,
     versoes: estado.versoes,
+    tentativa: estado.tentativa,
     indice: estado.indice,
     escolhas: estado.escolhas,
-    urgencias: estado.urgencias
+    urgencias: estado.urgencias,
+    tempoRestante: estado.tempoRestante
   });
 }
 
-function iniciarDia(base, versoes) {
+function iniciarDia(base, versoes, tentativa) {
   const profissao = montarDia(base, versoes); // o dia com as versões escolhidas
   estado.profissao = profissao;
   estado.versoes = versoes;
+  estado.tentativa = tentativa || 0;
+  estado.encerrado = false;
   estado.indice = 0;
   estado.escolhas = [];
   estado.urgencias = { total: 0, esgotadas: 0, menorFolga: null };
+  estado.tempoRestante = null;
   guardarProgresso();
   prepararSituacao();
   mostrarTela("jogo");
@@ -350,9 +375,12 @@ function continuarDia() {
   estado.avatar = progresso.avatar;
   estado.profissao = progresso.profissao;
   estado.versoes = progresso.versoes;
+  estado.tentativa = progresso.tentativa;
+  estado.encerrado = false;
   estado.indice = progresso.indice;
   estado.escolhas = progresso.escolhas;
   estado.urgencias = progresso.urgencias;
+  estado.tempoRestante = progresso.tempoRestante;
   prepararSituacao();
   mostrarTela("jogo");
   comecarSituacao();
@@ -530,10 +558,25 @@ function animarConversa(situacao, aoTerminar) {
 // para a melhor opção não ficar sempre na mesma letra. É uma regra fixa (não
 // sorteada), então ao continuar um dia salvo as opções aparecem no mesmo lugar.
 // Devolve os índices originais das opções, na ordem da tela.
+// A tentativa também entra na conta, para a ordem mudar quando a pessoa joga de novo.
 function ordemDasOpcoes() {
   const quantidade = situacaoAtual().opcoes.length;
-  const giro = (estado.indice * 3 + estado.profissao.id.length) % quantidade;
+  const giro = (estado.indice * 3 + estado.profissao.id.length + estado.tentativa) % quantidade;
   return Array.from({ length: quantidade }, (_, posicao) => (posicao + giro) % quantidade);
+}
+
+// Ordem das alternativas de um desafio "escolha": embaralhada, para a resposta
+// certa não cair sempre na mesma letra. Como a ordem das opções, é uma regra
+// fixa: a mesma etapa na mesma tentativa mostra sempre a mesma ordem.
+function ordemDasAlternativas(situacao) {
+  const ordem = situacao.alternativas.map((_, i) => i);
+  let semente = 1 + estado.indice * 31 + estado.tentativa * 17 + estado.profissao.id.length * 7 + situacao.pergunta.length;
+  for (let i = ordem.length - 1; i > 0; i--) {
+    semente = (semente * 48271) % 2147483647; // gerador de números "aleatórios" previsível
+    const j = semente % (i + 1);
+    [ordem[i], ordem[j]] = [ordem[j], ordem[i]];
+  }
+  return ordem;
 }
 
 function mostrarDecisao() {
@@ -547,8 +590,12 @@ function mostrarDecisao() {
     </button>`).join("");
   area.hidden = false;
 
-  if (situacao.urgente && estado.preferencias.cronometro) iniciarCronometro(situacao.tempo || TEMPO_PADRAO, tempoEsgotou);
+  if (situacao.urgente && estado.preferencias.cronometro) iniciarCronometro(tempoDaEtapa(tempoDaUrgencia(situacao)), tempoEsgotou);
   else $("#cronometro").hidden = true;
+
+  // A dica de teclado mostra só as letras que existem nesta situação.
+  const letras = LETRAS.slice(0, situacao.opcoes.length).split("");
+  $(".atalho-dica").textContent = `Dica: use as teclas ${letras.slice(0, -1).join(", ")} e ${letras[letras.length - 1]}.`;
 
   rolarAte(area);
 }
@@ -592,6 +639,28 @@ function iniciarCronometro(segundos, aoAcabar) {
   };
 }
 
+// Segundos do cronômetro de uma urgência. Quanto mais texto nas opções, mais
+// tempo: 20 s para até 40 palavras e +1 s a cada 5 palavras a mais.
+function tempoDaUrgencia(situacao) {
+  if (situacao.tempo) return situacao.tempo;
+  const palavras = situacao.opcoes.reduce((soma, opcao) => soma + opcao.texto.split(/\s+/).length, 0);
+  return TEMPO_PADRAO + Math.max(0, Math.ceil((palavras - 40) / 5));
+}
+
+// Se a pessoa pausou no meio do cronômetro desta etapa, ele volta de onde parou.
+function tempoDaEtapa(segundos) {
+  const pausado = estado.tempoRestante;
+  return pausado && pausado.indice === estado.indice ? Math.min(segundos, pausado.segundos) : segundos;
+}
+
+// Guarda quanto tempo sobrava no cronômetro (ao pausar ou fechar a página),
+// para pausar não virar um jeito de ganhar tempo extra.
+function lembrarTempoRestante() {
+  if (!andamento.cronometro || !estado.profissao || estado.escolhas[estado.indice] !== undefined) return;
+  estado.tempoRestante = { indice: estado.indice, segundos: Math.max(3, Math.ceil(andamento.cronometro.restante())) };
+  guardarProgresso();
+}
+
 // Para o cronômetro e devolve quantos segundos sobraram (ou null se não havia cronômetro).
 function pararCronometro() {
   if (!andamento.cronometro) return null;
@@ -625,6 +694,7 @@ function tempoEsgotou() {
 
 function registrarEscolha(escolha) {
   estado.escolhas[estado.indice] = escolha;
+  estado.tempoRestante = null;
   guardarProgresso();
   mostrarResposta(escolha, true);
 }
@@ -751,10 +821,10 @@ function htmlDoDesafio(situacao) {
     return `
       ${situacao.grafico ? htmlDoGrafico(situacao.grafico, situacao.unidade) : ""}
       <div class="opcoes">
-        ${situacao.alternativas.map((alternativa, i) => `
-          <button type="button" class="opcao opcao-desafio" data-acao="responder-desafio" data-indice="${i}" style="--ordem: ${i}">
-            <span class="opcao-letra" aria-hidden="true">${LETRAS[i]}</span>
-            <span>${esc(alternativa)}</span>
+        ${ordemDasAlternativas(situacao).map((original, posicao) => `
+          <button type="button" class="opcao opcao-desafio" data-acao="responder-desafio" data-indice="${original}" style="--ordem: ${posicao}">
+            <span class="opcao-letra" aria-hidden="true">${LETRAS[posicao]}</span>
+            <span>${esc(situacao.alternativas[original])}</span>
           </button>`).join("")}
       </div>`;
   }
@@ -791,7 +861,7 @@ function mostrarDesafio() {
   $("#area-desafio").hidden = false;
   animarBarras($("#desafio-conteudo"));
 
-  if (situacao.tempo && estado.preferencias.cronometro) iniciarCronometro(situacao.tempo, () => responderDesafio(false));
+  if (situacao.tempo && estado.preferencias.cronometro) iniciarCronometro(tempoDaEtapa(situacao.tempo), () => responderDesafio(false));
   else $("#cronometro").hidden = true;
 
   rolarAte($("#area-desafio"));
@@ -851,7 +921,8 @@ function marcarRespostaDoDesafio(indiceEscolhido) {
     return;
   }
 
-  document.querySelectorAll("#desafio-conteudo .opcao-desafio").forEach((botao, i) => {
+  document.querySelectorAll("#desafio-conteudo .opcao-desafio").forEach(botao => {
+    const i = Number(botao.dataset.indice); // índice original (a ordem na tela pode ser outra)
     botao.disabled = true;
     botao.classList.toggle("certa", i === situacao.correta);
     botao.classList.toggle("errada", i === indiceEscolhido && i !== situacao.correta);
@@ -867,6 +938,7 @@ function respostaCertaEmTexto(situacao) {
 function responderDesafio(acertou, indiceEscolhido) {
   if (!estado.desafio || estado.desafio.acertou !== null) return;
   pararCronometro();
+  estado.tempoRestante = null;
   estado.desafio.acertou = acertou;
   tocarSom(acertou ? "acerto" : "erro");
   marcarRespostaDoDesafio(indiceEscolhido);
@@ -974,7 +1046,8 @@ function atualizarMedidor(medidor, valor, delta, critico, subirEhRuim) {
 /* ----- Passagem de tempo e fim do dia ----- */
 
 function proximaSituacao() {
-  if (estado.escolhas[estado.indice] === undefined) return;
+  // Depois de encerrar o dia, o botão não pode salvar o mesmo resultado de novo.
+  if (estado.encerrado || estado.escolhas[estado.indice] === undefined) return;
   const situacoes = estado.profissao.situacoes;
   if (estado.indice === situacoes.length - 1) return finalizarDia();
 
@@ -1056,6 +1129,7 @@ function mostrarPassagem(config, depois) {
 }
 
 function finalizarDia() {
+  estado.encerrado = true;
   const profissao = estado.profissao;
   const calculo = calcularAfinidade(profissao, estado.escolhas);
   const medidores = medidoresDoDia(profissao, estado.escolhas);
@@ -1525,6 +1599,9 @@ function ligarEventos() {
 
   $("#form-cadastro").addEventListener("submit", enviarCadastro);
 
+  // Fechar ou recarregar a página no meio de uma urgência não zera o cronômetro.
+  window.addEventListener("pagehide", lembrarTempoRestante);
+
   // Atalhos de teclado.
   document.addEventListener("keydown", evento => {
     if (evento.altKey || evento.ctrlKey || evento.metaKey) return;
@@ -1563,10 +1640,15 @@ function ligarEventos() {
       escolher(ordemDasOpcoes()[indice]); // a tecla vale para a posição na tela
     } else if (!$("#area-desafio").hidden && estado.desafio && estado.desafio.acertou === null) {
       evento.preventDefault();
-      if (situacaoAtual().formato === "ordenar") {
+      const formato = situacaoAtual().formato;
+      if (formato === "ordenar") {
         // No "ordenar", a tecla escolhe o botão naquela posição da tela.
         const botao = document.querySelectorAll(".item-ordenar")[indice];
         if (botao && !botao.disabled) escolherItemDaOrdem(Number(botao.dataset.indice));
+      } else if (formato === "escolha") {
+        // As alternativas aparecem embaralhadas: a tecla vale para a posição na tela.
+        const original = ordemDasAlternativas(situacaoAtual())[indice];
+        if (original !== undefined) responderPorIndice(original);
       } else {
         responderPorIndice(indice);
       }

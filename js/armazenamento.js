@@ -74,7 +74,7 @@ function salvarJogador(jogador) {
 /* ---------- Preferências ---------- */
 
 function lerPreferencias() {
-  const salvas = lerDoNavegador(CHAVES.preferencias, {});
+  const salvas = lerDoNavegador(CHAVES.preferencias, {}) || {};
   return {
     som: salvas.som !== false,
     cronometro: salvas.cronometro !== false
@@ -104,13 +104,20 @@ function lerProgresso() {
     avatar: normalizarAvatar(salvo.avatar),
     profissao,
     versoes: salvo.versoes || profissao.situacoes.map(() => 0),
+    tentativa: Number.isInteger(salvo.tentativa) && salvo.tentativa >= 0 ? salvo.tentativa : 0,
     indice: salvo.indice,
     escolhas: salvo.escolhas,
-    urgencias: salvo.urgencias || { total: 0, esgotadas: 0, menorFolga: null }
+    urgencias: salvo.urgencias || { total: 0, esgotadas: 0, menorFolga: null },
+    tempoRestante: tempoRestanteValido(salvo.tempoRestante, salvo.indice) ? salvo.tempoRestante : null
   };
 }
 
-// progresso = { nome, avatar, profissaoId, versoes, indice, escolhas, urgencias }
+// Tempo que sobrava no cronômetro quando a pessoa pausou: { indice, segundos }.
+function tempoRestanteValido(tempo, indice) {
+  return Boolean(tempo) && tempo.indice === indice && typeof tempo.segundos === "number" && tempo.segundos > 0;
+}
+
+// progresso = { nome, avatar, profissaoId, versoes, tentativa, indice, escolhas, urgencias, tempoRestante }
 function salvarProgresso(progresso) {
   salvarNoNavegador(CHAVES.progresso, progresso);
 }

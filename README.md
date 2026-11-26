@@ -6,13 +6,13 @@ Segundo o Ipea, muitos jovens trocam de curso ou se formam e não seguem na áre
 
 ## Como rodar
 
-Abra o arquivo `index.html` no navegador (dois cliques). Não precisa instalar nada, nem de servidor, nem de internet. Com internet, as fontes são carregadas do Google Fonts: Bricolage Grotesque, Manrope e Silkscreen na tela inicial, e Pixelify Sans e Nunito no resto do jogo. Sem internet, o navegador usa a fonte do sistema.
+Abra o arquivo `index.html` no navegador (dois cliques). Não precisa instalar nada, nem de servidor, nem de internet. Com internet, as fontes são carregadas do Google Fonts: Bricolage Grotesque (títulos), Manrope (textos) e Silkscreen (rótulos de sistema). Sem internet, o navegador usa a fonte do sistema.
 
 ## Como jogar
 
 1. Clique em **Iniciar experiência** (ou aperte Enter), digite seu nome, escolha um **avatar** e uma das **17 profissões**. Os botões de área (Saúde, Tecnologia e engenharia, Criativas, Negócios e Sociedade) filtram a lista.
 2. Viva o dia: 8 etapas, do início ao fim do expediente: 6 situações de decisão e 2 desafios. Cada etapa tem **2 versões**: ao jogar a mesma profissão de novo, as situações mudam. Nas situações, os personagens conversam com você como num chat, você decide o que fazer e eles respondem à sua escolha. Responda clicando ou com as teclas **A, B, C, D** (ou 1 a 9). A tecla **Espaço** pula a conversa.
-3. Nas situações marcadas como **🚨 Urgente**, um **cronômetro** dá 20 segundos para decidir. Se o tempo acabar, conta como se você tivesse travado. O cronômetro pode ser desligado na tela do personagem.
+3. Nas situações marcadas como **🚨 Urgente**, um **cronômetro** dá de 20 a 25 segundos para decidir (mais tempo quando as opções têm mais texto). Pausar no meio de uma urgência não zera o cronômetro: ele volta de onde parou. Se o tempo acabar, conta como se você tivesse travado. O cronômetro pode ser desligado na tela do personagem.
 4. Os **⚡ Desafios da profissão** são mini problemas de verdade: calcular a dose de um remédio, achar o erro num código, ler um gráfico, conferir uma escala... Depois de cada um, o jogo pergunta se você **curtiria fazer aquilo todo dia** (😍 😐 😩).
 5. Cada etapa mexe nas barras de **⚡ Energia** e **😰 Estresse** e mostra o que aconteceu e um quadro **Na vida real**.
 6. No fim do dia sai o **relatório**: % de afinidade, ficha de personagem com gráfico radar e a sua **classe** (por exemplo, "Coração Valente"), como você terminou o dia, o que você provavelmente vai gostar, o que pode ser difícil, os desafios, suas decisões e os cursos da área.
@@ -106,7 +106,7 @@ No relatório, só os traços de peso 3 ou mais entram nas listas:
 
 Não existe resposta "certa" como numa prova: o jogo compara o seu jeito de agir com o que a rotina da profissão exige. Escolher o caminho que mais combina com cada profissão (e curtir os desafios) dá de 90% a 97%; fugir de todas as partes difíceis dá de 15% a 27%.
 
-**Ordem das opções:** a posição de cada opção na tela "gira" um pouco a cada etapa (`ordemDasOpcoes` em `js/app.js`), então a melhor opção não fica sempre na mesma letra, não importa a ordem em que você escreveu no arquivo. A regra é fixa (não é sorteio), então ao continuar um dia salvo tudo aparece no mesmo lugar.
+**Ordem das opções:** a posição de cada opção na tela "gira" um pouco a cada etapa (`ordemDasOpcoes` em `js/app.js`), então a melhor opção não fica sempre na mesma letra, não importa a ordem em que você escreveu no arquivo. O giro também muda a cada nova tentativa na mesma profissão, e as alternativas dos desafios de `escolha` aparecem embaralhadas (`ordemDasAlternativas`). As duas regras são fixas (não são sorteio), então ao continuar um dia salvo tudo aparece no mesmo lugar.
 
 ## Energia e estresse
 
@@ -184,7 +184,7 @@ PROFISSOES.push({
       conversa: [
         { quem: "Dona Rosa, cliente", avatar: "👵🏽", fala: "Doutor(a), eu vou perder a minha casa?" }
       ],
-      urgente: true,          // opcional: cronômetro de 20 segundos
+      urgente: true,          // opcional: cronômetro (20 s + 1 s a cada 5 palavras acima de 40 nas opções; "tempo" fixa outro valor)
       naVidaReal: "Explicação mostrada depois da escolha.",
       opcoes: [
         { texto: "O que eu faço", reacao: "ai, obrigada, doutor(a) 🙏", resultado: "O que aconteceu", pontos: { logica: 2, organizacao: 1 } },
