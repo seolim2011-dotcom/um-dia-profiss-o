@@ -172,7 +172,7 @@ PROFISSOES.push({
           pontos: { pessoas: 1, organizacao: 1 }
         },
         {
-          texto: "Peço para outra pessoa fazer: esse tipo de tarefa me dá muito nojo.",
+          texto: "Peço para outra pessoa fazer: esse tipo de tarefa me dá muito nojo e eu não conseguiria disfarçar.",
           reacao: "ah... desculpa dar trabalho, viu 😞",
           resultado: "A colega já estava com outros quatro pacientes e ficou sobrecarregada. Cuidados de higiene fazem parte da rotina de toda a equipe de enfermagem.",
           pontos: {}
@@ -439,7 +439,7 @@ adicionarVersoes("enfermagem", [
         pontos: { pessoas: 2, criatividade: 1 }
       },
       {
-        texto: "Chamo um colega para virarmos ela juntos, com mais segurança.",
+        texto: "Chamo um colega para virarmos ela juntos, com mais segurança para ela e para a gente.",
         reacao: "dois anjos pra me ajudar, que luxo 😊",
         resultado: "Virá-la com duas pessoas foi mais seguro e menos dolorido. Vocês só esperaram uns minutos o colega ficar livre.",
         pontos: { pessoas: 1, organizacao: 1 }
@@ -525,7 +525,7 @@ adicionarVersoes("enfermagem", [
         pontos: { pressao: 1 }
       },
       {
-        texto: "Digo que topo, mas só depois de terminar meu intervalo de 15 minutos.",
+        texto: "Digo que topo, mas só depois de terminar meu intervalo de 15 minutos: eu também preciso comer.",
         reacao: "tá, eu espero... mas tô agoniado 😬",
         resultado: "Ele saiu um pouco mais tarde e preocupado, mas você assumiu os pacientes descansado(a).",
         pontos: { pessoas: 1 }
@@ -557,7 +557,7 @@ adicionarVersoes("enfermagem", [
     naVidaReal: "O paciente tem o direito de recusar o tratamento e pedir \"alta a pedido\", assinando um termo. Mas a equipe precisa explicar os riscos e entender o motivo: muitas vezes é medo ou um problema em casa que pode ser resolvido.",
     opcoes: [
       {
-        texto: "Chamo o médico de plantão para conversar com ele e explicar os riscos.",
+        texto: "Chamo o médico de plantão para conversar com ele e explicar os riscos de ir embora agora.",
         reacao: "pode chamar, mas eu vou embora do mesmo jeito 😤",
         resultado: "O médico explicou os riscos e ele aceitou ficar até o dia seguinte, ainda contrariado.",
         pontos: { pessoas: 1, organizacao: 1 }

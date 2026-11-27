@@ -59,19 +59,19 @@ PROFISSOES.push({
       naVidaReal: "Na contabilidade, o dinheiro da empresa e o dinheiro do dono não se misturam: é o chamado princípio da entidade. Muitos donos de pequenos negócios misturam as contas, e o contador ajuda a separar e a explicar por que isso importa.",
       opcoes: [
         {
-          texto: "Separo o que é da padaria e o que é pessoal, organizo por mês e explico por que as contas não podem se misturar.",
+          texto: "Separo o que é da padaria e o que é pessoal, organizo por mês e explico por que não misturar.",
           reacao: "ahhh, então a escola do meu neto não entra? agora entendi 😮",
           resultado: "As contas da padaria ficaram claras pela primeira vez, e a Dona Rita começou a usar uma conta só para o negócio.",
           pontos: { organizacao: 2, logica: 1 }
         },
         {
-          texto: "Lanço tudo como despesa da padaria: assim ela paga menos imposto.",
+          texto: "Lanço tudo como despesa da padaria: assim ela paga menos imposto e ninguém vai conferir nota por nota.",
           reacao: "que maravilha! 🤩",
           resultado: "Numa fiscalização, os gastos pessoais apareceram, e a padaria teve que pagar multa.",
           pontos: { criatividade: 1 }
         },
         {
-          texto: "Separo as notas com ela na hora, conversando sobre a padaria a manhã inteira.",
+          texto: "Separo as notas com ela na hora, conversando sobre a padaria a manhã inteira, para entender bem o negócio dela.",
           reacao: "que delícia de conversa! volta amanhã que tem pão de queijo 🥐",
           resultado: "A Dona Rita adorou você, mas a manhã acabou e metade das notas ficou para depois.",
           pontos: { pessoas: 2 }
@@ -126,19 +126,19 @@ PROFISSOES.push({
       naVidaReal: "A guia de impostos do Simples Nacional (DAS) vence todo dia 20. Pagar atrasado gera multa e juros. Parte do trabalho do contador é correr atrás dos documentos dos clientes para nada vencer.",
       opcoes: [
         {
-          texto: "Peço as notas por foto, calculo o imposto, gero a guia e mando para ele pagar ainda hoje.",
+          texto: "Peço as notas por foto, calculo o imposto e mando a guia ainda hoje.",
           reacao: "chegou a guia! paguei pelo celular agora 🙌",
           resultado: "O imposto foi pago no prazo, sem multa nenhuma.",
           pontos: { pressao: 2, logica: 1, organizacao: 1 }
         },
         {
-          texto: "Deixo vencer e pago com multa no mês que vem.",
+          texto: "Deixo vencer e pago com multa no mês que vem: a multa é pequena perto do trabalho de correr hoje.",
           reacao: "multa? mas eu nem sabia... 😕",
           resultado: "A oficina pagou multa e juros, e o Seu Hélio ficou desconfiado do escritório.",
           pontos: {}
         },
         {
-          texto: "Chuto um valor parecido com o do mês passado.",
+          texto: "Chuto um valor parecido com o do mês passado e acerto a diferença na próxima guia.",
           reacao: "beleza, paguei 👍",
           resultado: "O valor estava errado, e no mês seguinte foi preciso corrigir e pagar a diferença com juros.",
           pontos: { pressao: 1, criatividade: 1 }
@@ -223,7 +223,7 @@ PROFISSOES.push({
       naVidaReal: "A folha de pagamento envolve salários, descontos e encargos de cada funcionário. Erros, mesmo pequenos, podem virar problemas trabalhistas. Planilhas com fórmulas e conferência dupla são ferramentas do dia a dia.",
       opcoes: [
         {
-          texto: "Corrijo só o número que parece errado e sigo em frente.",
+          texto: "Corrijo só o número que parece errado e sigo em frente: tenho outros clientes esperando.",
           reacao: "bateu! mas qual estava errado mesmo? 🤔",
           resultado: "O total bateu por acaso, e no mês seguinte o mesmo erro voltou em outro funcionário.",
           pontos: { pressao: 1 }
@@ -235,13 +235,13 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Refaço a planilha com fórmulas, confiro com os holerites e mostro ao Pedro como evitar o erro.",
+          texto: "Refaço a planilha com fórmulas e mostro ao Pedro como evitar o erro.",
           reacao: "ahh, com fórmula não tem como errar a soma! valeu 🙏",
           resultado: "A diferença era um desconto digitado duas vezes. A planilha nova passou a ser usada por todo o escritório.",
           pontos: { logica: 2, organizacao: 2 }
         },
         {
-          texto: "Refaço a planilha sozinho(a), sem falar nada com o Pedro.",
+          texto: "Refaço a planilha sozinho(a), com fórmulas, sem falar nada com o Pedro para não deixá-lo constrangido.",
           reacao: "ué, minha planilha sumiu? 😕",
           resultado: "O erro foi corrigido, mas o Pedro não aprendeu e repetiu o problema em outro cliente.",
           pontos: { organizacao: 1 }
@@ -268,7 +268,7 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Acalmo a cliente, peço os documentos do período, comparo com o que foi declarado e preparo a resposta no prazo.",
+          texto: "Peço os documentos do período, comparo com o que foi declarado e preparo a resposta no prazo.",
           reacao: "ufa, ainda bem que tenho você 🙏",
           resultado: "A diferença era uma venda lançada no mês errado. A resposta foi aceita, sem multa.",
           pontos: { pressao: 2, organizacao: 1, logica: 1, pessoas: 1 }
@@ -280,7 +280,7 @@ PROFISSOES.push({
           pontos: { pessoas: 1 }
         },
         {
-          texto: "Refaço a declaração inteira correndo, sem entender o que deu errado.",
+          texto: "Refaço a declaração inteira correndo, sem entender o que deu errado, para mandar antes de a Receita cobrar.",
           reacao: "resolveu? 🤞",
           resultado: "A declaração nova trouxe outros erros, e o problema ficou maior.",
           pontos: { pressao: 1, logica: 2 }
@@ -344,13 +344,13 @@ adicionarVersoes("contabilidade", [
     naVidaReal: "O MEI (Microempreendedor Individual) permite que pequenos trabalhadores tenham CNPJ, emitam nota fiscal e contribuam para a Previdência pagando um valor fixo por mês. O contador ajuda a ver se a atividade se encaixa e a manter tudo em dia.",
     opcoes: [
       {
-        texto: "Confiro se a atividade dela se encaixa no MEI, faço o cadastro e organizo com ela o pagamento mensal do imposto.",
+        texto: "Confiro se a atividade dela se encaixa no MEI, faço o cadastro e explico o imposto mensal.",
         reacao: "já tenho CNPJ?? e só pago isso por mês? 😍",
         resultado: "Em uma manhã, a Kelly virou empresária, com nota fiscal e contribuição para a aposentadoria.",
         pontos: { organizacao: 2, logica: 1 }
       },
       {
-        texto: "Digo que ela pode continuar informal, porque \"ninguém fiscaliza\".",
+        texto: "Digo que ela pode continuar informal por enquanto, porque \"ninguém fiscaliza\" negócio pequeno de bairro.",
         reacao: "ah, então tá... mas e a aposentadoria? 🤔",
         resultado: "Ela continuou sem nota e sem contribuir para a Previdência.",
         pontos: { criatividade: 1 }
@@ -435,7 +435,7 @@ adicionarVersoes("contabilidade", [
     naVidaReal: "Trabalhar sem registro tira do trabalhador direitos como FGTS, férias e aposentadoria, e expõe a empresa a multas e processos trabalhistas, que costumam custar muito mais do que o registro.",
     opcoes: [
       {
-        texto: "Ajudo a pagar o funcionário \"por fora\", sem registro.",
+        texto: "Ajudo a pagar o funcionário \"por fora\", sem registro, já que a loja está passando por um momento difícil.",
         reacao: "isso! 😎",
         resultado: "Um ano depois, o funcionário entrou na Justiça, e a loja pagou tudo com juros.",
         pontos: { criatividade: 1 }
@@ -494,7 +494,7 @@ adicionarVersoes("contabilidade", [
     naVidaReal: "Diferenças de estoque podem vir de erros de registro, vendas sem nota, perdas ou desvios. O contador compara entradas, saídas e contagens para achar a causa, e ajuda a criar controles que evitam o problema.",
     opcoes: [
       {
-        texto: "Ajusto o sistema para bater com a contagem, sem investigar.",
+        texto: "Ajusto o sistema para bater com a contagem física, sem investigar: o que vale é o que está na prateleira.",
         reacao: "bateu! mas e os 2 mil reais? 🤔",
         resultado: "O número ficou certo, mas a causa nunca foi descoberta.",
         pontos: { pressao: 1 }
@@ -506,7 +506,7 @@ adicionarVersoes("contabilidade", [
         pontos: {}
       },
       {
-        texto: "Comparo as notas de entrada, as vendas e a contagem, acho a origem da diferença e deixo um controle mensal.",
+        texto: "Comparo as notas de entrada, as vendas e a contagem e deixo um controle mensal.",
         reacao: "eram vendas feitas sem nota no fim de semana! 😮",
         resultado: "A diferença foi explicada, e o pet shop passou a registrar todas as vendas.",
         pontos: { logica: 2, organizacao: 2 }
@@ -538,7 +538,7 @@ adicionarVersoes("contabilidade", [
         pontos: {}
       },
       {
-        texto: "Acalmo o cliente, separo os documentos por tipo, confiro as deduções principais e entrego antes da meia-noite.",
+        texto: "Separo os documentos por tipo, confiro as deduções principais e entrego antes da meia-noite.",
         reacao: "entregue! e ainda vou ter restituição? 😮",
         resultado: "A declaração foi entregue às 21h, correta e com as deduções de saúde e educação.",
         pontos: { pressao: 2, organizacao: 1, logica: 1, pessoas: 1 }
@@ -550,7 +550,7 @@ adicionarVersoes("contabilidade", [
         pontos: { pessoas: 1 }
       },
       {
-        texto: "Preencho tudo de cabeça, bem rápido, sem conferir os informes.",
+        texto: "Preencho tudo de cabeça, bem rápido, sem conferir os informes, porque conheço a situação dele do ano passado.",
         reacao: "entregou! 😅",
         resultado: "Um valor errado fez a declaração cair na malha fina meses depois.",
         pontos: { pressao: 1, logica: 2 }
@@ -587,7 +587,7 @@ adicionarVersoes("contabilidade", [
         pontos: {}
       },
       {
-        texto: "Peço para o cliente procurar o erro.",
+        texto: "Peço para o cliente procurar o erro, já que foi ele quem fez os lançamentos.",
         reacao: "eu? eu nem sei o que é balancete 😅",
         resultado: "O cliente não achou nada, e o fechamento atrasou.",
         pontos: { pessoas: 1 }

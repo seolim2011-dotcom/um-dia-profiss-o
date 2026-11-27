@@ -167,7 +167,7 @@ PROFISSOES.push({
           pontos: { pessoas: 2, criatividade: 1, logica: 1 }
         },
         {
-          texto: "Fico tão abalado(a) que peço para outro(a) veterinário(a) conversar com ela.",
+          texto: "Fico tão abalado(a) que peço para outro(a) veterinário(a), mais experiente, conversar com ela.",
           reacao: "ué... o(a) doutor(a) não vai falar comigo? 😕",
           resultado: "Seu colega assumiu a conversa. Sentir é humano, mas situações assim serão frequentes.",
           pontos: { pessoas: 1 }
@@ -221,7 +221,7 @@ PROFISSOES.push({
           pontos: { pessoas: 1 }
         },
         {
-          texto: "Explico de forma direta e técnica, sem me envolver emocionalmente.",
+          texto: "Explico de forma direta e técnica, sem me envolver emocionalmente, para não aumentar o sofrimento.",
           reacao: "...entendi. então é isso. 😶",
           resultado: "A família entendeu, mas sentiu falta de acolhimento em um momento tão difícil.",
           pontos: { logica: 2, pressao: 2 }
@@ -438,7 +438,7 @@ adicionarVersoes("veterinaria", [
         pontos: { pessoas: 2, criatividade: 1, logica: 1 }
       },
       {
-        texto: "Fico com muita pena e peço para outro colega conversar com ela.",
+        texto: "Fico com muita pena e peço para outro colega conversar com ela, porque não consigo negar ajuda.",
         reacao: "tá bom... eu espero 😕",
         resultado: "O colega atendeu, mas a voluntária esperou mais de uma hora.",
         pontos: { pessoas: 1 }
@@ -573,7 +573,7 @@ adicionarVersoes("veterinaria", [
         pontos: { pressao: 2, pessoas: 1, organizacao: 1 }
       },
       {
-        texto: "Examino rápido e peço que ele volte amanhã cedo se os filhotes não nascerem.",
+        texto: "Examino rápido e peço que ele volte amanhã cedo se os filhotes não nascerem até lá, porque muitas cadelas demoram.",
         reacao: "amanhã?? 😟",
         resultado: "A cadela piorou durante a noite e voltou em estado grave.",
         pontos: { organizacao: 1 }

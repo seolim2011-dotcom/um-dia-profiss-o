@@ -59,13 +59,13 @@ PROFISSOES.push({
       naVidaReal: "Na reunião de pauta, a redação escolhe os assuntos do dia. O \"ângulo\" é o jeito de olhar para um tema: um assunto comum vira notícia quando alguém encontra uma forma nova e verdadeira de contá-lo.",
       opcoes: [
         {
-          texto: "Proponho uma matéria com a tabela completa dos horários de ônibus da cidade.",
+          texto: "Proponho uma matéria com a tabela completa dos horários de ônibus da cidade, que é a informação que o leitor mais procura.",
           reacao: "útil... mas o site da prefeitura já tem isso 😐",
           resultado: "A matéria foi publicada, mas quase ninguém leu.",
           pontos: { logica: 1, organizacao: 1 }
         },
         {
-          texto: "Proponho mostrar, com dados e com a história de uma trabalhadora, quanto tempo se perde por mês esperando ônibus.",
+          texto: "Proponho mostrar, com dados e a história de uma trabalhadora, o tempo perdido esperando ônibus.",
           reacao: "\"28 horas por mês no ponto\". ISSO é manchete 🔥",
           resultado: "A matéria foi a mais lida da semana e chegou até a Câmara de Vereadores.",
           pontos: { criatividade: 2, pessoas: 1 }
@@ -203,7 +203,7 @@ PROFISSOES.push({
           pontos: { pessoas: 1 }
         },
         {
-          texto: "Mantenho a matéria e dou à prefeitura um prazo para responder, publicando a versão dela junto.",
+          texto: "Mantenho a matéria e dou à prefeitura um prazo para responder.",
           reacao: "tá... vou mandar uma nota até as 17h 😒",
           resultado: "A matéria saiu com os dois lados, e um mês depois a obra foi retomada.",
           pontos: { pressao: 2, logica: 1, pessoas: 1 }
@@ -215,7 +215,7 @@ PROFISSOES.push({
           pontos: { criatividade: 1, pressao: 1 }
         },
         {
-          texto: "Passo o problema para a editora e vou almoçar.",
+          texto: "Passo o problema para a editora, que tem mais experiência com a prefeitura, e vou almoçar.",
           reacao: "e o que eu respondo pra ela? 😕",
           resultado: "A editora teve que resolver sozinha, e a matéria atrasou um dia.",
           pontos: {}
@@ -311,7 +311,7 @@ PROFISSOES.push({
           pontos: { criatividade: 1, pessoas: 1, logica: 1, pressao: 1 }
         },
         {
-          texto: "Peço para tirarem a matéria verdadeira do ar até a confusão passar.",
+          texto: "Peço para tirarem a matéria verdadeira do ar até a confusão passar, para o jornal não ser associado à montagem.",
           reacao: "mas aí só sobra a falsa circulando... 😬",
           resultado: "Sem a matéria original, ficou mais difícil mostrar que a imagem era falsa.",
           pontos: { organizacao: 1 }
@@ -338,13 +338,13 @@ adicionarVersoes("jornalismo", [
     naVidaReal: "Dados ficam mais fortes quando viram histórias de pessoas reais. Uma boa reportagem combina números confiáveis com o olhar de quem vive aquela realidade.",
     opcoes: [
       {
-        texto: "Proponho publicar a tabela com a nota de todas as escolas da cidade.",
+        texto: "Proponho publicar a tabela com a nota de todas as escolas da cidade, para os pais compararem antes da matrícula.",
         reacao: "útil, mas todo mundo vai fazer igual 😐",
         resultado: "A tabela foi publicada, mas se perdeu entre as de outros veículos.",
         pontos: { logica: 1, organizacao: 1 }
       },
       {
-        texto: "Proponho passar um dia numa escola que melhorou muito, contando a história de professores e alunos com os números.",
+        texto: "Proponho passar um dia numa escola que melhorou muito, contando a história de professores e alunos.",
         reacao: "\"a escola que saiu do último lugar\"? amei, vai 🔥",
         resultado: "A reportagem foi a mais lida da semana, e outras escolas pediram para conhecer o projeto.",
         pontos: { criatividade: 2, pessoas: 1 }
@@ -376,19 +376,19 @@ adicionarVersoes("jornalismo", [
     naVidaReal: "Boatos de morte de famosos são comuns e se espalham em minutos. Jornalistas só publicam depois de confirmar com fontes oficiais, como a família, a assessoria ou um hospital, mesmo que isso custe alguns minutos.",
     opcoes: [
       {
-        texto: "Ligo para a assessoria e a família, confirmo que é falso e publico uma nota curta desmentindo.",
+        texto: "Ligo para a assessoria e a família e publico uma nota curta desmentindo.",
         reacao: "a assessoria confirmou: ela tá ótima, num show em Portugal! 😮‍💨",
         resultado: "O portal foi o primeiro a desmentir, e os sites que publicaram tiveram que se retratar.",
         pontos: { pressao: 2, logica: 1, organizacao: 1 }
       },
       {
-        texto: "Publico a notícia da morte para sair na frente.",
+        texto: "Publico a notícia da morte para sair na frente: todos os perfis de fofoca já estão falando disso.",
         reacao: "a própria cantora acabou de postar um vídeo... 😬",
         resultado: "O portal teve que apagar a notícia e pedir desculpas publicamente.",
         pontos: { pressao: 1 }
       },
       {
-        texto: "Espero o dia inteiro para ver se aparece algo oficial.",
+        texto: "Espero o dia inteiro para ver se aparece algo oficial, sem publicar nada que possa estar errado.",
         reacao: "todo mundo já desmentiu, menos a gente 😕",
         resultado: "Você não errou, mas o público buscou a informação em outro lugar.",
         pontos: { organizacao: 1 }
@@ -413,13 +413,13 @@ adicionarVersoes("jornalismo", [
     naVidaReal: "Entrevistar bem é deixar a pessoa à vontade para contar a própria história. O Código de Ética dos Jornalistas também proíbe distorcer o que as pessoas dizem: as falas publicadas precisam ser verdadeiras.",
     opcoes: [
       {
-        texto: "Faço as perguntas rápido, uma atrás da outra, para terminar logo.",
+        texto: "Faço as perguntas rápido, uma atrás da outra, para terminar logo e não deixar ele mais nervoso.",
         reacao: "...sim. ...não. ...não sei. 😶",
         resultado: "Ele respondeu com monossílabos, e a matéria ficou sem vida.",
         pontos: { pressao: 1 }
       },
       {
-        texto: "Converso antes de ligar o gravador, deixo ele à vontade e pergunto como ele começou a gostar de matemática.",
+        texto: "Converso antes de ligar o gravador e pergunto como ele começou a gostar de matemática.",
         reacao: "...eu fazia as contas da venda de bolo da minha mãe desde os 7 😄",
         resultado: "A história dele emocionou os leitores, e uma empresa ofereceu uma bolsa de estudos.",
         pontos: { pessoas: 2, pressao: 1 }
@@ -431,7 +431,7 @@ adicionarVersoes("jornalismo", [
         pontos: { logica: 1 }
       },
       {
-        texto: "Invento uma frase de efeito para ele, que fica mais bonita na matéria.",
+        texto: "Invento uma frase de efeito para ele, a partir do que ele quis dizer, que fica mais bonita na matéria.",
         reacao: "eu nunca falei isso... 😟",
         resultado: "A família reclamou, e o portal teve que corrigir a matéria.",
         pontos: {}
@@ -478,13 +478,13 @@ adicionarVersoes("jornalismo", [
         pontos: { pessoas: 1 }
       },
       {
-        texto: "Protejo o nome dela, confirmo a denúncia com documentos e outra fonte e ouço o hospital antes de publicar.",
+        texto: "Protejo o nome dela, confirmo a denúncia com documentos e ouço o hospital antes de publicar.",
         reacao: "o hospital admitiu e recolheu os lotes 😮",
         resultado: "A reportagem saiu confirmada, sem expor ninguém, e a vigilância sanitária abriu uma investigação.",
         pontos: { pressao: 2, logica: 1, pessoas: 1 }
       },
       {
-        texto: "Publico na hora, só com o relato dela, em tom de escândalo.",
+        texto: "Publico na hora, só com o relato dela, antes que o hospital consiga abafar o caso, em tom de escândalo.",
         reacao: "o hospital diz que é mentira e vai processar 😬",
         resultado: "Sem provas, a matéria foi contestada, e a denúncia perdeu força.",
         pontos: { criatividade: 1, pressao: 1 }
@@ -530,7 +530,7 @@ adicionarVersoes("jornalismo", [
     naVidaReal: "Errar acontece, mas esconder o erro é pior. Veículos sérios corrigem rápido e publicam uma correção visível, explicando o que estava errado. Um erro assim também pode gerar direito de resposta e indenização.",
     opcoes: [
       {
-        texto: "Corrijo na hora, publico uma correção visível explicando o erro, aviso a editora e procuro o rapaz.",
+        texto: "Corrijo na hora, publico uma correção visível e procuro o rapaz.",
         reacao: "ele agradeceu por a gente ter assumido o erro 🙏",
         resultado: "A correção circulou tanto quanto a matéria, e o rapaz teve o nome limpo.",
         pontos: { pressao: 2, organizacao: 1, criatividade: 1 }
@@ -542,7 +542,7 @@ adicionarVersoes("jornalismo", [
         pontos: { pessoas: 1 }
       },
       {
-        texto: "Troco o nome em silêncio, sem avisar ninguém.",
+        texto: "Troco o nome em silêncio, sem avisar ninguém, para não chamar mais atenção para o erro.",
         reacao: "o print da versão errada tá circulando... 😬",
         resultado: "A troca silenciosa foi descoberta, e o portal foi acusado de esconder o erro.",
         pontos: { pressao: 1 }
@@ -579,13 +579,13 @@ adicionarVersoes("jornalismo", [
         pontos: { pessoas: 1 }
       },
       {
-        texto: "Guardo prints das ameaças, aviso a editora, e o jornal publica um texto explicando como a reportagem foi apurada.",
+        texto: "Guardo prints das ameaças, aviso a editora e o jornal explica como a reportagem foi apurada.",
         reacao: "a direção já acionou o jurídico e a polícia 👍",
         resultado: "Você ficou protegido(a), e o texto de transparência ganhou o apoio dos leitores.",
         pontos: { criatividade: 1, pessoas: 1, logica: 1, pressao: 1 }
       },
       {
-        texto: "Peço para fecharem os comentários de todo o portal.",
+        texto: "Peço para fecharem os comentários de todo o portal até os ataques pararem, para proteger a equipe e os leitores.",
         reacao: "de todo o portal? 😕",
         resultado: "Os comentários pararam no site, mas as ameaças continuaram nas redes sociais.",
         pontos: { organizacao: 1 }

@@ -107,7 +107,7 @@ PROFISSOES.push({
           pontos: { pressao: 1 }
         },
         {
-          texto: "Marco como “não consegui reproduzir” e passo para a próxima tarefa.",
+          texto: "Marco como “não consegui reproduzir” e passo para a próxima tarefa, que também é urgente.",
           reacao: "como assim não conseguiu?? 😤 eu tô perdendo venda aqui!",
           resultado: "Uma semana depois, o cliente voltou a reclamar, agora bem mais irritado.",
           pontos: {}
@@ -190,7 +190,7 @@ PROFISSOES.push({
       naVidaReal: "Entender o que as pessoas precisam é tão importante quanto programar. Muitos projetos dão errado não por código ruim, mas por necessidades mal compreendidas.",
       opcoes: [
         {
-          texto: "Anoto o que ele falou e decido sozinho(a) depois como vai ficar.",
+          texto: "Anoto o que ele falou e decido sozinho(a) depois como vai ficar, para não tomar mais tempo dele.",
           reacao: "beleza, confio em você! 👍",
           resultado: "Você entregou em uma semana, mas não era o que ele queria. Foi preciso refazer metade.",
           pontos: { criatividade: 1 }
@@ -240,7 +240,7 @@ PROFISSOES.push({
           pontos: { organizacao: 1 }
         },
         {
-          texto: "Faço do jeito mais rápido possível, sem pensar muito no visual.",
+          texto: "Faço do jeito mais rápido possível, sem pensar muito no visual: o importante é a tela funcionar.",
           reacao: "funciona... mas tá meio confuso de preencher, não acha? 🤔",
           resultado: "Ficou pronto, mas os usuários tiveram dificuldade para preencher o cadastro.",
           pontos: { pressao: 1 }
@@ -423,7 +423,7 @@ adicionarVersoes("desenvolvimento-sistemas", [
     naVidaReal: "Aprender ferramentas novas o tempo todo faz parte da área. Ler a documentação, testar algo pequeno primeiro e perguntar a quem já sabe é o caminho mais seguro, principalmente quando envolve dinheiro.",
     opcoes: [
       {
-        texto: "Sigo um tutorial passo a passo, copiando tudo sem entender direito.",
+        texto: "Sigo um tutorial passo a passo, copiando tudo sem entender direito, porque o prazo é para hoje.",
         reacao: "funcionou? e se der erro, você sabe o porquê? 🤔",
         resultado: "Funcionou no exemplo, mas quebrou num caso real e você não sabia por quê.",
         pontos: { organizacao: 1 }

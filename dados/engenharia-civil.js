@@ -223,7 +223,7 @@ PROFISSOES.push({
           pontos: { criatividade: 1 }
         },
         {
-          texto: "Aviso a cliente com os números e proponho duas opções de ajuste.",
+          texto: "Aviso a cliente com os números e proponho duas opções de ajuste para ela escolher.",
           reacao: "ih, a cliente vai gostar de ser avisada com transparência 👍",
           resultado: "A cliente apreciou a clareza e escolheu uma das opções, mantendo a confiança.",
           pontos: { pessoas: 2, organizacao: 1 }
@@ -304,7 +304,7 @@ PROFISSOES.push({
           pontos: { organizacao: 2, logica: 1 }
         },
         {
-          texto: "Peço para o mestre de obras escrever sem revisar.",
+          texto: "Peço para o mestre de obras escrever, já que ele acompanhou tudo de perto, e assino sem revisar.",
           reacao: "eu escrevo, mas o senhor(a) confere, né? ✍️",
           resultado: "O mestre registrou o que viu, mas faltaram termos técnicos importantes.",
           pontos: { pessoas: 1, organizacao: 1 }
@@ -343,7 +343,7 @@ adicionarVersoes("engenharia-civil", [
         pontos: { criatividade: 1, pressao: 1 }
       },
       {
-        texto: "Mando devolver tudo e paro a obra, sem avisar o cliente.",
+        texto: "Mando devolver tudo e paro a obra até o aço certo chegar, sem avisar o cliente.",
         reacao: "e a turma fica fazendo o quê? 😕",
         resultado: "O dia foi perdido, e o cliente soube do atraso pelos outros.",
         pontos: {}
@@ -525,7 +525,7 @@ adicionarVersoes("engenharia-civil", [
         pontos: {}
       },
       {
-        texto: "Paro tudo e mando todo mundo para casa, sem organizar nada.",
+        texto: "Paro tudo e mando todo mundo para casa na hora, sem organizar nada, porque a chuva só piora.",
         reacao: "e o barranco? e a rua? 😰",
         resultado: "As pessoas saíram, mas a área ficou sem isolamento e a calçada cedeu durante a noite.",
         pontos: { pressao: 1 }

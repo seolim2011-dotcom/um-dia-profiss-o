@@ -189,7 +189,7 @@ PROFISSOES.push({
       naVidaReal: "Alergias alimentares podem causar reações graves, como a anafilaxia. Não basta tirar o ingrediente de cima do prato: restos no caldo, na panela ou nos utensílios já podem causar reação. Isso se chama contaminação cruzada.",
       opcoes: [
         {
-          texto: "Tiro os camarões de cima do risoto e mando para a mesa.",
+          texto: "Tiro os camarões de cima do risoto com cuidado e mando para a mesa sem demora.",
           reacao: "mas o caldo é de camarão... 😨",
           resultado: "O cliente teve uma reação alérgica e precisou de atendimento médico.",
           pontos: {}
@@ -293,7 +293,7 @@ PROFISSOES.push({
           pontos: { pressao: 2, logica: 1 }
         },
         {
-          texto: "Jogo um copo de água para apagar rápido.",
+          texto: "Jogo um copo de água para apagar o fogo o mais rápido possível.",
           reacao: "NÃÃÃO!! 💥",
           resultado: "O óleo espirrou em chamas, e por pouco ninguém se queimou. O extintor precisou ser usado.",
           pontos: { pressao: 1 }
@@ -403,7 +403,7 @@ adicionarVersoes("gastronomia", [
         pontos: { pressao: 1 }
       },
       {
-        texto: "Ligo para a assistência técnica e espero o técnico chegar.",
+        texto: "Ligo para a assistência técnica e espero o técnico chegar, mantendo o salão avisado do atraso.",
         reacao: "e o almoço enquanto isso? 😕",
         resultado: "O técnico chegou às 15h, e o almoço saiu com metade dos pratos.",
         pontos: { organizacao: 1 }
@@ -478,7 +478,7 @@ adicionarVersoes("gastronomia", [
         pontos: { organizacao: 1 }
       },
       {
-        texto: "Invento uma farinha alternativa na hora, sem conferir os rótulos.",
+        texto: "Invento uma farinha alternativa na hora, misturando o que tem no estoque, sem conferir os rótulos.",
         reacao: "ficou gostoso! mas essa farinha tinha o quê? 🤔",
         resultado: "Por sorte não tinha glúten, mas ninguém tinha certeza disso.",
         pontos: { criatividade: 1 }

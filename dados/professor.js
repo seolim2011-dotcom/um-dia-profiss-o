@@ -118,19 +118,19 @@ PROFISSOES.push({
       naVidaReal: "Mediar conflitos e casos que começam nas redes sociais faz parte do dia a dia da escola, e não só da coordenação.",
       opcoes: [
         {
-          texto: "Finjo que não vi: não é minha aula e meu intervalo é curto.",
+          texto: "Finjo que não vi: não é minha aula, meu intervalo é curto e tem inspetor no pátio para isso.",
           reacao: "ué... ninguém vai fazer nada? 😳",
           resultado: "A briga piorou e um dos alunos se machucou. Na escola, todos os adultos são responsáveis pelos alunos.",
           pontos: {}
         },
         {
-          texto: "Dou uma bronca nos dois na frente de todo mundo, para servir de exemplo.",
+          texto: "Dou uma bronca nos dois na frente de todo mundo, para servir de exemplo e ninguém mais filmar briga.",
           reacao: "poxa, na frente de todo mundo? 😠",
           resultado: "A briga parou, mas os dois se sentiram humilhados e o conflito continuou nas redes sociais.",
           pontos: { pressao: 1, pessoas: 1 }
         },
         {
-          texto: "Separo os dois com calma, peço que guardem os celulares e levo a conversa para a coordenação.",
+          texto: "Separo os dois, peço que guardem os celulares e levo a conversa para a coordenação.",
           reacao: "tá bom, professor(a)... a gente se calma 😮‍💨",
           resultado: "A briga parou. Com a coordenação, os dois conversaram e o vídeo foi apagado.",
           pontos: { pressao: 2, pessoas: 1, organizacao: 1 }
@@ -220,13 +220,13 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Peço para a coordenação participar da conversa.",
+          texto: "Peço para a coordenação participar da conversa, porque com alguém de fora a mãe se acalma mais rápido.",
           reacao: "ah, tá... então vamos conversar com a coordenadora também 😤",
           resultado: "Com a coordenação presente, a conversa ficou mais tranquila e vocês chegaram a um acordo.",
           pontos: { organizacao: 1, pessoas: 1 }
         },
         {
-          texto: "Escuto sem interromper, mostro as atividades da Lia e proponho um plano de estudos juntos.",
+          texto: "Escuto sem interromper, mostro as atividades da Lia e proponho um plano de estudos.",
           reacao: "ah... eu não sabia que ela tava faltando às atividades 😔 vamos fazer esse plano, sim.",
           resultado: "A mãe se acalmou ao ver as atividades e vocês combinaram um acompanhamento semanal.",
           pontos: { pessoas: 2, organizacao: 1, pressao: 1 }
@@ -257,13 +257,13 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Peço para um colega que já entendeu ajudar o Lucas.",
+          texto: "Peço para um colega que já entendeu ajudar o Lucas, porque às vezes um aluno explica melhor que o professor.",
           reacao: "tá bom... mas e se ele rir de mim? 😟",
           resultado: "Os dois trabalharam juntos e o Lucas avançou. Você conseguiu atender outros alunos ao mesmo tempo.",
           pontos: { organizacao: 1, criatividade: 1, logica: 1 }
         },
         {
-          texto: "Sento perto dele, explico de outro jeito, com um desenho, e mostro o que ele já sabe fazer.",
+          texto: "Sento perto dele, explico de outro jeito, com um desenho, e mostro o que ele já sabe.",
           reacao: "ahhh... então é só isso?? 😮 por que ninguém me explicou assim antes?",
           resultado: "Na terceira tentativa, ele entendeu e abriu um sorriso. Pela primeira vez, ele levantou a mão na aula.",
           pontos: { pessoas: 2, criatividade: 2 }
@@ -339,19 +339,19 @@ adicionarVersoes("professor", [
         pontos: {}
       },
       {
-        texto: "Espero em silêncio na frente da sala até eles guardarem.",
+        texto: "Espero em silêncio na frente da sala até eles perceberem e guardarem os celulares sozinhos.",
         reacao: "...gente, guarda aí que o(a) professor(a) tá esperando 😅",
         resultado: "Funcionou, mas levou dez minutos da aula.",
         pontos: { pressao: 1, organizacao: 1 }
       },
       {
-        texto: "Começo com uma enquete rápida no celular sobre o tema da aula e depois peço para guardarem.",
+        texto: "Faço uma enquete rápida no celular sobre o tema e depois peço para guardarem.",
         reacao: "68% da sala errou?? como assim?! 😮",
         resultado: "A turma ficou curiosa para descobrir a resposta certa e guardou os celulares sozinha.",
         pontos: { criatividade: 2, pessoas: 1 }
       },
       {
-        texto: "Lembro a regra da escola sobre celulares e começo o conteúdo.",
+        texto: "Lembro a regra da escola sobre celulares, aviso que vou recolher de quem insistir e começo o conteúdo.",
         reacao: "tá bom, tá bom... 😐",
         resultado: "A turma guardou os celulares, mas sem muita vontade de prestar atenção.",
         pontos: { organizacao: 1, pessoas: 1, logica: 1 }
@@ -399,13 +399,13 @@ adicionarVersoes("professor", [
         pontos: {}
       },
       {
-        texto: "Pego o aluno no colo e corro sozinho(a) pelo corredor até a secretaria.",
+        texto: "Pego o aluno no colo e corro sozinho(a) pelo corredor até a secretaria, onde tem o kit de primeiros socorros.",
         reacao: "e a turma sozinha?? 😰",
         resultado: "Ele acordou no caminho, mas a turma ficou sozinha e assustada.",
         pontos: { pressao: 1, pessoas: 1 }
       },
       {
-        texto: "Deito o aluno com as pernas para cima, peço que alguém chame a coordenação, aciono o SAMU se ele não acordar e acalmo a turma.",
+        texto: "Deito o aluno com as pernas para cima, peço que chamem a coordenação e o SAMU se ele não acordar.",
         reacao: "ele tá acordando! 😮‍💨",
         resultado: "Ele acordou em um minuto, foi atendido e a família foi avisada. A turma se acalmou rápido.",
         pontos: { pressao: 2, pessoas: 1, organizacao: 1 }
@@ -436,7 +436,7 @@ adicionarVersoes("professor", [
         pontos: {}
       },
       {
-        texto: "Tento corrigir o máximo possível, bem rápido, sem ler direito.",
+        texto: "Tento corrigir o máximo possível hoje, bem rápido, sem ler direito, para devolver logo para a turma.",
         reacao: "cuidado pra não ser injusto(a) com a nota 🤔",
         resultado: "Você corrigiu muitas, mas os comentários ficaram vagos e alguns alunos reclamaram da nota.",
         pontos: { pressao: 1 }
@@ -448,7 +448,7 @@ adicionarVersoes("professor", [
         pontos: { organizacao: 2, pressao: 1 }
       },
       {
-        texto: "Crio um sistema em que os alunos corrigem as redações uns dos outros.",
+        texto: "Crio um sistema em que os alunos corrigem as redações uns dos outros, e eu só dou a nota final no fim.",
         reacao: "ideia legal, mas a nota final é sua, hein 😉",
         resultado: "Os alunos aprenderam muito revisando, mas você ainda precisou conferir tudo.",
         pontos: { criatividade: 1, organizacao: 1 }
@@ -494,13 +494,13 @@ adicionarVersoes("professor", [
         pontos: {}
       },
       {
-        texto: "Levo ela direto para a coordenação, sem conversar antes.",
+        texto: "Levo ela direto para a coordenação, sem conversar antes, porque quem sabe lidar com esses casos é a equipe de lá.",
         reacao: "você vai contar pra todo mundo? 😰",
         resultado: "O caso chegou a quem precisava, mas a aluna se sentiu exposta e com medo.",
         pontos: { organizacao: 1, pessoas: 1 }
       },
       {
-        texto: "Escuto com calma, sem fazer muitas perguntas, explico que não posso guardar segredo e vamos juntos à coordenação.",
+        texto: "Escuto sem fazer muitas perguntas, explico que não posso guardar segredo e vamos juntos à coordenação.",
         reacao: "...tá. mas você fica comigo? 🥺",
         resultado: "A coordenação acionou o Conselho Tutelar, e a aluna passou a ter acompanhamento e proteção.",
         pontos: { pessoas: 2, organizacao: 1, pressao: 1 }
@@ -525,19 +525,19 @@ adicionarVersoes("professor", [
     naVidaReal: "Alunos com TDAH e outras necessidades têm direito a adaptações nas avaliações, como mais tempo, provas divididas em partes e um ambiente com menos distrações. Adaptar não é facilitar: é medir o que o aluno realmente sabe.",
     opcoes: [
       {
-        texto: "Digo que ele precisa se esforçar como todo mundo.",
+        texto: "Digo que ele precisa se esforçar como todo mundo, porque na vida ninguém vai dar tempo a mais.",
         reacao: "eu me esforço... 😞",
         resultado: "As notas continuaram caindo, e o Pedro começou a achar que não era capaz.",
         pontos: {}
       },
       {
-        texto: "Peço para um colega sentar do lado dele na prova.",
+        texto: "Peço para um colega sentar do lado dele na prova, para ajudar a ler as questões e não deixar ele travar.",
         reacao: "ajuda um pouco, mas ainda me perco 😕",
         resultado: "O colega ajudou a manter o foco, mas o tempo continuou curto.",
         pontos: { organizacao: 1, criatividade: 1, logica: 1 }
       },
       {
-        texto: "Converso com ele e proponho adaptações: prova em partes, mais tempo e um lugar mais silencioso.",
+        texto: "Proponho adaptações: prova em partes, mais tempo e um lugar mais silencioso.",
         reacao: "em partes eu consigo!! 😃",
         resultado: "Na prova seguinte, ele terminou tudo e tirou a maior nota do bimestre.",
         pontos: { pessoas: 2, criatividade: 2 }
@@ -574,13 +574,13 @@ adicionarVersoes("professor", [
         pontos: {}
       },
       {
-        texto: "Gravo um vídeo semanal para as famílias explicando a matéria e as tarefas.",
+        texto: "Gravo um vídeo semanal para as famílias explicando a matéria e as tarefas, e mando no grupo de cada turma toda segunda.",
         reacao: "adorei o vídeo! 😍",
         resultado: "As famílias gostaram, mas as mensagens no seu número continuaram.",
         pontos: { criatividade: 2, pessoas: 1 }
       },
       {
-        texto: "Combino com a escola um canal oficial e horários de resposta, e organizo as dúvidas mais comuns num aviso semanal.",
+        texto: "Combino com a escola um canal oficial com horários de resposta e um aviso semanal com as dúvidas comuns.",
         reacao: "faz sentido, assim todo mundo sabe onde procurar 👍",
         resultado: "As mensagens noturnas quase sumiram, e as famílias ficaram mais bem informadas.",
         pontos: { organizacao: 2, pessoas: 1, logica: 1 }

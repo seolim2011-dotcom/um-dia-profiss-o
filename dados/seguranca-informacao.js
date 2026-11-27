@@ -254,7 +254,7 @@ PROFISSOES.push({
       naVidaReal: "A maioria dos ataques começa enganando uma pessoa, e não quebrando um sistema. Por isso, equipes de segurança fazem simulações de golpe por e-mail e treinamentos curtos com exemplos reais.",
       opcoes: [
         {
-          texto: "Mando um PDF de 40 páginas com todas as regras de segurança.",
+          texto: "Mando um PDF de 40 páginas com todas as regras de segurança, para cada um ler no seu tempo.",
           reacao: "ninguém vai ler isso, né 😅",
           resultado: "O PDF ficou completo, mas quase ninguém abriu.",
           pontos: { organizacao: 2 }
@@ -336,7 +336,7 @@ adicionarVersoes("seguranca-informacao", [
     naVidaReal: "Quem digitou a senha num site falso deve avisar a segurança na hora, sem medo de bronca. A resposta rápida (trocar a senha, encerrar as sessões e conferir acessos) costuma impedir que o golpe vá adiante.",
     opcoes: [
       {
-        texto: "Não faço nada: ela só digitou a senha, não aconteceu nada ainda.",
+        texto: "Não faço nada por enquanto: ela só digitou a senha, e até agora não aconteceu nada de estranho.",
         reacao: "ufa, então tá tudo bem? 😅",
         resultado: "Uma hora depois, alguém entrou na conta dela e mandou e-mails falsos para os funcionários.",
         pontos: {}
@@ -450,7 +450,7 @@ adicionarVersoes("seguranca-informacao", [
         pontos: { pessoas: 1, logica: 1, criatividade: 1, organizacao: 1 }
       },
       {
-        texto: "Desligo para todo mundo ficar feliz.",
+        texto: "Desligo o antivírus da equipe toda para todo mundo trabalhar mais rápido.",
         reacao: "você é o(a) melhor! 😁",
         resultado: "A equipe gostou, mas a empresa ficou sem proteção em dezenas de computadores.",
         pontos: { pessoas: 2 }
@@ -504,7 +504,7 @@ adicionarVersoes("seguranca-informacao", [
         pontos: { logica: 2, pressao: 2, organizacao: 1 }
       },
       {
-        texto: "Posto nas redes que o site está em manutenção, sem investigar o que é.",
+        texto: "Posto nas redes que o site está em manutenção, para acalmar os clientes, sem investigar o que é.",
         reacao: "e quando perguntarem até quando? 🤔",
         resultado: "Os clientes ficaram avisados, mas o site continuou fora do ar.",
         pontos: { pessoas: 1, pressao: 1 }

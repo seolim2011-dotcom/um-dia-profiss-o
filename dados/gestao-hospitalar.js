@@ -77,7 +77,7 @@ PROFISSOES.push({
           pontos: { pressao: 1 }
         },
         {
-          texto: "Números e planilhas não são comigo: peço para outra pessoa fazer a análise.",
+          texto: "Números e planilhas não são comigo: peço para alguém da equipe de dados fazer a análise e me mandar um resumo.",
           reacao: "você é gestor(a). planilha faz parte.",
           resultado: "A análise atrasou e o plano não ficou pronto até sexta.",
           pontos: {}
@@ -127,7 +127,7 @@ PROFISSOES.push({
           pontos: { criatividade: 1, pessoas: 1, pressao: 1 }
         },
         {
-          texto: "Digo à médica que não há o que fazer e que ela vai ter que esperar.",
+          texto: "Digo à médica que o hospital está lotado, que não há o que fazer e que ela vai ter que esperar.",
           reacao: "como assim?! vou subir aí agora! 😡",
           resultado: "Os pacientes passaram a noite em macas no corredor e o caso chegou à diretoria.",
           pontos: {}
@@ -257,7 +257,7 @@ PROFISSOES.push({
           pontos: { organizacao: 1 }
         },
         {
-          texto: "Fico na defensiva: a recepção está sobrecarregada, a culpa não é nossa.",
+          texto: "Fico na defensiva e respondo que a recepção está sobrecarregada e que a culpa não é nossa.",
           reacao: "ah, então a culpa é minha?! 😡",
           resultado: "A conversa piorou e o caso repercutiu mal para o hospital.",
           pontos: {}
@@ -426,7 +426,7 @@ adicionarVersoes("gestao-hospitalar", [
         pontos: { organizacao: 2, pessoas: 1, pressao: 1 }
       },
       {
-        texto: "Leio o contrato de manutenção e cobro da empresa o prazo de conserto.",
+        texto: "Leio o contrato de manutenção e cobro da empresa o prazo de conserto que ela prometeu cumprir.",
         reacao: "eles vêm amanhã cedo. mas e o paciente de agora? 😬",
         resultado: "A empresa cumpriu o contrato, mas o caso urgente demorou a ser encaminhado.",
         pontos: { organizacao: 1, pressao: 1, logica: 1 }

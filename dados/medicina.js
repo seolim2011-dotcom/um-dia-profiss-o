@@ -77,7 +77,7 @@ PROFISSOES.push({
           pontos: { logica: 2, pessoas: 1 }
         },
         {
-          texto: "Peço para um colega mais experiente decidir tudo por mim.",
+          texto: "Peço para um colega mais experiente decidir tudo por mim, já que ainda estou aprendendo.",
           reacao: "perguntar é ótimo! mas arrisca uma hipótese também, tá? 😉",
           resultado: "O colega ajudou, mas você perdeu a chance de treinar o raciocínio clínico.",
           pontos: { pessoas: 1 }
@@ -236,7 +236,7 @@ PROFISSOES.push({
           pontos: { pressao: 1 }
         },
         {
-          texto: "Passo os casos mais pesados para o colega e vou embora.",
+          texto: "Passo os casos mais pesados para o colega e vou embora mais cedo para dormir.",
           reacao: "ué, e o seu plantão? 😳",
           resultado: "O colega ficou sobrecarregado e a escala teve que ser refeita às pressas.",
           pontos: {}
@@ -340,7 +340,7 @@ adicionarVersoes("medicina", [
         pontos: {}
       },
       {
-        texto: "Mantenho a prescrição da noite e peço para reavaliar amanhã.",
+        texto: "Mantenho a prescrição da noite e peço para reavaliar amanhã, quando ela estiver mais descansada.",
         reacao: "e se for algo que precisa de tratamento hoje? 🤔",
         resultado: "Ela passou mais um dia confusa, e a causa só apareceu no dia seguinte.",
         pontos: { organizacao: 1 }
@@ -436,7 +436,7 @@ adicionarVersoes("medicina", [
         pontos: {}
       },
       {
-        texto: "Saio para chamar um colega mais experiente antes de fazer qualquer coisa.",
+        texto: "Saio para chamar um colega mais experiente antes de fazer qualquer coisa, para não errar a dose.",
         reacao: "não dá tempo de procurar ninguém! 😰",
         resultado: "Minutos preciosos se perderam até o colega chegar.",
         pontos: { pessoas: 1 }

@@ -291,6 +291,8 @@ Os desafios da primeira versão do dia (cada profissão tem mais dois na segunda
 - Traço de peso baixo: deixe os pontos dele mais em opções que não são as melhores.
 - Todo traço precisa aparecer em pelo menos uma opção; senão, ele fica fora da conta.
 - Varie a posição da melhor opção (nem sempre a A).
+- Escreva as opções com tamanhos parecidos e dê aos atalhos uma justificativa que convença ("para não atrasar", "o cliente é quem paga"). Se a melhor opção for sempre a mais longa ou a única com "com calma", dá para acertar sem pensar no que você faria de verdade. Hoje a melhor é a mais longa em cerca de 1 a cada 4 situações.
+- Nos desafios de achar o erro, varie a linha errada (no de alternativas, o jogo já embaralha).
 
 Se algo estiver errado (um traço com nome digitado errado, uma área que não existe, um peso faltando, uma fala vazia, um id repetido, um desafio com `correta` fora da lista), o jogo avisa no console do navegador (tecla F12, aba Console).
 

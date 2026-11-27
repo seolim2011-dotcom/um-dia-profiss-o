@@ -219,7 +219,7 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Levo o caso para casa e passo a noite pensando nele.",
+          texto: "Levo o caso para casa e passo a noite pensando nele, tentando entender o que eu poderia ter feito.",
           reacao: "isso vai te desgastar... 😟",
           resultado: "Você passou a noite em claro e chegou exausto(a) ao dia seguinte.",
           pontos: { pessoas: 1 }
@@ -299,7 +299,7 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Anoto num caderno pessoal e deixo em cima da mesa.",
+          texto: "Anoto num caderno pessoal, que é mais prático que o sistema, e deixo em cima da mesa.",
           reacao: "em cima da mesa? e se alguém ver? 😳",
           resultado: "Uma funcionária da limpeza viu a capa do caderno com o nome de um paciente.",
           pontos: { criatividade: 1 }
@@ -392,7 +392,7 @@ adicionarVersoes("psicologia", [
     naVidaReal: "Uma crise de pânico dá sintomas físicos fortes, como falta de ar e coração acelerado, mas costuma passar em alguns minutos. Ficar junto, falar com calma e ajudar a respirar devagar ajuda. Se houver dúvida sobre um problema físico, chama-se o serviço de emergência.",
     opcoes: [
       {
-        texto: "Continuo a sessão que estou fazendo e peço para a recepção resolver.",
+        texto: "Continuo a sessão que estou fazendo e peço para a recepção resolver: não posso abandonar meu paciente.",
         reacao: "eu não sei o que fazer!! 😰",
         resultado: "A recepcionista ficou sozinha com a crise, e o paciente passou mais tempo apavorado.",
         pontos: {}
@@ -560,7 +560,7 @@ adicionarVersoes("psicologia", [
     naVidaReal: "Combinar limites claros de contato faz parte do trabalho e protege o paciente e o profissional. Também é importante deixar registrado o que fazer numa emergência fora do horário, como procurar o CVV (188) ou o SAMU (192).",
     opcoes: [
       {
-        texto: "Passo a responder tudo na hora, a qualquer hora.",
+        texto: "Passo a responder tudo na hora, a qualquer hora, para ele nunca se sentir sozinho.",
         reacao: "isso vai te esgotar... 😟",
         resultado: "Em poucas semanas você estava exausto(a), e as mensagens só aumentaram.",
         pontos: {}

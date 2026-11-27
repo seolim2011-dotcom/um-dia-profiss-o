@@ -65,19 +65,19 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Sugiro copiar a campanha de uma marca famosa.",
+          texto: "Sugiro copiar a campanha de uma marca famosa que viralizou, já que ela provou que funciona.",
           reacao: "essa campanha todo mundo já viu... precisa ser a nossa 🤔",
           resultado: "A ideia foi descartada por falta de originalidade.",
           pontos: { organizacao: 1 }
         },
         {
-          texto: "Proponho uma ideia: “sorvete em dupla”, com 2 bolas e um desconto para casais, e explico o porquê.",
+          texto: "Proponho o “sorvete em dupla”, com 2 bolas e desconto para casais.",
           reacao: "gostei! “casal que divide, ganha desconto” 😍 vamos desenvolver!",
           resultado: "A ideia foi aprovada e virou o centro da campanha.",
           pontos: { criatividade: 2, pessoas: 1 }
         },
         {
-          texto: "Falo só números e métricas, sem trazer nenhuma ideia.",
+          texto: "Falo só números e métricas do último verão, sem trazer nenhuma ideia: são os dados que mostram o caminho.",
           reacao: "números ajudam, mas a gente precisa de uma ideia 😅",
           resultado: "Os dados foram úteis, mas a reunião terminou sem uma proposta criativa.",
           pontos: { logica: 1 }
@@ -165,13 +165,13 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Digo que é impossível e que ele deveria fazer outra coisa.",
+          texto: "Digo que viralizar é impossível de prever e que ele deveria investir em anúncios pagos em vez disso.",
           reacao: "ué, então pra que eu contratei vocês? 😒",
           resultado: "O cliente se sentiu desrespeitado e considerou trocar de agência.",
           pontos: { logica: 1 }
         },
         {
-          texto: "Explico que não dá para garantir, mostro metas realistas e um plano com resultados medidos por semana.",
+          texto: "Explico que não dá para garantir e mostro metas realistas, medidas por semana.",
           reacao: "ah, entendi. faz mais sentido assim 🙂 vamos acompanhar toda semana, então?",
           resultado: "O cliente passou a confiar no trabalho e entendeu os resultados como um processo.",
           pontos: { pessoas: 2, logica: 1, organizacao: 1 }
@@ -293,7 +293,7 @@ PROFISSOES.push({
       naVidaReal: "Planejar o conteúdo com antecedência evita correria e permite revisar tudo com calma. Redes sociais exigem constância.",
       opcoes: [
         {
-          texto: "Deixo para improvisar de manhã, quando a ideia vier.",
+          texto: "Deixo para improvisar de manhã, quando a ideia vier: post bom nasce da inspiração do dia.",
           reacao: "improvisar com 5 clientes?? 😰",
           resultado: "Na segunda de manhã, faltaram posts e dois clientes ficaram sem publicação.",
           pontos: { criatividade: 1 }
@@ -305,13 +305,13 @@ PROFISSOES.push({
           pontos: { pessoas: 1 }
         },
         {
-          texto: "Monto um calendário com datas, ideias e responsáveis para cada cliente, e deixo tudo compartilhado.",
+          texto: "Monto um calendário com datas, ideias e responsáveis para cada cliente.",
           reacao: "que organização! agora todo mundo sabe o que fazer 🙌",
           resultado: "A semana seguinte correu sem sustos e todos os posts saíram no horário.",
           pontos: { organizacao: 2, logica: 1, pessoas: 1 }
         },
         {
-          texto: "Copio o calendário da semana passada, sem mudar nada.",
+          texto: "Copio o calendário da semana passada, sem mudar nada: se funcionou, não tem por que mexer.",
           reacao: "ué, os mesmos posts de novo? 😅",
           resultado: "Os seguidores perceberam a repetição e o engajamento caiu.",
           pontos: {}
@@ -344,19 +344,19 @@ adicionarVersoes("marketing-digital", [
         pontos: {}
       },
       {
-        texto: "Sugiro repetir a campanha do ano passado, que deu certo.",
+        texto: "Sugiro repetir a campanha do ano passado, que deu certo e já tem as peças prontas, com outra foto.",
         reacao: "mas a ideia era fazer algo novo... 🤔",
         resultado: "A campanha repetida teve resultado menor que no ano anterior.",
         pontos: { organizacao: 1 }
       },
       {
-        texto: "Proponho histórias reais: \"o primeiro par de óculos que sua mãe te deu\", e explico por que isso emociona e vende.",
+        texto: "Proponho histórias reais: \"o primeiro par de óculos que sua mãe te deu\".",
         reacao: "arrepiei 😭 vamos com essa!",
         resultado: "Clientes mandaram dezenas de histórias, e a campanha foi a mais comentada da rede.",
         pontos: { criatividade: 2, pessoas: 1 }
       },
       {
-        texto: "Apresento só os números de vendas do ano passado.",
+        texto: "Apresento só os números de vendas do ano passado, para mostrar o que vende mais nessa data.",
         reacao: "ok... e a ideia? 😅",
         resultado: "Os dados eram úteis, mas não viraram campanha.",
         pontos: { logica: 1 }
@@ -405,7 +405,7 @@ adicionarVersoes("marketing-digital", [
         pontos: {}
       },
       {
-        texto: "Respondo o influenciador nos comentários, discutindo com ele.",
+        texto: "Respondo o influenciador nos comentários, mostrando que ele exagerou e que a marca sempre entrega no prazo.",
         reacao: "agora a briga tá maior que a reclamação 🤦",
         resultado: "A discussão pública espalhou ainda mais o vídeo.",
         pontos: { pressao: 1 }
@@ -417,7 +417,7 @@ adicionarVersoes("marketing-digital", [
         pontos: { organizacao: 1 }
       },
       {
-        texto: "Converso com ele, descubro o problema na entrega, publico uma resposta transparente com a solução e acompanho as reações.",
+        texto: "Converso com ele, descubro o problema na entrega e publico uma resposta com a solução.",
         reacao: "ele até fez outra live elogiando a resposta 😮",
         resultado: "A marca trocou a embalagem de entrega, e a resposta virou exemplo de bom atendimento.",
         pontos: { pressao: 2, pessoas: 1, criatividade: 1 }
@@ -436,7 +436,7 @@ adicionarVersoes("marketing-digital", [
     naVidaReal: "Seguidores comprados são, em geral, perfis falsos: não compram, não comentam e ainda derrubam o alcance dos posts. O trabalho de marketing é atrair o público certo, com metas realistas.",
     opcoes: [
       {
-        texto: "Compro os seguidores: foi ele quem pediu.",
+        texto: "Compro os seguidores: foi ele quem pediu, e um perfil cheio de seguidores passa mais confiança para quem chega.",
         reacao: "uau, 53 mil! 😁 ...mas por que ninguém curte os posts?",
         resultado: "O número subiu, mas o alcance dos posts e as vendas caíram.",
         pontos: {}
@@ -448,7 +448,7 @@ adicionarVersoes("marketing-digital", [
         pontos: { logica: 1 }
       },
       {
-        texto: "Explico que seguidor comprado não compra sorvete e mostro um plano para crescer com público real, com metas por mês.",
+        texto: "Explico que seguidor comprado não compra sorvete e mostro um plano para crescer com público real.",
         reacao: "faz sentido... 3 mil que vêm aqui valem mais que 50 mil robôs 🤔",
         resultado: "Em seis meses, o perfil dobrou com clientes reais do bairro.",
         pontos: { pessoas: 2, logica: 1, organizacao: 1 }
@@ -508,13 +508,13 @@ adicionarVersoes("marketing-digital", [
         pontos: { pressao: 1 }
       },
       {
-        texto: "Crio em uma hora um post da \"dupla de sorvetes\" nas cores do Brasil e publico logo depois do jogo.",
+        texto: "Crio em uma hora um post da \"dupla de sorvetes\" nas cores do Brasil e publico logo.",
         reacao: "\"dupla campeã\" hahaha, tá bombando 🚀",
         resultado: "O post foi o mais compartilhado da história do perfil.",
         pontos: { criatividade: 2, pressao: 2, organizacao: 1 }
       },
       {
-        texto: "Faço uma votação de ideias com a equipe que dura a tarde toda.",
+        texto: "Faço uma votação de ideias com a equipe, para todo mundo participar, mesmo que dure a tarde toda.",
         reacao: "quando acabou a votação o assunto já tinha passado 🫠",
         resultado: "A ideia escolhida era boa, mas saiu tarde demais.",
         pontos: { pessoas: 1 }
@@ -551,7 +551,7 @@ adicionarVersoes("marketing-digital", [
         pontos: { logica: 1, criatividade: 2, organizacao: 1 }
       },
       {
-        texto: "Apago o vídeo e posto outro qualquer.",
+        texto: "Apago o vídeo e posto outro no lugar, com uma música mais famosa, para pegar o embalo do algoritmo.",
         reacao: "e a semana de produção? 😬",
         resultado: "O outro vídeo também foi mal, e ninguém descobriu o motivo.",
         pontos: { pressao: 1 }
@@ -570,7 +570,7 @@ adicionarVersoes("marketing-digital", [
     naVidaReal: "Relatórios de marketing transformam números em decisões: o que funcionou, o que não funcionou e o que fazer depois. Clientes que entendem os resultados confiam mais no trabalho e renovam o contrato.",
     opcoes: [
       {
-        texto: "Faço um relatório cheio de gráficos bonitos, sem conclusões.",
+        texto: "Faço um relatório cheio de gráficos bonitos e coloridos, com todos os números do mês, sem conclusões.",
         reacao: "lindo! ...mas foi bom ou ruim? 🤔",
         resultado: "O cliente elogiou o visual, mas não entendeu o que mudar.",
         pontos: { criatividade: 1 }
@@ -582,13 +582,13 @@ adicionarVersoes("marketing-digital", [
         pontos: { pessoas: 1 }
       },
       {
-        texto: "Monto um relatório com os resultados, o que funcionou, o que não funcionou e os próximos passos, e marco uma conversa.",
+        texto: "Monto um relatório com o que funcionou, o que não funcionou e os próximos passos.",
         reacao: "agora entendi onde meu dinheiro foi! vamos renovar 👍",
         resultado: "O cliente renovou o contrato e aumentou o investimento.",
         pontos: { organizacao: 2, logica: 1, pessoas: 1 }
       },
       {
-        texto: "Mando os números brutos da plataforma, do jeito que vieram.",
+        texto: "Mando os números brutos da plataforma, do jeito que vieram, para o cliente tirar as próprias conclusões.",
         reacao: "o que é \"CPM\"? 😵",
         resultado: "O cliente não entendeu nada e pediu uma reunião de emergência.",
         pontos: {}

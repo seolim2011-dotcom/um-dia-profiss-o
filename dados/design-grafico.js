@@ -156,7 +156,7 @@ PROFISSOES.push({
       naVidaReal: "Receber críticas é parte do dia a dia de quem trabalha com criação. Saber separar a crítica ao trabalho do ataque a você ajuda a evoluir.",
       opcoes: [
         {
-          texto: "Fico chateado(a) e passo a tarde sem falar com ninguém.",
+          texto: "Fico chateado(a) e passo a tarde sem falar com ninguém: trabalhei muito nesse logo.",
           reacao: "ô, não precisa levar pro lado pessoal 😅",
           resultado: "O prazo ficou apertado e o diretor passou a hesitar em dar feedbacks sinceros.",
           pontos: {}
@@ -253,7 +253,7 @@ PROFISSOES.push({
       naVidaReal: "Copiar o logo de outra marca pode gerar processo por plágio. Bons designers explicam o risco e criam algo próprio, inspirado, mas original.",
       opcoes: [
         {
-          texto: "Faço igualzinho: o cliente é quem paga.",
+          texto: "Faço igualzinho: o cliente é quem paga e sabe o que funciona no ramo dele.",
           reacao: "que ótimo! tá igualzinho mesmo 😁",
           resultado: "A concorrente notificou o cliente por plágio e você acabou envolvido(a) na confusão.",
           pontos: {}
@@ -431,7 +431,7 @@ adicionarVersoes("design-grafico", [
     naVidaReal: "Testes com usuários mostram como as pessoas realmente usam um design. Bom design não é só bonito: ele precisa ser fácil de entender e de usar.",
     opcoes: [
       {
-        texto: "Fico ofendido(a): o layout está bonito, o problema são os usuários.",
+        texto: "Fico ofendido(a): o layout está bonito e moderno, o problema são os usuários.",
         reacao: "6 de 8 pessoas, hein... 🤨",
         resultado: "O site foi publicado assim, e as vendas foram abaixo do esperado.",
         pontos: {}
@@ -583,7 +583,7 @@ adicionarVersoes("design-grafico", [
         pontos: { organizacao: 2, logica: 1 }
       },
       {
-        texto: "Mando tudo misturado para o cliente organizar.",
+        texto: "Mando tudo numa pasta só, misturado, para o cliente organizar do jeito que achar melhor.",
         reacao: "e qual eu uso na camiseta? 🤷",
         resultado: "O cliente usou o arquivo errado na camiseta, e as cores saíram diferentes.",
         pontos: { pessoas: 1 }

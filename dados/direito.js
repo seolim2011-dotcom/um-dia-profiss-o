@@ -168,13 +168,13 @@ PROFISSOES.push({
           pontos: { organizacao: 1 }
         },
         {
-          texto: "Fico em silêncio e deixo a cliente decidir sozinha.",
+          texto: "Fico em silêncio e deixo a cliente decidir sozinha, já que a empresa é dela.",
           reacao: "ué, o(a) colega não vai falar nada? 🤔",
           resultado: "Sem orientação, a cliente aceitou algo que não entendeu direito.",
           pontos: {}
         },
         {
-          texto: "Proponho parcelar a dívida com um desconto na multa, um acordo bom para os dois lados.",
+          texto: "Proponho parcelar a dívida com um desconto na multa.",
           reacao: "hmm... parcelado, com desconto... isso eu consigo levar pra minha cliente 🤝",
           resultado: "O acordo foi fechado: a Dona Rosa paga em 6 parcelas e continua na casa.",
           pontos: { criatividade: 2, pessoas: 1, logica: 1, organizacao: 1 }
@@ -223,7 +223,7 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Leio o texto que preparei, mesmo sem responder à pergunta.",
+          texto: "Leio o texto que preparei com cuidado na noite anterior, mesmo sem responder à pergunta do juiz.",
           reacao: "isso eu já li nos autos. responda a pergunta. 😑",
           resultado: "O juiz perdeu a paciência e pediu que você fosse direto ao ponto.",
           pontos: { organizacao: 1 }
@@ -348,13 +348,13 @@ adicionarVersoes("direito", [
         pontos: { logica: 1 }
       },
       {
-        texto: "Escuto até o fim, peço carteira, holerites e mensagens, e explico os passos e o tempo provável do processo.",
+        texto: "Escuto até o fim, peço carteira, holerites e mensagens e explico os passos do processo.",
         reacao: "agora eu entendi o caminho. tenho tudo guardado em casa 👍",
         resultado: "Com as provas organizadas, o caso terminou num acordo justo em poucos meses.",
         pontos: { pessoas: 2, organizacao: 1 }
       },
       {
-        texto: "Peço que ele volte outro dia com os documentos e encerro o atendimento.",
+        texto: "Peço que ele volte outro dia com todos os documentos organizados, para não perdermos tempo, e encerro o atendimento.",
         reacao: "tá... eu volto 😞",
         resultado: "Ele demorou semanas para voltar, e uma prova importante se perdeu no caminho.",
         pontos: { organizacao: 1 }
@@ -396,19 +396,19 @@ adicionarVersoes("direito", [
     naVidaReal: "Prisões de pessoas com o mesmo nome (homônimos) acontecem. O advogado reúne documentos que provam o engano, como RG, CPF e nome dos pais, e pede a soltura com urgência ao juiz, inclusive em plantão.",
     opcoes: [
       {
-        texto: "Digo para esperar até segunda-feira, quando o fórum abre.",
+        texto: "Digo para a família esperar até segunda-feira, quando o fórum abre e o processo anda mais rápido.",
         reacao: "ele vai passar o fim de semana preso?? 😭",
         resultado: "O jovem passou três dias preso por engano.",
         pontos: {}
       },
       {
-        texto: "Escrevo uma petição longa, cheia de teses, que leva a tarde toda.",
+        texto: "Escrevo uma petição longa e completa, com todas as teses possíveis, mesmo que leve a tarde toda.",
         reacao: "e enquanto isso? 😰",
         resultado: "O pedido ficou bem fundamentado, mas saiu tarde, e ele dormiu na cela.",
         pontos: { logica: 1, pressao: 1 }
       },
       {
-        texto: "Junto os documentos que provam o engano e peço a soltura ao juiz de plantão, com tudo organizado.",
+        texto: "Junto os documentos que provam o engano e peço a soltura ao juiz de plantão.",
         reacao: "o juiz mandou soltar!! 🙏😭",
         resultado: "Com as provas claras, ele foi solto no mesmo dia.",
         pontos: { organizacao: 2, pressao: 2 }
@@ -433,13 +433,13 @@ adicionarVersoes("direito", [
     naVidaReal: "No Brasil, a guarda compartilhada é a regra quando os dois pais têm condições. Advogados de família buscam acordos que coloquem o interesse da criança em primeiro lugar, muitas vezes com ajuda de mediação.",
     opcoes: [
       {
-        texto: "Recuso qualquer conversa e levo tudo direto para o juiz.",
+        texto: "Recuso qualquer conversa e levo tudo direto para o juiz, que vai decidir de forma imparcial o melhor para a criança.",
         reacao: "então vai demorar anos 😤",
         resultado: "O processo se arrastou, e a criança ficou no meio da briga.",
         pontos: { pressao: 1 }
       },
       {
-        texto: "Aceito a primeira proposta da outra parte para encerrar logo.",
+        texto: "Aceito a primeira proposta da outra parte para encerrar logo e poupar a criança de um processo longo.",
         reacao: "você não me defendeu! 😡",
         resultado: "O acordo saiu rápido, mas seu cliente se sentiu traído.",
         pontos: { organizacao: 1 }
@@ -451,7 +451,7 @@ adicionarVersoes("direito", [
         pontos: {}
       },
       {
-        texto: "Proponho guarda compartilhada com um calendário que respeita a rotina escolar da filha, bom para os dois.",
+        texto: "Proponho guarda compartilhada com um calendário que respeita a rotina escolar da filha.",
         reacao: "...é, a escola dela fica perto de nós dois. dá pra fazer 🤝",
         resultado: "O acordo foi assinado, e a filha passou a conviver bem com os dois.",
         pontos: { criatividade: 2, pessoas: 1, logica: 1, organizacao: 1 }
@@ -498,7 +498,7 @@ adicionarVersoes("direito", [
         pontos: {}
       },
       {
-        texto: "Leio as perguntas que preparei antes, sem tocar na mudança.",
+        texto: "Leio as perguntas que preparei antes, sem tocar na mudança, para não perder o fio da minha estratégia.",
         reacao: "a testemunha já respondeu isso de outro jeito... 🤨",
         resultado: "As perguntas não ajudaram a entender a mudança de versão.",
         pontos: { organizacao: 1 }
@@ -510,7 +510,7 @@ adicionarVersoes("direito", [
         pontos: { criatividade: 1, pressao: 1 }
       },
       {
-        texto: "Mantenho a calma, mostro ao juiz o depoimento anterior e peço que a contradição fique registrada.",
+        texto: "Mostro ao juiz o depoimento anterior e peço que a contradição fique registrada.",
         reacao: "registre-se em ata a divergência. 📝",
         resultado: "A contradição ficou registrada e enfraqueceu a nova versão da testemunha.",
         pontos: { pressao: 2, logica: 1, pessoas: 1, organizacao: 1 }
@@ -541,13 +541,13 @@ adicionarVersoes("direito", [
         pontos: { organizacao: 1 }
       },
       {
-        texto: "Peço um tempo para estudar o caso e volto com uma resposta.",
+        texto: "Peço um tempo para estudar o caso com cuidado, procurando alguma brecha na lei, e volto com uma resposta.",
         reacao: "tá bom, fico esperando 🤨",
         resultado: "A resposta veio certa, mas só uma semana depois.",
         pontos: { organizacao: 1, logica: 1 }
       },
       {
-        texto: "Explico com sinceridade que não há base legal, mostro o custo e o risco de perder e sugiro uma mediação.",
+        texto: "Explico que não há base legal, mostro o custo e o risco de perder e sugiro uma mediação.",
         reacao: "...é, talvez eu só precise conversar com ele mesmo 😅",
         resultado: "A mediação resolveu o mal-estar, e o cliente voltou ao escritório em outro caso.",
         pontos: { logica: 2, pessoas: 1, criatividade: 1, organizacao: 1 }
@@ -572,19 +572,19 @@ adicionarVersoes("direito", [
         pontos: {}
       },
       {
-        texto: "Respondo só as mensagens mais interessantes.",
+        texto: "Respondo primeiro as mensagens mais interessantes e deixo as burocráticas para o fim da semana.",
         reacao: "e as intimações? 🤔",
         resultado: "Os e-mails chatos ficaram para trás, inclusive uma intimação.",
         pontos: { criatividade: 1 }
       },
       {
-        texto: "Peço para o estagiário cuidar de tudo, sem conferir depois.",
+        texto: "Peço para o estagiário cuidar de tudo, sem conferir depois: ele precisa aprender e eu preciso de tempo.",
         reacao: "ele cadastrou um prazo com a data errada 😰",
         resultado: "Por pouco um prazo não foi perdido.",
         pontos: { pessoas: 1 }
       },
       {
-        texto: "Leio tudo, cadastro os prazos novos na agenda, separo por urgência e respondo o que vence primeiro.",
+        texto: "Cadastro os prazos novos na agenda e respondo primeiro o que vence antes.",
         reacao: "perfeito, amanhã a gente começa pelo prazo mais curto 👏",
         resultado: "Nenhum prazo ficou de fora, e o dia seguinte começou organizado.",
         pontos: { organizacao: 2, logica: 1 }

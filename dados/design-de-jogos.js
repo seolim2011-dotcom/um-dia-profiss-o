@@ -238,7 +238,7 @@ PROFISSOES.push({
           pontos: { pressao: 2, criatividade: 1 }
         },
         {
-          texto: "Tiro todos os anúncios do jogo de uma vez para agradar os jogadores.",
+          texto: "Tiro todos os anúncios do jogo de uma vez para agradar os jogadores, mesmo que o estúdio perca dinheiro.",
           reacao: "os jogadores vão amar, mas e a receita do estúdio? 💸",
           resultado: "Os jogadores gostaram, mas o estúdio perdeu a principal fonte de dinheiro do jogo.",
           pontos: { pessoas: 2 }
@@ -270,7 +270,7 @@ PROFISSOES.push({
           pontos: { criatividade: 2, pessoas: 1, organizacao: 1 }
         },
         {
-          texto: "Proponho um mundo aberto gigante, com 100 personagens e história ramificada.",
+          texto: "Proponho um mundo aberto gigante, com 100 personagens e história ramificada, como os jogos que eu amo.",
           reacao: "amei... pra uma equipe de 200 pessoas 😂",
           resultado: "A ideia era incrível, mas impossível de fazer com cinco pessoas em seis meses.",
           pontos: { criatividade: 1 }
@@ -340,7 +340,7 @@ adicionarVersoes("design-de-jogos", [
     naVidaReal: "Um jogo divertido equilibra desafio e habilidade: fácil demais entedia, difícil demais frustra. Designers observam os testes, medem o tempo em cada trecho e acrescentam desafios que usam as mecânicas de jeitos novos.",
     opcoes: [
       {
-        texto: "Pergunto aos testadores o que eles gostariam que tivesse na fase.",
+        texto: "Pergunto aos testadores o que eles gostariam que tivesse na fase e coloco tudo o que pedirem.",
         reacao: "um falou dragão, outro falou carro... 😂",
         resultado: "As ideias foram divertidas, mas nenhuma resolvia o problema de ritmo da fase.",
         pontos: { pessoas: 1 }
@@ -545,7 +545,7 @@ adicionarVersoes("design-de-jogos", [
         pontos: { criatividade: 1 }
       },
       {
-        texto: "Digo que não tenho ideias e prefiro só ajudar no que mandarem.",
+        texto: "Digo que não tenho ideias e prefiro só ajudar no que mandarem, porque é minha primeira game jam.",
         reacao: "toda ideia ajuda, viu? 🙂",
         resultado: "Você ajudou, mas o jogo não teve nenhuma ideia sua.",
         pontos: {}

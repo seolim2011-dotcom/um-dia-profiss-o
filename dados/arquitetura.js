@@ -113,7 +113,7 @@ PROFISSOES.push({
       naVidaReal: "Algumas paredes sustentam a estrutura do prédio. Em edifícios, a norma de reformas (ABNT NBR 16280) exige um responsável técnico e um plano antes de qualquer mudança assim. Arquitetos e engenheiros trabalham juntos para achar a solução.",
       opcoes: [
         {
-          texto: "Mando derrubar mesmo assim: os clientes querem muito.",
+          texto: "Mando derrubar mesmo assim: os clientes querem muito, e paredes antigas costumam aguentar mais do que parece.",
           reacao: "ebaaa, minha sala! 🎉",
           resultado: "A obra foi embargada pelo síndico, e a reforma parou até um engenheiro aprovar um reforço.",
           pontos: { pessoas: 1 }
@@ -224,7 +224,7 @@ PROFISSOES.push({
           pontos: { pessoas: 2, criatividade: 2, organizacao: 1, logica: 1 }
         },
         {
-          texto: "Coloco só o que o grupo que falou mais alto pediu.",
+          texto: "Coloco só o que o grupo que falou mais alto pediu, porque foi quem mais participou da reunião.",
           reacao: "e a gente não conta? 😤",
           resultado: "Metade do bairro se sentiu ignorada e fez um abaixo-assinado contra o projeto.",
           pontos: { pessoas: 1 }
@@ -293,7 +293,7 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Passo a noite inteira fazendo 30 imagens novas.",
+          texto: "Passo a noite inteira fazendo 30 imagens novas, para o casal ver cada cantinho da casa.",
           reacao: "uau, quanta imagem! você dormiu? 😳",
           resultado: "As imagens ficaram boas, mas você chegou exausto(a) e se perdeu na apresentação.",
           pontos: { criatividade: 1, pressao: 2 }
@@ -500,7 +500,7 @@ adicionarVersoes("arquitetura", [
         pontos: { pessoas: 1 }
       },
       {
-        texto: "Repito o projeto de outra escola para ganhar tempo.",
+        texto: "Repito o projeto de outra escola, que deu muito certo, para ganhar tempo e economizar dinheiro.",
         reacao: "essa escola nem tem o mesmo tamanho... 🤔",
         resultado: "O projeto não coube direito no terreno e teve que ser adaptado às pressas.",
         pontos: {}
