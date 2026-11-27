@@ -6,7 +6,8 @@
   - nome         nome do jogador
   - profissao    profissão jogada
   - calculo      resultado de calcularAfinidade (afinidade, tracos e desafios)
-  - medidores    energia e estresse no fim do dia
+  - medidores    energia e estresse no fim do dia (e etapasCansado)
+  - pausa        etapa depois da qual a pessoa fez a pausa do café (null = sem pausa)
   - partidas     todos os resultados deste jogador (incluindo o dia atual, que é o último)
   - urgencias    { total, esgotadas, menorFolga } — menorFolga = segundos que sobraram
                  na resposta mais apertada (null se não houve urgência com cronômetro)
@@ -81,8 +82,15 @@ const CONQUISTAS = [
     id: "dia-intenso",
     icone: "🔥",
     nome: "Dia intenso",
-    descricao: "Termine um dia com menos de 30% de energia.",
-    verificar: c => c.medidores.energia < 30
+    descricao: "Termine um dia com menos de 30% de energia sem deixar o estresse passar de 50%.",
+    verificar: c => c.medidores.energia < 30 && c.medidores.estresse <= 50
+  },
+  {
+    id: "pausa-na-hora-certa",
+    icone: "☕",
+    nome: "Pausa na hora certa",
+    descricao: "Faça a pausa do café e termine o dia sem chegar cansado(a) em nenhuma etapa.",
+    verificar: c => c.pausa !== null && c.medidores.etapasCansado === 0
   },
   {
     id: "coracao-de-ouro",

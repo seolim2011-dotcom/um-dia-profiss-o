@@ -290,14 +290,34 @@ function classeDoPerfil(tracos) {
 const ENERGIA_INICIAL = 100;
 const ESTRESSE_INICIAL = 10;
 
+// Abaixo desta energia a pessoa está cansada: cada etapa estressa +3 a mais
+// e as urgências têm 5 segundos a menos de cronômetro.
+const ENERGIA_CANSACO = 40;
+const ESTRESSE_DO_CANSACO = 3;
+const SEGUNDOS_A_MENOS_CANSADO = 5;
+
+// Pausa para o café: uma vez por dia, entre duas etapas.
+const PAUSA_CAFE = { energia: 15, estresse: -10 };
+
+function estaCansado(energia) {
+  return energia < ENERGIA_CANSACO;
+}
+
 // Quanto uma escolha muda a energia e o estresse.
 // - Energia: toda escolha cansa um pouco, e as que exigem mais esforço
 //   (mais pontos) cansam mais. Urgências cansam um pouco além disso.
 // - Estresse: escolhas que combinam pouco com a profissão deixam problemas
 //   para trás, e por isso estressam mais. Deixar o tempo acabar estressa muito.
 // - Desafios: pensar cansa um pouco (−4 de energia) e errar estressa (+8).
+// - Cansaço: quem chega numa etapa com pouca energia se estressa mais (+3).
 // Uma opção pode definir seus próprios valores com o campo "efeitos".
-function efeitosDaEscolha(profissao, situacao, escolha) {
+function efeitosDaEscolha(profissao, situacao, escolha, cansado) {
+  const efeito = efeitosSemCansaco(profissao, situacao, escolha);
+  if (cansado) efeito.estresse += ESTRESSE_DO_CANSACO;
+  return efeito;
+}
+
+function efeitosSemCansaco(profissao, situacao, escolha) {
   if (ehDesafio(situacao)) return { energia: -4, estresse: escolha.acertou ? 0 : 8 };
   if (escolha === TEMPO_ESGOTADO) return { energia: -6, estresse: 20 };
 
@@ -310,7 +330,7 @@ function efeitosDaEscolha(profissao, situacao, escolha) {
   const estressePorSintonia = { alta: 2, media: 8, baixa: 15 };
   const sintonia = sintoniaDaEscolha(profissao, situacao, escolha);
   return {
-    energia: -(5 + 2 * somaDosPontos(opcao) + extraUrgente),
+    energia: -(5 + Math.round(1.5 * somaDosPontos(opcao)) + extraUrgente),
     estresse: estressePorSintonia[sintonia.id] + extraUrgente
   };
 }
@@ -321,15 +341,31 @@ function limitarPorcentagem(valor) {
 }
 
 // Energia e estresse depois das escolhas já feitas no dia.
-function medidoresDoDia(profissao, escolhas) {
+// "pausa" é o número da etapa depois da qual a pessoa fez a pausa do café (ou null).
+// Também conta em quantas etapas a pessoa chegou cansada.
+function medidoresDoDia(profissao, escolhas, pausa) {
   let energia = ENERGIA_INICIAL;
   let estresse = ESTRESSE_INICIAL;
+  let etapasCansado = 0;
   escolhas.forEach((escolha, i) => {
-    const efeito = efeitosDaEscolha(profissao, profissao.situacoes[i], escolha);
+    const cansado = estaCansado(energia);
+    if (cansado) etapasCansado += 1;
+    const efeito = efeitosDaEscolha(profissao, profissao.situacoes[i], escolha, cansado);
     energia = limitarPorcentagem(energia + efeito.energia);
     estresse = limitarPorcentagem(estresse + efeito.estresse);
+    if (i === pausa) {
+      energia = limitarPorcentagem(energia + PAUSA_CAFE.energia);
+      estresse = limitarPorcentagem(estresse + PAUSA_CAFE.estresse);
+    }
   });
-  return { energia, estresse };
+  return { energia, estresse, etapasCansado };
+}
+
+// Confere a pausa salva: null (sem pausa) ou o número de uma etapa já respondida
+// que não seja a última do dia.
+function pausaValida(profissao, pausa, respondidas) {
+  if (pausa === null || pausa === undefined) return true;
+  return Number.isInteger(pausa) && pausa >= 0 && pausa < respondidas && pausa < profissao.situacoes.length - 1;
 }
 
 // Frase sobre como a pessoa terminou o dia.

@@ -35,6 +35,7 @@ const estado = {
   tentativa: 0,             // quantas vezes esta pessoa já terminou esta profissão (muda a ordem das opções)
   tempoRestante: null,      // { indice, segundos } quando a pessoa pausou no meio de um cronômetro
   encerrado: false,         // true depois que o dia termina (evita salvar o resultado duas vezes)
+  pausa: null,              // etapa depois da qual a pessoa fez a pausa do café (null = ainda não fez)
   indice: 0,              // número da situação atual (começa em 0)
   escolhas: [],             // opção escolhida em cada situação (-1 = tempo esgotado)
   urgencias: { total: 0, esgotadas: 0, menorFolga: null },
@@ -341,8 +342,19 @@ function guardarProgresso() {
     indice: estado.indice,
     escolhas: estado.escolhas,
     urgencias: estado.urgencias,
+    pausa: estado.pausa,
     tempoRestante: estado.tempoRestante
   });
+}
+
+// Energia e estresse do dia em andamento, contando as primeiras "quantas" etapas.
+function medidoresAteAgora(quantas) {
+  return medidoresDoDia(estado.profissao, estado.escolhas.slice(0, quantas), estado.pausa);
+}
+
+// A pessoa chega cansada na etapa atual?
+function cansadoNaEtapa() {
+  return estaCansado(medidoresAteAgora(estado.indice).energia);
 }
 
 function iniciarDia(base, versoes, tentativa) {
@@ -351,6 +363,7 @@ function iniciarDia(base, versoes, tentativa) {
   estado.versoes = versoes;
   estado.tentativa = tentativa || 0;
   estado.encerrado = false;
+  estado.pausa = null;
   estado.indice = 0;
   estado.escolhas = [];
   estado.urgencias = { total: 0, esgotadas: 0, menorFolga: null };
@@ -377,6 +390,7 @@ function continuarDia() {
   estado.versoes = progresso.versoes;
   estado.tentativa = progresso.tentativa;
   estado.encerrado = false;
+  estado.pausa = progresso.pausa;
   estado.indice = progresso.indice;
   estado.escolhas = progresso.escolhas;
   estado.urgencias = progresso.urgencias;
@@ -398,7 +412,7 @@ function prepararSituacao() {
   $("#hud-avatar").innerHTML = desenharAvatar(estado.avatar);
   $("#hud-nome").textContent = estado.nome;
   $("#hud-profissao").textContent = `${profissao.icone} ${profissao.nome}`;
-  atualizarPainel(medidoresDoDia(profissao, estado.escolhas.slice(0, estado.indice)), null);
+  atualizarPainel(medidoresAteAgora(estado.indice), null);
 
   // Céu, relógio, título e cena
   $("#ceu").dataset.periodo = periodo.id;
@@ -429,7 +443,10 @@ function prepararSituacao() {
   const etiqueta = $("#etiqueta-situacao");
   etiqueta.hidden = !situacao.urgente && !desafio;
   etiqueta.className = "etiqueta-situacao " + (desafio ? "desafio" : "urgente");
-  etiqueta.textContent = desafio ? "⚡ Desafio da profissão" : "🚨 Urgente!";
+  etiqueta.textContent = desafio ? "⚡ Desafio da profissão"
+    : situacao.urgente && cansadoNaEtapa() && estado.preferencias.cronometro
+      ? `🚨 Urgente! · 😮‍💨 Cansado(a): ${SEGUNDOS_A_MENOS_CANSADO} s a menos`
+      : "🚨 Urgente!";
 
   $("#situacao-descricao").textContent = situacao.descricao || "";
   $("#situacao-descricao").hidden = !situacao.descricao;
@@ -590,7 +607,11 @@ function mostrarDecisao() {
     </button>`).join("");
   area.hidden = false;
 
-  if (situacao.urgente && estado.preferencias.cronometro) iniciarCronometro(tempoDaEtapa(tempoDaUrgencia(situacao)), tempoEsgotou);
+  if (situacao.urgente && estado.preferencias.cronometro) {
+    // Cansado(a), a pessoa tem menos tempo para pensar.
+    const tempo = tempoDaUrgencia(situacao) - (cansadoNaEtapa() ? SEGUNDOS_A_MENOS_CANSADO : 0);
+    iniciarCronometro(tempoDaEtapa(tempo), tempoEsgotou);
+  }
   else $("#cronometro").hidden = true;
 
   // A dica de teclado mostra só as letras que existem nesta situação.
@@ -752,13 +773,13 @@ function mostrarResultadoDaEscolha(escolha, animar) {
   const profissao = estado.profissao;
   const situacao = situacaoAtual();
   const opcao = opcaoEscolhida(situacao, escolha);
-  const efeito = efeitosDaEscolha(profissao, situacao, escolha);
+  const cansado = cansadoNaEtapa();
+  const efeito = efeitosDaEscolha(profissao, situacao, escolha, cansado);
 
   $("#feedback-titulo").textContent = "O que aconteceu";
   $("#pergunta-gosto").hidden = true;
   $("#feedback-resultado").textContent = opcao.resultado;
-  $("#feedback-efeitos").innerHTML =
-    htmlDoEfeito("⚡ Energia", efeito.energia, false) + htmlDoEfeito("😰 Estresse", efeito.estresse, true);
+  $("#feedback-efeitos").innerHTML = htmlDosEfeitos(efeito, cansado);
 
   const tracosDaEscolha = TRACOS.filter(traco => pontosDoTraco(opcao, traco.id) > 0);
   $("#feedback-chips").innerHTML = tracosDaEscolha.length
@@ -767,23 +788,46 @@ function mostrarResultadoDaEscolha(escolha, animar) {
     : `<span class="chips-rotulo">Essa parte da rotina parece ser um desafio para você, e tudo bem: descobrir isso é justamente o objetivo do jogo.</span>`;
   $("#feedback-real").textContent = situacao.naVidaReal;
 
-  const botaoProxima = $("#btn-proxima");
-  botaoProxima.textContent = textoDoBotaoProxima();
-  botaoProxima.hidden = false;
+  mostrarBotoesDeAvancar();
   $("#feedback").hidden = false;
 
-  const medidores = medidoresDoDia(profissao, estado.escolhas.slice(0, estado.indice + 1));
-  atualizarPainel(medidores, animar ? efeito : null);
+  atualizarPainel(medidoresAteAgora(estado.indice + 1), animar ? efeito : null);
 
   if (animar) {
     rolarAte($("#feedback"));
-    botaoProxima.focus({ preventScroll: true });
+    $("#btn-proxima").focus({ preventScroll: true });
   }
 }
 
+// Etiquetas "⚡ Energia −8 · 😰 Estresse +5" (e o aviso de cansaço, se for o caso).
+function htmlDosEfeitos(efeito, cansado) {
+  return htmlDoEfeito("⚡ Energia", efeito.energia, false) + htmlDoEfeito("😰 Estresse", efeito.estresse, true) +
+    (cansado ? `<span class="efeito ruim">😮‍💨 Cansaço: estresse +${ESTRESSE_DO_CANSACO}</span>` : "");
+}
+
+function ultimaEtapa() {
+  return estado.indice === estado.profissao.situacoes.length - 1;
+}
+
 function textoDoBotaoProxima() {
-  const ultima = estado.indice === estado.profissao.situacoes.length - 1;
-  return ultima ? "Encerrar o expediente 🏁" : "Continuar →";
+  return ultimaEtapa() ? "Encerrar o expediente 🏁" : "Continuar →";
+}
+
+// Mostra "Continuar" e, se a pausa do café ainda não foi usada, o botão da pausa.
+function mostrarBotoesDeAvancar() {
+  const botaoProxima = $("#btn-proxima");
+  botaoProxima.textContent = textoDoBotaoProxima();
+  botaoProxima.hidden = false;
+  $("#btn-cafe").hidden = estado.pausa !== null || ultimaEtapa();
+}
+
+// Pausa do café: uma vez por dia, entre duas etapas. Recupera energia e baixa o estresse.
+function fazerPausa() {
+  if (estado.encerrado || estado.pausa !== null || ultimaEtapa() || estado.escolhas[estado.indice] === undefined || $("#feedback").hidden) return;
+  estado.pausa = estado.indice;
+  guardarProgresso();
+  tocarSom("conquista");
+  proximaSituacao(true);
 }
 
 /* ----- Desafios (mini problemas da profissão) ----- */
@@ -949,15 +993,15 @@ function responderDesafio(acertou, indiceEscolhido) {
 function mostrarRetornoDoDesafio(acertou, animar) {
   const profissao = estado.profissao;
   const situacao = situacaoAtual();
-  const efeito = efeitosDaEscolha(profissao, situacao, { acertou, gosto: 0 });
+  const cansado = cansadoNaEtapa();
+  const efeito = efeitosDaEscolha(profissao, situacao, { acertou, gosto: 0 }, cansado);
   const traco = TRACOS.find(t => t.id === situacao.traco);
 
   $("#feedback-titulo").textContent = acertou ? "✅ Acertou!" : "❌ Não foi dessa vez";
   $("#feedback-resultado").textContent = acertou
     ? "Mandou bem! Veja por que essa é a resposta:"
     : `A resposta certa era ${respostaCertaEmTexto(situacao)}. Tudo bem errar: você ainda vai aprender isso no curso.`;
-  $("#feedback-efeitos").innerHTML =
-    htmlDoEfeito("⚡ Energia", efeito.energia, false) + htmlDoEfeito("😰 Estresse", efeito.estresse, true);
+  $("#feedback-efeitos").innerHTML = htmlDosEfeitos(efeito, cansado);
   $("#feedback-chips").innerHTML = traco
     ? `<span class="chips-rotulo">Esse desafio exercita:</span><span class="chip">${esc(traco.icone)} ${esc(traco.nome)}</span>`
     : "";
@@ -969,10 +1013,11 @@ function mostrarRetornoDoDesafio(acertou, animar) {
     </button>`).join("");
   $("#pergunta-gosto").hidden = false;
   $("#btn-proxima").hidden = true;
+  $("#btn-cafe").hidden = true;
   $("#feedback").hidden = false;
 
   const escolhasComEsta = estado.escolhas.slice(0, estado.indice).concat({ acertou, gosto: 0 });
-  atualizarPainel(medidoresDoDia(profissao, escolhasComEsta), animar ? efeito : null);
+  atualizarPainel(medidoresDoDia(profissao, escolhasComEsta, estado.pausa), animar ? efeito : null);
 
   if (animar) {
     rolarAte($("#feedback"));
@@ -990,11 +1035,9 @@ function avaliarDesafio(gosto) {
   tocarSom("escolha");
   marcarGosto(gosto);
 
-  const botaoProxima = $("#btn-proxima");
-  botaoProxima.textContent = textoDoBotaoProxima();
-  botaoProxima.hidden = false;
+  mostrarBotoesDeAvancar();
   rolarAte($("#feedback"));
-  botaoProxima.focus({ preventScroll: true });
+  $("#btn-proxima").focus({ preventScroll: true });
 }
 
 function marcarGosto(gosto) {
@@ -1017,15 +1060,16 @@ function mostrarDesafioRespondido(escolha) {
   marcarRespostaDoDesafio();
   mostrarRetornoDoDesafio(escolha.acertou, false);
   marcarGosto(escolha.gosto);
-  $("#btn-proxima").textContent = textoDoBotaoProxima();
-  $("#btn-proxima").hidden = false;
+  mostrarBotoesDeAvancar();
 }
 
 /* ----- Painel de energia e estresse ----- */
 
 function atualizarPainel(medidores, efeito) {
-  atualizarMedidor($("#medidor-energia"), medidores.energia, efeito ? efeito.energia : 0, medidores.energia < 30, false);
+  const cansado = estaCansado(medidores.energia);
+  atualizarMedidor($("#medidor-energia"), medidores.energia, efeito ? efeito.energia : 0, cansado, false);
   atualizarMedidor($("#medidor-estresse"), medidores.estresse, efeito ? efeito.estresse : 0, medidores.estresse > 60, true);
+  $("#aviso-cansaco").hidden = !cansado;
 }
 
 function atualizarMedidor(medidor, valor, delta, critico, subirEhRuim) {
@@ -1045,27 +1089,33 @@ function atualizarMedidor(medidor, valor, delta, critico, subirEhRuim) {
 
 /* ----- Passagem de tempo e fim do dia ----- */
 
-function proximaSituacao() {
+// "depoisDoCafe" = true quando a pessoa acabou de fazer a pausa do café.
+function proximaSituacao(depoisDoCafe) {
   // Depois de encerrar o dia, o botão não pode salvar o mesmo resultado de novo.
-  if (estado.encerrado || estado.escolhas[estado.indice] === undefined) return;
+  // E só avança com o cartão "O que aconteceu" na tela (não no meio da resposta do personagem).
+  if (estado.encerrado || estado.escolhas[estado.indice] === undefined || $("#feedback").hidden) return;
   const situacoes = estado.profissao.situacoes;
   if (estado.indice === situacoes.length - 1) return finalizarDia();
 
   const horarioAnterior = situacoes[estado.indice].horario;
   estado.indice += 1;
   guardarProgresso();
-  tocarSom("avancar");
+  if (depoisDoCafe !== true) tocarSom("avancar");
   prepararSituacao();
+  if (depoisDoCafe === true) atualizarPainel(medidoresAteAgora(estado.indice), PAUSA_CAFE); // mostra o +15 / −10
   window.scrollTo(0, 0);
 
   const horario = situacaoAtual().horario;
   mostrarPassagem({
-    astro: periodoDoDia(horario).astro,
+    astro: depoisDoCafe === true ? "☕" : periodoDoDia(horario).astro,
     de: horarioAnterior,
     para: horario,
-    texto: ehDesafio(situacaoAtual())
-      ? "⚡ Hora de um desafio da profissão!"
-      : FRASES_DE_PASSAGEM[estado.indice % FRASES_DE_PASSAGEM.length]
+    texto: depoisDoCafe === true
+      ? `Pausa para o café: energia +${PAUSA_CAFE.energia}, estresse ${formatarDelta(PAUSA_CAFE.estresse)}. De volta ao trabalho!`
+      : ehDesafio(situacaoAtual())
+        ? "⚡ Hora de um desafio da profissão!"
+        : FRASES_DE_PASSAGEM[estado.indice % FRASES_DE_PASSAGEM.length],
+    duracao: depoisDoCafe === true ? 2200 : undefined
   }, () => {
     $("#situacao-titulo").focus({ preventScroll: true });
     comecarSituacao();
@@ -1132,13 +1182,14 @@ function finalizarDia() {
   estado.encerrado = true;
   const profissao = estado.profissao;
   const calculo = calcularAfinidade(profissao, estado.escolhas);
-  const medidores = medidoresDoDia(profissao, estado.escolhas);
+  const medidores = medidoresDoDia(profissao, estado.escolhas, estado.pausa);
   const resultado = {
     id: Date.now().toString(36),
     nome: estado.nome,
     avatar: estado.avatar,
     profissaoId: profissao.id,
     versoes: estado.versoes.slice(),
+    pausa: estado.pausa,
     data: new Date().toISOString(),
     escolhas: estado.escolhas.slice(),
     afinidade: calculo.afinidade
@@ -1153,6 +1204,7 @@ function finalizarDia() {
     medidores,
     partidas: lerResultados().filter(r => r.nome === estado.nome),
     urgencias: estado.urgencias,
+    pausa: estado.pausa,
     cronometroLigado: estado.preferencias.cronometro
   });
 
@@ -1238,7 +1290,8 @@ function abrirRelatorio(resultado, conquistasNovas) {
   const calculo = calcularAfinidade(profissao, resultado.escolhas);
   const nivel = nivelDaAfinidade(calculo.afinidade);
   const classe = classeDoPerfil(calculo.tracos);
-  const medidores = medidoresDoDia(profissao, resultado.escolhas);
+  const medidores = medidoresDoDia(profissao, resultado.escolhas, resultado.pausa ?? null);
+  const etapaDaPausa = Number.isInteger(resultado.pausa) ? profissao.situacoes[resultado.pausa] : null;
   const { gostar, dificil } = separarGostarDificil(calculo.tracos);
 
   // Se nenhum traço ficou muito abaixo do ideal, ainda assim mostramos
@@ -1315,6 +1368,14 @@ function abrirRelatorio(resultado, conquistasNovas) {
         </div>
       </div>
       <p class="nota nota-final">${esc(resumoDoDia(medidores))}</p>
+      <ul class="lista lista-ritmo">
+        <li>☕ ${etapaDaPausa
+          ? `Você fez a pausa do café depois de “${esc(etapaDaPausa.titulo)}” (${esc(etapaDaPausa.horario)}).`
+          : "Você não fez a pausa do café."}</li>
+        <li>😮‍💨 ${medidores.etapasCansado
+          ? `Você chegou cansado(a) em ${medidores.etapasCansado} ${medidores.etapasCansado > 1 ? "etapas" : "etapa"}: cada uma estressou um pouco mais, e as urgências tiveram menos tempo.`
+          : "Você não chegou cansado(a) em nenhuma etapa."}</li>
+      </ul>
     </section>
 
     <div class="grade-2">
@@ -1556,6 +1617,7 @@ const ACOES = {
   "ordenar-desfazer": desfazerOrdem,
   "avaliar-desafio": botao => avaliarDesafio(Number(botao.dataset.gosto)),
   proxima: proximaSituacao,
+  "pausa-cafe": fazerPausa,
   "pular-conversa": () => { if (andamento.pularConversa) andamento.pularConversa(); },
   "pular-passagem": () => { if (andamento.passagem) andamento.passagem(); },
   "ver-relatorio": botao => {
@@ -1569,7 +1631,7 @@ const ACOES = {
 
 // Ações que já tocam o próprio som (as outras fazem um "clique").
 const ACOES_COM_SOM_PROPRIO = [
-  "escolher", "proxima", "alternar-som", "pular-passagem",
+  "escolher", "proxima", "pausa-cafe", "alternar-som", "pular-passagem",
   "responder-desafio", "ordenar-item", "avaliar-desafio"
 ];
 

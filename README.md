@@ -112,12 +112,16 @@ Não existe resposta "certa" como numa prova: o jogo compara o seu jeito de agir
 
 O dia começa com **100% de energia** e **10% de estresse**. A cada escolha:
 
-- **Energia** cai 5, mais 2 para cada ponto da opção (escolhas que exigem mais esforço cansam mais), mais 3 se a situação for urgente.
+- **Energia** cai 5, mais 1,5 para cada ponto da opção (arredondado; escolhas que exigem mais esforço cansam mais), mais 3 se a situação for urgente.
 - **Estresse** sobe 2 se a escolha combinou muito com a profissão, 8 se combinou em parte e 15 se combinou pouco (problemas mal resolvidos se acumulam), mais 3 em urgências.
 - Se o tempo de uma urgência acabar: energia −6 e estresse +20.
 - Desafios: energia −4; errar soma +8 de estresse.
 
-A ideia é mostrar um lado real das profissões: fazer o trabalho bem feito cansa, e fugir dos problemas estressa. Energia e estresse não mudam a % de afinidade; eles aparecem no relatório em "Como você terminou o dia" e em algumas medalhas.
+**Cansaço:** quem chega numa etapa com **menos de 40% de energia** está cansado(a). O painel avisa, cada etapa estressa **+3** a mais e as urgências têm **5 segundos a menos** no cronômetro.
+
+**Pausa para o café:** uma vez por dia, depois de qualquer etapa (menos a última), o botão "☕ Pausa para o café e continuar" dá **+15 de energia e −10 de estresse**. Quem escolhe sempre o caminho de maior esforço chega cansado(a) em 1 ou 2 etapas no fim do dia se não fizer a pausa; com a pausa na hora certa, não chega cansado(a) em nenhuma. Pausar cedo demais desperdiça parte da energia (ela não passa de 100%), e pausar tarde demais não evita o cansaço.
+
+A ideia é mostrar um lado real das profissões: fazer o trabalho bem feito cansa, fugir dos problemas estressa, e saber a hora de parar faz parte do trabalho. Energia e estresse não mudam a % de afinidade; eles aparecem no relatório em "Como você terminou o dia" (com a pausa e as etapas em que você chegou cansado) e em algumas medalhas.
 
 Para dar valores próprios a uma opção, use o campo `efeitos`, por exemplo `efeitos: { energia: -20, estresse: 5 }`.
 
@@ -132,7 +136,8 @@ Para dar valores próprios a uma opção, use o campo `efeitos`, por exemplo `ef
 | 🧊 Sangue frio | Com o cronômetro ligado, responder todas as urgências do dia a tempo |
 | 😅 Por um fio | Responder uma urgência com menos de 3 segundos sobrando |
 | 🧘 Zen | Terminar o dia com estresse abaixo de 30% |
-| 🔥 Dia intenso | Terminar o dia com menos de 30% de energia |
+| 🔥 Dia intenso | Terminar o dia com menos de 30% de energia sem passar de 50% de estresse |
+| ☕ Pausa na hora certa | Fazer a pausa do café e não chegar cansado(a) em nenhuma etapa |
 | 🐞 Caçador(a) de bugs | Acertar um desafio de achar o erro no código |
 | 🧠 Gênio dos desafios | Acertar todos os desafios de um dia |
 | 💛 Coração de ouro | 100% em Lidar com pessoas |

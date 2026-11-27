@@ -97,7 +97,7 @@ function lerProgresso() {
 
   const indiceValido = salvo.indice >= 0 && salvo.indice < profissao.situacoes.length;
   const escolhasOk = escolhasValidas(profissao, salvo.escolhas, false) && salvo.escolhas.length <= salvo.indice + 1;
-  if (!indiceValido || !escolhasOk) return null;
+  if (!indiceValido || !escolhasOk || !pausaValida(profissao, salvo.pausa, salvo.escolhas.length)) return null;
 
   return {
     nome: salvo.nome,
@@ -108,6 +108,7 @@ function lerProgresso() {
     indice: salvo.indice,
     escolhas: salvo.escolhas,
     urgencias: salvo.urgencias || { total: 0, esgotadas: 0, menorFolga: null },
+    pausa: salvo.pausa ?? null,
     tempoRestante: tempoRestanteValido(salvo.tempoRestante, salvo.indice) ? salvo.tempoRestante : null
   };
 }
@@ -117,7 +118,7 @@ function tempoRestanteValido(tempo, indice) {
   return Boolean(tempo) && tempo.indice === indice && typeof tempo.segundos === "number" && tempo.segundos > 0;
 }
 
-// progresso = { nome, avatar, profissaoId, versoes, tentativa, indice, escolhas, urgencias, tempoRestante }
+// progresso = { nome, avatar, profissaoId, versoes, tentativa, indice, escolhas, urgencias, pausa, tempoRestante }
 function salvarProgresso(progresso) {
   salvarNoNavegador(CHAVES.progresso, progresso);
 }
@@ -138,7 +139,8 @@ function lerResultados() {
     .filter(resultado => {
       const base = resultado && buscarProfissao(resultado.profissaoId);
       return base && versoesValidas(base, resultado.versoes) &&
-        escolhasValidas(montarDia(base, resultado.versoes), resultado.escolhas, true);
+        escolhasValidas(montarDia(base, resultado.versoes), resultado.escolhas, true) &&
+        pausaValida(base, resultado.pausa, resultado.escolhas.length);
     })
     .map(resultado => ({
       id: resultado.id,
@@ -146,13 +148,15 @@ function lerResultados() {
       avatar: normalizarAvatar(resultado.avatar),
       profissaoId: resultado.profissaoId,
       versoes: resultado.versoes,
+      pausa: resultado.pausa ?? null,
       data: resultado.data,
       escolhas: resultado.escolhas,
       afinidade: calcularAfinidade(montarDia(buscarProfissao(resultado.profissaoId), resultado.versoes), resultado.escolhas).afinidade
     }));
 }
 
-// resultado = { id, nome, avatar, profissaoId, versoes, data, escolhas, afinidade }
+// resultado = { id, nome, avatar, profissaoId, versoes, pausa, data, escolhas, afinidade }
+// "pausa" é a etapa depois da qual a pessoa fez a pausa do café (null = sem pausa).
 // "versoes" diz qual versão de cada etapa foi jogada (resultados antigos não têm: contam como a primeira).
 function adicionarResultado(resultado) {
   const lista = lerDoNavegador(CHAVES.resultados, []);
