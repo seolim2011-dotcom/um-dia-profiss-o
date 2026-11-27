@@ -235,6 +235,7 @@ function abrirCadastro() {
   }).join("");
 
   desenharFiltroDeAreas();
+  atualizarBotaoComecar();
   mostrarTela("cadastro");
 }
 
@@ -287,6 +288,14 @@ function selecionarProfissao(id) {
     cartao.setAttribute("aria-pressed", String(cartao.dataset.id === id));
   });
   $("#erro-cadastro").hidden = true;
+  atualizarBotaoComecar();
+}
+
+// O botão preso no rodapé mostra a profissão escolhida, embaixo do texto.
+function atualizarBotaoComecar() {
+  const profissao = buscarProfissao(estado.selecionada);
+  $("#btn-comecar").innerHTML = "Começar o expediente ▶" +
+    (profissao ? `<span class="btn-comecar-prof">${esc(profissao.nome)}</span>` : "");
 }
 
 function mostrarErro(mensagem, campo) {

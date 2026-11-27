@@ -863,6 +863,26 @@ body[data-tela="inicio"] .fundo { display: none; }
 /* Durante o dia, o botão de som fica no painel e o flutuante some. */
 body[data-tela="jogo"] .botao-som { display: none; }
 
+/* Botão "Começar o expediente" preso no rodapé da tela de personagem.
+   O degradê esconde os cartões que passam por trás. No celular, o botão de som
+   flutuante sai dessa tela para não cobrir o botão (ele continua no início e no jogo). */
+.barra-comecar {
+  position: sticky;
+  bottom: 0;
+  z-index: 30;
+  margin: 8px -16px 0;
+  padding: 22px 16px calc(14px + env(safe-area-inset-bottom));
+  background: linear-gradient(to top, var(--fundo) 72%, rgba(243, 246, 251, 0));
+}
+
+.barra-comecar .erro { margin: 0 0 10px; padding: 8px 12px; background: #fff; border: 1px solid #fecdd3; border-radius: var(--raio-pequeno); }
+.barra-comecar .btn { flex-direction: column; gap: 2px; box-shadow: 0 10px 24px rgba(13, 27, 61, .22); }
+.btn-comecar-prof { font-family: var(--fonte-moderna); font-size: .78rem; font-weight: 600; letter-spacing: .02em; text-transform: none; opacity: .85; }
+
+@media (max-width: 900px) {
+  body[data-tela="cadastro"] .botao-som { display: none; }
+}
+
 .btn-pausa {
   width: 44px;
   height: 44px;

@@ -142,8 +142,11 @@
         </label>
 
         <p class="aviso-honestidade">Não existe resposta certa: escolha o que você <strong>realmente</strong> faria ou sentiria.</p>
-        <p class="erro" id="erro-cadastro" role="alert" hidden></p>
-        <button type="submit" class="btn btn-primario btn-grande btn-bloco">Começar o expediente ▶</button>
+        <!-- Barra presa no rodapé da tela: o botão de começar fica sempre à vista -->
+        <div class="barra-comecar">
+          <p class="erro" id="erro-cadastro" role="alert" hidden></p>
+          <button type="submit" class="btn btn-primario btn-grande btn-bloco" id="btn-comecar">Começar o expediente ▶</button>
+        </div>
       </form>
     </section>
 
