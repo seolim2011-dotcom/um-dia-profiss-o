@@ -131,7 +131,7 @@ PROFISSOES.push({
           pontos: { pressao: 1 }
         },
         {
-          texto: "Faço o que ele pede sem questionar, mesmo que fique feio.",
+          texto: "Faço o que ele pede sem questionar, mesmo que fique feio: o cliente conhece o próprio negócio melhor do que eu.",
           reacao: "hmm, ficou meio estranho, né... 🤨",
           resultado: "Entregou no prazo, mas o resultado não ficou bom e o cliente culpou você.",
           pontos: { organizacao: 1 }
@@ -168,13 +168,13 @@ PROFISSOES.push({
           pontos: { criatividade: 1 }
         },
         {
-          texto: "Agradeço, peço exemplos do que não funciona e refaço testando outras combinações de cor.",
+          texto: "Peço exemplos do que não funciona e refaço testando outras combinações de cor.",
           reacao: "olha só! assim sim. isso ficou muito melhor 🔥",
           resultado: "A nova versão tinha mais contraste e ficou clara. O diretor aprovou de primeira.",
           pontos: { criatividade: 2, pessoas: 1 }
         },
         {
-          texto: "Refaço sem perguntar nada, mudando só a cor de fundo.",
+          texto: "Refaço sem perguntar nada, mudando só a cor de fundo, para entregar a nova versão ainda hoje.",
           reacao: "hmm, melhorou um pouco, mas ainda não resolveu 🤨",
           resultado: "A versão melhorou, mas o problema principal continuou e você precisou refazer.",
           pontos: { organizacao: 1 }
@@ -259,7 +259,7 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Recuso e digo que é errado, sem oferecer outra opção.",
+          texto: "Recuso e explico que copiar a concorrente é errado e pode dar processo, sem oferecer outra opção.",
           reacao: "ah, então não vai dar certo... 😒",
           resultado: "O cliente foi embora, e o problema dele ficou sem solução.",
           pontos: { organizacao: 1 }
@@ -308,7 +308,7 @@ PROFISSOES.push({
           pontos: { organizacao: 2, logica: 1 }
         },
         {
-          texto: "Mando tudo num zip sem nome para o diretor organizar.",
+          texto: "Mando tudo num zip para o diretor organizar do jeito dele, já que é ele quem cuida do arquivo da empresa.",
           reacao: "ué, e eu que me viro agora? 😕",
           resultado: "O diretor perdeu uma hora organizando o que você deixou bagunçado.",
           pontos: { pessoas: 1 }
@@ -341,13 +341,13 @@ adicionarVersoes("design-grafico", [
         pontos: { criatividade: 1 }
       },
       {
-        texto: "Mando um formulário longo de briefing para ela preencher antes de qualquer conversa.",
+        texto: "Mando um formulário longo de briefing para ela preencher com calma antes de qualquer conversa, assim nada fica de fora.",
         reacao: "nossa, 40 perguntas... vou ver quando der 😩",
         resultado: "O formulário voltou depois de duas semanas, com metade das respostas em branco.",
         pontos: { organizacao: 1, logica: 1 }
       },
       {
-        texto: "Marco uma conversa, entendo o público e os valores da ONG, peço referências e escrevo o briefing junto com ela.",
+        texto: "Marco uma conversa para entender o público e os valores da ONG e escrevo o briefing junto com ela.",
         reacao: "a gente fala com jovens da periferia sobre lixo e reciclagem! 💡",
         resultado: "Com o briefing claro, a primeira proposta foi aprovada quase sem ajustes.",
         pontos: { pessoas: 1, organizacao: 2, criatividade: 1 }
@@ -443,13 +443,13 @@ adicionarVersoes("design-grafico", [
         pontos: { criatividade: 1 }
       },
       {
-        texto: "Assisto às gravações, converso com a equipe e redesenho o botão em duas versões para testar.",
+        texto: "Assisto às gravações e redesenho o botão em duas versões para testar.",
         reacao: "a versão B achou todo mundo! 🙌",
         resultado: "O botão novo continuou bonito e passou a ser encontrado em segundos.",
         pontos: { criatividade: 2, pessoas: 1 }
       },
       {
-        texto: "Aumento o tamanho do botão, sem entender o que confundiu as pessoas.",
+        texto: "Aumento o tamanho do botão e mudo a cor para chamar mais atenção, sem entender o que confundiu as pessoas.",
         reacao: "melhorou um pouquinho... 😐",
         resultado: "Algumas pessoas acharam, mas o problema era o lugar do botão, e não o tamanho.",
         pontos: { organizacao: 1 }
@@ -497,13 +497,13 @@ adicionarVersoes("design-grafico", [
         pontos: {}
       },
       {
-        texto: "Pego um modelo pronto da internet e só troco o texto.",
+        texto: "Pego um modelo pronto e bonito da internet e só troco o texto e as cores da marca, para dar tempo.",
         reacao: "esse modelo é igual ao de outra marca, olha 😳",
         resultado: "O post saiu, mas parecido demais com o de outra empresa.",
         pontos: { organizacao: 1 }
       },
       {
-        texto: "Faço três rascunhos rápidos, escolho o melhor com a redatora e finalizo seguindo o guia da marca.",
+        texto: "Faço três rascunhos rápidos e finalizo o melhor com a redatora, seguindo o guia da marca.",
         reacao: "ficou com a cara do cliente e saiu em 25 minutos! 🚀",
         resultado: "O post foi um dos mais compartilhados da semana.",
         pontos: { criatividade: 2, pressao: 1, organizacao: 1 }
@@ -528,7 +528,7 @@ adicionarVersoes("design-grafico", [
     naVidaReal: "Imagens na internet têm dono. Usar sem licença pode gerar processo por direitos autorais. Designers usam bancos de imagens licenciados, fotos próprias ou ilustrações criadas para o projeto.",
     opcoes: [
       {
-        texto: "Uso a foto: se está na internet, é de todo mundo.",
+        texto: "Uso a foto: se está no Google, é de todo mundo, e ninguém vai reparar numa imagem num anúncio pequeno de loja.",
         reacao: "ótimo! 😁",
         resultado: "O fotógrafo encontrou o anúncio e cobrou uma indenização da loja.",
         pontos: {}
@@ -540,7 +540,7 @@ adicionarVersoes("design-grafico", [
         pontos: { organizacao: 1 }
       },
       {
-        texto: "Explico os direitos autorais e proponho uma imagem licenciada parecida ou uma ilustração própria.",
+        texto: "Explico os direitos autorais e proponho uma imagem licenciada ou uma ilustração própria.",
         reacao: "uma ilustração com a cara da loja? adorei 🤩",
         resultado: "O anúncio ficou único e sem nenhum risco legal.",
         pontos: { criatividade: 2, pessoas: 1 }
@@ -571,13 +571,13 @@ adicionarVersoes("design-grafico", [
         pontos: {}
       },
       {
-        texto: "Mando os arquivos com nomes engraçados, para dar personalidade.",
+        texto: "Mando os arquivos com nomes engraçados e uma mensagem divertida, para a entrega ter a personalidade do estúdio.",
         reacao: "\"logo_top_demais_final.png\"? kkkk mas qual é qual? 😅",
         resultado: "O cliente riu, mas se perdeu entre os arquivos.",
         pontos: { criatividade: 1 }
       },
       {
-        texto: "Entrego o logo em vetor e em PNG, as cores para tela e impressão e um guia de uso, em pastas organizadas.",
+        texto: "Entrego o logo em vetor e PNG, as cores para tela e impressão e um guia de uso.",
         reacao: "nunca recebi nada tão organizado! 😮",
         resultado: "A marca foi aplicada certinha em todos os materiais, sem nenhuma dúvida.",
         pontos: { organizacao: 2, logica: 1 }

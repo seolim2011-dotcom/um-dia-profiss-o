@@ -131,7 +131,7 @@ PROFISSOES.push({
           pontos: { pressao: 1 }
         },
         {
-          texto: "Ligo para o fornecedor, reclamo do atraso e espero para ver se o peixe chega.",
+          texto: "Ligo para o fornecedor, reclamo do atraso e espero para ver se o peixe ainda chega antes do almoço.",
           reacao: "já falei que não tem barco hoje 😅",
           resultado: "O peixe não chegou, e o problema continuou sem solução até a hora do almoço.",
           pontos: { organizacao: 1 }
@@ -195,7 +195,7 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Faço uma versão com caldo de legumes, em panela e utensílios separados, e confirmo os ingredientes com o garçom.",
+          texto: "Faço uma versão com caldo de legumes, em panela e utensílios separados.",
           reacao: "ele amou e agradeceu o cuidado! 🙏",
           resultado: "O cliente comeu tranquilo e virou frequentador do restaurante.",
           pontos: { organizacao: 2, pessoas: 1, criatividade: 1 }
@@ -207,7 +207,7 @@ PROFISSOES.push({
           pontos: { organizacao: 1 }
         },
         {
-          texto: "Invento um prato novo na hora, sem conferir o que vai em cada preparo.",
+          texto: "Invento um prato novo na hora, sem camarão, sem conferir o que vai em cada preparo e em cada molho.",
           reacao: "ficou bonito! mas e o tempero, levou o quê? 🤔",
           resultado: "Por sorte, nada do prato tinha camarão, mas ninguém tinha certeza disso.",
           pontos: { criatividade: 1 }
@@ -261,7 +261,7 @@ PROFISSOES.push({
           pontos: { criatividade: 2, organizacao: 1, logica: 1 }
         },
         {
-          texto: "Faço uma receita incrível, com ingredientes importados e caros.",
+          texto: "Faço uma receita incrível, com ingredientes importados e caros, para o restaurante se destacar no festival.",
           reacao: "lindo! custando 60 reais pra gente fazer? 😳",
           resultado: "O prato era delicioso, mas ficou caro demais para entrar no festival.",
           pontos: { criatividade: 1 }
@@ -332,7 +332,7 @@ adicionarVersoes("gastronomia", [
     naVidaReal: "Receber mercadoria é uma tarefa de segurança alimentar: conferir temperatura, validade e peso, e guardar primeiro o que é perecível. Na organização do estoque vale a regra \"primeiro que vence, primeiro que sai\".",
     opcoes: [
       {
-        texto: "Confiro peso e validade, guardo primeiro carnes e laticínios e coloco na frente o que vence antes.",
+        texto: "Confiro peso e validade e guardo primeiro carnes e laticínios.",
         reacao: "isso! carne fora da geladeira com esse calor é perigo 👌",
         resultado: "Tudo foi guardado em 30 minutos, e nada estragou na semana.",
         pontos: { organizacao: 2, pressao: 1 }
@@ -385,7 +385,7 @@ adicionarVersoes("gastronomia", [
     naVidaReal: "Equipamentos quebram, e a cozinha não pode parar. Cozinheiros experientes adaptam técnicas e cardápios com o que está funcionando, sem colocar em risco a segurança de ninguém.",
     opcoes: [
       {
-        texto: "Adapto o cardápio para fogão e chapa, como um frango de panela com legumes no lugar do assado.",
+        texto: "Adapto o cardápio para fogão e chapa, como um frango de panela no lugar do assado.",
         reacao: "frango de panela? ficou com gosto de comida de vó 😍",
         resultado: "O prato adaptado esgotou antes das 13h.",
         pontos: { criatividade: 2, pressao: 1 }
@@ -397,7 +397,7 @@ adicionarVersoes("gastronomia", [
         pontos: {}
       },
       {
-        texto: "Tento consertar o forno sozinho(a), mexendo na parte do gás.",
+        texto: "Tento consertar o forno sozinho(a), mexendo na parte do gás, porque já vi como se faz num vídeo.",
         reacao: "NÃO mexe no gás!! 😱",
         resultado: "Você não consertou nada e ainda correu um risco sério.",
         pontos: { pressao: 1 }
@@ -429,13 +429,13 @@ adicionarVersoes("gastronomia", [
         pontos: {}
       },
       {
-        texto: "Enrolo o dedo dele num pano e mando voltar para a bancada.",
+        texto: "Enrolo o dedo dele num pano limpo e mando voltar para a bancada: o salão está lotado e cada mão faz falta.",
         reacao: "tá... mas continua sangrando 😓",
         resultado: "O corte abriu de novo, e ele precisou ir ao pronto-socorro depois.",
         pontos: { pressao: 1 }
       },
       {
-        texto: "Levo ele para lavar e proteger o corte, chamo alguém para a estação dele, descarto o que foi contaminado e reorganizo os pedidos.",
+        texto: "Levo ele para lavar e proteger o corte, chamo alguém para o lugar dele e descarto o que foi contaminado.",
         reacao: "SIM, CHEF! eu assumo a estação do Téo 💪",
         resultado: "O Téo foi bem cuidado, nada contaminado saiu da cozinha e o serviço atrasou só cinco minutos.",
         pontos: { pressao: 2, organizacao: 1, pessoas: 1 }
@@ -466,13 +466,13 @@ adicionarVersoes("gastronomia", [
         pontos: {}
       },
       {
-        texto: "Preparo uma versão sem glúten, com utensílios e superfícies limpos, confiro os rótulos e aviso o garçom.",
+        texto: "Preparo uma versão sem glúten, com utensílios limpos, e confiro os rótulos.",
         reacao: "ela disse que nunca comeu um nhoque tão bom sem medo 🥹",
         resultado: "A cliente virou frequentadora e indicou o restaurante para outros celíacos.",
         pontos: { organizacao: 2, pessoas: 1, criatividade: 1 }
       },
       {
-        texto: "Peço para o garçom dizer que a cozinha não garante nada sem glúten.",
+        texto: "Peço para o garçom dizer, com sinceridade, que a cozinha não garante nada sem glúten por causa da farinha no ar.",
         reacao: "ela pediu só uma salada 😕",
         resultado: "Não houve risco, mas a cliente saiu frustrada.",
         pontos: { organizacao: 1 }
@@ -525,13 +525,13 @@ adicionarVersoes("gastronomia", [
         pontos: { logica: 1 }
       },
       {
-        texto: "Uso ingredientes da estação e aproveitamento integral, testo três versões e calculo a ficha técnica.",
+        texto: "Uso ingredientes da estação e aproveitamento integral e calculo a ficha técnica.",
         reacao: "arroz de talos com frango e farofa de casca? e custa 8 reais? 🤩",
         resultado: "O executivo virou o prato mais vendido do almoço.",
         pontos: { criatividade: 2, organizacao: 1, logica: 1 }
       },
       {
-        texto: "Crio um prato sofisticado, mesmo que o custo passe do preço.",
+        texto: "Crio um prato sofisticado, mesmo que o custo passe do preço, porque o cliente volta quando a comida surpreende.",
         reacao: "lindo... mas a gente perde dinheiro em cada prato 💸",
         resultado: "O prato era delicioso, mas não podia ser vendido por 25 reais.",
         pontos: { criatividade: 1 }

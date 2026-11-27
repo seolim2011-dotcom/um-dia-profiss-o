@@ -65,13 +65,13 @@ PROFISSOES.push({
           pontos: { pessoas: 1 }
         },
         {
-          texto: "Desenho do meu jeito: quem entende de projeto sou eu.",
+          texto: "Desenho do meu jeito: quem entende de projeto sou eu, e cozinha aberta é o que todo mundo quer hoje em dia.",
           reacao: "ficou bonito... mas e o que a gente pediu? 🤨",
           resultado: "O projeto era elegante, mas não resolvia o problema dos dois, e voltou para a prancheta.",
           pontos: { criatividade: 1 }
         },
         {
-          texto: "Pergunto sobre a rotina da casa e proponho uma cozinha integrada com porta de correr de vidro e uma boa coifa.",
+          texto: "Pergunto sobre a rotina da casa e proponho uma cozinha integrada com porta de correr de vidro.",
           reacao: "aberta quando tem visita e fechada no domingo do peixe? AMEI 😍",
           resultado: "Os dois saíram da reunião concordando, e a solução virou o ponto alto do projeto.",
           pontos: { pessoas: 2, criatividade: 2, logica: 1 }
@@ -125,13 +125,13 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Redesenho a sala com uma abertura menor na parede, sem consultar a engenheira.",
+          texto: "Redesenho a sala com uma abertura menor na parede, que parece segura, sem consultar a engenheira para não atrasar.",
           reacao: "ficou bonito... mas pode cortar essa parede? 🤔",
           resultado: "A engenheira vetou o desenho, e você precisou refazer tudo.",
           pontos: { criatividade: 1 }
         },
         {
-          texto: "Estudo com a engenheira um reforço com viga e mostro aos clientes o custo e o prazo de cada opção.",
+          texto: "Estudo um reforço com viga com a engenheira e mostro aos clientes o custo de cada opção.",
           reacao: "uma viga aparente de madeira? vai virar o charme da sala 😍",
           resultado: "Com o reforço calculado, a sala ficou integrada e segura, e os clientes decidiram sabendo o custo.",
           pontos: { logica: 2, organizacao: 1, criatividade: 1 }
@@ -212,13 +212,13 @@ PROFISSOES.push({
       naVidaReal: "Urbanismo é pensar os espaços da cidade para quem vive nela. O Estatuto da Cidade prevê a participação da população nas decisões, e projetos que ouvem os moradores costumam ser mais usados e mais bem cuidados.",
       opcoes: [
         {
-          texto: "Desenho uma praça linda, para ganhar prêmios, sem ouvir mais ninguém.",
+          texto: "Desenho uma praça linda e moderna, que pode até ganhar prêmios, sem ouvir mais ninguém além de quem me contratou.",
           reacao: "bonita... mas cadê os bancos? e a pista? 🤨",
           resultado: "O projeto ganhou elogios em revista, mas os moradores quase não usam a praça.",
           pontos: { criatividade: 1, logica: 1 }
         },
         {
-          texto: "Faço uma roda de conversa, mapeio quem usa a praça e em que horário, e proponho áreas separadas, com caminhos e sombra.",
+          texto: "Faço uma roda de conversa, mapeio quem usa a praça e proponho áreas separadas, com sombra.",
           reacao: "pista no canto de lá e bancos aqui na sombra? assim dá 😄",
           resultado: "A praça ficou cheia de manhã à noite, com espaço para os idosos e para os skatistas.",
           pontos: { pessoas: 2, criatividade: 2, organizacao: 1, logica: 1 }
@@ -305,7 +305,7 @@ PROFISSOES.push({
           pontos: { criatividade: 2, pessoas: 1, organizacao: 1 }
         },
         {
-          texto: "Mando só a planta técnica, com todas as medidas, sem nenhuma imagem.",
+          texto: "Mando só a planta técnica, com todas as medidas, sem nenhuma imagem: um projeto bom fala por si.",
           reacao: "tá certinho... mas a gente não entende nada disso 😅",
           resultado: "Tudo estava correto, mas o casal não conseguiu imaginar o apartamento pronto.",
           pontos: { logica: 1, organizacao: 2 }
@@ -332,7 +332,7 @@ adicionarVersoes("arquitetura", [
     naVidaReal: "Projetar para acessibilidade começa por observar como a pessoa vive. Portas mais largas, banheiros com barras de apoio e caminhos sem degraus devolvem autonomia a quem tem mobilidade reduzida.",
     opcoes: [
       {
-        texto: "Faço exatamente a lista que o neto mandou por mensagem.",
+        texto: "Faço exatamente a lista que o neto mandou por mensagem: ele conhece a avó e sabe do que ela precisa.",
         reacao: "tá tudo aqui o que eu pedi! 👍",
         resultado: "A lista resolveu parte do problema, mas esqueceu o banheiro, que era o mais importante para a avó.",
         pontos: { pessoas: 1 }
@@ -344,7 +344,7 @@ adicionarVersoes("arquitetura", [
         pontos: { criatividade: 1 }
       },
       {
-        texto: "Visito a casa, observo a rotina da avó e proponho banheiro acessível, portas largas e rampa, explicando cada escolha.",
+        texto: "Visito a casa, observo a rotina da avó e proponho banheiro acessível, portas largas e rampa.",
         reacao: "barra no box e banco pra sentar? vou tomar banho sozinha! 🥹",
         resultado: "A reforma devolveu à avó a autonomia que ela queria.",
         pontos: { pessoas: 2, criatividade: 2, logica: 1 }
@@ -423,7 +423,7 @@ adicionarVersoes("arquitetura", [
     naVidaReal: "Conferir na obra se o que está sendo feito bate com o projeto é parte do trabalho de quem faz arquitetura. Um erro percebido cedo custa muito menos do que um erro descoberto no fim.",
     opcoes: [
       {
-        texto: "Vou até a obra, paro o assentamento, confiro o pedido e combino a troca antes de colocar o resto.",
+        texto: "Vou até a obra, paro o assentamento e combino a troca do piso antes de colocar o resto.",
         reacao: "beleza, a turma adianta a pintura enquanto o piso certo chega 👷",
         resultado: "Só a cozinha precisou ser refeita, e o fornecedor assumiu o custo do erro de entrega.",
         pontos: { pressao: 2, organizacao: 1, logica: 1 }
@@ -441,7 +441,7 @@ adicionarVersoes("arquitetura", [
         pontos: { pressao: 1 }
       },
       {
-        texto: "Peço mais fotos e vejo isso amanhã.",
+        texto: "Peço mais fotos com boa luz para comparar com a amostra e vejo isso amanhã de manhã, com calma.",
         reacao: "amanhã a sala já vai estar pronta, hein 😬",
         resultado: "Quando você viu, a sala também estava com o piso errado.",
         pontos: { organizacao: 1 }
@@ -482,13 +482,13 @@ adicionarVersoes("arquitetura", [
     naVidaReal: "Projetos participativos ouvem quem vai usar o espaço. Em escolas, observar o recreio e conversar com alunos e professores revela necessidades que não aparecem numa planta.",
     opcoes: [
       {
-        texto: "Desenho um pátio premiado, sem conversar com a escola.",
+        texto: "Desenho um pátio moderno, no estilo dos projetos premiados que eu admiro, sem conversar com a escola.",
         reacao: "bonito, mas cadê o campinho? 🤨",
         resultado: "O projeto ganhou elogios, mas as brigas no recreio continuaram.",
         pontos: { criatividade: 1, logica: 1 }
       },
       {
-        texto: "Faço oficinas com alunos e professores, observo o recreio e proponho áreas para correr, brincar, ler e uma horta, com sombra.",
+        texto: "Faço oficinas com alunos e professores e proponho áreas para correr, brincar e uma horta.",
         reacao: "campinho, árvore E horta? 😍",
         resultado: "O pátio novo diminuiu as brigas, e os alunos cuidam da horta até hoje.",
         pontos: { pessoas: 2, criatividade: 2, organizacao: 1, logica: 1 }
@@ -520,13 +520,13 @@ adicionarVersoes("arquitetura", [
     naVidaReal: "Concursos de arquitetura são uma forma importante de conseguir projetos, inclusive públicos. Têm regras e prazos rígidos: um arquivo fora do padrão pode desclassificar um projeto inteiro.",
     opcoes: [
       {
-        texto: "Divido: o Rafa reduz o tamanho do PDF e eu termino a prancha. Enviamos com folga e conferimos o recibo.",
+        texto: "Divido: o Rafa reduz o PDF, eu termino a prancha e conferimos o recibo.",
         reacao: "enviado às 17h40! recibo salvo ✅",
         resultado: "O projeto entrou no concurso dentro das regras.",
         pontos: { pressao: 2, organizacao: 2 }
       },
       {
-        texto: "Envio sem a prancha 2, que estava incompleta.",
+        texto: "Envio sem a prancha 2, que estava incompleta: melhor entregar o que está pronto do que perder o prazo.",
         reacao: "mas a prancha 2 era obrigatória... 😬",
         resultado: "O projeto foi desclassificado por falta de material.",
         pontos: { pressao: 1 }
@@ -569,13 +569,13 @@ adicionarVersoes("arquitetura", [
         pontos: { criatividade: 1, pressao: 2 }
       },
       {
-        texto: "Pergunto o que a incomodou, mostro opções com imagens e explico o impacto de cada mudança no prazo e no custo.",
+        texto: "Pergunto o que a incomodou e mostro opções com o impacto de cada mudança no prazo e no custo.",
         reacao: "ah, era só a cor da cozinha e da sala! o resto eu adoro 😅",
         resultado: "Duas mudanças pequenas resolveram, sem atrasar a obra.",
         pontos: { criatividade: 2, pessoas: 1, organizacao: 1 }
       },
       {
-        texto: "Mando o contrato mostrando o limite de revisões incluídas.",
+        texto: "Mando o contrato mostrando o limite de revisões incluídas e explico que mudanças a mais serão cobradas à parte.",
         reacao: "ah, então é assim que funciona... 😒",
         resultado: "A regra ficou clara, mas a conversa esfriou a relação com a cliente.",
         pontos: { logica: 1, organizacao: 2 }
