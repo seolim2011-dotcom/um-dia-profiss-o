@@ -161,7 +161,7 @@ function abrirInicio() {
   const botaoContinuar = $("#btn-continuar");
   botaoContinuar.hidden = !progresso;
   if (progresso) {
-    botaoContinuar.innerHTML = `Continuar o dia de ${desenharAvatar(progresso.avatar, "avatar-mini")} ${esc(progresso.nome)} em ${esc(progresso.profissao.icone)} ${esc(progresso.profissao.nome)}`;
+    botaoContinuar.innerHTML = `Continuar o dia de ${desenharAvatar(progresso.avatar, "avatar-mini")} ${esc(progresso.nome)} em ${esc(progresso.profissao.nome)}`;
   }
 
   $("#btn-comparar-inicio").hidden = lerResultados().length === 0;
@@ -218,7 +218,7 @@ function abrirCadastro() {
       .slice()
       .sort((a, b) => profissao.perfil[b.id].peso - profissao.perfil[a.id].peso)
       .slice(0, 2)
-      .map(traco => `${traco.icone} ${traco.nome}`)
+      .map(traco => traco.nome)
       .join(" · ");
     const urgentes = montarDia(profissao).situacoes.filter(s => s.urgente).length;
     const versoes = Math.max(...profissao.situacoes.map(numeroDeVersoes));
@@ -230,7 +230,7 @@ function abrirCadastro() {
         <span class="card-icone" aria-hidden="true">${esc(profissao.icone)}</span>
         <span class="card-nome">${esc(profissao.nome)}</span>
         <span class="card-resumo">${esc(profissao.resumo)}</span>
-        <span class="card-info">Mais exige: ${esc(principais)}<br>${profissao.situacoes.length} situações${urgentes ? ` · 🚨 ${urgentes} urgência${urgentes > 1 ? "s" : ""}` : ""}${versoes > 1 ? ` · 🔁 ${versoes} versões do dia` : ""}</span>
+        <span class="card-info">Mais exige: ${esc(principais)}<br>${profissao.situacoes.length} situações${urgentes ? ` · ${urgentes} urgência${urgentes > 1 ? "s" : ""}` : ""}${versoes > 1 ? ` · ${versoes} versões do dia` : ""}</span>
       </button>`;
   }).join("");
 
@@ -240,14 +240,14 @@ function abrirCadastro() {
 
 // Botões de área acima dos cartões ("Todas", "Saúde", ...), com quantas profissões há em cada uma.
 function desenharFiltroDeAreas() {
-  const opcoes = [{ id: "todas", nome: "Todas", icone: "✨" }, ...AREAS];
+  const opcoes = [{ id: "todas", nome: "Todas" }, ...AREAS];
   $("#filtro-areas").innerHTML = opcoes.map(area => {
     const total = area.id === "todas" ? PROFISSOES.length : PROFISSOES.filter(p => p.area === area.id).length;
     if (!total) return "";
     return `
       <button type="button" class="chip-area" data-acao="filtrar-area" data-area="${esc(area.id)}"
               aria-pressed="${area.id === estado.areaFiltro}" aria-label="${esc(area.nome)}: ${total} profissões">
-        <span aria-hidden="true">${esc(area.icone)}</span> ${esc(area.nome)} <span class="chip-area-total" aria-hidden="true">${total}</span>
+        ${esc(area.nome)} <span class="chip-area-total" aria-hidden="true">${total}</span>
       </button>`;
   }).join("");
   aplicarFiltroDeAreas();
@@ -377,7 +377,7 @@ function iniciarDia(base, versoes, tentativa) {
   mostrarPassagem({
     astro: periodoDoDia(primeiroHorario).astro,
     para: primeiroHorario,
-    texto: `Começa o seu expediente em ${profissao.icone} ${profissao.nome}!`
+    texto: `Começa o seu expediente em ${profissao.nome}!`
   }, comecarSituacao);
 }
 
@@ -411,7 +411,7 @@ function prepararSituacao() {
   // Painel do jogador
   $("#hud-avatar").innerHTML = desenharAvatar(estado.avatar);
   $("#hud-nome").textContent = estado.nome;
-  $("#hud-profissao").textContent = `${profissao.icone} ${profissao.nome}`;
+  $("#hud-profissao").textContent = profissao.nome;
   atualizarPainel(medidoresAteAgora(estado.indice), null);
 
   // Céu, relógio, título e cena
@@ -443,10 +443,10 @@ function prepararSituacao() {
   const etiqueta = $("#etiqueta-situacao");
   etiqueta.hidden = !situacao.urgente && !desafio;
   etiqueta.className = "etiqueta-situacao " + (desafio ? "desafio" : "urgente");
-  etiqueta.textContent = desafio ? "⚡ Desafio da profissão"
+  etiqueta.textContent = desafio ? "Desafio da profissão"
     : situacao.urgente && cansadoNaEtapa() && estado.preferencias.cronometro
-      ? `🚨 Urgente! · 😮‍💨 Cansado(a): ${SEGUNDOS_A_MENOS_CANSADO} s a menos`
-      : "🚨 Urgente!";
+      ? `Urgente! · Cansado(a): ${SEGUNDOS_A_MENOS_CANSADO} s a menos`
+      : "Urgente!";
 
   $("#situacao-descricao").textContent = situacao.descricao || "";
   $("#situacao-descricao").hidden = !situacao.descricao;
@@ -784,7 +784,7 @@ function mostrarResultadoDaEscolha(escolha, animar) {
   const tracosDaEscolha = TRACOS.filter(traco => pontosDoTraco(opcao, traco.id) > 0);
   $("#feedback-chips").innerHTML = tracosDaEscolha.length
     ? `<span class="chips-rotulo">Nessa escolha você mostrou:</span>` +
-      tracosDaEscolha.map((traco, i) => `<span class="chip" style="animation-delay: ${i * 120}ms">${esc(traco.icone)} ${esc(traco.nome)}</span>`).join("")
+      tracosDaEscolha.map((traco, i) => `<span class="chip" style="animation-delay: ${i * 120}ms">${esc(traco.nome)}</span>`).join("")
     : `<span class="chips-rotulo">Essa parte da rotina parece ser um desafio para você, e tudo bem: descobrir isso é justamente o objetivo do jogo.</span>`;
   $("#feedback-real").textContent = situacao.naVidaReal;
 
@@ -801,8 +801,8 @@ function mostrarResultadoDaEscolha(escolha, animar) {
 
 // Etiquetas "⚡ Energia −8 · 😰 Estresse +5" (e o aviso de cansaço, se for o caso).
 function htmlDosEfeitos(efeito, cansado) {
-  return htmlDoEfeito("⚡ Energia", efeito.energia, false) + htmlDoEfeito("😰 Estresse", efeito.estresse, true) +
-    (cansado ? `<span class="efeito ruim">😮‍💨 Cansaço: estresse +${ESTRESSE_DO_CANSACO}</span>` : "");
+  return htmlDoEfeito("Energia", efeito.energia, false) + htmlDoEfeito("Estresse", efeito.estresse, true) +
+    (cansado ? `<span class="efeito ruim">Cansaço: estresse +${ESTRESSE_DO_CANSACO}</span>` : "");
 }
 
 function ultimaEtapa() {
@@ -810,7 +810,7 @@ function ultimaEtapa() {
 }
 
 function textoDoBotaoProxima() {
-  return ultimaEtapa() ? "Encerrar o expediente 🏁" : "Continuar →";
+  return ultimaEtapa() ? "Encerrar o expediente" : "Continuar →";
 }
 
 // Mostra "Continuar" e, se a pausa do café ainda não foi usada, o botão da pausa.
@@ -997,13 +997,13 @@ function mostrarRetornoDoDesafio(acertou, animar) {
   const efeito = efeitosDaEscolha(profissao, situacao, { acertou, gosto: 0 }, cansado);
   const traco = TRACOS.find(t => t.id === situacao.traco);
 
-  $("#feedback-titulo").textContent = acertou ? "✅ Acertou!" : "❌ Não foi dessa vez";
+  $("#feedback-titulo").textContent = acertou ? "Acertou!" : "Não foi dessa vez";
   $("#feedback-resultado").textContent = acertou
     ? "Mandou bem! Veja por que essa é a resposta:"
     : `A resposta certa era ${respostaCertaEmTexto(situacao)}. Tudo bem errar: você ainda vai aprender isso no curso.`;
   $("#feedback-efeitos").innerHTML = htmlDosEfeitos(efeito, cansado);
   $("#feedback-chips").innerHTML = traco
-    ? `<span class="chips-rotulo">Esse desafio exercita:</span><span class="chip">${esc(traco.icone)} ${esc(traco.nome)}</span>`
+    ? `<span class="chips-rotulo">Esse desafio exercita:</span><span class="chip">${esc(traco.nome)}</span>`
     : "";
   $("#feedback-real").textContent = situacao.explicacao;
 
@@ -1113,7 +1113,7 @@ function proximaSituacao(depoisDoCafe) {
     texto: depoisDoCafe === true
       ? `Pausa para o café: energia +${PAUSA_CAFE.energia}, estresse ${formatarDelta(PAUSA_CAFE.estresse)}. De volta ao trabalho!`
       : ehDesafio(situacaoAtual())
-        ? "⚡ Hora de um desafio da profissão!"
+        ? "Hora de um desafio da profissão!"
         : FRASES_DE_PASSAGEM[estado.indice % FRASES_DE_PASSAGEM.length],
     duracao: depoisDoCafe === true ? 2200 : undefined
   }, () => {
@@ -1300,7 +1300,7 @@ function abrirRelatorio(resultado, conquistasNovas) {
 
   const listaDeTracos = (tracos, campo) => `
     <ul class="lista">
-      ${tracos.map(traco => `<li><strong>${esc(traco.icone)} ${esc(traco.nome)}:</strong> ${esc(traco[campo])}</li>`).join("")}
+      ${tracos.map(traco => `<li><strong>${esc(traco.nome)}:</strong> ${esc(traco[campo])}</li>`).join("")}
     </ul>`;
 
   $("#tela-relatorio").style.setProperty("--cor-profissao", profissao.cor);
@@ -1309,7 +1309,7 @@ function abrirRelatorio(resultado, conquistasNovas) {
       <div class="avatar-grande" aria-hidden="true">${desenharAvatar(resultado.avatar)}</div>
       <p class="selo">Relatório de afinidade</p>
       <h2 class="titulo-tela" tabindex="-1">O dia de ${esc(resultado.nome)}</h2>
-      <p class="relatorio-meta">${esc(profissao.icone)} ${esc(profissao.nome)} · ${esc(formatarData(resultado.data))}</p>
+      <p class="relatorio-meta">${esc(profissao.nome)} · ${esc(formatarData(resultado.data))}</p>
       <div class="medidor nivel-${nivel.id}" role="img" aria-label="${calculo.afinidade}% de afinidade">
         <svg viewBox="0 0 120 120" aria-hidden="true">
           <circle class="medidor-trilho" cx="60" cy="60" r="52"></circle>
@@ -1324,7 +1324,7 @@ function abrirRelatorio(resultado, conquistasNovas) {
     </section>
 
     <section class="cartao">
-      <h3>🎮 Sua ficha de personagem</h3>
+      <h3>Sua ficha de personagem</h3>
       <div class="ficha">
         <div>
           ${htmlDoRadar(calculo.tracos)}
@@ -1339,7 +1339,7 @@ function abrirRelatorio(resultado, conquistasNovas) {
           <strong>${esc(classe.nome)}</strong>
           <p>${esc(classe.lema)}</p>
           ${classe.secundario
-            ? `<p class="classe-secundario">Ponto forte secundário: ${esc(classe.secundario.icone)} ${esc(classe.secundario.nome)}</p>`
+            ? `<p class="classe-secundario">Ponto forte secundário: ${esc(classe.secundario.nome)}</p>`
             : ""}
         </div>
       </div>
@@ -1347,32 +1347,32 @@ function abrirRelatorio(resultado, conquistasNovas) {
       <ul class="valores-tracos">
         ${calculo.tracos.map(traco => `
           <li>
-            <span>${esc(traco.icone)} ${esc(traco.nome)}</span>
+            <span>${esc(traco.nome)}</span>
             <span><b>você ${traco.jogador === null ? "–" : traco.jogador}%</b> <em>· profissão ${traco.ideal}%</em></span>
           </li>`).join("")}
       </ul>
     </section>
 
     <section class="cartao">
-      <h3>🌙 Como você terminou o dia</h3>
+      <h3>Como você terminou o dia</h3>
       <div class="fim-do-dia">
         <div class="fim-do-dia-item">
-          <span>⚡ Energia</span>
+          <span>Energia</span>
           <strong>${medidores.energia}%</strong>
           <div class="barra barra-energia"><span data-alvo="${medidores.energia}"></span></div>
         </div>
         <div class="fim-do-dia-item">
-          <span>😰 Estresse</span>
+          <span>Estresse</span>
           <strong>${medidores.estresse}%</strong>
           <div class="barra barra-estresse"><span data-alvo="${medidores.estresse}"></span></div>
         </div>
       </div>
       <p class="nota nota-final">${esc(resumoDoDia(medidores))}</p>
       <ul class="lista lista-ritmo">
-        <li>☕ ${etapaDaPausa
+        <li>${etapaDaPausa
           ? `Você fez a pausa do café depois de “${esc(etapaDaPausa.titulo)}” (${esc(etapaDaPausa.horario)}).`
           : "Você não fez a pausa do café."}</li>
-        <li>😮‍💨 ${medidores.etapasCansado
+        <li>${medidores.etapasCansado
           ? `Você chegou cansado(a) em ${medidores.etapasCansado} ${medidores.etapasCansado > 1 ? "etapas" : "etapa"}: cada uma estressou um pouco mais, e as urgências tiveram menos tempo.`
           : "Você não chegou cansado(a) em nenhuma etapa."}</li>
       </ul>
@@ -1380,13 +1380,13 @@ function abrirRelatorio(resultado, conquistasNovas) {
 
     <div class="grade-2">
       <section class="cartao cartao-gostar">
-        <h3>😊 Você provavelmente vai gostar</h3>
+        <h3>Você provavelmente vai gostar</h3>
         ${gostar.length
           ? listaDeTracos(gostar, "gostar")
           : `<p class="nota">Os traços mais importantes desta profissão não apareceram fortes nas suas escolhas.</p>`}
       </section>
       <section class="cartao cartao-dificil">
-        <h3>⚠️ Pode ser difícil</h3>
+        <h3>Pode ser difícil</h3>
         ${dificil.length
           ? listaDeTracos(dificil, "dificil")
           : `<p class="nota">Suas escolhas combinaram com o que a profissão exige. Mesmo assim, fique atento(a):</p>
@@ -1396,7 +1396,7 @@ function abrirRelatorio(resultado, conquistasNovas) {
 
     ${calculo.desafios.total ? `
       <section class="cartao cartao-desafios">
-        <h3>⚡ Desafios do dia</h3>
+        <h3>Desafios do dia</h3>
         <p class="nota">Você acertou ${calculo.desafios.acertos} de ${calculo.desafios.total}. Acertar não muda a afinidade: o que conta é se você curtiu fazer as tarefas de verdade da profissão.</p>
         <ul class="lista-desafios">
           ${calculo.desafios.lista.map(d => `
@@ -1417,7 +1417,7 @@ function abrirRelatorio(resultado, conquistasNovas) {
 
     ${conquistasNovas && conquistasNovas.length ? `
       <section class="cartao">
-        <h3>🏅 Medalhas que você ganhou hoje</h3>
+        <h3>Medalhas que você ganhou hoje</h3>
         <div class="medalhas-do-dia">
           ${conquistasNovas.map(c => `<span class="medalha-mini">${esc(c.icone)} ${esc(c.nome)}</span>`).join("")}
         </div>
@@ -1430,9 +1430,9 @@ function abrirRelatorio(resultado, conquistasNovas) {
           <li>
             <span class="lt-hora">${esc(momento.situacao.horario)}</span>
             <div>
-              <strong>⚡ Desafio: ${esc(momento.situacao.titulo)}</strong>
+              <strong>Desafio: ${esc(momento.situacao.titulo)}</strong>
               <p class="lt-escolha"></p>
-              <span class="tag tag-${momento.acertou ? "alta" : "baixa"}">${momento.acertou ? "✅ Acertou" : "❌ Errou"}</span>
+              <span class="tag tag-${momento.acertou ? "alta" : "baixa"}">${momento.acertou ? "Acertou" : "Errou"}</span>
               <span class="tag tag-gosto">${htmlDoGosto(momento.gosto)}</span>
             </div>
           </li>` : `
@@ -1448,7 +1448,7 @@ function abrirRelatorio(resultado, conquistasNovas) {
     </section>
 
     <section class="cartao">
-      <h3>🎓 Como entrar na área</h3>
+      <h3>Como entrar na área</h3>
       <ul class="lista lista-cursos">${profissao.cursos.map(curso => `<li>${esc(curso)}</li>`).join("")}</ul>
       <h4>Próximos passos</h4>
       <ul class="lista lista-passos">
@@ -1527,7 +1527,7 @@ function mostrarComparacao() {
             <li style="--cor-profissao: ${esc(profissao.cor)}">
               <span class="partida-icone" aria-hidden="true">${esc(profissao.icone)}</span>
               <div class="partida-info">
-                <strong>${esc(profissao.nome)}</strong>${posicao === 0 && linhas.length > 1 ? ` <span class="tag tag-alta">🏆 Maior afinidade</span>` : ""}
+                <strong>${esc(profissao.nome)}</strong>${posicao === 0 && linhas.length > 1 ? ` <span class="tag tag-alta">Maior afinidade</span>` : ""}
                 <div class="barra"><span data-alvo="${resultado.afinidade}"></span></div>
                 <span>Jogado em ${esc(formatarData(resultado.data))}</span>
               </div>
@@ -1537,7 +1537,7 @@ function mostrarComparacao() {
         }).join("")}
       </ul>
       ${faltam.length
-        ? `<p class="nota nota-rodape">Ainda falta experimentar: ${faltam.map(p => `${esc(p.icone)} ${esc(p.nome)}`).join(", ")}.</p>`
+        ? `<p class="nota nota-rodape">Ainda falta experimentar: ${faltam.map(p => esc(p.nome)).join(", ")}.</p>`
         : ""}
     </section>
 
@@ -1575,7 +1575,7 @@ function mostrarConquistas() {
     ${nomes.length ? "" : `<p class="aviso-honestidade">Termine um dia de trabalho para começar a ganhar medalhas!</p>`}
 
     <div class="progresso-conquistas">
-      <span>🏅 ${quantas} de ${CONQUISTAS.length}</span>
+      <span>${quantas} de ${CONQUISTAS.length} medalhas</span>
       <div class="barra"><span data-alvo="${Math.round((quantas / CONQUISTAS.length) * 100)}"></span></div>
     </div>
 

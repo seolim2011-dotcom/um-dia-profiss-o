@@ -12,8 +12,8 @@ Abra o arquivo `index.html` no navegador (dois cliques). Não precisa instalar n
 
 1. Clique em **Iniciar experiência** (ou aperte Enter), digite seu nome, escolha um **avatar** e uma das **17 profissões**. Os botões de área (Saúde, Tecnologia e engenharia, Criativas, Negócios e Sociedade) filtram a lista.
 2. Viva o dia: 8 etapas, do início ao fim do expediente: 6 situações de decisão e 2 desafios. Cada etapa tem **2 versões**: ao jogar a mesma profissão de novo, as situações mudam. Nas situações, os personagens conversam com você como num chat, você decide o que fazer e eles respondem à sua escolha. Responda clicando ou com as teclas **A, B, C, D** (ou 1 a 9). A tecla **Espaço** pula a conversa.
-3. Nas situações marcadas como **🚨 Urgente**, um **cronômetro** dá de 20 a 25 segundos para decidir (mais tempo quando as opções têm mais texto). Pausar no meio de uma urgência não zera o cronômetro: ele volta de onde parou. Se o tempo acabar, conta como se você tivesse travado. O cronômetro pode ser desligado na tela do personagem.
-4. Os **⚡ Desafios da profissão** são mini problemas de verdade: calcular a dose de um remédio, achar o erro num código, ler um gráfico, conferir uma escala... Depois de cada um, o jogo pergunta se você **curtiria fazer aquilo todo dia** (😍 😐 😩).
+3. Nas situações marcadas como **Urgente**, um **cronômetro** dá de 20 a 25 segundos para decidir (mais tempo quando as opções têm mais texto). Pausar no meio de uma urgência não zera o cronômetro: ele volta de onde parou. Se o tempo acabar, conta como se você tivesse travado. O cronômetro pode ser desligado na tela do personagem.
+4. Os **Desafios da profissão** são mini problemas de verdade: calcular a dose de um remédio, achar o erro num código, ler um gráfico, conferir uma escala... Depois de cada um, o jogo pergunta se você **curtiria fazer aquilo todo dia** (😍 😐 😩).
 5. Cada etapa mexe nas barras de **⚡ Energia** e **😰 Estresse** e mostra o que aconteceu e um quadro **Na vida real**.
 6. No fim do dia sai o **relatório**: % de afinidade, ficha de personagem com gráfico radar e a sua **classe** (por exemplo, "Coração Valente"), como você terminou o dia, o que você provavelmente vai gostar, o que pode ser difícil, os desafios, suas decisões e os cursos da área.
 7. Ganhe **medalhas** (tela **Conquistas**) e compare as profissões em **Comparar resultados**.
@@ -192,9 +192,9 @@ PROFISSOES.push({
       urgente: true,          // opcional: cronômetro (20 s + 1 s a cada 5 palavras acima de 40 nas opções; "tempo" fixa outro valor)
       naVidaReal: "Explicação mostrada depois da escolha.",
       opcoes: [
-        { texto: "O que eu faço", reacao: "ai, obrigada, doutor(a) 🙏", resultado: "O que aconteceu", pontos: { logica: 2, organizacao: 1 } },
+        { texto: "O que eu faço", reacao: "ai, obrigada, doutor(a)", resultado: "O que aconteceu", pontos: { logica: 2, organizacao: 1 } },
         { texto: "Outra escolha", reacao: "hmm... tá bom", resultado: "O que aconteceu", pontos: { pessoas: 1 } },
-        { texto: "Escolha que foge da rotina", reacao: "como assim?! 😡", resultado: "O que aconteceu", pontos: {} }
+        { texto: "Escolha que foge da rotina", reacao: "como assim?!", resultado: "O que aconteceu", pontos: {} }
       ]
     }
     // ...mais situações e 2 desafios
@@ -224,7 +224,7 @@ Todas as versões de uma etapa precisam ser do mesmo tipo (decisão ou desafio),
 O jogo já vem com 17 profissões, cada uma com 2 versões de cada etapa (256 combinações de dia por profissão). Qualquer profissão pode servir de exemplo para as próximas.
 
 **Dicas para os diálogos não ficarem robotizados:**
-- Escreva como as pessoas falam no WhatsApp: frases curtas, "tô", "pra", "cê", emojis.
+- Escreva como as pessoas falam no WhatsApp: frases curtas, "tô", "pra", "cê". Evite emojis nas falas: o rosto de cada personagem (o `avatar`) e a `cena` já dão o clima.
 - Quebre uma fala longa em 2 ou 3 mensagens seguidas.
 - Dê personalidade a cada personagem (apressado, piadista, seco, nervoso...).
 - O personagem não explica a situação para o jogador: ele só fala o que diria de verdade. Quem explica é a `descricao` (narração) e o quadro "Na vida real".
@@ -249,7 +249,7 @@ Um desafio é uma etapa com `tipo: "desafio"`. Existem 3 formatos:
   titulo: "Ache o bug",
   cena: "🐛 💻 🔎",
   conversa: [
-    { quem: "Lucas, desenvolvedor sênior", avatar: "🧑🏻‍💻", fala: "quando tem 3 itens, quebra. me fala onde tá o erro 👇" }
+    { quem: "Lucas, desenvolvedor sênior", avatar: "🧑🏻‍💻", fala: "quando tem 3 itens, quebra. me fala onde tá o erro" }
   ],
   pergunta: "Toque na linha com o erro:",
   linhas: [

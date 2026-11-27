@@ -63,7 +63,7 @@ function ehDesafio(situacao) {
 
 // "Opção" usada quando o tempo acaba: não dá pontos para nenhum traço.
 const OPCAO_TEMPO_ESGOTADO = {
-  texto: "⏰ O tempo acabou antes de você decidir.",
+  texto: "O tempo acabou antes de você decidir.",
   resultado: "Enquanto você hesitava, a situação seguiu sem você, e piorou. Em urgências, decidir rápido também faz parte do trabalho.",
   pontos: {}
 };

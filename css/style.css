@@ -1455,8 +1455,6 @@ body[data-tela="jogo"] .botao-som { display: none; }
 .fim-do-dia .barra-estresse span { background: linear-gradient(90deg, #9aa6c4, var(--azul-escuro)); }
 .nota-final { margin: 0; font-weight: 700; }
 .lista-ritmo { margin-top: 14px; }
-.lista-ritmo li { padding-left: 0; }
-.lista-ritmo li::before { content: none; }
 
 .grade-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
 .grade-2 .cartao { margin-bottom: 0; }
