@@ -65,13 +65,13 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Confiro se alguma tentativa deu certo, bloqueio a origem e ativo a verificação em duas etapas nessa conta.",
+          texto: "Confiro se alguma tentativa deu certo, bloqueio a origem e ativo a verificação em duas etapas.",
           reacao: "boa, nenhuma entrou! e agora nem com a senha certa eles entram 💪",
           resultado: "A conta ficou protegida, e o registro da investigação ajudou a bloquear o mesmo atacante em outros sistemas.",
           pontos: { logica: 2, pressao: 1, organizacao: 1 }
         },
         {
-          texto: "Desativo a conta de administrador na hora, sem avisar ninguém.",
+          texto: "Desativo a conta de administrador na hora, sem avisar ninguém, para o atacante não ter tempo de entrar.",
           reacao: "eita, o pessoal de vendas não consegue mais trabalhar 😬",
           resultado: "A conta ficou segura, mas o sistema de vendas parou por duas horas e ninguém sabia por quê.",
           pontos: { pressao: 1 }
@@ -169,13 +169,13 @@ PROFISSOES.push({
           pontos: { organizacao: 1 }
         },
         {
-          texto: "Explico que contas de diretores são as mais atacadas e ofereço aprovar o acesso com um toque no app do celular.",
+          texto: "Explico que contas de diretores são as mais atacadas e ofereço aprovar o acesso com um toque.",
           reacao: "ah, um toque só? assim dá. e eu nem sabia disso 😮",
           resultado: "O diretor manteve a proteção e ainda pediu para você explicar isso para a diretoria toda.",
           pontos: { pessoas: 1, logica: 1, criatividade: 1, organizacao: 1 }
         },
         {
-          texto: "Tiro a verificação só da conta dele, sem registrar, para ele ficar feliz.",
+          texto: "Tiro a verificação só da conta dele, sem registrar, para ele ficar feliz e parar de reclamar com a diretoria.",
           reacao: "agora sim! valeu, hein 😁",
           resultado: "O diretor ficou feliz, mas uma brecha escondida apareceu na auditoria, e a responsabilidade foi sua.",
           pontos: { pessoas: 2 }
@@ -223,7 +223,7 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Confirmo se os dados são nossos, descubro por onde vazaram, fecho a falha e aciono o jurídico para avisar a ANPD e os clientes.",
+          texto: "Fecho a falha por onde os dados vazaram e aciono o jurídico para avisar a ANPD e os clientes.",
           reacao: "achei! foi um sistema antigo esquecido no ar. já desliguei 🔒",
           resultado: "A falha foi fechada no mesmo dia, e o aviso rápido ajudou os clientes a se protegerem de golpes.",
           pontos: { logica: 2, pressao: 2, organizacao: 1 }
@@ -235,7 +235,7 @@ PROFISSOES.push({
           pontos: { pessoas: 1, pressao: 1 }
         },
         {
-          texto: "Tento negociar com o hacker para ele apagar os dados.",
+          texto: "Tento negociar com o hacker para ele apagar os dados antes que alguém compre, mesmo que custe caro.",
           reacao: "ele aceitou o dinheiro... e continuou vendendo 🤡",
           resultado: "A empresa pagou, mas não havia como garantir nada, e os dados continuaram circulando.",
           pontos: { criatividade: 1, pressao: 1 }
@@ -260,13 +260,13 @@ PROFISSOES.push({
           pontos: { organizacao: 2 }
         },
         {
-          texto: "Faço uma palestra técnica de uma hora sobre tipos de ataque.",
+          texto: "Faço uma palestra técnica de uma hora sobre os tipos de ataque mais comuns, com slides e exemplos reais.",
           reacao: "zzz... desculpa, o que é \"vetor de ataque\"? 😴",
           resultado: "O conteúdo estava certo, mas pouca gente entendeu.",
           pontos: { organizacao: 1 }
         },
         {
-          texto: "Faço uma simulação de golpe por e-mail e depois um treino curto com os exemplos que enganaram mais gente.",
+          texto: "Faço uma simulação de golpe por e-mail e depois um treino curto com os exemplos.",
           reacao: "caí na simulação kkkk nunca mais clico sem olhar o link 😂",
           resultado: "Na simulação seguinte, o número de pessoas que clicaram no golpe caiu pela metade.",
           pontos: { criatividade: 2, pessoas: 1, organizacao: 1 }
@@ -303,7 +303,7 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Escrevo um resumo dizendo que a culpa foi do funcionário que abriu o arquivo.",
+          texto: "Escrevo um resumo dizendo que a culpa foi do funcionário que abriu o arquivo, para ninguém mais repetir o erro.",
           reacao: "o Paulo tá arrasado... e a falha que deixou o arquivo passar? 😟",
           resultado: "O Paulo foi exposto, as pessoas passaram a esconder cliques suspeitos, e a falha real continuou.",
           pontos: { organizacao: 1 }
@@ -342,7 +342,7 @@ adicionarVersoes("seguranca-informacao", [
         pontos: {}
       },
       {
-        texto: "Troco a senha dela, encerro as sessões abertas, confiro se houve acessos estranhos e ativo a verificação em duas etapas.",
+        texto: "Troco a senha dela, encerro as sessões abertas e ativo a verificação em duas etapas.",
         reacao: "obrigada por não brigar comigo 🙏",
         resultado: "O golpista tentou entrar dez minutos depois e foi bloqueado.",
         pontos: { logica: 2, pressao: 1, organizacao: 1 }
@@ -354,7 +354,7 @@ adicionarVersoes("seguranca-informacao", [
         pontos: { pressao: 1 }
       },
       {
-        texto: "Digo para ela ficar tranquila, porque isso acontece com todo mundo.",
+        texto: "Digo para ela ficar tranquila, porque isso acontece com todo mundo, e peço que tome mais cuidado da próxima vez.",
         reacao: "ah, que alívio 😌",
         resultado: "Ela se acalmou, mas a senha continuou nas mãos do golpista.",
         pontos: { pessoas: 1 }
@@ -395,7 +395,7 @@ adicionarVersoes("seguranca-informacao", [
     naVidaReal: "Empresas usam criptografia no disco e ferramentas de gestão que permitem bloquear e apagar um aparelho à distância. O plano de resposta inclui trocar senhas e avaliar se os dados exigem comunicação à ANPD.",
     opcoes: [
       {
-        texto: "Bloqueio o notebook, mando apagar os dados à distância, troco as senhas dela e sigo o plano de incidentes.",
+        texto: "Bloqueio o notebook, mando apagar os dados à distância e troco as senhas dela.",
         reacao: "o comando de apagar foi enviado. e o disco era criptografado 😮‍💨",
         resultado: "Os dados ficaram protegidos, e o registro mostrou que ninguém conseguiu acessar nada.",
         pontos: { pressao: 2, organizacao: 2, logica: 1 }
@@ -407,7 +407,7 @@ adicionarVersoes("seguranca-informacao", [
         pontos: { pessoas: 1, pressao: 1 }
       },
       {
-        texto: "Tento rastrear o notebook pela internet, como nos filmes.",
+        texto: "Tento rastrear o notebook pela internet para descobrir onde ele está e passar a localização para a polícia.",
         reacao: "e enquanto isso? 😬",
         resultado: "O rastreamento não deu em nada, e o tempo mais importante se perdeu.",
         pontos: { logica: 1, criatividade: 1 }
@@ -438,13 +438,13 @@ adicionarVersoes("seguranca-informacao", [
         pontos: {}
       },
       {
-        texto: "Recuso, citando a norma de segurança.",
+        texto: "Recuso, citando a norma de segurança: antivírus desligado é porta aberta para ataque.",
         reacao: "então a gente vai continuar perdendo horas 😤",
         resultado: "A regra ficou, mas alguns programadores passaram a desligar a proteção escondido.",
         pontos: { organizacao: 1 }
       },
       {
-        texto: "Entendo o problema, meço o impacto e crio uma exceção só para a pasta do projeto, registrada.",
+        texto: "Crio uma exceção registrada só para a pasta do projeto.",
         reacao: "ficou rápido e continua protegido? perfeito 👏",
         resultado: "A compilação voltou ao normal, e o resto do computador continuou protegido.",
         pontos: { pessoas: 1, logica: 1, criatividade: 1, organizacao: 1 }
@@ -498,7 +498,7 @@ adicionarVersoes("seguranca-informacao", [
         pontos: {}
       },
       {
-        texto: "Ativo a proteção contra ataques do provedor, analiso o tráfego, bloqueio as origens e mantenho a equipe informada.",
+        texto: "Ativo a proteção contra ataques do provedor, bloqueio as origens e aviso a equipe.",
         reacao: "voltou!! o filtro tá segurando 🙌",
         resultado: "Em 20 minutos o site voltou ao ar, e a promoção seguiu.",
         pontos: { logica: 2, pressao: 2, organizacao: 1 }
@@ -510,7 +510,7 @@ adicionarVersoes("seguranca-informacao", [
         pontos: { pessoas: 1, pressao: 1 }
       },
       {
-        texto: "Tiro o site do ar de vez e coloco uma página improvisada de \"volte mais tarde\".",
+        texto: "Tiro o site do ar de vez e coloco uma página improvisada de \"volte mais tarde\" até o ataque acabar.",
         reacao: "pelo menos não fica aquela tela de erro 😕",
         resultado: "A página ficou bonita, mas as vendas pararam até alguém resolver o ataque.",
         pontos: { criatividade: 1, pressao: 1 }
@@ -529,7 +529,7 @@ adicionarVersoes("seguranca-informacao", [
     naVidaReal: "Pessoas anotam senhas porque têm senhas demais para lembrar. Gerenciadores de senhas guardam tudo com segurança, criam senhas fortes e exigem que a pessoa lembre de uma só.",
     opcoes: [
       {
-        texto: "Escrevo uma norma proibindo post-its e mando por e-mail.",
+        texto: "Escrevo uma norma proibindo senhas em post-its e mando por e-mail para todos, com prazo para cumprir.",
         reacao: "e onde a gente guarda as senhas então? 🤷",
         resultado: "Os post-its foram para dentro das gavetas.",
         pontos: { organizacao: 2 }

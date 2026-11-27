@@ -65,7 +65,7 @@ PROFISSOES.push({
           pontos: { pessoas: 1 }
         },
         {
-          texto: "Observo sem interferir, anoto onde travam e mudo a fase para ensinar o pulo duplo jogando.",
+          texto: "Observo sem interferir e mudo a fase para ensinar o pulo duplo jogando.",
           reacao: "boa! um buraco pequeno antes do grande, pra pessoa aprender sem perceber? amei 😍",
           resultado: "No teste da tarde, todo mundo aprendeu o pulo duplo sozinho, sem precisar de texto nenhum.",
           pontos: { logica: 2, criatividade: 2, organizacao: 1 }
@@ -134,13 +134,13 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Desativo a pausa só na luta do chefe da demo e coloco o bug na lista para corrigir depois.",
+          texto: "Desativo a pausa só na luta do chefe e deixo o bug para corrigir depois da feira.",
           reacao: "genial, isso eu faço em 10 minutos 🙌",
           resultado: "A demo rodou o dia inteiro sem travar, e o bug foi corrigido com calma na semana seguinte.",
           pontos: { pressao: 1, logica: 1, criatividade: 1, organizacao: 1 }
         },
         {
-          texto: "Fico com o Kaio até de madrugada caçando o bug, sem avisar a produção.",
+          texto: "Fico com o Kaio até de madrugada caçando o bug, sem avisar a produção, para entregar a demo perfeita.",
           reacao: "bora... mas a Bia vai surtar quando souber 😅",
           resultado: "Vocês acharam o bug às 3h, mas chegaram exaustos à feira, e a produção ficou sabendo pelos outros.",
           pontos: { pressao: 2, logica: 1 }
@@ -166,7 +166,7 @@ PROFISSOES.push({
           pontos: { criatividade: 1 }
         },
         {
-          texto: "Fico do lado do programador e mando cortar as animações.",
+          texto: "Fico do lado do programador e mando cortar as animações: o jogo precisa rodar em qualquer celular.",
           reacao: "sério? sem conversar? 😤",
           resultado: "O chefe rodou liso, mas ficou sem graça, e a Lis passou a semana chateada.",
           pontos: { logica: 1 }
@@ -178,7 +178,7 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Junto os dois, testamos no celular mais simples do estúdio e redesenhamos o chefe para ficar bonito e leve.",
+          texto: "Junto os dois, testamos no celular mais simples e redesenhamos o chefe.",
           reacao: "e se o fogo virar partículas simples? fica lindo e leve 🤩",
           resultado: "Com menos partes e um efeito de fogo mais esperto, o chefe ficou bonito e rodou liso até no celular mais simples.",
           pontos: { pessoas: 1, logica: 1, criatividade: 2 }
@@ -220,7 +220,7 @@ PROFISSOES.push({
       naVidaReal: "As notas nas lojas afetam muito quantas pessoas baixam um jogo. Estúdios acompanham as avaliações e os dados de uso, e lançam atualizações corrigindo primeiro o que mais incomoda.",
       opcoes: [
         {
-          texto: "Separo as reclamações que mais se repetem e proponho uma atualização rápida para a pior delas.",
+          texto: "Separo as reclamações que mais se repetem e corrijo a pior delas primeiro.",
           reacao: "faz sentido! a fase 7 aparece em metade das reclamações 👀",
           resultado: "A atualização saiu em dois dias, e a nota voltou a subir na semana seguinte.",
           pontos: { pressao: 1, organizacao: 1, logica: 1, criatividade: 1 }
@@ -232,7 +232,7 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Mudo várias coisas do jogo de uma vez, sem testar, para mostrar serviço.",
+          texto: "Mudo várias coisas do jogo de uma vez, sem testar, para mostrar aos jogadores que estamos ouvindo.",
           reacao: "mas a gente nem sabe o que vai acontecer... 😬",
           resultado: "A pressa criou um bug novo no salvamento, e surgiram reclamações diferentes.",
           pontos: { pressao: 2, criatividade: 1 }
@@ -264,7 +264,7 @@ PROFISSOES.push({
           pontos: { organizacao: 2, logica: 1 }
         },
         {
-          texto: "Rabisco várias ideias, escolho uma pequena e monto um protótipo de papel para testar com a equipe.",
+          texto: "Escolho uma ideia pequena e monto um protótipo de papel para testar com a equipe.",
           reacao: "jogar com cartinhas de papel? kkkk eu topo! 🃏",
           resultado: "Em 20 minutos todo mundo jogou a versão de papel, e a ideia ficou mais clara para todos.",
           pontos: { criatividade: 2, pessoas: 1, organizacao: 1 }
@@ -346,7 +346,7 @@ adicionarVersoes("design-de-jogos", [
         pontos: { pessoas: 1 }
       },
       {
-        texto: "Revejo as gravações, meço onde eles ficam sem desafio e crio um obstáculo que usa o pulo duplo de um jeito novo.",
+        texto: "Revejo as gravações e crio um obstáculo que usa o pulo duplo de um jeito novo.",
         reacao: "pular de parede em parede? ficou MUITO melhor 🤩",
         resultado: "No teste seguinte, a fase levou oito minutos e todo mundo saiu animado.",
         pontos: { logica: 2, criatividade: 2, organizacao: 1 }
@@ -358,7 +358,7 @@ adicionarVersoes("design-de-jogos", [
         pontos: {}
       },
       {
-        texto: "Dobro a quantidade de inimigos em todas as fases, seguindo uma tabela.",
+        texto: "Dobro a quantidade de inimigos em todas as fases, seguindo uma tabela de dificuldade que usei no último jogo.",
         reacao: "agora a fase 1 ficou impossível 😵",
         resultado: "A fase 4 ficou melhor, mas as primeiras ficaram difíceis demais.",
         pontos: { organizacao: 2 }
@@ -406,7 +406,7 @@ adicionarVersoes("design-de-jogos", [
         pontos: {}
       },
       {
-        texto: "Leio o motivo, corrijo só o que foi apontado (a página de privacidade), reenvio e aviso a produção.",
+        texto: "Leio o motivo, corrijo só a página de privacidade, reenvio e aviso a produção.",
         reacao: "era só a política de privacidade! reenviado 🙌",
         resultado: "A loja aprovou em poucas horas, e o evento começou na hora certa.",
         pontos: { pressao: 1, logica: 1, criatividade: 1, organizacao: 1 }
@@ -527,13 +527,13 @@ adicionarVersoes("design-de-jogos", [
     naVidaReal: "Em game jams, como a Global Game Jam, equipes criam jogos completos em um fim de semana. O segredo é escolher uma ideia pequena, dividir bem as tarefas e terminar algo jogável.",
     opcoes: [
       {
-        texto: "Monto um cronograma detalhado das 48 horas antes de ter qualquer ideia.",
+        texto: "Monto um cronograma detalhado das 48 horas antes de ter qualquer ideia, para ninguém perder tempo.",
         reacao: "lindo cronograma... mas de qual jogo? 😅",
         resultado: "A equipe perdeu horas organizando um projeto que ainda não existia.",
         pontos: { organizacao: 2, logica: 1 }
       },
       {
-        texto: "Faço uma chuva de ideias com o time, escolhemos a menor que dá para terminar e dividimos as tarefas.",
+        texto: "Faço uma chuva de ideias com o time e escolhemos a menor que dá para terminar.",
         reacao: "dois personagens presos por uma corda? simples e genial 🤩",
         resultado: "O jogo ficou pronto com seis horas de folga e ganhou o prêmio de melhor ideia.",
         pontos: { criatividade: 2, pessoas: 1, organizacao: 1 }
@@ -582,7 +582,7 @@ adicionarVersoes("design-de-jogos", [
         pontos: {}
       },
       {
-        texto: "Escrevo um documento enorme com todas as regras de design de fases.",
+        texto: "Escrevo um documento enorme com todas as regras de design de fases, para ele estudar e não errar mais.",
         reacao: "uau, 30 páginas... 😳",
         resultado: "O documento é útil para o futuro, mas não ajudou o Téo com a fase dele agora.",
         pontos: { organizacao: 1, criatividade: 1 }

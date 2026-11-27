@@ -173,7 +173,7 @@ PROFISSOES.push({
       naVidaReal: "Nem toda parede pode ser derrubada: algumas sustentam a estrutura. Explicar isso de forma clara, e propor alternativas, evita acidentes e frustração do cliente.",
       opcoes: [
         {
-          texto: "Derrubo a parede mesmo: o cliente manda.",
+          texto: "Derrubo a parede mesmo: a cliente é quem paga a obra e sabe o que quer para a própria casa.",
           reacao: "que bom, vai ficar lindo! 😍",
           resultado: "A parede era estrutural. Surgiram rachaduras e foi preciso reforçar a estrutura, com um custo enorme.",
           pontos: {}
@@ -229,7 +229,7 @@ PROFISSOES.push({
           pontos: { pessoas: 2, organizacao: 1 }
         },
         {
-          texto: "Reviso o orçamento, negocio com fornecedores e busco alternativas equivalentes e seguras.",
+          texto: "Negocio com fornecedores e busco materiais equivalentes e seguros.",
           reacao: "se for pegar em quantidade maior, consigo um desconto 😉",
           resultado: "Com uma compra conjunta e um material equivalente aprovado, o aumento ficou em apenas 3%.",
           pontos: { organizacao: 2, criatividade: 1, logica: 1 }
@@ -286,7 +286,7 @@ PROFISSOES.push({
       naVidaReal: "O diário de obra é um documento oficial: registra clima, equipe, atividades e ocorrências. Ele pode ser usado como prova em caso de problemas.",
       opcoes: [
         {
-          texto: "Deixo para preencher amanhã, quando eu lembrar melhor.",
+          texto: "Deixo para preencher amanhã cedo, com a cabeça descansada, quando eu lembrar melhor de tudo.",
           reacao: "amanhã? você já vai ter esquecido metade 😅",
           resultado: "No dia seguinte, vários detalhes importantes já tinham sido esquecidos.",
           pontos: {}
@@ -337,7 +337,7 @@ adicionarVersoes("engenharia-civil", [
         pontos: {}
       },
       {
-        texto: "Improviso colocando mais barras finas, sem refazer o cálculo.",
+        texto: "Improviso colocando mais barras finas, que somadas dão quase a mesma área de aço, sem refazer o cálculo.",
         reacao: "dá pra compensar assim? 🤔",
         resultado: "A ideia pode até funcionar, mas sem cálculo ninguém podia garantir a segurança.",
         pontos: { criatividade: 1, pressao: 1 }
@@ -349,7 +349,7 @@ adicionarVersoes("engenharia-civil", [
         pontos: {}
       },
       {
-        texto: "Confiro o projeto, recuso a entrega, peço a troca urgente e reorganizo as tarefas do dia.",
+        texto: "Recuso a entrega, peço a troca urgente e reorganizo as tarefas do dia.",
         reacao: "beleza, a turma adianta a alvenaria enquanto o aço não chega 👷",
         resultado: "O aço certo chegou à tarde, e ninguém ficou parado.",
         pontos: { organizacao: 2, logica: 1, pressao: 1 }
@@ -391,7 +391,7 @@ adicionarVersoes("engenharia-civil", [
         pontos: {}
       },
       {
-        texto: "Anoto para comentar na reunião de segurança de sexta.",
+        texto: "Anoto o nome dele para comentar na reunião de segurança de sexta, com toda a equipe reunida.",
         reacao: "sexta é daqui a quatro dias... 😬",
         resultado: "A anotação ficou registrada, mas o trabalho perigoso continuou.",
         pontos: { organizacao: 1 }
@@ -403,7 +403,7 @@ adicionarVersoes("engenharia-civil", [
         pontos: { pressao: 1 }
       },
       {
-        texto: "Peço que ele desça com cuidado, providencio o cinto preso à linha de vida e converso com a equipe.",
+        texto: "Peço que ele desça, providencio o cinto preso à linha de vida e converso com a equipe.",
         reacao: "...é, minha filha ia me matar se eu caísse 😅",
         resultado: "Ele voltou ao trabalho com o cinto, e a equipe passou a conferir o equipamento uns dos outros.",
         pontos: { pressao: 2, pessoas: 1, organizacao: 1 }
@@ -450,7 +450,7 @@ adicionarVersoes("engenharia-civil", [
         pontos: {}
       },
       {
-        texto: "Peço que ele mande a reclamação por escrito e encerro a conversa.",
+        texto: "Peço que ele mande a reclamação por escrito, com fotos, para a construtora analisar, e encerro a conversa.",
         reacao: "por escrito? tô falando com você agora! 😤",
         resultado: "A reclamação chegou por escrito, mas o vizinho ficou ainda mais irritado.",
         pontos: { organizacao: 1 }
@@ -462,7 +462,7 @@ adicionarVersoes("engenharia-civil", [
         pontos: {}
       },
       {
-        texto: "Vou à casa dele, meço e fotografo as rachaduras, comparo com a vistoria feita antes da obra e combino um acompanhamento.",
+        texto: "Fotografo as rachaduras, comparo com a vistoria feita antes da obra e combino um acompanhamento.",
         reacao: "...as rachaduras do quarto já tavam nas fotos? mas a da sala é nova 🤔",
         resultado: "A vistoria mostrou o que era antigo e o que era novo, e a construtora reparou só o dano causado pela obra.",
         pontos: { logica: 2, criatividade: 1, pessoas: 1 }
@@ -487,7 +487,7 @@ adicionarVersoes("engenharia-civil", [
         pontos: {}
       },
       {
-        texto: "Encurto o tempo de cura do concreto para ganhar uns dias.",
+        texto: "Encurto o tempo de cura do concreto para ganhar uns dias: com o calor que está fazendo, ele seca mais rápido.",
         reacao: "e isso é seguro? 🤔",
         resultado: "Ganhou dias, mas a estrutura ficou com resistência menor do que o projeto exigia.",
         pontos: { criatividade: 1 }
@@ -499,7 +499,7 @@ adicionarVersoes("engenharia-civil", [
         pontos: { pessoas: 2, organizacao: 1 }
       },
       {
-        texto: "Refaço o cronograma, vejo quais serviços podem correr juntos e proponho uma data possível, sem pular a cura do concreto.",
+        texto: "Refaço o cronograma, vejo quais serviços podem correr juntos e proponho uma data possível.",
         reacao: "três semanas antes já me salva! 🙌",
         resultado: "Com as equipes trabalhando em paralelo, a casa ficou pronta três semanas antes, com segurança.",
         pontos: { organizacao: 2, criatividade: 1, logica: 1 }
@@ -531,13 +531,13 @@ adicionarVersoes("engenharia-civil", [
         pontos: { pressao: 1 }
       },
       {
-        texto: "Improviso uma bomba para tirar a água e mando a equipe continuar.",
+        texto: "Improviso uma bomba para tirar a água e mando a equipe continuar, para não atrasar a fundação.",
         reacao: "a bomba ajuda... mas e o barranco? 😬",
         resultado: "A água baixou, mas a equipe continuou exposta ao risco de desmoronamento.",
         pontos: { logica: 1, criatividade: 1, pressao: 1 }
       },
       {
-        texto: "Tiro todos da escavação, isolo a área e a calçada e chamo o engenheiro de solos para avaliar.",
+        texto: "Tiro todos da escavação, isolo a área e chamo o engenheiro de solos.",
         reacao: "todo mundo fora! área isolada 👷",
         resultado: "O barranco cedeu à noite, mas sem ninguém por perto. A contenção foi reforçada no dia seguinte.",
         pontos: { pressao: 2, logica: 1, organizacao: 1 }
@@ -568,13 +568,13 @@ adicionarVersoes("engenharia-civil", [
         pontos: { pressao: 1 }
       },
       {
-        texto: "Meço o que foi feito, confiro com o projeto e registro com fotos antes de liberar o pagamento.",
+        texto: "Meço o que foi feito e confiro com o projeto antes de liberar o pagamento.",
         reacao: "deu 310 m²... é, a parede do fundo ainda não tá pronta mesmo 😅",
         resultado: "O pagamento saiu certo e no mesmo dia, sem discussão.",
         pontos: { organizacao: 2, logica: 1 }
       },
       {
-        texto: "Peço para a empreiteira medir e eu só assino.",
+        texto: "Peço para a empreiteira medir, já que ela conhece o serviço que fez, e eu só assino.",
         reacao: "pode deixar, a gente mede 😏",
         resultado: "A medição veio a mais, e você assinou um documento pelo qual é responsável.",
         pontos: { pessoas: 1, organizacao: 1 }

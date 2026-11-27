@@ -89,7 +89,7 @@ PROFISSOES.push({
       naVidaReal: "Desenvolvedores passam muito tempo investigando erros (o famoso debugging). Às vezes um problema leva horas, ou até dias, e a solução é uma única linha de código.",
       opcoes: [
         {
-          texto: "Leio os registros do sistema, testo em outros aparelhos e anoto cada hipótese até achar o padrão.",
+          texto: "Leio os registros do sistema e testo em outros aparelhos até achar o padrão.",
           reacao: "era no celular?! eu sempre falei que esses celulares são complicados 😂 obrigado!",
           resultado: "Depois de 1h30 de investigação, você descobriu que o erro só acontece em celulares com internet lenta. Que sensação boa!",
           pontos: { logica: 2, organizacao: 1 }
@@ -158,7 +158,7 @@ PROFISSOES.push({
           pontos: { organizacao: 1 }
         },
         {
-          texto: "Discordo de alguns comentários e proponho outra solução, explicando por quê.",
+          texto: "Discordo de alguns comentários e proponho outra solução, explicando por que acho a minha mais simples.",
           reacao: "hmm, faz sentido em parte! bora conversar sobre os outros? 🤝",
           resultado: "O colega gostou de alguns argumentos e aceitou parte da sua ideia, mas outros pontos ficaram sem entender.",
           pontos: { criatividade: 1, pessoas: 1 }
@@ -170,7 +170,7 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Agradeço, corrijo o que entendi e marco uma conversa rápida para tirar as dúvidas do resto.",
+          texto: "Corrijo o que entendi e marco uma conversa rápida para tirar as dúvidas do resto.",
           reacao: "fechou! 15h na salinha? vou te mostrar um truque bom 😎",
           resultado: "Na conversa, você aprendeu duas técnicas novas. O código ficou melhor e o colega gostou da sua atitude.",
           pontos: { logica: 1, pessoas: 1 }
@@ -208,7 +208,7 @@ PROFISSOES.push({
           pontos: { organizacao: 1 }
         },
         {
-          texto: "Explico com termos técnicos por que o pedido não faz sentido.",
+          texto: "Explico com termos técnicos por que o pedido não faz sentido, para ele entender as limitações do sistema.",
           reacao: "API? back-end? ...meu filho, eu só queria um botão 😕",
           resultado: "O cliente ficou perdido e saiu achando que a equipe não queria ajudar.",
           pontos: {}
@@ -228,7 +228,7 @@ PROFISSOES.push({
       naVidaReal: "Em equipes pequenas, quem programa muitas vezes também cuida do visual e da experiência de quem usa o sistema. Criatividade conta tanto quanto saber programar.",
       opcoes: [
         {
-          texto: "Rabisco duas ou três ideias no papel, testo qual é mais fácil de usar e programo a melhor.",
+          texto: "Rabisco algumas ideias no papel, testo qual é mais fácil de usar e programo.",
           reacao: "uau, ficou muito bom! 😍 a designer vai ficar com ciúme",
           resultado: "A tela ficou simples, bonita e pronta no prazo. A designer elogiou quando voltou.",
           pontos: { criatividade: 2, logica: 1, pressao: 1 }
@@ -246,7 +246,7 @@ PROFISSOES.push({
           pontos: { pressao: 1 }
         },
         {
-          texto: "Fico travado(a) sem saber por onde começar e espero a designer voltar.",
+          texto: "Fico travado(a) sem saber por onde começar e espero a designer voltar das férias para não errar o visual.",
           reacao: "semana que vem?! o cliente vai surtar 😱",
           resultado: "A entrega atrasou uma semana e o cliente reclamou.",
           pontos: {}
@@ -299,7 +299,7 @@ PROFISSOES.push({
           pontos: { pessoas: 1 }
         },
         {
-          texto: "Fico com a equipe, investigo com calma e depois registro o que aconteceu para não se repetir.",
+          texto: "Fico com a equipe, investigo e depois registro o que aconteceu.",
           reacao: { quem: "Lucas, desenvolvedor sênior", avatar: "🧑🏻‍💻", fala: "achamos! era um certificado vencido 🎉 escreve o relatório pra gente não esquecer?" },
           resultado: "Em 40 minutos o problema foi resolvido. O relatório que você escreveu evitou que o mesmo erro voltasse no mês seguinte.",
           pontos: { pressao: 2, logica: 1, organizacao: 1 }
@@ -332,13 +332,13 @@ adicionarVersoes("desenvolvimento-sistemas", [
     naVidaReal: "Estimar prazos é uma das partes mais difíceis do trabalho. Equipes costumam quebrar a tarefa em partes menores antes de prometer uma data, e iniciantes aprendem muito pedindo ajuda nessa hora.",
     opcoes: [
       {
-        texto: "Digo \"dois dias\" para parecer rápido(a), mesmo sem ter ideia.",
+        texto: "Digo \"dois dias\" para parecer rápido(a) na frente do gerente, mesmo sem ter ideia de quanto vai levar.",
         reacao: "ótimo, vou avisar o cliente! 👍",
         resultado: "A tarefa levou seis dias, e a equipe teve que explicar o atraso ao cliente.",
         pontos: {}
       },
       {
-        texto: "Peço uma hora para entender a tarefa e um colega para me ajudar a quebrá-la em partes antes de estimar.",
+        texto: "Peço uma hora para entender a tarefa e quebrá-la em partes com um colega antes de estimar.",
         reacao: "boa, estimativa com base é bem melhor 😉",
         resultado: "Com a ajuda, você chegou a quatro dias, um prazo realista que foi cumprido.",
         pontos: { pessoas: 1, organizacao: 1 }
@@ -460,7 +460,7 @@ adicionarVersoes("desenvolvimento-sistemas", [
     naVidaReal: "Clientes costumam pedir soluções gigantes para problemas simples. Entender a necessidade real e propor uma primeira versão pequena, que já resolve o principal, é uma parte importante do trabalho de quem desenvolve sistemas.",
     opcoes: [
       {
-        texto: "Anoto tudo e decido sozinho(a), depois, o que cabe no orçamento.",
+        texto: "Anoto tudo o que ela quer e decido sozinho(a), depois, o que cabe no orçamento e no prazo combinados.",
         reacao: "tá... mas me mostra antes, tá? 😅",
         resultado: "Você escolheu bem, mas ela não reconheceu o que tinha pedido e ficou insegura.",
         pontos: { criatividade: 1 }
@@ -497,7 +497,7 @@ adicionarVersoes("desenvolvimento-sistemas", [
     naVidaReal: "Acessibilidade digital é obrigatória pela Lei Brasileira de Inclusão. Leitores de tela leem o texto dos botões e campos: quando o desenvolvedor não descreve cada um, a pessoa não consegue usar o sistema.",
     opcoes: [
       {
-        texto: "Testo o app com o leitor de tela ligado, rabisco soluções e coloco descrições claras em cada botão.",
+        texto: "Testo o app com o leitor de tela e coloco descrições claras em cada botão.",
         reacao: "ele respondeu: \"agora consigo comprar sozinho!\" 🥹",
         resultado: "O app ficou acessível, e as correções melhoraram o uso para todos os clientes.",
         pontos: { criatividade: 2, logica: 1, pressao: 1 }
@@ -509,7 +509,7 @@ adicionarVersoes("desenvolvimento-sistemas", [
         pontos: { organizacao: 1 }
       },
       {
-        texto: "Escrevo \"botão\" como descrição de todos os botões, bem rápido.",
+        texto: "Escrevo \"botão\" como descrição de todos os botões, bem rápido, para o leitor de tela pelo menos falar alguma coisa.",
         reacao: "mas é exatamente disso que ele reclamou 🤦",
         resultado: "Nada mudou para quem usa leitor de tela.",
         pontos: { pressao: 1 }
