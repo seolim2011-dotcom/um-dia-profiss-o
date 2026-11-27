@@ -227,12 +227,12 @@ PROFISSOES.push({
       pergunta: "Toque na informação errada da etiqueta:",
       linhas: [
         "Produto: frango cru em cubos",
+        "Conservação: em temperatura ambiente",
         "Preparado em: 14/03, às 9h",
         "Validade: 16/03",
-        "Conservação: em temperatura ambiente",
         "Responsável: Lúcia"
       ],
-      correta: 3,
+      correta: 1,
       explicacao: "Carne crua precisa ficar na geladeira (até cerca de 4 °C) ou no freezer. Em temperatura ambiente, as bactérias se multiplicam rápido. Em cozinhas profissionais, tudo o que é guardado leva etiqueta com o nome, a data de preparo, a validade, a forma de conservação e o responsável.",
       traco: "organizacao"
     },
@@ -497,13 +497,13 @@ adicionarVersoes("gastronomia", [
     ],
     pergunta: "Toque na temperatura que está errada:",
     linhas: [
+      "Molho quente no balcão de servir: 30 °C",
       "Geladeira de carnes: 3 °C",
       "Freezer: -18 °C",
-      "Molho quente no balcão de servir: 30 °C",
       "Salada no balcão refrigerado: 5 °C",
       "Óleo da fritadeira: 180 °C"
     ],
-    correta: 2,
+    correta: 0,
     explicacao: "Entre cerca de 5 °C e 60 °C fica a \"zona de perigo\", em que as bactérias se multiplicam rápido. Comida quente servida no balcão precisa ficar acima de 60 °C; a 30 °C, o molho pode fazer mal a quem comer.",
     traco: "organizacao"
   },

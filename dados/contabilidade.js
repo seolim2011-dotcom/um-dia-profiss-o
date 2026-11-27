@@ -201,13 +201,13 @@ PROFISSOES.push({
       ],
       pergunta: "Toque na linha da nota fiscal que está errada:",
       linhas: [
+        "Comprador: Oficina do Hélio",
+        "Data de emissão: 05/06",
         "Produto: 3 caixas de óleo de motor",
         "Preço de cada caixa: R$ 120,00",
-        "Valor total dos produtos: R$ 480,00",
-        "Comprador: Oficina do Hélio",
-        "Data de emissão: 05/06"
+        "Valor total dos produtos: R$ 480,00"
       ],
-      correta: 2,
+      correta: 4,
       explicacao: "3 caixas × R$ 120,00 = R$ 360,00, e não R$ 480,00. Uma conferência simples evita pagar a mais ao fornecedor e lançar valores errados na contabilidade. Conferir cada número faz parte da rotina.",
       traco: "logica"
     },
@@ -474,11 +474,11 @@ adicionarVersoes("contabilidade", [
     linhas: [
       "Salário base: R$ 2.000,00",
       "Vale-transporte: desconto de R$ 120,00 (6% do salário)",
-      "INSS: desconto conforme a tabela oficial",
       "FGTS: R$ 160,00 descontados do salário do funcionário",
+      "INSS: desconto conforme a tabela oficial",
       "Pagamento até o 5º dia útil"
     ],
-    correta: 3,
+    correta: 2,
     explicacao: "O FGTS (8% do salário) é pago pela empresa, numa conta em nome do trabalhador. Ele não pode ser descontado do salário. Já o vale-transporte pode ter desconto de até 6%, e o INSS segue a tabela oficial.",
     traco: "logica"
   },

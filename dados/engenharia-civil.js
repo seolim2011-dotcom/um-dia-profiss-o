@@ -150,13 +150,13 @@ PROFISSOES.push({
       ],
       pergunta: "Toque no item da lista que representa um risco de segurança:",
       linhas: [
+        "Andaime apoiado sobre tijolos soltos",
         "Piso do andaime completo e firme",
         "Guarda-corpo nos quatro lados",
         "Operários com capacete e cinto de segurança",
-        "Andaime apoiado sobre tijolos soltos",
         "Rodapé para evitar queda de ferramentas"
       ],
-      correta: 3,
+      correta: 0,
       explicacao: "Um andaime nunca deve ser apoiado em tijolos soltos: eles podem ceder com o peso e provocar uma queda. Ele precisa de base firme e nivelada. Conferir esses itens é rotina de quem cuida da segurança da obra.",
       traco: "organizacao"
     },
@@ -424,11 +424,11 @@ adicionarVersoes("engenharia-civil", [
     linhas: [
       "Profundidade da escavação: 2 metros",
       "Paredes da vala escoradas",
-      "Terra retirada amontoada bem na beira da vala",
       "Escada para entrar e sair",
-      "Sinalização e cerca ao redor"
+      "Sinalização e cerca ao redor",
+      "Terra retirada amontoada bem na beira da vala"
     ],
-    correta: 2,
+    correta: 4,
     explicacao: "Terra amontoada na beira faz peso sobre a parede da vala e pode causar um desmoronamento em cima de quem está lá dentro. As normas de segurança pedem que o material fique afastado da borda.",
     traco: "organizacao"
   },

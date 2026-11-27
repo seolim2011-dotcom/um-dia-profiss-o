@@ -471,11 +471,11 @@ adicionarVersoes("seguranca-informacao", [
     linhas: [
       "Senhas com no mínimo 12 caracteres",
       "Verificação em duas etapas obrigatória",
-      "Senha padrão para novos funcionários: Mudar@123, sem obrigação de trocar",
       "Bloqueio da conta após 5 tentativas erradas",
-      "Aviso por e-mail a cada login em aparelho novo"
+      "Aviso por e-mail a cada login em aparelho novo",
+      "Senha padrão para novos funcionários: Mudar@123, sem obrigação de trocar"
     ],
-    correta: 2,
+    correta: 4,
     explicacao: "Uma senha padrão igual para todos, que ninguém é obrigado a trocar, é uma das primeiras coisas que atacantes testam. Novas contas devem receber uma senha provisória diferente e exigir a troca no primeiro acesso.",
     traco: "organizacao"
   },

@@ -459,11 +459,11 @@ adicionarVersoes("veterinaria", [
     linhas: [
       "Paciente: Mia, gata, 4 kg",
       "Motivo: dor após a castração",
-      "Paracetamol 75 mg, 1 vez ao dia",
       "Repouso e colar protetor por 10 dias",
+      "Paracetamol 75 mg, 1 vez ao dia",
       "Retorno em 7 dias"
     ],
-    correta: 2,
+    correta: 3,
     explicacao: "O paracetamol é muito tóxico para gatos, mesmo em doses pequenas, porque o organismo deles não consegue eliminar esse remédio. Muitos medicamentos de uso humano são perigosos para animais: só o veterinário pode indicar o remédio certo.",
     traco: "organizacao"
   },

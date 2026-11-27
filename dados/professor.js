@@ -370,13 +370,13 @@ adicionarVersoes("professor", [
     ],
     pergunta: "Toque na frase com erro de português:",
     linhas: [
+      "Fazem dois anos que eu penso em ser professor.",
       "Muitos jovens escolhem a profissão sem conhecer a rotina.",
       "Por isso, é importante pesquisar antes de decidir.",
-      "Fazem dois anos que eu penso em ser professor.",
       "Conversar com profissionais da área ajuda muito.",
       "Assim, a escolha fica mais consciente."
     ],
-    correta: 2,
+    correta: 0,
     explicacao: "Quando indica tempo, o verbo \"fazer\" não vai para o plural: o certo é \"Faz dois anos\". É um erro muito comum, e explicar o porquê ajuda mais o aluno do que só riscar a frase.",
     traco: "organizacao"
   },

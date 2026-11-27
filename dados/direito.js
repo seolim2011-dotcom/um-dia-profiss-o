@@ -96,13 +96,13 @@ PROFISSOES.push({
       ],
       pergunta: "Toque na cláusula que parece abusiva e pode ser contestada:",
       linhas: [
+        "Multa por atraso de 100% do valor do aluguel",
         "Aluguel mensal de R$ 1.500,00",
         "Prazo do contrato: 30 meses",
         "Reajuste anual pelo índice IGP-M",
-        "Multa por atraso de 100% do valor do aluguel",
         "Devolução do imóvel com aviso prévio de 30 dias"
       ],
-      correta: 3,
+      correta: 0,
       explicacao: "Uma multa de 100% sobre o aluguel por atraso é desproporcional, e um juiz pode reduzi-la ou anulá-la. Ler contratos com atenção e achar esse tipo de cláusula é o dia a dia de quem atua com Direito.",
       traco: "logica"
     },
@@ -374,12 +374,12 @@ adicionarVersoes("direito", [
     pergunta: "Toque na cláusula proibida pela Lei do Inquilinato:",
     linhas: [
       "Prazo do contrato: 30 meses",
+      "Garantias: fiador e, também, depósito caução de 3 aluguéis",
       "Aluguel: R$ 1.500,00 por mês",
       "Reajuste uma vez por ano, pelo índice combinado",
-      "Garantias: fiador e, também, depósito caução de 3 aluguéis",
       "Pintura do imóvel por conta do inquilino na saída, se ele tiver estragado"
     ],
-    correta: 3,
+    correta: 1,
     explicacao: "A Lei do Inquilinato (Lei 8.245/1991) proíbe exigir mais de uma garantia no mesmo contrato: ou fiador, ou caução, ou seguro-fiança. Cobrar fiador e caução ao mesmo tempo é irregular.",
     traco: "logica"
   },

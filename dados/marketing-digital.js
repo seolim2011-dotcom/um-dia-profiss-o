@@ -197,12 +197,12 @@ PROFISSOES.push({
       pergunta: "O desconto é de 20%. Toque na linha do anúncio com a informação errada:",
       linhas: [
         "Título: Sorvete artesanal com 20% de desconto",
-        "Texto: só até sexta",
         "Preço: de R$ 10,00 por R$ 9,00",
+        "Texto: só até sexta",
         "Botão: peça agora",
         "Endereço: Rua das Flores, 120"
       ],
-      correta: 2,
+      correta: 1,
       explicacao: "20% de R$ 10,00 são R$ 2,00, então o preço promocional seria R$ 8,00, e não R$ 9,00. Erros em anúncios podem gerar reclamações e até processos de clientes. Revisar números faz parte do trabalho.",
       traco: "logica"
     },

@@ -452,11 +452,11 @@ adicionarVersoes("jornalismo", [
     linhas: [
       "A prefeitura reformou 12 escolas municipais.",
       "As obras beneficiaram 3.400 alunos.",
-      "O investimento foi de R$ 60 milhões.",
       "As obras foram entregues em março.",
+      "O investimento foi de R$ 60 milhões.",
       "A Secretaria de Educação foi procurada pela reportagem."
     ],
-    correta: 2,
+    correta: 3,
     explicacao: "O comunicado fala em R$ 6 milhões, e não R$ 60 milhões. Um zero a mais muda completamente a notícia. Checar números, nomes e datas com a fonte original é parte essencial do trabalho.",
     traco: "logica"
   },

@@ -195,11 +195,11 @@ PROFISSOES.push({
       linhas: [
         "Tamanho: 21 × 29,7 cm (A4)",
         "Resolução: 300 dpi",
-        "Modo de cor: RGB",
         "Margem de segurança: 3 mm",
-        "Fontes convertidas em curvas"
+        "Fontes convertidas em curvas",
+        "Modo de cor: RGB"
       ],
-      correta: 2,
+      correta: 4,
       explicacao: "Para impressão, o modo de cor correto é CMYK (ciano, magenta, amarelo e preto), o das tintas da gráfica. O RGB é para telas e pode mudar as cores na impressão. Conferir esses detalhes técnicos evita retrabalho.",
       traco: "logica"
     },

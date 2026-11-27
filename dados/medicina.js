@@ -543,11 +543,11 @@ adicionarVersoes("medicina", [
     linhas: [
       "Paciente: Ana Paula, 34 anos, 60 kg",
       "Paracetamol 750 mg",
-      "Tomar 2 comprimidos de 4 em 4 horas",
       "Em caso de febre ou dor",
-      "Por até 3 dias"
+      "Por até 3 dias",
+      "Tomar 2 comprimidos de 4 em 4 horas"
     ],
-    correta: 2,
+    correta: 4,
     explicacao: "Dois comprimidos de 750 mg de 4 em 4 horas dão 9 gramas por dia. A dose máxima de paracetamol para um adulto costuma ser de 4 gramas por dia, e passar disso pode causar lesão grave no fígado. Remédio comum também tem limite.",
     traco: "logica"
   },

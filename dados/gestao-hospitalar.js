@@ -192,11 +192,11 @@ PROFISSOES.push({
       linhas: [
         "Sônia: segunda, das 7h às 19h",
         "Rafael: segunda, das 19h às 7h",
-        "Bruna: terça, das 7h às 19h e das 19h às 7h",
         "Carla: quarta, das 19h às 7h",
-        "Diego: quinta, folga"
+        "Diego: quinta, folga",
+        "Bruna: sexta, das 7h às 19h e das 19h às 7h"
       ],
-      correta: 2,
+      correta: 4,
       explicacao: "A Bruna ficaria 24 horas seguidas: das 7h às 19h e depois das 19h às 7h. Escala mal feita cansa a equipe e aumenta o risco de erro com pacientes. Por isso, conferir as regras é parte do trabalho de quem faz a gestão.",
       traco: "organizacao"
     },
@@ -457,12 +457,12 @@ adicionarVersoes("gestao-hospitalar", [
     ],
     pergunta: "Toque na linha da planilha de compras que tem uma conta errada:",
     linhas: [
+      "Máscaras: 300 caixas × R$ 20,00 = R$ 9.000,00",
       "Luvas: 200 caixas × R$ 30,00 = R$ 6.000,00",
       "Seringas: 1.000 unidades × R$ 0,50 = R$ 500,00",
-      "Máscaras: 300 caixas × R$ 20,00 = R$ 9.000,00",
       "Álcool em gel: 50 galões × R$ 40,00 = R$ 2.000,00"
     ],
-    correta: 2,
+    correta: 0,
     explicacao: "300 × R$ 20,00 = R$ 6.000,00, e não R$ 9.000,00. Conferir valores e quantidades evita pagar a mais com dinheiro que faria falta em outro setor. Na gestão, cada conta importa.",
     traco: "logica"
   },

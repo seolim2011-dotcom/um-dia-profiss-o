@@ -595,12 +595,12 @@ adicionarVersoes("enfermagem", [
     pergunta: "Sinais vitais de um adulto em repouso. Toque no valor que está fora do normal:",
     linhas: [
       "Pressão arterial: 120 × 80 mmHg",
+      "Saturação de oxigênio: 85%",
       "Frequência cardíaca: 78 batimentos por minuto",
       "Temperatura: 36,8 °C",
-      "Saturação de oxigênio: 85%",
       "Frequência respiratória: 16 por minuto"
     ],
-    correta: 3,
+    correta: 1,
     explicacao: "Em adultos saudáveis, a saturação de oxigênio costuma ficar entre 95% e 100%. Com 85%, o corpo está recebendo pouco oxigênio: a equipe avisa o médico, posiciona o paciente e pode precisar oferecer oxigênio.",
     traco: "logica"
   },
