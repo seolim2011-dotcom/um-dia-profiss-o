@@ -155,13 +155,13 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Faço a cirurgia de graça, mesmo que a clínica perca dinheiro.",
+          texto: "Faço a cirurgia de graça, mesmo que a clínica perca dinheiro: a vida da gata vem antes de qualquer conta.",
           reacao: "ai, obrigada! deus lhe pague! 😭",
           resultado: "A família ficou muito grata. Mas, na semana seguinte, outras três famílias pediram o mesmo, e a clínica não se manteria assim.",
           pontos: { pessoas: 1 }
         },
         {
-          texto: "Explico com sinceridade as opções possíveis, incluindo tratamentos mais simples e formas de pagamento.",
+          texto: "Explico as opções possíveis, incluindo tratamentos mais simples e formas de pagamento.",
           reacao: "parcelado em 6 vezes eu consigo! e o remédio mais simples ajuda enquanto isso? 🙏",
           resultado: "Vocês encontraram um tratamento que cabe no orçamento da família. A gata vai ficar bem.",
           pontos: { pessoas: 2, criatividade: 1, logica: 1 }
@@ -209,7 +209,7 @@ PROFISSOES.push({
       naVidaReal: "A eutanásia faz parte da medicina veterinária quando não há como aliviar o sofrimento do animal. Muitos profissionais dizem que esse é o lado mais pesado da profissão.",
       opcoes: [
         {
-          texto: "Explico a situação com cuidado, respeito o tempo da família e deixo que eles se despeçam.",
+          texto: "Explico a situação, respeito o tempo da família e deixo que eles se despeçam.",
           reacao: "obrigada por cuidar tão bem dele... e de nós 💔",
           resultado: "Foi um momento muito triste, mas a família agradeceu pelo respeito e pelo carinho com o Thor.",
           pontos: { pessoas: 2, pressao: 1, logica: 1 }
@@ -227,7 +227,7 @@ PROFISSOES.push({
           pontos: { logica: 2, pressao: 2 }
         },
         {
-          texto: "Evito o assunto e sugiro mais exames, mesmo sabendo que não vão ajudar.",
+          texto: "Evito o assunto e sugiro mais exames, mesmo sabendo que não vão ajudar, para a família ter mais alguns dias.",
           reacao: "então tem esperança? 🥺",
           resultado: "O Thor continuou sofrendo por mais alguns dias e a família gastou com exames que não mudariam nada.",
           pontos: {}
@@ -265,7 +265,7 @@ PROFISSOES.push({
           pontos: { organizacao: 1, logica: 1, pessoas: 1 }
         },
         {
-          texto: "Pergunto o tipo e a quantidade do chocolate, o peso do cão, calculo o risco e oriento a trazer imediatamente.",
+          texto: "Pergunto o tipo e a quantidade do chocolate e o peso do cão, e peço que venha já.",
           reacao: "era chocolate meio amargo, 100 g!! tô levando agora!! 🏃‍♀️",
           resultado: "Em 20 minutos o cachorro estava na clínica, recebeu tratamento a tempo e se recuperou bem.",
           pontos: { logica: 1, pressao: 2, pessoas: 1, organizacao: 1 }
@@ -336,13 +336,13 @@ adicionarVersoes("veterinaria", [
         pontos: { pessoas: 1 }
       },
       {
-        texto: "Digo que gato é assim mesmo e que ela vai voltar a comer sozinha.",
+        texto: "Digo que gato é assim mesmo, que muda de humor com facilidade, e que ela vai voltar a comer sozinha em alguns dias.",
         reacao: "tem certeza? já são três dias... 😟",
         resultado: "A gata piorou em casa e voltou dois dias depois, bem mais doente.",
         pontos: {}
       },
       {
-        texto: "Abaixo a luz, examino com calma dentro da própria caixa e uso uma toalha para segurá-la com segurança.",
+        texto: "Abaixo a luz e examino a gata dentro da própria caixa, com uma toalha para segurá-la.",
         reacao: "nossa, ela até ficou quietinha 😮",
         resultado: "Com calma, você examinou a gata sem estresse e descobriu uma inflamação na gengiva que doía ao comer.",
         pontos: { pressao: 1, pessoas: 1 }
@@ -395,13 +395,13 @@ adicionarVersoes("veterinaria", [
         pontos: { organizacao: 1 }
       },
       {
-        texto: "Ajudo a corrigir a posição do bezerro seguindo as orientações, cuido da higiene e anoto o horário de cada etapa.",
+        texto: "Ajudo a corrigir a posição do bezerro, cuido da higiene e anoto o horário de cada etapa.",
         reacao: "isso, puxa junto com a contração... agora! 💪",
         resultado: "O bezerro nasceu bem, e suas anotações ajudaram a acompanhar a vaca nos dias seguintes.",
         pontos: { logica: 1, pressao: 1, organizacao: 1 }
       },
       {
-        texto: "Fico conversando com o produtor, que está muito nervoso, para acalmá-lo.",
+        texto: "Fico conversando com o produtor, que está muito nervoso, para acalmá-lo e evitar que ele atrapalhe o trabalho.",
         reacao: "obrigado, viu... é que essa vaca é tudo pra mim 🥺",
         resultado: "O produtor se acalmou, mas a veterinária precisou de mãos extras no parto.",
         pontos: { pessoas: 2 }
@@ -426,13 +426,13 @@ adicionarVersoes("veterinaria", [
         pontos: {}
       },
       {
-        texto: "Faço tudo de graça, sem combinar com a clínica.",
+        texto: "Faço tudo de graça, sem combinar com a clínica: ela resgatou o cão e não pode ficar sem ajuda.",
         reacao: "sério?? muito obrigada!! 🥹",
         resultado: "O cão foi tratado, mas a dona da clínica não gostou de saber depois, e o custo ficou para a equipe.",
         pontos: { pessoas: 1 }
       },
       {
-        texto: "Trato primeiro o que é urgente, monto um plano de custos por etapas e indico campanhas gratuitas da prefeitura.",
+        texto: "Trato o urgente, monto um plano de custos por etapas e indico campanhas gratuitas.",
         reacao: "dá pra ir pagando por etapas? perfeito!! 🙌",
         resultado: "O cão melhorou em poucas semanas, foi castrado numa campanha gratuita e acabou adotado.",
         pontos: { pessoas: 2, criatividade: 1, logica: 1 }
@@ -479,7 +479,7 @@ adicionarVersoes("veterinaria", [
     naVidaReal: "Pelas regras do Conselho Federal de Medicina Veterinária, a eutanásia só é indicada quando não há outra forma de aliviar um sofrimento ou quando há risco. Um animal saudável deve ter outro destino, como a adoção responsável.",
     opcoes: [
       {
-        texto: "Explico com calma que não fazemos eutanásia em animal saudável e ajudo a procurar uma ONG ou um novo lar.",
+        texto: "Explico que não fazemos eutanásia em animal saudável e ajudo a procurar um novo lar.",
         reacao: "eu não sabia que tinha outra saída... me ajuda então? 😢",
         resultado: "Em duas semanas, uma família do bairro adotou o Thor.",
         pontos: { pessoas: 2, pressao: 1, logica: 1 }
@@ -491,7 +491,7 @@ adicionarVersoes("veterinaria", [
         pontos: { pessoas: 1 }
       },
       {
-        texto: "Explico de forma técnica a norma do Conselho e recuso, sem discutir alternativas.",
+        texto: "Explico de forma técnica a norma do Conselho de Medicina Veterinária e recuso, sem discutir alternativas.",
         reacao: "tá, entendi a regra. e o que eu faço com ele? 🤷",
         resultado: "A regra foi cumprida, mas o cachorro corria o risco de ser abandonado.",
         pontos: { logica: 2, pressao: 2 }
@@ -529,13 +529,13 @@ adicionarVersoes("veterinaria", [
         pontos: {}
       },
       {
-        texto: "Peço que ela traga a gata e um pedaço da planta agora.",
+        texto: "Peço que ela traga a gata e um pedaço da planta agora mesmo, sem perder tempo com perguntas pelo telefone.",
         reacao: "tô indo! levo o buquê junto 🚗",
         resultado: "A gata chegou rápido e começou o tratamento. Você só confirmou o tipo de planta depois que ela chegou.",
         pontos: { organizacao: 1, logica: 1, pessoas: 1 }
       },
       {
-        texto: "Pergunto quando foi e quanto ela comeu, explico que lírio é muito perigoso para gatos e peço para vir já, com a planta.",
+        texto: "Pergunto quando foi e quanto ela comeu, explico que lírio é perigoso para gatos e peço para vir já.",
         reacao: "faz 20 minutos. tô indo agora mesmo! 🚗💨",
         resultado: "Com as informações em mãos, a equipe já esperava a gata pronta para começar o tratamento. Ela se recuperou.",
         pontos: { logica: 1, pressao: 2, pessoas: 1, organizacao: 1 }

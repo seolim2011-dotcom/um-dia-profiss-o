@@ -59,13 +59,13 @@ PROFISSOES.push({
       naVidaReal: "Gestores de saúde trabalham o tempo todo com indicadores: tempo de espera, ocupação de leitos, custos, infecções. Decidir com base em dados, e não no “achismo”, é parte central da profissão.",
       opcoes: [
         {
-          texto: "Vou direto conversar com a equipe do pronto-socorro para ouvir o que está acontecendo.",
+          texto: "Vou direto conversar com a equipe do pronto-socorro: quem está lá sabe melhor do que qualquer planilha o que está acontecendo.",
           reacao: "conversar é bom. mas eu preciso de número, não de opinião.",
           resultado: "A equipe se sentiu ouvida e deu boas pistas, mas sem os dados você não conseguiu mostrar à diretoria onde está o problema.",
           pontos: { pessoas: 2 }
         },
         {
-          texto: "Cruzo os dados por horário e dia da semana para achar o gargalo e depois converso com a equipe do pronto-socorro.",
+          texto: "Cruzo os dados por horário e dia da semana e depois converso com a equipe do pronto-socorro.",
           reacao: "à noite, então. ótimo. isso eu consigo defender na diretoria 👍",
           resultado: "Você descobriu que o problema se concentra à noite, quando há só um médico na triagem. O plano ficou certeiro.",
           pontos: { logica: 2, organizacao: 1, pessoas: 1 }
@@ -121,7 +121,7 @@ PROFISSOES.push({
       naVidaReal: "A gestão de leitos é um dos maiores desafios dos hospitais. O gestor quase não atende pacientes, mas suas decisões afetam diretamente quem está esperando atendimento.",
       opcoes: [
         {
-          texto: "Ligo para outros hospitais da rede e negocio a transferência de alguns pacientes.",
+          texto: "Ligo para outros hospitais da rede e negocio a transferência de alguns pacientes internados para lá.",
           reacao: "transferência demora... mas ok, já ajuda 😮‍💨",
           resultado: "Você conseguiu duas vagas fora, mas as transferências levaram a tarde toda.",
           pontos: { criatividade: 1, pessoas: 1, pressao: 1 }
@@ -133,7 +133,7 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Reviso com as equipes quais pacientes já podem ter alta hoje e agilizo a liberação desses leitos.",
+          texto: "Reviso com as equipes quem já pode ter alta hoje e agilizo a liberação desses leitos.",
           reacao: "4 leitos até o meio-dia? perfeito, obrigada! 🙏",
           resultado: "Quatro leitos foram liberados até o meio-dia. A médica ainda reclamou, mas a fila andou.",
           pontos: { organizacao: 2, pressao: 1, pessoas: 1 }
@@ -263,13 +263,13 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Analiso os horários de agendamento para descobrir por que os exames atrasam.",
+          texto: "Analiso os horários de agendamento da última semana para descobrir em que momento do dia os exames atrasam.",
           reacao: "ninguém me respondeu até agora. já postei. 📱",
           resultado: "Você achou a causa do atraso, mas o paciente ficou sem resposta e publicou a reclamação.",
           pontos: { logica: 1, organizacao: 1 }
         },
         {
-          texto: "Ligo para o paciente, peço desculpas, ouço o que aconteceu e crio com a recepção um jeito de avisar sobre atrasos.",
+          texto: "Ligo para o paciente, peço desculpas e crio com a recepção um aviso de atrasos.",
           reacao: "...olha, obrigado por ligar. não esperava isso 🙂",
           resultado: "O paciente se acalmou e agradeceu o retorno. O aviso de atrasos reduziu as reclamações nas semanas seguintes.",
           pontos: { pessoas: 2, pressao: 1, criatividade: 1 }
@@ -289,13 +289,13 @@ PROFISSOES.push({
       naVidaReal: "Hospitais passam por fiscalizações e por processos de acreditação (selos de qualidade). Manter documentos, contratos e manutenções em dia é um trabalho constante de organização.",
       opcoes: [
         {
-          texto: "Corro para atualizar os registros às pressas enquanto um colega distrai os fiscais.",
+          texto: "Corro para atualizar os registros às pressas enquanto um colega leva os fiscais para conhecer os setores que estão em ordem.",
           reacao: "essas datas foram preenchidas hoje? 🤨",
           resultado: "Os fiscais perceberam a correria e as datas inconsistentes. O hospital recebeu uma advertência.",
           pontos: { pressao: 1 }
         },
         {
-          texto: "Acompanho os fiscais com transparência, mostro o que está em dia e apresento um plano com prazo para o que está atrasado.",
+          texto: "Acompanho os fiscais, mostro o que está em dia e apresento um plano com prazo para o resto.",
           reacao: "agradeço a transparência. vou registrar, mas com prazo para regularizar.",
           resultado: "Os fiscais registraram as pendências, mas deram prazo para regularizar por causa do plano apresentado.",
           pontos: { organizacao: 2, pressao: 1, pessoas: 1 }
@@ -389,7 +389,7 @@ adicionarVersoes("gestao-hospitalar", [
     naVidaReal: "Falta de medicamento é um problema real nos hospitais. A gestão de estoques, os contratos com fornecedores e os acordos entre hospitais existem para evitar que o tratamento seja interrompido.",
     opcoes: [
       {
-        texto: "Ligo para hospitais da região e peço um empréstimo emergencial do antibiótico.",
+        texto: "Ligo para hospitais da região e peço um empréstimo emergencial do antibiótico até a próxima entrega.",
         reacao: "o hospital vizinho tem 20 frascos! mandam em uma hora 🚑",
         resultado: "O empréstimo cobriu o dia, mas ninguém conferiu se os setores ainda tinham doses guardadas.",
         pontos: { criatividade: 1, pessoas: 1, pressao: 1 }
@@ -401,7 +401,7 @@ adicionarVersoes("gestao-hospitalar", [
         pontos: {}
       },
       {
-        texto: "Confiro o estoque de todos os setores, remanejo as doses para quem mais precisa, aviso as equipes e faço uma compra emergencial.",
+        texto: "Confiro o estoque dos setores, remanejo as doses e faço uma compra emergencial.",
         reacao: "achei 15 doses espalhadas nos setores! dá pra hoje 🙌",
         resultado: "Nenhum paciente ficou sem a dose, e a compra emergencial chegou à noite.",
         pontos: { organizacao: 2, pressao: 1, pessoas: 1 }
@@ -420,7 +420,7 @@ adicionarVersoes("gestao-hospitalar", [
     naVidaReal: "Equipamentos param, e a gestão precisa ter plano para isso: contratos de manutenção com prazo, acordos com hospitais parceiros e prioridade para os casos urgentes, como a suspeita de AVC, em que cada minuto conta.",
     opcoes: [
       {
-        texto: "Reorganizo a agenda com a equipe, mando as urgências para um hospital parceiro e registro tudo.",
+        texto: "Mando as urgências para um hospital parceiro e reorganizo a agenda com a equipe.",
         reacao: "o paciente do AVC já tá a caminho do parceiro 🚑",
         resultado: "Os casos urgentes foram atendidos a tempo, e os exames eletivos foram remarcados para a semana.",
         pontos: { organizacao: 2, pessoas: 1, pressao: 1 }
@@ -432,7 +432,7 @@ adicionarVersoes("gestao-hospitalar", [
         pontos: { organizacao: 1, pressao: 1, logica: 1 }
       },
       {
-        texto: "Peço desculpas pessoalmente aos pacientes que esperam e ofereço um lanche.",
+        texto: "Peço desculpas pessoalmente aos pacientes que esperam na recepção e ofereço um lanche enquanto aguardam notícias.",
         reacao: "eles gostaram... mas continuam sem exame 😕",
         resultado: "O gesto foi simpático, mas não resolveu o problema de ninguém.",
         pontos: { criatividade: 1, pessoas: 1 }
@@ -484,13 +484,13 @@ adicionarVersoes("gestao-hospitalar", [
         pontos: { organizacao: 1 }
       },
       {
-        texto: "Reúno a nutrição e a cozinha para darem ideias.",
+        texto: "Reúno a nutrição e a cozinha para darem ideias de como aproveitar as sobras, já que são elas que preparam tudo.",
         reacao: "a equipe adorou ser ouvida 😊",
         resultado: "Surgiram boas ideias, mas ninguém sabia ainda onde estava o maior desperdício.",
         pontos: { pessoas: 1, criatividade: 1 }
       },
       {
-        texto: "Meço o desperdício por refeição e setor e proponho ajustes, como produzir pela ocupação do dia e doar o excedente.",
+        texto: "Meço o desperdício por refeição e setor, ajusto a produção e doo o excedente.",
         reacao: "a maior sobra é do jantar da ortopedia! faz sentido 👏",
         resultado: "O desperdício caiu pela metade, e o excedente passou a ir para uma entidade do bairro.",
         pontos: { logica: 2, organizacao: 1, criatividade: 1 }
@@ -527,13 +527,13 @@ adicionarVersoes("gestao-hospitalar", [
         pontos: {}
       },
       {
-        texto: "Analiso os horários de atendimento da pediatria para achar o gargalo.",
+        texto: "Analiso os horários de atendimento da pediatria do último mês para achar o gargalo antes de responder qualquer coisa.",
         reacao: "o pico é entre 18h e 22h, justo com um pediatra só 👀",
         resultado: "A análise mostrou o problema, mas a família continuou sem resposta.",
         pontos: { logica: 1, organizacao: 1 }
       },
       {
-        texto: "Ligo para a mãe, peço desculpas, ouço o que houve e crio com a recepção um painel com o tempo de espera.",
+        texto: "Ligo para a mãe, peço desculpas e crio com a recepção um painel com o tempo de espera.",
         reacao: "...obrigada por ligar. ninguém tinha me explicado nada 😢",
         resultado: "A mãe atualizou o post agradecendo a ligação, e o painel de espera reduziu as reclamações.",
         pontos: { pessoas: 2, pressao: 1, criatividade: 1 }
@@ -553,13 +553,13 @@ adicionarVersoes("gestao-hospitalar", [
     naVidaReal: "Hospitais precisam ter geradores e um plano de contingência testado, porque UTIs e centros cirúrgicos não podem ficar sem energia. A gestão é responsável por manter esse plano funcionando.",
     opcoes: [
       {
-        texto: "Corro até a casa de máquinas para tentar mexer no gerador eu mesmo(a).",
+        texto: "Corro até a casa de máquinas para tentar religar o gerador eu mesmo(a), porque cada minuto sem energia na UTI conta.",
         reacao: "você nem é da manutenção! 😳",
         resultado: "Você não sabia operar o gerador, e ninguém coordenou o resto do hospital enquanto isso.",
         pontos: { pressao: 1 }
       },
       {
-        texto: "Aciono o plano de contingência: confirmo que o gerador assumiu a UTI e o centro cirúrgico, organizo as equipes e informo pacientes e famílias.",
+        texto: "Aciono o plano de contingência, confirmo que o gerador assumiu a UTI e o centro cirúrgico e informo as famílias.",
         reacao: "UTI e centro cirúrgico ok! 👍 os corredores tão com luz de emergência",
         resultado: "Nenhum paciente correu risco, e a energia voltou duas horas depois.",
         pontos: { organizacao: 2, pressao: 1, pessoas: 1 }

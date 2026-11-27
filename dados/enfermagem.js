@@ -160,7 +160,7 @@ PROFISSOES.push({
           pontos: { organizacao: 1 }
         },
         {
-          texto: "Explico cada passo, improviso uma cortina com o lençol para dar privacidade e converso com ele.",
+          texto: "Explico cada passo, improviso uma cortina com o lençol e converso com ele.",
           reacao: "olha só, cortina de lençol! 😄 caprichou, hein. sabia que eu já fui campeão de dominó do bairro?",
           resultado: "Seu Antônio se sentiu respeitado, relaxou e até contou histórias da juventude.",
           pontos: { pessoas: 2, criatividade: 1 }
@@ -290,13 +290,13 @@ PROFISSOES.push({
           pontos: { pessoas: 1, organizacao: 1 }
         },
         {
-          texto: "Levo ela para uma sala tranquila, escuto, explico o que posso e garanto que o médico vai procurá-la.",
+          texto: "Levo ela a uma sala tranquila, escuto e peço ao médico que a procure depois da cirurgia.",
           reacao: "...desculpa ter gritado. eu só tô com muito medo 😢 obrigada por me ouvir",
           resultado: "Ela se acalmou aos poucos e agradeceu por ter sido ouvida. Mais tarde, o médico conversou com a família.",
           pontos: { pessoas: 2, pressao: 1 }
         },
         {
-          texto: "Explico que o médico está em cirurgia e volto às minhas tarefas: tenho muitos pacientes.",
+          texto: "Explico que o médico está em cirurgia e que não posso dar informações, e volto às minhas tarefas: tenho muitos pacientes.",
           reacao: "e eu fico aqui sem saber de nada?! 😡",
           resultado: "A informação estava certa, mas ela continuou nervosa e voltou a gritar meia hora depois.",
           pontos: { organizacao: 1 }
@@ -390,7 +390,7 @@ adicionarVersoes("enfermagem", [
     naVidaReal: "Saber as alergias antes de dar um medicamento é obrigatório. Quando o paciente não consegue informar, a equipe procura a família, o prontuário de outras internações e marca a dúvida de forma bem visível.",
     opcoes: [
       {
-        texto: "Peço um minuto, confiro com ela o prontuário e anoto as pendências, como ligar para a família sobre alergias.",
+        texto: "Peço um minuto, confiro o prontuário com ela e anoto o que falta, como ligar para a família.",
         reacao: "boa, nem pensei em pedir pra família... a filha deixou o telefone aqui 📞",
         resultado: "A filha confirmou por telefone que ele tem alergia a penicilina. O antibiótico das 8h foi trocado antes de ser dado.",
         pontos: { organizacao: 2, pessoas: 1 }
@@ -408,7 +408,7 @@ adicionarVersoes("enfermagem", [
         pontos: { pessoas: 1, logica: 1 }
       },
       {
-        texto: "Assumo o plantão sem perguntar mais nada: o que importa deve estar no sistema.",
+        texto: "Assumo o plantão sem perguntar mais nada: ela está exausta, e o que importa deve estar registrado no sistema.",
         reacao: "tá bom, então. bom plantão 👋",
         resultado: "O campo de alergias estava em branco no sistema. Por pouco o antibiótico não foi dado sem a checagem.",
         pontos: {}
@@ -427,13 +427,13 @@ adicionarVersoes("enfermagem", [
     naVidaReal: "Feridas por pressão (as escaras) são comuns em quem fica muito tempo acamado. Prevenir, fazer curativos e mudar o paciente de posição a cada poucas horas são tarefas diárias da enfermagem.",
     opcoes: [
       {
-        texto: "Faço o curativo rápido, seguindo o protocolo, sem puxar conversa.",
+        texto: "Faço o curativo rápido, seguindo o protocolo à risca, sem puxar conversa para não prolongar a dor.",
         reacao: "...pronto? tá bom.",
         resultado: "O curativo ficou correto, mas ela passou o procedimento todo tensa, com os olhos fechados.",
         pontos: { organizacao: 1 }
       },
       {
-        texto: "Explico cada passo, coloco no celular uma música que ela gosta e faço tudo com calma.",
+        texto: "Explico cada passo e coloco no celular uma música de que ela gosta.",
         reacao: "ah, essa música era do meu casamento... 🥹 nem senti tanto",
         resultado: "Ela relaxou e chegou a cantar baixinho. A dor pareceu menor e ela pediu a mesma música no dia seguinte.",
         pontos: { pessoas: 2, criatividade: 1 }
@@ -487,13 +487,13 @@ adicionarVersoes("enfermagem", [
         pontos: { pessoas: 1 }
       },
       {
-        texto: "Vou ao quarto 7, peço o eletrocardiograma e o médico, e oriento o técnico a não levantar o senhor antes de avaliar.",
+        texto: "Vou ao quarto 7, peço eletrocardiograma e médico e oriento o técnico a não levantar o senhor.",
         reacao: { quem: "Rafael, técnico de enfermagem", avatar: "🧑🏿‍⚕️", fala: "beleza, deixo ele deitado e confortável aqui 👍" },
         resultado: "O eletrocardiograma mostrou um infarto, tratado a tempo. O senhor da queda tinha só um hematoma e foi avaliado com calma.",
         pontos: { pressao: 2, pessoas: 1, logica: 1 }
       },
       {
-        texto: "Corro para o quarto 7, mas esqueço de orientar quem está com o senhor que caiu.",
+        texto: "Corro para o quarto 7, porque dor no peito pode ser infarto, mas esqueço de orientar quem está com o senhor que caiu.",
         reacao: { quem: "Rafael, técnico de enfermagem", avatar: "🧑🏿‍⚕️", fala: "e aqui, o que eu faço?? 😰" },
         resultado: "O paciente do 7 foi atendido a tempo, mas o do 2 ficou no chão frio, sem orientação, por quase meia hora.",
         pontos: { pressao: 1 }
@@ -531,7 +531,7 @@ adicionarVersoes("enfermagem", [
         pontos: { pessoas: 1 }
       },
       {
-        texto: "Peço que ele me passe rapidamente quem precisa de quê, assumo os pacientes e libero ele.",
+        texto: "Peço um resumo rápido de quem precisa de quê e assumo os pacientes dele.",
         reacao: "você salvou meu dia!! te devo uma 🙌",
         resultado: "Com a passagem rápida, nada se perdeu. O Rafael buscou o filho e no dia seguinte trouxe um bolo para a equipe.",
         pontos: { pessoas: 2, pressao: 1 }

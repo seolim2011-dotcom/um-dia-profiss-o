@@ -65,13 +65,13 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Repito a conduta da noite sem olhar de novo, para ganhar tempo.",
+          texto: "Repito a conduta da noite sem examinar de novo: o plantonista já avaliou e a lista de visitas está longa.",
           reacao: "hmm... e se o quadro mudou? 🤨",
           resultado: "A conduta anterior já não servia mais: ele precisou de ajuste de medicação à tarde.",
           pontos: { organizacao: 1 }
         },
         {
-          texto: "Examino com calma, reviso os exames e converso com o paciente antes de opinar.",
+          texto: "Examino, reviso os exames e converso com o paciente antes de opinar.",
           reacao: "boa! exame fala muito, mas o paciente fala mais ainda 👏",
           resultado: "Cruzando a conversa com os exames, você notou sinais de retenção de líquido e ajustou o tratamento a tempo.",
           pontos: { logica: 2, pessoas: 1 }
@@ -124,7 +124,7 @@ PROFISSOES.push({
           pontos: {}
         },
         {
-          texto: "Sento com os dois, explico com palavras simples, deixo perguntarem e combino os próximos passos.",
+          texto: "Sento com os dois, explico com palavras simples e combino os próximos passos.",
           reacao: "obrigada por explicar com calma... agora eu entendo o que vem pela frente 🙏",
           resultado: "Mesmo com a notícia dura, eles saíram com um plano e com a sensação de que não estão sozinhos.",
           pontos: { pessoas: 2, pressao: 1, organizacao: 1, logica: 1 }
@@ -136,7 +136,7 @@ PROFISSOES.push({
           pontos: { organizacao: 1 }
         },
         {
-          texto: "Explico tudo com termos técnicos e mostro o laudo.",
+          texto: "Explico tudo com os termos técnicos certos e mostro o laudo, para não haver nenhuma dúvida sobre o diagnóstico.",
           reacao: "carcinoma... estadiamento... pai, você entendeu algo? 😵",
           resultado: "Eles não compreenderam quase nada e precisaram de uma segunda conversa para entender.",
           pontos: { logica: 1 }
@@ -334,7 +334,7 @@ adicionarVersoes("medicina", [
     naVidaReal: "Confusão que aparece de repente num idoso (o delirium) não é \"coisa da idade\". Muitas vezes é sinal de infecção, desidratação ou efeito de um remédio novo, e precisa ser investigada.",
     opcoes: [
       {
-        texto: "Anoto \"paciente confusa\" no prontuário e sigo a lista de visitas.",
+        texto: "Anoto \"paciente confusa\" no prontuário e sigo a lista de visitas: em idosos internados, isso é comum.",
         reacao: "só isso? 🤨",
         resultado: "Ninguém procurou a causa, e a paciente piorou ao longo do dia.",
         pontos: {}
@@ -346,7 +346,7 @@ adicionarVersoes("medicina", [
         pontos: { organizacao: 1 }
       },
       {
-        texto: "Examino, pergunto à filha como ela era antes e peço exames para procurar uma infecção ou efeito de remédio.",
+        texto: "Examino, pergunto à filha como ela era antes e peço exames para achar a causa.",
         reacao: "boa linha de raciocínio. e olha o remédio pra dormir que começaram ontem 👀",
         resultado: "O exame de urina mostrou uma infecção. Com o tratamento e a suspensão do remédio novo, ela voltou a ficar lúcida.",
         pontos: { logica: 2, pessoas: 1 }
@@ -392,13 +392,13 @@ adicionarVersoes("medicina", [
     naVidaReal: "Dar um diagnóstico de doença crônica muda a vida de uma família. Médicos aprendem a comunicar com calma e em etapas, e a contar com a equipe de nutrição, enfermagem e psicologia no acompanhamento.",
     opcoes: [
       {
-        texto: "Digo direto: \"é diabetes, vai precisar de insulina para sempre\", e entrego a receita.",
+        texto: "Digo direto: \"é diabetes, vai precisar de insulina para sempre\", e entrego a receita com as doses anotadas para não haver erro.",
         reacao: "pra sempre?? 😢",
         resultado: "O menino saiu chorando, e o pai voltou para casa sem entender o que fazer.",
         pontos: {}
       },
       {
-        texto: "Sento com os dois, explico com calma o que muda no dia a dia, respondo as dúvidas e agendo a equipe de educação em diabetes.",
+        texto: "Sento com os dois, explico o que muda no dia a dia e agendo a equipe de educação em diabetes.",
         reacao: "então dá pra jogar bola e ter vida normal? 😮 ufa",
         resultado: "A família saiu assustada, mas com um plano. Em poucas semanas o Davi já media a glicose sozinho.",
         pontos: { pessoas: 2, pressao: 1, organizacao: 1, logica: 1 }
@@ -473,7 +473,7 @@ adicionarVersoes("medicina", [
         pontos: {}
       },
       {
-        texto: "Explico, de forma técnica e corrida, que antibiótico não age em vírus.",
+        texto: "Explico, de forma técnica e corrida, que antibiótico não age em vírus, e mostro o estudo científico que comprova isso.",
         reacao: "hã? mas da última vez funcionou... 🤨",
         resultado: "A informação estava certa, mas ele saiu sem acreditar e comprou o remédio por conta própria.",
         pontos: { logica: 1 }
@@ -485,7 +485,7 @@ adicionarVersoes("medicina", [
         pontos: { organizacao: 1 }
       },
       {
-        texto: "Escuto o que ele sente, explico com um exemplo do dia a dia por que antibiótico não mata vírus e combino o que fazer se piorar.",
+        texto: "Explico com um exemplo do dia a dia por que antibiótico não mata vírus e o que fazer se piorar.",
         reacao: "ah, é tipo usar remédio de formiga pra matar barata? 😂 entendi",
         resultado: "Ele saiu sem antibiótico, com orientações para aliviar os sintomas e sabendo quando voltar.",
         pontos: { pessoas: 2, criatividade: 1, logica: 1 }
@@ -516,13 +516,13 @@ adicionarVersoes("medicina", [
         pontos: {}
       },
       {
-        texto: "Corrijo, aviso a chefia, reviso tudo o que prescrevi nas últimas horas e faço uma pausa curta.",
+        texto: "Corrijo, aviso a chefia, reviso o que prescrevi nas últimas horas e faço uma pausa.",
         reacao: "atitude certa. achei mais uma dose esquisita aqui, olha 👍",
         resultado: "A revisão encontrou mais um erro pequeno. Depois de 20 minutos de pausa, você voltou mais atento(a).",
         pontos: { organizacao: 2, pressao: 1, logica: 1 }
       },
       {
-        texto: "Peço para o Caio conferir as minhas próximas prescrições até o fim do plantão.",
+        texto: "Peço para o Caio conferir as minhas próximas prescrições até o fim do plantão, para não arriscar outro erro.",
         reacao: "fechado, um confere o outro 🤝",
         resultado: "A dupla conferência evitou novos erros até a troca de plantão.",
         pontos: { pessoas: 1, organizacao: 1 }
@@ -569,7 +569,7 @@ adicionarVersoes("medicina", [
         pontos: {}
       },
       {
-        texto: "Monto uma \"UTI improvisada\" no corredor com aparelhos emprestados, sem avisar a coordenação.",
+        texto: "Monto uma \"UTI improvisada\" no corredor com aparelhos emprestados de outros setores, sem esperar autorização da coordenação.",
         reacao: "pelo menos alguém tá fazendo algo... 😟",
         resultado: "A intenção era boa, mas outros setores ficaram sem os aparelhos e a coordenação não sabia de nada.",
         pontos: { criatividade: 1 }
@@ -581,7 +581,7 @@ adicionarVersoes("medicina", [
         pontos: { pressao: 1 }
       },
       {
-        texto: "Peço a vaga à regulação com um relatório completo, estabilizo o paciente na emergência e explico à família como funciona a fila.",
+        texto: "Peço a vaga à regulação com um relatório completo, estabilizo o paciente e explico à família como funciona a fila.",
         reacao: "...tá. obrigada por explicar. eu só tô com muito medo 😢",
         resultado: "Com o relatório bem feito, a vaga saiu em algumas horas, e a família acompanhou cada passo.",
         pontos: { organizacao: 2, logica: 1, pessoas: 1 }

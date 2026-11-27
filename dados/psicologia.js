@@ -131,13 +131,13 @@ PROFISSOES.push({
           pontos: { pessoas: 1 }
         },
         {
-          texto: "Ligo, escuto e, se houver risco, aciono a rede de apoio e o serviço de emergência.",
+          texto: "Ligo na hora, escuto e, se houver risco, aciono a rede de apoio dela e o serviço de emergência da cidade.",
           reacao: "(ela atende) ...eu tô com medo de mim mesma. 😢",
           resultado: "Você avaliou o risco, combinou com a família e acionou o apoio necessário. Ela foi encaminhada com segurança.",
           pontos: { pressao: 2, logica: 1, organizacao: 1 }
         },
         {
-          texto: "Respondo agora, acolho, pergunto diretamente se ela pensa em se machucar e combino quem pode ficar com ela.",
+          texto: "Respondo agora, pergunto diretamente se ela pensa em se machucar e combino quem pode ficar com ela.",
           reacao: "...eu pensei, sim. mas minha irmã tá em casa. posso chamar ela. 🥺",
           resultado: "A conversa direta fez ela se abrir, a irmã ficou com ela e vocês marcaram uma sessão extra no dia seguinte.",
           pontos: { pessoas: 2, pressao: 2 }
@@ -339,13 +339,13 @@ adicionarVersoes("psicologia", [
         pontos: {}
       },
       {
-        texto: "Me apresento, explico com palavras simples o que a gente faz ali e deixo ele explorar a sala no tempo dele.",
+        texto: "Explico com palavras simples o que a gente faz ali e deixo ele explorar a sala no tempo dele.",
         reacao: "...posso mexer naqueles bonecos? 👀",
         resultado: "Depois de uns minutos, ele começou a brincar e, aos poucos, a contar sobre a escola.",
         pontos: { pessoas: 2, criatividade: 1 }
       },
       {
-        texto: "Pego papel e lápis de cor e proponho desenharmos juntos enquanto conversamos.",
+        texto: "Pego papel e lápis de cor e proponho desenharmos juntos enquanto conversamos, já que criança costuma se soltar brincando.",
         reacao: "eu desenho um dinossauro! 🦖",
         resultado: "Ele se soltou no desenho, mas ainda não ficou claro o que estava incomodando.",
         pontos: { criatividade: 2, pessoas: 1 }
@@ -435,7 +435,7 @@ adicionarVersoes("psicologia", [
         pontos: {}
       },
       {
-        texto: "Explico o sigilo e ofereço um documento só com o necessário, com autorização da família.",
+        texto: "Explico o sigilo e ofereço um documento só com o necessário, com autorização da família, para a escola poder ajudar.",
         reacao: "ah, entendi. pode ser assim, sim",
         resultado: "A escola recebeu orientações úteis, e o paciente continuou confiando nas sessões.",
         pontos: { organizacao: 2, pessoas: 1 }
@@ -447,7 +447,7 @@ adicionarVersoes("psicologia", [
         pontos: { organizacao: 1 }
       },
       {
-        texto: "Proponho uma reunião com a família e a escola para combinar como apoiar o Gabriel, sem expor o que ele contou.",
+        texto: "Proponho uma reunião com a família e a escola para apoiar o Gabriel sem expor o que ele contou.",
         reacao: "ótima ideia, marco pra semana que vem 👍",
         resultado: "A reunião criou um plano em conjunto, e o Gabriel participou da decisão.",
         pontos: { pessoas: 2, organizacao: 1, criatividade: 1 }
@@ -535,7 +535,7 @@ adicionarVersoes("psicologia", [
         pontos: { organizacao: 1 }
       },
       {
-        texto: "Proponho uma sessão de encerramento para conversarmos sobre a decisão.",
+        texto: "Proponho uma sessão de encerramento para conversarmos com calma sobre a decisão e o que você conquistou.",
         reacao: "faz sentido, uma última pra fechar 🙂",
         resultado: "Na última sessão, vocês revisaram o que mudou e combinaram como ela pode voltar se precisar.",
         pontos: { pessoas: 2, organizacao: 1 }
@@ -578,7 +578,7 @@ adicionarVersoes("psicologia", [
         pontos: { criatividade: 1 }
       },
       {
-        texto: "Combino com ele regras claras de contato, explico o que fazer numa emergência e deixo isso registrado.",
+        texto: "Combino com ele regras de contato e explico o que fazer numa emergência.",
         reacao: "faz sentido. e na sessão a gente fala do que me aflige à noite 🙏",
         resultado: "As mensagens viraram assunto da terapia, e ele passou a usar o CVV quando precisava.",
         pontos: { organizacao: 2, logica: 1 }
